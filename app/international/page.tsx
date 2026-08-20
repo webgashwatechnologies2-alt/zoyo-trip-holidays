@@ -1,0 +1,342 @@
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { FaPlane, FaStar, FaPhoneAlt, FaSearch, FaWhatsapp, FaClock, FaCheckCircle, FaMapMarkerAlt } from 'react-icons/fa';
+import { BsArrowRight, BsStars } from 'react-icons/bs';
+
+const internationalTours = [
+  {
+    name: 'Dubai & Abu Dhabi',
+    subtitle: 'Burj Khalifa, Desert Safari, Marina Cruise & Ferrari World',
+    slug: 'dubai',
+    img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop',
+    duration: '5 Days / 4 Nights',
+    price: '₹45,999',
+    originalPrice: '₹55,999',
+    rating: '5.0',
+    reviews: 480,
+    category: 'Luxury',
+    highlights: ['Burj Khalifa 124th Floor', 'Desert Dune Bashing & BBQ', 'Marina Dhow Cruise', 'Sheikh Zayed Mosque'],
+  },
+  {
+    name: 'Maldives',
+    subtitle: 'Overwater Villas, Coral Atolls & All-Inclusive Island Resorts',
+    slug: 'maldives',
+    img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop',
+    duration: '4 Days / 3 Nights',
+    price: '₹68,999',
+    originalPrice: '₹84,999',
+    rating: '5.0',
+    reviews: 310,
+    category: 'Honeymoon',
+    highlights: ['Water Villa with Private Pool', 'All-Inclusive Meal Plan', 'Speedboat Transfer', 'Dolphin Sunset Cruise'],
+  },
+  {
+    name: 'Bali, Indonesia',
+    subtitle: 'Ubud Rice Terraces, Kuta Beach & Nusa Penida Cliffs',
+    slug: 'bali',
+    img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop',
+    duration: '6 Days / 5 Nights',
+    price: '₹28,499',
+    originalPrice: '₹35,999',
+    rating: '4.9',
+    reviews: 390,
+    category: 'Popular',
+    highlights: ['Kelingking Beach Cliff', 'Uluwatu Temple Sunset', 'Bali Jungle Swing', 'Tegalalang Rice Terrace'],
+  },
+  {
+    name: 'Singapore',
+    subtitle: 'Gardens by the Bay, Universal Studios & Marina Bay Sands',
+    slug: 'singapore',
+    img: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop',
+    duration: '5 Days / 4 Nights',
+    price: '₹35,999',
+    originalPrice: '₹44,999',
+    rating: '4.8',
+    reviews: 355,
+    category: 'Family',
+    highlights: ['Universal Studios Sentosa', 'Gardens by the Bay SuperTree', 'Night Safari', 'Marina Bay Sands Sky Park'],
+  },
+  {
+    name: 'Thailand',
+    subtitle: 'Bangkok Temples, Pattaya Coral Island & Floating Markets',
+    slug: 'thailand',
+    img: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop',
+    duration: '5 Days / 4 Nights',
+    price: '₹22,999',
+    originalPrice: '₹29,999',
+    rating: '4.8',
+    reviews: 420,
+    category: 'Popular',
+    highlights: ['Coral Island Speedboat', 'Alcazar Cabaret Show', 'Wat Pho & Grand Palace', 'Floating Market Tour'],
+  },
+  {
+    name: 'Mauritius',
+    subtitle: 'White Beaches, Ile Aux Cerfs & Catamaran Cruise',
+    slug: 'mauritius',
+    img: 'https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=800&auto=format&fit=crop',
+    duration: '7 Days / 6 Nights',
+    price: '₹62,999',
+    originalPrice: '₹79,999',
+    rating: '4.9',
+    reviews: 240,
+    category: 'Honeymoon',
+    highlights: ['Ile Aux Cerfs Island Picnic', 'Chamarel 7 Colored Earth', 'Catamaran Coral Cruise', 'Le Morne Beach'],
+  },
+  {
+    name: 'Vietnam',
+    subtitle: 'Halong Bay Cruise, Hoi An Lanterns & Golden Bridge Da Nang',
+    slug: 'vietnam',
+    img: 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop',
+    duration: '6 Days / 5 Nights',
+    price: '₹24,999',
+    originalPrice: '₹32,999',
+    rating: '4.9',
+    reviews: 290,
+    category: 'Cultural',
+    highlights: ['Halong Bay Luxury Cruise', 'Golden Hand Bridge Ba Na Hills', 'Hoi An Ancient Town', 'Hanoi Street Food Walk'],
+  },
+  {
+    name: 'Sri Lanka',
+    subtitle: 'Sigiriya Rock, Kandy Temples & Bentota Golden Beach',
+    slug: 'sri-lanka',
+    img: 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop',
+    duration: '6 Days / 5 Nights',
+    price: '₹19,999',
+    originalPrice: '₹26,499',
+    rating: '4.8',
+    reviews: 210,
+    category: 'Cultural',
+    highlights: ['Sigiriya Lion Rock', 'Nuwara Eliya Tea Estates', 'Madu River Boat Safari', 'Temple of the Tooth Relic'],
+  },
+];
+
+const categories = ['All', 'Popular', 'Honeymoon', 'Luxury', 'Family', 'Cultural', 'Adventure'];
+
+export default function InternationalPage() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filteredTours = internationalTours.filter(tour => {
+    const matchSearch = tour.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tour.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tour.highlights.some(h => h.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchCategory = activeCategory === 'All' || tour.category === activeCategory;
+    return matchSearch && matchCategory;
+  });
+
+  return (
+    <main className="flex flex-col w-full overflow-x-hidden bg-[#fcf9f5] min-h-screen">
+
+      {/* ─── HERO BANNER ─── */}
+      <section className="relative w-full h-[420px] md:h-[500px] flex items-center justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2000&auto=format&fit=crop"
+          alt="International Destinations"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+          style={{ filter: 'brightness(0.35)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1329] via-black/30 to-black/65" />
+
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 text-white/70 text-[13px] font-medium mb-5 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+            <Link href="/" className="hover:text-white transition">Home</Link>
+            <span>/</span>
+            <span className="text-[#f26c22] font-semibold">International Destinations</span>
+          </div>
+          <h1 className="text-[38px] sm:text-[54px] font-black text-white leading-tight mb-4 tracking-tight">
+            Explore The{' '}
+            <span className="bg-gradient-to-r from-[#f26c22] via-[#ffa347] to-[#ffd000] bg-clip-text text-transparent">
+              World With Us
+            </span>
+          </h1>
+          <p className="text-gray-200 text-[16px] sm:text-[18px] max-w-xl mx-auto font-light mb-8 leading-relaxed">
+            Curated international holiday packages with guaranteed visa assistance, luxury hotel stays & stress-free airport transfers.
+          </p>
+
+          {/* Search */}
+          <div className="max-w-lg mx-auto relative">
+            <input
+              type="text"
+              placeholder="Search country (e.g. Dubai, Bali, Maldives, Thailand)..."
+              className="w-full pl-12 pr-5 py-4 rounded-full bg-white/95 text-gray-800 text-sm shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#f26c22]"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <FaSearch className="absolute left-4.5 top-1/2 -translate-y-1/2 text-gray-400 text-base" />
+          </div>
+
+          {/* Stats Badges */}
+          <div className="flex items-center justify-center gap-5 mt-8 flex-wrap text-white text-xs sm:text-sm font-semibold">
+            <span className="bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
+              <FaPlane className="text-[#f26c22]" /> {internationalTours.length}+ Destinations
+            </span>
+            <span className="bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
+              <FaCheckCircle className="text-emerald-400" /> Visa Assistance Included
+            </span>
+            <span className="bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
+              <BsStars className="text-amber-400" /> 4.9★ Rated Agency
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FILTER & CARDS GRID ─── */}
+      <section className="py-14 sm:py-20 px-4 sm:px-8 lg:px-16 max-w-[1400px] mx-auto w-full">
+
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 mb-10 border-b border-gray-200 pb-8">
+          <div>
+            <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-2">
+              <BsStars className="inline mr-1" /> World Travel Packages
+            </span>
+            <h2 className="text-[26px] sm:text-[32px] font-black text-gray-900">
+              Featured International Holiday Packages
+            </h2>
+            <p className="text-gray-500 text-sm mt-1">
+              Showing {filteredTours.length} curated packages with visa support & airport transfers
+            </p>
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap cursor-pointer ${
+                  activeCategory === cat
+                    ? 'bg-[#111827] text-white shadow-md'
+                    : 'bg-white border border-gray-200 text-gray-700 hover:border-gray-400'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {filteredTours.length === 0 ? (
+          <div className="text-center py-20 text-gray-500">
+            <div className="text-5xl mb-4">🔍</div>
+            <p className="text-lg font-semibold">No matching destinations found.</p>
+            <p className="text-sm mt-1">Try searching for "Dubai", "Bali", or "Maldives"</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+            {filteredTours.map((tour, idx) => (
+              <div
+                key={idx}
+                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_45px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-300 flex flex-col"
+              >
+                {/* Image */}
+                <div className="relative h-[230px] overflow-hidden bg-gray-100">
+                  <img
+                    src={tour.img}
+                    alt={tour.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="bg-[#f26c22] text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow uppercase tracking-wider">
+                      {tour.category}
+                    </span>
+                  </div>
+
+                  <div className="absolute top-3 right-3 z-10 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-bold text-gray-900 flex items-center gap-1 shadow">
+                    <FaStar className="text-amber-500 text-xs" /> {tour.rating}
+                    <span className="text-gray-400 font-normal text-[10px]">({tour.reviews})</span>
+                  </div>
+
+                  <div className="absolute bottom-3 left-3 z-10 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-lg text-white text-xs font-semibold flex items-center gap-1.5 border border-white/10">
+                    <FaClock className="text-[#f26c22] text-xs" /> {tour.duration}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5 flex-1 flex flex-col">
+                  <div className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold text-[#1E6AD4]">
+                    <FaMapMarkerAlt className="text-xs" />
+                    <span>{tour.name}</span>
+                  </div>
+                  <Link href={`/international/${tour.slug}`}>
+                    <h3 className="text-[17px] font-bold text-gray-900 group-hover:text-[#f26c22] transition-colors mb-2 leading-snug">
+                      {tour.subtitle.split(',')[0]}
+                    </h3>
+                  </Link>
+                  <p className="text-gray-500 text-xs mb-4 leading-relaxed line-clamp-2">{tour.subtitle}</p>
+
+                  <div className="space-y-1 mb-4">
+                    {tour.highlights.slice(0, 3).map((h, i) => (
+                      <div key={i} className="flex items-center gap-1.5 text-[11px] text-gray-600">
+                        <FaCheckCircle className="text-emerald-500 shrink-0 text-xs" />
+                        <span className="line-clamp-1">{h}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] text-gray-400 block line-through">{tour.originalPrice}</span>
+                      <div className="flex items-baseline gap-0.5">
+                        <span className="text-[20px] font-black text-[#f26c22]">{tour.price}</span>
+                        <span className="text-[10px] text-gray-400">/person</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <a
+                        href={`https://wa.me/918091660060?text=Hello%20Zoyo%20Trip,%20I%20am%20interested%20in%20a%20${encodeURIComponent(tour.name)}%20package`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 hover:bg-emerald-500 hover:text-white flex items-center justify-center text-sm transition shadow-sm"
+                        title="WhatsApp"
+                      >
+                        <FaWhatsapp />
+                      </a>
+                      <Link
+                        href={`/international/${tour.slug}`}
+                        className="bg-[#111827] hover:bg-[#f26c22] text-white px-4 py-2 rounded-xl font-bold text-[11px] transition-colors flex items-center gap-1 shadow-sm"
+                      >
+                        View Packages <BsArrowRight />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* ─── CTA ─── */}
+      <section className="py-16 px-4 sm:px-8 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#111827] to-[#1e293b] text-white rounded-3xl p-8 sm:p-12 shadow-2xl text-center">
+          <h2 className="text-[26px] sm:text-[34px] font-black mb-3 leading-tight">
+            Need a Custom International Holiday?
+          </h2>
+          <p className="text-gray-300 text-sm sm:text-base max-w-xl mx-auto mb-8 font-light">
+            Our international travel specialists design bespoke itineraries for groups, honeymoons, families, and solo explorers — with visa processing, flight bookings, and travel insurance.
+          </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <Link
+              href="/contact"
+              className="bg-[#f26c22] hover:bg-[#d95d1a] text-white px-8 py-3.5 rounded-full font-bold text-sm transition shadow-lg flex items-center gap-2"
+            >
+              <FaPhoneAlt className="text-xs" /> Get Free Custom Quote
+            </Link>
+            <a
+              href="https://wa.me/918091660060?text=Hello%20Zoyo%20Trip,%20I%20want%20to%20plan%20an%20international%20trip"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-[#25D366] hover:bg-[#20ba59] text-white px-7 py-3.5 rounded-full font-bold text-sm transition shadow-lg flex items-center gap-2"
+            >
+              <FaWhatsapp className="text-base" /> WhatsApp (+91) 8091660060
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  );
+}
