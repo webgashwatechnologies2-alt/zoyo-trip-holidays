@@ -175,7 +175,7 @@ export default function UttarakhandPackageDetailPage({
           className="absolute inset-0 w-full h-full object-cover"
           style={{ filter: 'brightness(0.32)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1329] via-black/35 to-black/60" />
+        <div className="absolute inset-0" />
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16 w-full py-12">
           

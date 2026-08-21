@@ -90,7 +90,7 @@ export default function KashmirPage() {
             <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-3">
               <BsStars className="inline mr-1" /> Paradise on Earth
             </span>
-            <h2 className="text-[28px] sm:text-[36px] font-black text-gray-900 leading-tight">
+            <h2 className="text-[28px] sm:text-[36px] text-gray-900 leading-tight">
               Curated Tour Packages for Every Traveler
             </h2>
             <p className="text-gray-500 text-sm mt-1.5 max-w-xl">

@@ -40,7 +40,7 @@ export default function LadakhPage() {
           className="absolute inset-0 w-full h-full object-cover scale-105"
           style={{ filter: 'brightness(0.38)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1329] via-black/30 to-black/65" />
+        <div className="absolute inset-0 " />
         
         <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto flex flex-col items-center">
           {/* Breadcrumb Pill */}
@@ -90,7 +90,7 @@ export default function LadakhPage() {
             <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-3">
               <BsStars className="inline mr-1" /> Land of High Passes
             </span>
-            <h2 className="text-[28px] sm:text-[36px] font-black text-gray-900 leading-tight">
+            <h2 className="text-[28px] sm:text-[36px text-gray-900 leading-tight">
               Curated Tour Packages for Every Traveler
             </h2>
             <p className="text-gray-500 text-sm mt-1.5 max-w-xl">
@@ -131,7 +131,7 @@ export default function LadakhPage() {
                     alt={pkg.title}
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                  <div className="absolute inset-0" />
                   
                   {/* Top Category Badge */}
                   <div className="absolute top-4 left-4 z-10 flex gap-2">

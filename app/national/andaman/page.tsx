@@ -40,7 +40,7 @@ export default function AndamanPage() {
           className="absolute inset-0 w-full h-full object-cover scale-105"
           style={{ filter: 'brightness(0.38)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b1329] via-black/30 to-black/65" />
+        <div className="absolute inset-0 " />
         
         <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto flex flex-col items-center">
           {/* Breadcrumb Pill */}
