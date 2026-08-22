@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   FaMapMarkerAlt,
   FaStar,
@@ -11,11 +10,9 @@ import {
   FaClock,
   FaCheckCircle,
   FaMountain,
-  FaCalendarAlt,
   FaShieldAlt,
   FaHotel,
   FaCar,
-  FaTags,
   FaHeadset,
 } from 'react-icons/fa';
 import { BsArrowRight, BsStars } from 'react-icons/bs';
@@ -27,7 +24,7 @@ export default function UttarakhandPage() {
   // Using a temporary structure since Uttarakhand data might not be in allDestinations yet
   const uttarakhandData = {
     heroImage: '/assets/images/packageimages/ukneww.webp',
-    packagesCount: 3,
+    packagesCount: 10,
     packages: [
       {
         id: 'uk-1',
@@ -1497,7 +1494,7 @@ export default function UttarakhandPage() {
           className="absolute inset-0 w-full h-full object-cover scale-105"
           style={{ filter: 'brightness(0.38)' }}
         />
-        <div className="absolute inset-0 " />
+        <div className="absolute inset-0" />
 
         <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto flex flex-col items-center">
           {/* Breadcrumb Pill */}
@@ -1607,7 +1604,7 @@ export default function UttarakhandPage() {
                     <span className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg flex items-center gap-1.5 border border-white/10">
                       <FaClock className="text-[#f26c22]" /> {pkg.duration}
                     </span>
-                    <span className="text-gray-300 text-[11px] truncate max-w-[50%]">
+                    <span className="text-white-300 text-[11px] truncate max-w-[50%]">
                       {pkg.pickupDrop}
                     </span>
                   </div>

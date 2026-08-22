@@ -32,8 +32,15 @@ export default function NationalPackageDetailPage({
   const destSlug = resolvedParams.slug.toLowerCase();
   const pkgSlug = resolvedParams.packageSlug.toLowerCase();
 
-  // Find destination
-  const dest = allDestinations[destSlug];
+  // Find destination with aliases
+  const cleanSlug = destSlug.replace(/-/g, '');
+  const dest = 
+    allDestinations[destSlug] ||
+    allDestinations[cleanSlug] ||
+    (destSlug.includes('andaman') ? allDestinations['andaman'] : undefined) ||
+    (destSlug.includes('uttar') ? (allDestinations['uttarpradesh'] || allDestinations['uttar-pradesh']) : undefined) ||
+    (destSlug.includes('tamil') ? (allDestinations['tamilnadu'] || allDestinations['tamil-nadu']) : undefined) ||
+    (destSlug.includes('arunachal') ? (allDestinations['arunachal'] || allDestinations['arunachal-pradesh']) : undefined);
   
   // Search in destination packages or himachal packages
   let pkg: TourPackage | undefined = dest?.packages.find((p) => p.slug === pkgSlug);

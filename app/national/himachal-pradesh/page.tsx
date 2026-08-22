@@ -155,7 +155,7 @@ export default function HimachalPradeshPage() {
                     <span className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg flex items-center gap-1.5 border border-white/10">
                       <FaClock className="text-[#f26c22]" /> {pkg.duration}
                     </span>
-                    <span className="text-gray-300 text-[11px] truncate max-w-[50%]">
+                    <span className="text-white-300 text-[11px] truncate max-w-[50%]">
                       {pkg.pickupDrop}
                     </span>
                   </div>

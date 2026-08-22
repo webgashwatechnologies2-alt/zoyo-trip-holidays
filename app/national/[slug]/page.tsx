@@ -28,8 +28,15 @@ export default function NationalDestinationPage({
   const resolvedParams = use(params);
   const slug = resolvedParams.slug.toLowerCase();
 
-  // If himachal-pradesh is routed here or specifically
-  let dest: DestinationData | undefined = allDestinations[slug];
+  // Normalize slug & resolve aliases
+  const cleanSlug = slug.replace(/-/g, '');
+  let dest: DestinationData | undefined = 
+    allDestinations[slug] || 
+    allDestinations[cleanSlug] ||
+    (slug.includes('andaman') ? allDestinations['andaman'] : undefined) ||
+    (slug.includes('uttar') ? (allDestinations['uttarpradesh'] || allDestinations['uttar-pradesh']) : undefined) ||
+    (slug.includes('tamil') ? (allDestinations['tamilnadu'] || allDestinations['tamil-nadu']) : undefined) ||
+    (slug.includes('arunachal') ? (allDestinations['arunachal'] || allDestinations['arunachal-pradesh']) : undefined);
 
   // Fallback / standard generator if slug is partially matched or dynamic
   if (!dest && slug.includes('himachal')) {
@@ -207,7 +214,7 @@ export default function NationalDestinationPage({
             <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-3">
               <BsStars className="inline mr-1" /> Handcrafted Tours
             </span>
-            <h2 className="text-[28px] sm:text-[36px] font-black text-gray-900 leading-tight">
+            <h2 className="text-[28px] sm:text-[36px] text-gray-900 leading-tight">
               Explore {dest.name} Tour Packages
             </h2>
             <p className="text-gray-500 text-sm mt-1.5 max-w-xl">
@@ -263,7 +270,7 @@ export default function NationalDestinationPage({
                     <span className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg flex items-center gap-1.5 border border-white/10">
                       <FaClock className="text-[#f26c22]" /> {pkg.duration}
                     </span>
-                    <span className="text-gray-300 text-[11px] truncate max-w-[50%]">
+                    <span className="text-white-300 text-[11px] truncate max-w-[50%]">
                       {pkg.pickupDrop}
                     </span>
                   </div>

@@ -15,13 +15,10 @@ import {
   FaHotel,
   FaCar,
   FaUtensils,
-  FaCalendarAlt,
   FaChevronDown,
   FaPaperPlane,
   FaShieldAlt,
   FaAward,
-  FaUserFriends,
-  FaTag,
 } from 'react-icons/fa';
 import { BsArrowRight, BsCheckLg, BsStars } from 'react-icons/bs';
 import { allDestinations } from '@/data/allDestinations';

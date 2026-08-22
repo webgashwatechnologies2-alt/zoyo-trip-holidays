@@ -996,4 +996,466 @@ export const himachalPackages: HimachalPackage[] = [
       },
     ],
   },
+  {
+    id: 'hp-8',
+    slug: 'bir-billing-barot-valley-tour',
+    title: 'Bir Billing With Barot Valley Tour Plan',
+    subtitle:
+      'Experience thrilling paragliding in Bir Billing, peaceful Tibetan monasteries, lush Barot Valley landscapes, riverside villages, and scenic Himalayan mountain views',
+
+    location:
+      'Bir Billing, Barot Valley, Rajgundha Valley, Baijnath',
+
+    duration: '3 Nights / 4 Days',
+
+    price: '₹17,499',
+    originalPrice: '₹22,999',
+
+    rating: 4.9,
+    reviewsCount: 310,
+    category: 'Popular',
+
+    heroImage: '/assets/images/packageimages/birbillingnew.webp',
+
+    gallery: [
+      'https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop',
+    ],
+
+    overview:
+      'Discover the adventurous and peaceful side of Himachal Pradesh with an exciting journey through Bir Billing and Barot Valley. Experience the thrill of paragliding in Bir Billing, explore the Tibetan monasteries and peaceful mountain surroundings, visit the historic Baijnath Temple, and travel through the beautiful landscapes of Barot Valley. Enjoy riverside walks, pine forests, traditional Himalayan villages, scenic viewpoints, and peaceful moments surrounded by the Dhauladhar mountains.',
+
+    highlights: [
+      'Experience thrilling paragliding in Bir Billing, one of India’s premier paragliding destinations',
+      'Explore the Tibetan monasteries and peaceful cafes of Bir',
+      'Visit the historic Baijnath Temple',
+      'Scenic drive through the beautiful Barot Valley',
+      'Explore Uhl River and riverside landscapes',
+      'Visit Rajgundha Valley and traditional Himalayan villages',
+      'Enjoy pine forest walks and spectacular Dhauladhar mountain views',
+      'Experience peaceful evenings surrounded by Barot Valley landscapes',
+    ],
+
+    inclusions: [
+      '3 Nights accommodation in premium 3-Star mountain hotels and valley resorts',
+      'Daily Breakfast & Dinner with fresh local and North Indian cuisine',
+      'Private dedicated AC vehicle for transfers and sightseeing',
+      'Toll taxes, parking fees, state taxes and driver allowances',
+      'Local sightseeing in Bir Billing and Barot Valley',
+      'Assistance for paragliding and other adventure activities',
+    ],
+
+    exclusions: [
+      'Airfare or train tickets',
+      'Paragliding charges and other adventure activity fees',
+      'Personal expenses, laundry and tips',
+      'Monument and temple entry fees where applicable',
+      'Travel insurance',
+      'Any service not specifically mentioned under inclusions',
+    ],
+
+    hotelType:
+      '3-Star Deluxe Mountain Hotels, Valley Resorts & Boutique Stays',
+
+    pickupDrop:
+      'Kangra Airport / Pathankot Railway Station / Chandigarh Airport & Railway Station',
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Bir Billing | Welcome to Kangra Valley',
+        description:
+          'Arrive in Bir Billing and check into your hotel. Spend the evening exploring the peaceful Tibetan settlement, visiting Bir Monastery, and enjoying beautiful views of the surrounding Dhauladhar mountains.',
+        activities: [
+          'Airport / Station Meet & Greet',
+          'Scenic Drive to Bir Billing',
+          'Hotel Check-in & Welcome Drink',
+          'Bir Monastery Visit',
+          'Tibetan Colony & Local Market Walk',
+          'Evening Leisure & Sunset Views',
+        ],
+        meals: 'Dinner',
+        stay: 'Bir Billing Hotel / Resort',
+      },
+
+      {
+        day: 2,
+        title: 'Bir Billing Paragliding & Local Sightseeing',
+        description:
+          'Enjoy an exciting day in Bir Billing, one of India’s most popular paragliding destinations. Experience tandem paragliding from Billing to Bir (optional) and explore the charming cafés, monasteries, and local attractions.',
+        activities: [
+          'Breakfast at the Hotel',
+          'Drive to Billing Take-off Point',
+          'Tandem Paragliding Experience (Optional)',
+          'Bir Monastery & Tibetan Settlement Visit',
+          'Bir Market & Local Café Exploration',
+          'Evening Leisure in Bir',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Bir Billing Hotel / Resort',
+      },
+
+      {
+        day: 3,
+        title: 'Bir Billing to Barot Valley Excursion',
+        description:
+          'Drive through scenic mountain roads to the beautiful Barot Valley. Explore the peaceful Uhl River, lush forests, trout farms, and traditional Himalayan villages while enjoying the natural beauty of the valley.',
+        activities: [
+          'Breakfast at the Hotel',
+          'Scenic Drive to Barot Valley',
+          'Uhl River Riverside Walk',
+          'Barot Trout Fish Farm Visit',
+          'Village & Forest Exploration',
+          'Photography & Nature Breaks',
+          'Return to Bir Billing',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Bir Billing Hotel / Resort',
+      },
+
+      {
+        day: 4,
+        title: 'Departure from Bir Billing | Tour Ends',
+        description:
+          'After breakfast, check out from the hotel and depart from Bir Billing with wonderful memories of paragliding, peaceful mountain landscapes, and the scenic Barot Valley excursion.',
+        activities: [
+          'Breakfast at the Hotel',
+          'Hotel Check-out',
+          'Last-Minute Local Shopping',
+          'Scenic Departure from Bir Billing',
+          'Drop at Airport / Railway Station / Bus Stand',
+        ],
+        meals: 'Breakfast',
+        stay: 'Departure',
+      },
+    ],
+  },
+  {
+    id: 'hp-9',
+    slug: 'shikari-mata-kamrunag-temple-tour-package-from-mandi',
+    title: 'Shikari Mata & Kamrunag Temple Tour Package From Mandi',
+    subtitle:
+      'Explore the sacred Himalayan temples of Shikari Mata and Kamrunag with scenic mountain drives, peaceful forests, sacred lakes, and breathtaking valley views',
+    location:
+      'Mandi, Kamrunag, Shikari Mata',
+    duration: '2 Nights / 3 Days',
+    price: '₹9,999',
+    originalPrice: '₹12,999',
+    rating: 5.0,
+    reviewsCount: 195,
+    category: 'Popular',
+
+    heroImage: '/assets/images/packageimages/shikarimata.webp',
+
+    gallery: [
+      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a2?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop',
+    ],
+
+    overview:
+      'Discover the spiritual and natural beauty of Mandi with a memorable journey to the revered Shikari Mata Temple and Kamrunag Temple. Surrounded by dense Himalayan forests, peaceful mountain trails, and panoramic valley views, this short pilgrimage tour offers the perfect combination of devotion, adventure, and scenic exploration. Visit the sacred Kamrunag Lake, seek blessings at the ancient hill temples, explore the historic town of Mandi, and enjoy the peaceful atmosphere of the Himalayas.',
+
+    highlights: [
+      'Visit the revered Shikari Mata Temple surrounded by Himalayan forests',
+      'Explore the sacred Kamrunag Temple and peaceful Kamrunag Lake',
+      'Scenic mountain drives through the beautiful Mandi region',
+      'Panoramic Himalayan valley and mountain views',
+      'Explore historic temples and local attractions in Mandi',
+      'Peaceful forest walks and short Himalayan trekking experiences',
+    ],
+
+    inclusions: [
+      '2 Nights accommodation in comfortable mountain hotels',
+      'Daily Breakfast & Dinner',
+      'Private dedicated SUV / Innova with experienced mountain driver',
+      'Fuel, parking charges, and applicable state taxes',
+      'Local sightseeing as mentioned in the itinerary',
+      'Driver allowance and transportation expenses',
+    ],
+
+    exclusions: [
+      'Airfare or train tickets to Mandi / Chandigarh',
+      'Personal trekking equipment',
+      'Temple donations and offerings',
+      'Entry fees to attractions not mentioned in inclusions',
+      'Personal laundry, beverages, and tips',
+      'Any meal or service not specifically mentioned in inclusions',
+    ],
+
+    hotelType:
+      'Comfortable Mountain Hotels & Valley View Resorts',
+
+    pickupDrop:
+      'Mandi Bus Stand / Chandigarh Airport / Chandigarh Railway Station',
+
+    itinerary: [
+      {
+        day: 1,
+        title:
+          'Arrival in Mandi | Local Sightseeing & Himalayan Welcome',
+
+        description:
+          'Arrive in Mandi and check into your hotel. Known as the gateway to several beautiful Himalayan destinations, Mandi is surrounded by mountains and the Beas River. After settling in, explore the historic town, visit ancient temples, and enjoy a peaceful evening before beginning your temple excursions.',
+
+        activities: [
+          'Arrival in Mandi',
+          'Hotel Check-in & Welcome Drink',
+          'Bhootnath Temple Visit',
+          'Mandi Local Market Exploration',
+          'Beas River Riverside Walk',
+          'Evening Leisure & Mountain Views',
+        ],
+
+        meals: 'Dinner',
+        stay: 'Mandi Mountain Hotel',
+      },
+
+      {
+        day: 2,
+        title:
+          'Kamrunag Temple Excursion | Sacred Lake & Himalayan Forests',
+
+        description:
+          'After breakfast, begin your scenic journey towards Kamrunag Temple. Travel through peaceful Himalayan landscapes and dense forest roads before reaching the trekking point. Trek through the beautiful mountain trail to the revered Kamrunag Temple, located beside the sacred Kamrunag Lake. Spend time enjoying the peaceful surroundings, seek blessings, and admire the panoramic views before returning to Mandi.',
+
+        activities: [
+          'Early Morning Breakfast',
+          'Scenic Drive towards Kamrunag',
+          'Mountain Forest Trail',
+          'Kamrunag Temple Darshan',
+          'Sacred Kamrunag Lake Visit',
+          'Himalayan Valley Viewpoints',
+          'Photography & Nature Exploration',
+          'Return Drive to Mandi',
+        ],
+
+        meals: 'Breakfast & Dinner',
+        stay: 'Mandi Mountain Hotel',
+      },
+
+      {
+        day: 3,
+        title:
+          'Shikari Mata Temple Visit | Sacred Himalayan Journey & Departure',
+
+        description:
+          'After breakfast, check out from the hotel and proceed towards the sacred Shikari Mata Temple. Located high in the Himalayan mountains, the temple is surrounded by peaceful forests and spectacular mountain scenery. Spend time at the temple, enjoy the natural surroundings, and seek blessings before beginning your return journey and departure.',
+
+        activities: [
+          'Breakfast & Hotel Check-out',
+          'Scenic Drive towards Shikari Mata',
+          'Shikari Mata Temple Darshan',
+          'Forest & Mountain Trail Exploration',
+          'Panoramic Himalayan Views',
+          'Temple Photography & Leisure',
+          'Return Journey',
+          'Departure Drop-off',
+        ],
+
+        meals: 'Breakfast',
+        stay: 'End of Tour',
+      },
+    ],
+  },
+  {
+    id: 'hp-10',
+    slug: 'shimla-manali-dalhousie-package',
+    title: 'Shimla Manali Dalhousie Package From Delhi',
+    subtitle:
+      'Explore the scenic hill stations of Shimla, Manali and Dalhousie with mountain views, beautiful valleys, local sightseeing and peaceful Himalayan escapes',
+    location:
+      'Delhi, Shimla, Kufri, Manali, Solang Valley, Kullu, Dalhousie, Khajjiar',
+    duration: '7 Nights / 8 Days',
+    price: '₹14,499',
+    originalPrice: '₹18,999',
+    rating: 4.9,
+    reviewsCount: 220,
+    category: 'Popular',
+
+    heroImage: '/assets/images/packageimages/shimlaimageneww.webp',
+
+    gallery: [
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop',
+    ],
+
+    overview:
+      'Experience the best of Himachal Pradesh with a memorable journey through Shimla, Manali and Dalhousie. Begin your holiday in the charming colonial town of Shimla, explore Kufri and its surrounding mountain landscapes, continue through the beautiful Kullu Valley to Manali, and enjoy the adventure of Solang Valley. The journey then takes you towards Dalhousie, where peaceful hill roads, colonial architecture, pine forests and the beautiful meadow of Khajjiar complete your Himalayan escape.',
+
+    highlights: [
+      'Explore the colonial charm and scenic viewpoints of Shimla',
+      'Visit Kufri, one of Shimla’s most popular mountain destinations',
+      'Scenic drive through Kullu Valley with local shopping opportunities',
+      'Experience the beauty and adventure activities of Solang Valley',
+      'Explore Manali Mall Road, Hadimba Temple and Vashisht village',
+      'Visit the picturesque Khajjiar meadow near Dalhousie',
+      'Enjoy peaceful Himalayan landscapes, pine forests and mountain views',
+    ],
+
+    inclusions: [
+      '7 Nights accommodation in comfortable hotels and mountain resorts',
+      'Daily Breakfast & Dinner',
+      'Private dedicated vehicle for all transfers and sightseeing',
+      'Experienced mountain driver throughout the journey',
+      'Fuel, parking charges, toll taxes and driver allowances',
+      'All sightseeing as mentioned in the itinerary',
+    ],
+
+    exclusions: [
+      'Airfare or train tickets to Chandigarh / Delhi',
+      'Entry tickets to monuments, temples and sightseeing attractions',
+      'Adventure activity charges in Solang Valley',
+      'Personal expenses, laundry, beverages and tips',
+      'Meals or services not specifically mentioned in inclusions',
+    ],
+
+    hotelType:
+      'Deluxe Hill Hotels, Valley View Resorts & Comfortable Mountain Stays',
+
+    pickupDrop:
+      'Delhi Airport / Railway Station / Chandigarh Airport / Railway Station',
+
+    itinerary: [
+      {
+        day: 1,
+        title: 'Delhi to Shimla | Scenic Himalayan Drive & Hotel Check-in',
+        description:
+          'Begin your Himachal holiday with a scenic drive from Delhi towards Shimla. As the plains gradually give way to the Himalayan foothills, enjoy beautiful mountain landscapes and winding roads. Arrive in Shimla, check into your hotel and spend the evening relaxing or exploring the nearby Mall Road.',
+        activities: [
+          'Morning Pickup from Delhi',
+          'Scenic Drive towards Shimla',
+          'Mountain Highway & Valley Views',
+          'Hotel Check-in',
+          'Evening Mall Road Leisure Walk',
+          'The Ridge & Local Market Exploration',
+        ],
+        meals: 'Dinner',
+        stay: 'Shimla Deluxe Hill Resort',
+      },
+
+      {
+        day: 2,
+        title: 'Shimla & Kufri Sightseeing | Himalayan Views & Local Exploration',
+        description:
+          'After breakfast, explore the popular attractions around Shimla and Kufri. Visit the scenic mountain viewpoints of Kufri, enjoy peaceful Himalayan surroundings, and return to Shimla for sightseeing around the Ridge and Mall Road.',
+        activities: [
+          'Breakfast at the Hotel',
+          'Drive to Kufri',
+          'Kufri Himalayan Viewpoints',
+          'Green Valley Scenic Stop',
+          'Jakhoo Temple Visit',
+          'The Ridge & Christ Church',
+          'Mall Road Shopping & Leisure',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Shimla Deluxe Hill Resort',
+      },
+
+      {
+        day: 3,
+        title: 'Shimla to Manali via Kullu Valley | Scenic Himalayan Journey',
+        description:
+          'Depart Shimla after breakfast and begin your scenic journey towards Manali. Travel through beautiful mountain valleys and along the Beas River. En route, pass through the famous Kullu Valley and enjoy opportunities for local shopping before continuing towards Manali.',
+        activities: [
+          'Breakfast & Hotel Check-out',
+          'Scenic Drive towards Manali',
+          'Mountain Valley Photography Stops',
+          'Kullu Valley Exploration',
+          'Kullu Shawl & Handicraft Shopping',
+          'Beas River Scenic Stops',
+          'Manali Hotel Check-in',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Manali Valley View Resort',
+      },
+
+      {
+        day: 4,
+        title: 'Manali Local Sightseeing | Temples, Waterfalls & Old Manali',
+        description:
+          'Explore the cultural and natural attractions of Manali. Visit the historic Hadimba Temple surrounded by cedar forests, explore the peaceful Vashisht area, and spend the evening enjoying the cafés, shops and mountain atmosphere of Old Manali and Mall Road.',
+        activities: [
+          'Breakfast at the Hotel',
+          'Hadimba Devi Temple Visit',
+          'Manali Nature Park',
+          'Vashisht Temple & Hot Springs',
+          'Old Manali Village Walk',
+          'Manali Mall Road Exploration',
+          'Local Café & Shopping Experience',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Manali Valley View Resort',
+      },
+
+      {
+        day: 5,
+        title: 'Solang Valley Excursion | Mountain Views & Adventure Activities',
+        description:
+          'After breakfast, head towards Solang Valley, one of the most beautiful destinations near Manali. Surrounded by towering Himalayan peaks, the valley offers stunning scenery and a range of seasonal adventure activities. Spend the day enjoying the mountain landscape before returning to Manali.',
+        activities: [
+          'Breakfast at the Hotel',
+          'Scenic Drive to Solang Valley',
+          'Himalayan Mountain Viewpoints',
+          'Snow Activities in Winter (Optional)',
+          'Paragliding / Adventure Activities (Optional)',
+          'Riverside & Valley Photography',
+          'Return to Manali',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Manali Valley View Resort',
+      },
+
+      {
+        day: 6,
+        title: 'Manali to Dalhousie | Scenic Mountain Transfer',
+        description:
+          'Check out after breakfast and begin your journey towards Dalhousie. Travel through beautiful mountain roads and valleys as the landscape changes from the Kullu-Manali region towards the Dhauladhar ranges. Arrive in Dalhousie and relax at your hotel.',
+        activities: [
+          'Breakfast & Hotel Check-out',
+          'Scenic Mountain Drive to Dalhousie',
+          'Mountain Photography Stops',
+          'Dhauladhar Range Views',
+          'Dalhousie Hotel Check-in',
+          'Evening Leisure Walk',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Dalhousie Deluxe Hill Resort',
+      },
+
+      {
+        day: 7,
+        title: 'Khajjiar Excursion | Mini Switzerland of Himachal Pradesh',
+        description:
+          'Enjoy a full-day excursion to Khajjiar, one of the most picturesque destinations near Dalhousie. Walk across the lush green meadow surrounded by dense pine and cedar forests, visit the ancient Khajji Nag Temple, and enjoy peaceful views of the surrounding mountains before returning to Dalhousie.',
+        activities: [
+          'Breakfast at the Hotel',
+          'Scenic Drive to Khajjiar',
+          'Khajjiar Alpine Meadow Walk',
+          'Khajji Nag Temple Visit',
+          'Pine & Cedar Forest Exploration',
+          'Horse Riding (Optional)',
+          'Photography & Leisure Time',
+          'Return to Dalhousie',
+        ],
+        meals: 'Breakfast & Dinner',
+        stay: 'Dalhousie Deluxe Hill Resort',
+      },
+
+      {
+        day: 8,
+        title: 'Dalhousie to Delhi / Chandigarh | Departure with Himalayan Memories',
+        description:
+          'After breakfast, check out from the hotel and begin your return journey. Enjoy the final views of the Himalayan landscapes as you travel towards Delhi or Chandigarh for your onward journey, bringing home wonderful memories of Shimla, Manali and Dalhousie.',
+        activities: [
+          'Breakfast & Hotel Check-out',
+          'Final Dalhousie Valley Views',
+          'Scenic Downhill Drive',
+          'Local Souvenir Shopping',
+          'Delhi / Chandigarh Drop-off',
+        ],
+        meals: 'Breakfast',
+        stay: 'End of Tour',
+      },
+    ],
+  },
 ];
+
