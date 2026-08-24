@@ -30,16 +30,16 @@ export default function RajasthanPage() {
     <main className="flex flex-col w-full overflow-x-hidden bg-[#fcf9f5] min-h-screen text-gray-800">
       
       {/* ─── 1. HERO BANNER ─── */}
-      <section className="relative w-full min-h-[440px] md:min-h-[520px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-[480px] sm:min-h-[540px] md:min-h-[580px] flex items-center justify-center overflow-hidden py-14 sm:py-20 md:py-24">
         <img
           src={rajasthanData.heroImage}
           alt="Rajasthan Tour Packages"
           className="absolute inset-0 w-full h-full object-cover scale-105"
-          style={{ filter: 'brightness(0.38)' }}
+          style={{ filter: 'brightness(0.70)' }}
         />
         <div className="absolute inset-0" />
         
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto flex flex-col items-center">
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto flex flex-col items-center my-auto">
           {/* Breadcrumb Pill */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-white text-[12.5px] font-medium mb-4 shadow">
             <Link href="/" className="hover:text-[#f26c22] transition">Home</Link>

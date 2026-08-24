@@ -33,7 +33,7 @@ export default function ContactPage() {
   return (
     <main className="flex flex-col w-full overflow-x-hidden bg-[#fcf9f5] min-h-screen">
       {/* Hero Banner */}
-      <section className="relative w-full h-[360px] md:h-[420px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-[420px] md:min-h-[480px] flex items-center justify-center overflow-hidden py-14 sm:py-20">
         <img
           src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000&auto=format&fit=crop"
           alt="Contact Zoyo Trip Holidays"
@@ -42,7 +42,7 @@ export default function ContactPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b1329] via-black/30 to-black/60" />
         
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto my-auto">
           <div className="inline-flex items-center gap-2 text-white/70 text-[13px] font-medium mb-4 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
             <Link href="/" className="hover:text-white">Home</Link>
             <span>/</span>

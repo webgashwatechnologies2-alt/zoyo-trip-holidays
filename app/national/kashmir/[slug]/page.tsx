@@ -58,7 +58,7 @@ export default function KashmirPackageDetailPage({
 
   return (
     <main className="flex flex-col w-full overflow-x-hidden bg-[#fcf9f5] min-h-screen text-gray-800">
-      
+
       {/* ─── 1. PACKAGE HERO HEADER ─── */}
       <section className="relative w-full min-h-[380px] md:min-h-[460px] flex items-center overflow-hidden">
         <img
@@ -70,7 +70,7 @@ export default function KashmirPackageDetailPage({
         <div className="absolute inset-0 " />
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16 w-full py-12">
-          
+
           {/* Breadcrumbs */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-white text-[12px] font-medium mb-4 shadow">
             <Link href="/" className="hover:text-[#f26c22] transition">Home</Link>
@@ -113,10 +113,10 @@ export default function KashmirPackageDetailPage({
       {/* ─── 2. MAIN DETAIL CONTENT & BOOKING SIDEBAR ─── */}
       <section className="py-12 sm:py-16 px-4 sm:px-8 lg:px-16 max-w-[1400px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          
+
           {/* ═══ LEFT MAIN CONTENT (8 Cols) ═══ */}
           <div className="lg:col-span-8 space-y-10">
-            
+
             {/* Photo Gallery & Preview */}
             <div className="bg-white rounded-3xl p-4 sm:p-6 border border-gray-100 shadow-sm">
               <div className="relative h-[320px] sm:h-[440px] rounded-2xl overflow-hidden mb-4 bg-gray-100">
@@ -131,9 +131,8 @@ export default function KashmirPackageDetailPage({
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(img)}
-                    className={`relative h-20 sm:h-24 rounded-xl overflow-hidden border-2 transition cursor-pointer ${
-                      selectedImage === img ? 'border-[#f26c22] scale-95 shadow-md' : 'border-transparent opacity-70 hover:opacity-100'
-                    }`}
+                    className={`relative h-20 sm:h-24 rounded-xl overflow-hidden border-2 transition cursor-pointer ${selectedImage === img ? 'border-[#f26c22] scale-95 shadow-md' : 'border-transparent opacity-70 hover:opacity-100'
+                      }`}
                   >
                     <img src={img} alt={`Preview ${idx + 1}`} className="w-full h-full object-cover" />
                   </button>
@@ -221,9 +220,8 @@ export default function KashmirPackageDetailPage({
                   return (
                     <div
                       key={day.day}
-                      className={`border rounded-2xl transition-all duration-200 overflow-hidden ${
-                        isOpen ? 'border-[#f26c22] shadow-md ring-1 ring-[#f26c22]/20' : 'border-gray-200 hover:border-gray-300'
-                      }`}
+                      className={`border rounded-2xl transition-all duration-200 overflow-hidden ${isOpen ? 'border-[#f26c22] shadow-md ring-1 ring-[#f26c22]/20' : 'border-gray-200 hover:border-gray-300'
+                        }`}
                     >
                       {/* Day Accordion Header */}
                       <button
@@ -231,9 +229,8 @@ export default function KashmirPackageDetailPage({
                         className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 bg-white"
                       >
                         <div className="flex items-center gap-3.5 min-w-0">
-                          <span className={`w-9 h-9 rounded-xl font-black text-sm flex items-center justify-center shrink-0 ${
-                            isOpen ? 'bg-[#f26c22] text-white' : 'bg-gray-100 text-gray-700'
-                          }`}>
+                          <span className={`w-9 h-9 rounded-xl font-black text-sm flex items-center justify-center shrink-0 ${isOpen ? 'bg-[#f26c22] text-white' : 'bg-gray-100 text-gray-700'
+                            }`}>
                             D{day.day}
                           </span>
                           <div className="min-w-0">
@@ -247,9 +244,8 @@ export default function KashmirPackageDetailPage({
                           </div>
                         </div>
 
-                        <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform ${
-                          isOpen ? 'bg-[#f26c22] text-white rotate-180' : 'bg-gray-100 text-gray-500'
-                        }`}>
+                        <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform ${isOpen ? 'bg-[#f26c22] text-white rotate-180' : 'bg-gray-100 text-gray-500'
+                          }`}>
                           <FaChevronDown className="text-xs" />
                         </div>
                       </button>
@@ -320,10 +316,10 @@ export default function KashmirPackageDetailPage({
 
           {/* ═══ RIGHT STICKY BOOKING CARD (4 Cols) ═══ */}
           <div className="lg:col-span-4 sticky top-[120px] space-y-6">
-            
+
             {/* Booking Card */}
             <div className="bg-white rounded-3xl p-6 sm:p-7 border border-gray-100 shadow-[0_10px_35px_rgba(0,0,0,0.08)]">
-              
+
               {/* Price Tag */}
               <div className="border-b border-gray-100 pb-5 mb-5">
                 <div className="flex items-center justify-between mb-1">
@@ -357,7 +353,7 @@ export default function KashmirPackageDetailPage({
               ) : (
                 <form onSubmit={handleBookingSubmit} className="space-y-3.5">
                   <h3 className="font-bold text-gray-900 text-[15px] mb-1">Get Instant Free Quote &amp; Itinerary</h3>
-                  
+
                   <div>
                     <input
                       type="text"

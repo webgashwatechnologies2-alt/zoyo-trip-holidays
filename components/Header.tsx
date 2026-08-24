@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes, FaChevronDown, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown, FaPhoneAlt, FaWhatsapp, FaFacebookF, FaYoutube, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import zoyoLogo from '../public/assets/images/logo/zoyo_logo.png';
 
 const nationalDestinations = {
@@ -48,7 +49,7 @@ const nationalDestinations = {
     title: 'WEST INDIA',
     items: [
       { name: 'Gujarat', href: '/national/gujarat' },
-     
+
     ],
   },
 };
@@ -70,30 +71,20 @@ const internationalDestinations = {
       { name: 'Maldives', href: '/international/maldives' },
       { name: 'Malaysia', href: '/international/malaysia' },
       { name: 'Sri Lanka', href: '/international/sri-lanka' },
-      // { name: 'Philippines', href: '/international/philippines' },
     ],
   },
   eastAsia: {
     title: 'EAST ASIA',
     items: [
-      // { name: 'South Korea', href: '/international/south-korea' },
-      // { name: 'Hong Kong', href: '/international/hong-kong' },
       { name: 'Japan', href: '/international/japan' },
     ],
   },
   middleEast: {
     title: 'MIDDLE EAST',
     items: [
-      // { name: 'Azerbaijan', href: '/international/azerbaijan' },
       { name: 'Dubai', href: '/international/dubai' },
     ],
   },
-  // indianOcean: {
-  //   title: 'INDIAN OCEAN ISLANDS',
-  //   items: [
-  //     { name: 'Mauritius', href: '/international/mauritius' },
-  //   ],
-  // },
 };
 
 export default function Header() {
@@ -116,31 +107,31 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full relative h-[100px] sticky top-0 z-50">
-      <div className="absolute top-0 left-0 w-full h-[45px] bg-[#1E6AD4] z-0"></div>
-      <div className="absolute bottom-0 left-0 w-full h-[55px] bg-white border-b border-gray-200 z-0 shadow-sm"></div>
-      <div className="relative z-10 w-full h-full flex px-4 sm:px-8 xl:px-50">
-        <div className="w-[180px] sm:w-[220px] lg:w-[260px] shrink-0 h-full relative">
+    <header className="w-full relative h-[85px] sm:h-[100px] sticky top-0 z-50">
+      <div className="absolute top-0 left-0 w-full h-[38px] sm:h-[45px] bg-[#1E6AD4] z-0"></div>
+      <div className="absolute bottom-0 left-0 w-full h-[47px] sm:h-[55px] bg-white border-b border-gray-200 z-0 shadow-sm"></div>
+      <div className="relative z-10 w-full h-full flex px-2 sm:px-6 lg:px-8 xl:px-12 max-w-full">
+        <div className="w-[125px] xs:w-[145px] sm:w-[200px] lg:w-[260px] shrink-0 h-full relative">
           <Link href="/">
             <div
               className="absolute inset-0 w-full h-full bg-white flex items-center justify-center cursor-pointer"
               style={{
-                clipPath: 'polygon(40px 0, 100% 0, calc(100% - 40px) 100%, 0 100%)',
+                clipPath: 'polygon(20px 0, 100% 0, calc(100% - 20px) 100%, 0 100%)',
               }}
             >
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center px-1">
                 <img
                   src={zoyoLogo.src}
                   alt="Zoyo Trip Holidays"
-                  className="w-auto h-[50px] sm:h-[60px] lg:h-[65px] object-contain"
+                  className="w-auto h-[40px] sm:h-[55px] lg:h-[65px] object-contain"
                 />
               </div>
             </div>
           </Link>
         </div>
         <div className="flex-1 flex flex-col h-full min-w-0">
-          <div className="h-[45px] flex justify-between items-center px-4 text-white text-[13px] font-medium">
-            <div className="flex items-center gap-6 whitespace-nowrap overflow-hidden">
+          <div className="h-[38px] sm:h-[45px] flex justify-between items-center px-1.5 sm:px-4 text-white text-[11px] sm:text-[13px] font-medium">
+            <div className="hidden md:flex items-center gap-6 whitespace-nowrap overflow-hidden">
               <div className="hidden md:flex items-center gap-1.5 truncate">
                 <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4 shrink-0">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -153,29 +144,52 @@ export default function Header() {
                 </svg>
                 <span>info@zoyotrip.in</span>
               </div>
+              {/* Social Icons */}
+              <div className="hidden md:flex items-center gap-2 ml-2 pl-3 border-l border-white/30">
+                <a href="https://www.facebook.com/ZoyoTripHolidays/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                  className="w-[22px] h-[22px] flex items-center justify-center rounded-full bg-white/15 hover:bg-[#1877F2] transition-all duration-200">
+                  <FaFacebookF className="text-[10px] text-white" />
+                </a>
+                <a href="https://www.youtube.com/@zoyotripholidays" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                  className="w-[22px] h-[22px] flex items-center justify-center rounded-full bg-white/15 hover:bg-[#FF0000] transition-all duration-200">
+                  <FaYoutube className="text-[10px] text-white" />
+                </a>
+                <a href="https://x.com/zoyotrip" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"
+                  className="w-[22px] h-[22px] flex items-center justify-center rounded-full bg-white/15 hover:bg-black transition-all duration-200">
+                  <FaXTwitter className="text-[10px] text-white" />
+                </a>
+                <a href="https://www.instagram.com/zoyotripholidays/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                  className="w-[22px] h-[22px] flex items-center justify-center rounded-full bg-white/15 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] transition-all duration-200" style={{ background: 'rgba(255,255,255,0.15)' }} onMouseEnter={e => (e.currentTarget.style.background = 'linear-gradient(to top right, #f09433, #e6683c, #bc1888)')} onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.15)')}>
+                  <FaInstagram className="text-[10px] text-white" />
+                </a>
+                <a href="https://www.linkedin.com/in/zoyo-trip-holidays/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                  className="w-[22px] h-[22px] flex items-center justify-center rounded-full bg-white/15 hover:bg-[#0A66C2] transition-all duration-200">
+                  <FaLinkedinIn className="text-[10px] text-white" />
+                </a>
+              </div>
             </div>
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 ml-auto">
               <Link
                 href="/contact"
-                className="bg-[#f26c22] hover:bg-[#d95d1a] px-3 py-1.5 rounded-[4px] text-[12px] font-bold flex items-center gap-1.5 transition shadow-sm whitespace-nowrap text-white"
+                className="bg-[#f26c22] hover:bg-[#d95d1a] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[4px] text-[10.5px] sm:text-[12px] font-bold flex items-center gap-1 transition shadow-sm whitespace-nowrap text-white"
               >
-                <svg fill="currentColor" viewBox="0 0 24 24" className="w-3.5 h-3.5">
+                <svg fill="currentColor" viewBox="0 0 24 24" className="w-3 h-3 sm:w-3.5 sm:h-3.5">
                   <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
                 </svg>
                 Get Quote
               </Link>
               <Link
                 href="/bookings"
-                className="bg-[#f26c22] hover:bg-[#d95d1a] px-3 py-1.5 rounded-[4px] text-[12px] font-bold flex items-center gap-1.5 transition shadow-sm whitespace-nowrap text-white"
+                className="bg-[#f26c22] hover:bg-[#d95d1a] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[4px] text-[10.5px] sm:text-[12px] font-bold flex items-center gap-1 transition shadow-sm whitespace-nowrap text-white"
               >
-                <svg fill="currentColor" viewBox="0 0 24 24" className="w-3.5 h-3.5">
+                <svg fill="currentColor" viewBox="0 0 24 24" className="w-3 h-3 sm:w-3.5 sm:h-3.5">
                   <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 1.99 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
                 </svg>
                 Pay Now
               </Link>
             </div>
           </div>
-          <div className="h-[55px] flex items-center justify-between pl-2">
+          <div className="h-[47px] sm:h-[55px] flex items-center justify-between pl-1 sm:pl-2">
             <nav className="hidden lg:flex space-x-8 text-[15px] font-[500] text-[#222] whitespace-nowrap h-full items-center">
               <Link href="/" className="hover:text-[#F26C22] transition">
                 Home
@@ -193,19 +207,17 @@ export default function Header() {
                   <svg
                     fill="currentColor"
                     viewBox="0 0 24 24"
-                    className={`w-4 h-4 mt-0.5 transition-transform duration-200 ${
-                      activeMenu === 'national' ? 'rotate-180 text-[#f26c22]' : ''
-                    }`}
+                    className={`w-4 h-4 mt-0.5 transition-transform duration-200 ${activeMenu === 'national' ? 'rotate-180 text-[#f26c22]' : ''
+                      }`}
                   >
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
                 </Link>
                 <div
-                  className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${
-                    activeMenu === 'national'
+                  className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${activeMenu === 'national'
                       ? 'opacity-100 visible translate-y-0 pointer-events-auto'
                       : 'opacity-0 invisible -translate-y-2 pointer-events-none'
-                  }`}
+                    }`}
                 >
                   <div className="max-w-[1400px] mx-auto px-12 py-8">
                     <div className="grid grid-cols-4 gap-12 text-left">
@@ -260,7 +272,7 @@ export default function Header() {
                           ))}
                         </ul>
                       </div>
-                       <div>
+                      <div>
                         <div className="flex items-center gap-2 border-l-[3px] border-[#1E6AD4] pl-2.5 text-[12px] font-extrabold tracking-wider text-[#1a2b49] uppercase mb-4">
                           {nationalDestinations.northeastIndia.title}
                         </div>
@@ -308,19 +320,17 @@ export default function Header() {
                   <svg
                     fill="currentColor"
                     viewBox="0 0 24 24"
-                    className={`w-4 h-4 mt-0.5 transition-transform duration-200 ${
-                      activeMenu === 'international' ? 'rotate-180 text-[#f26c22]' : ''
-                    }`}
+                    className={`w-4 h-4 mt-0.5 transition-transform duration-200 ${activeMenu === 'international' ? 'rotate-180 text-[#f26c22]' : ''
+                      }`}
                   >
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
                 </Link>
                 <div
-                  className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${
-                    activeMenu === 'international'
+                  className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${activeMenu === 'international'
                       ? 'opacity-100 visible translate-y-0 pointer-events-auto'
                       : 'opacity-0 invisible -translate-y-2 pointer-events-none'
-                  }`}
+                    }`}
                 >
                   <div className="max-w-[1400px] mx-auto px-12 py-8">
                     <div className="grid grid-cols-4 gap-12 text-left">
@@ -415,6 +425,9 @@ export default function Header() {
                   </div>
                 </div>
               </div>
+              <Link href="/gallery" className="hover:text-[#f26c22] transition">
+                Gallery
+              </Link>
               <div
                 className="relative h-full flex items-center group cursor-pointer"
                 onMouseEnter={() => setActiveMenu('bookings')}
@@ -426,35 +439,32 @@ export default function Header() {
                 </Link>
 
                 <div
-                  className={`absolute top-[55px] left-0 w-60 bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.12)] rounded-b-xl py-3 transition-all duration-200 z-50 ${
-                    activeMenu === 'bookings'
+                  className={`absolute top-[55px] left-0 w-60 bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.12)] rounded-b-xl py-3 transition-all duration-200 z-50 ${activeMenu === 'bookings'
                       ? 'opacity-100 visible translate-y-0 pointer-events-auto'
                       : 'opacity-0 invisible -translate-y-2 pointer-events-none'
-                  }`}
+                    }`}
                 >
                   <Link
-                    href="/bookings"
+                    href="/bus-booking"
                     className="block px-4 py-2 text-[13.5px] text-gray-700 hover:bg-orange-50 hover:text-[#f26c22] transition"
                   >
-                    Bus Booking 
+                    Bus Booking
                   </Link>
                   <Link
-                    href="/bookings"
+                    href="/flight-booking"
                     className="block px-4 py-2 text-[13.5px] text-gray-700 hover:bg-orange-50 hover:text-[#f26c22] transition"
                   >
                     Flight Booking
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/hotel-booking"
                     className="block px-4 py-2 text-[13.5px] text-gray-700 hover:bg-orange-50 hover:text-[#f26c22] transition"
                   >
                     Hotel Booking
                   </Link>
                 </div>
               </div>
-              <Link href="/gallery" className="hover:text-[#f26c22] transition">
-                Gallery
-              </Link>
+
               <Link href="/contact" className="hover:text-[#f26c22] transition">
                 Contact Us
               </Link>
@@ -469,11 +479,10 @@ export default function Header() {
                 </Link>
 
                 <div
-                  className={`absolute top-[55px] right-0 w-56 bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.12)] rounded-b-xl py-3 transition-all duration-200 z-50 ${
-                    activeMenu === 'account'
+                  className={`absolute top-[55px] right-0 w-56 bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.12)] rounded-b-xl py-3 transition-all duration-200 z-50 ${activeMenu === 'account'
                       ? 'opacity-100 visible translate-y-0 pointer-events-auto'
                       : 'opacity-0 invisible -translate-y-2 pointer-events-none'
-                  }`}
+                    }`}
                 >
                   <Link
                     href="/account"
@@ -517,7 +526,7 @@ export default function Header() {
         </div>
       </div>
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[100px] z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-start">
+        <div className="lg:hidden fixed inset-0 top-[85px] sm:top-[100px] z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-start">
           <div className="w-full max-h-[85vh] bg-white overflow-y-auto shadow-2xl pb-10 border-t border-gray-100">
             <div className="p-5 space-y-3 text-left">
               <Link
@@ -541,9 +550,8 @@ export default function Header() {
                 >
                   <span>National Destinations</span>
                   <FaChevronDown
-                    className={`text-xs transition-transform duration-200 ${
-                      mobileExpanded === 'national' ? 'rotate-180 text-[#f26c22]' : 'text-gray-400'
-                    }`}
+                    className={`text-xs transition-transform duration-200 ${mobileExpanded === 'national' ? 'rotate-180 text-[#f26c22]' : 'text-gray-400'
+                      }`}
                   />
                 </button>
                 {mobileExpanded === 'national' && (
@@ -577,9 +585,8 @@ export default function Header() {
                 >
                   <span>International Destinations</span>
                   <FaChevronDown
-                    className={`text-xs transition-transform duration-200 ${
-                      mobileExpanded === 'international' ? 'rotate-180 text-[#f26c22]' : 'text-gray-400'
-                    }`}
+                    className={`text-xs transition-transform duration-200 ${mobileExpanded === 'international' ? 'rotate-180 text-[#f26c22]' : 'text-gray-400'
+                      }`}
                   />
                 </button>
                 {mobileExpanded === 'international' && (

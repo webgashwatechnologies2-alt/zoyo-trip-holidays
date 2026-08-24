@@ -2,9 +2,26 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
+import { 
+  FaMapMarkerAlt, 
+  FaClock, 
+  FaStar, 
+  FaHeart, 
+  FaUtensils, 
+  FaHotel, 
+  FaCar, 
+  FaChevronLeft, 
+  FaChevronRight,
+  FaFire,
+  FaTag
+} from 'react-icons/fa';
+import { BsInfoCircle, BsLightningChargeFill } from 'react-icons/bs';
+import { MdVerified } from 'react-icons/md';
+
 import balloonImg from '@/public/assets/images/vector/vector-image.png';
-import lehLadakhImg from '@/public/assets/images/packageimages/darshan-chudasama.webp';
-import spitiImg from '@/public/assets/images/packageimages/spiti.webp';
+import lehLadakhImg from '@/public/assets/images/packageimages/lehladkah.webp';
+import spitiImg from '@/public/assets/images/packageimages/spitiimage.webp';
 import himachalImg from '@/public/assets/images/packageimages/himachalnewimage.webp';
 import KeralaImg from '@/public/assets/images/packageimages/rediscover.webp';
 import RajasthanImg from '@/public/assets/images/packageimages/rajasthan-camel.webp';
@@ -16,182 +33,241 @@ import Goaimg from '@/public/assets/images/packageimages/goa.webp';
 import Assamimg from '@/public/assets/images/packageimages/assam.webp';
 import Andamanimg from '@/public/assets/images/packageimages/andeman.webp';
 
+interface Badge {
+  label: string;
+  type: 'sale' | 'featured' | 'popular' | 'adventure' | 'group' | 'honeymoon' | 'heritage' | 'nature';
+}
+
 interface Destination {
   id: number;
   title: string;
   location: string;
   duration: string;
+  nightsDays?: string;
   price: string;
   originalPrice?: string;
-  badges: {
-    label: string;
-    bg: string;
-    color?: string;
-  }[];
+  rating: string;
+  reviews: string;
+  badges: Badge[];
   image: StaticImageData | string;
+  features: string[];
 }
 
 const destinations: Destination[] = [
   {
     id: 1,
-    title: 'Leh & Ladakh',
+    title: 'Leh & Ladakh Expedition',
     location: 'Leh, Ladakh',
-    duration: '5 Days/4 Nights',
+    duration: '5D / 4N',
+    nightsDays: '4 Nights / 5 Days',
     price: '₹16,999',
+    originalPrice: '₹21,999',
+    rating: '4.9',
+    reviews: '480',
     badges: [
-      { label: 'Group Tour', bg: 'bg-[#f26c22]' },
-      { label: 'Featured', bg: 'bg-[#f26c22]' },
+      { label: 'Group Tour', type: 'group' },
+      { label: 'Featured', type: 'featured' },
     ],
     image: lehLadakhImg,
+    features: ['Stay Included', 'Meals Included', 'Pangong Lake Trip'],
   },
   {
     id: 2,
-    title: 'Lahaul & Spiti',
-    location: 'Lahaul & Spiti, Himachal Pradesh',
-    duration: '6 Days/5 Nights',
+    title: 'Lahaul & Spiti Valley',
+    location: 'Lahaul & Spiti, HP',
+    duration: '6D / 5N',
+    nightsDays: '5 Nights / 6 Days',
     price: '₹14,999',
+    originalPrice: '₹18,999',
+    rating: '4.8',
+    reviews: '320',
     badges: [
-      { label: 'Adventure', bg: 'bg-[#FFE100]', color: 'text-black' },
-      { label: 'Popular', bg: 'bg-[#f26c22]' },
+      { label: 'Adventure', type: 'adventure' },
+      { label: 'Popular', type: 'popular' },
     ],
     image: spitiImg,
+    features: ['Monasteries Tour', 'Camp Stay', 'High Passes'],
   },
   {
     id: 3,
-    title: 'Himachal Pradesh',
-    location: 'Manali, Shimla & Himachal Pradesh',
-    duration: '7 Days/6 Nights',
+    title: 'Himachal Pradesh Highlights',
+    location: 'Manali & Shimla, HP',
+    duration: '7D / 6N',
+    nightsDays: '6 Nights / 7 Days',
     price: '₹18,999',
     originalPrice: '₹22,999',
+    rating: '4.9',
+    reviews: '640',
     badges: [
-      { label: 'Sale on!', bg: 'bg-[#FFE100]', },
-      { label: 'Group Tour', bg: 'bg-[#f26c22]' },
-      { label: 'Featured', bg: 'bg-[#f26c22]' },
+      { label: 'Sale on!', type: 'sale' },
+      { label: 'Group Tour', type: 'group' },
+      { label: 'Featured', type: 'featured' },
     ],
     image: himachalImg,
+    features: ['Solang Valley', 'Private Transfers', '4★ Resort'],
   },
   {
     id: 4,
     title: "Kerala - God's Own Country",
     location: 'Munnar & Alleppey, Kerala',
-    duration: '5 Days/4 Nights',
+    duration: '5D / 4N',
+    nightsDays: '4 Nights / 5 Days',
     price: '₹21,999',
+    originalPrice: '₹26,999',
+    rating: '5.0',
+    reviews: '510',
     badges: [
-      { label: 'Honeymoon', bg: 'bg-[#f26c22]' },
-      { label: 'Popular', bg: 'bg-[#f26c22]' },
+      { label: 'Honeymoon', type: 'honeymoon' },
+      { label: 'Popular', type: 'popular' },
     ],
     image: KeralaImg,
+    features: ['Houseboat Stay', 'Tea Gardens', 'Candlelight Dinner'],
   },
   {
     id: 5,
     title: 'Royal Rajasthan Heritage',
-    location: 'Jaipur, Udaipur & Jodhpur, Rajasthan',
-    duration: '6 Days/5 Nights',
+    location: 'Jaipur & Udaipur, Rajasthan',
+    duration: '6D / 5N',
+    nightsDays: '5 Nights / 6 Days',
     price: '₹19,999',
     originalPrice: '₹24,999',
+    rating: '4.9',
+    reviews: '430',
     badges: [
-      { label: 'Cultural Tour', bg: 'bg-[#f26c22]' },
-      { label: 'Featured', bg: 'bg-[#f26c22]' },
+      { label: 'Heritage', type: 'heritage' },
+      { label: 'Featured', type: 'featured' },
     ],
     image: RajasthanImg,
+    features: ['Palace Visits', 'Desert Safari', 'Cultural Show'],
   },
   {
     id: 6,
     title: 'Kashmir Paradise Tour',
-    location: 'Srinagar, Gulmarg & Pahalgam, Kashmir',
-    duration: '6 Days/5 Nights',
+    location: 'Srinagar & Gulmarg, Kashmir',
+    duration: '6D / 5N',
+    nightsDays: '5 Nights / 6 Days',
     price: '₹22,999',
     originalPrice: '₹27,999',
+    rating: '4.9',
+    reviews: '720',
     badges: [
-      { label: 'Sale on!', bg: 'bg-red-500' },
-      { label: 'Group Tour', bg: 'bg-[#f26c22]' },
+      { label: 'Sale on!', type: 'sale' },
+      { label: 'Group Tour', type: 'group' },
     ],
     image: Kashmirimg,
+    features: ['Shikara Ride', 'Gondola Ride', 'Houseboat Stay'],
   },
   {
     id: 7,
-    title: 'Uttarakhand Tour',
-    location: 'Rishikesh, Mussoorie & Nainital, Uttarakhand',
-    duration: '6 Days/5 Nights',
+    title: 'Uttarakhand Himalayan Tour',
+    location: 'Rishikesh & Nainital, UK',
+    duration: '6D / 5N',
+    nightsDays: '5 Nights / 6 Days',
     price: '₹17,999',
     originalPrice: '₹21,999',
+    rating: '4.8',
+    reviews: '290',
     badges: [
-      { label: 'Sale on!', bg: 'bg-red-500' },
-      { label: 'Group Tour', bg: 'bg-[#f26c22]' },
+      { label: 'Sale on!', type: 'sale' },
+      { label: 'Adventure', type: 'adventure' },
     ],
     image: Uttarakhandimg,
+    features: ['River Rafting', 'Lake Tour', 'Mountain View Stays'],
   },
   {
     id: 8,
-    title: 'Uttar Pradesh Heritage Tour',
-    location: 'Agra, Varanasi & Lucknow, Uttar Pradesh',
-    duration: '5 Days/4 Nights',
+    title: 'Uttar Pradesh Heritage Circuit',
+    location: 'Agra & Varanasi, UP',
+    duration: '5D / 4N',
+    nightsDays: '4 Nights / 5 Days',
     price: '₹15,999',
     originalPrice: '₹19,999',
+    rating: '4.8',
+    reviews: '310',
     badges: [
-      { label: 'Heritage', bg: 'bg-[#f26c22]' },
-      { label: 'Featured', bg: 'bg-[#f26c22]' },
+      { label: 'Heritage', type: 'heritage' },
+      { label: 'Featured', type: 'featured' },
     ],
     image: upimg,
+    features: ['Taj Mahal Sunrise', 'Ganga Aarti', 'Heritage Guide'],
   },
   {
     id: 9,
-    title: 'Sikkim',
-    location: 'Gangtok, Pelling & Lachung, Sikkim',
-    duration: '6 Days/5 Nights',
+    title: 'Sikkim & Gangtok Splendor',
+    location: 'Gangtok & Pelling, Sikkim',
+    duration: '6D / 5N',
+    nightsDays: '5 Nights / 6 Days',
     price: '₹20,999',
     originalPrice: '₹24,999',
+    rating: '4.9',
+    reviews: '260',
     badges: [
-      { label: 'Mountain Tour', bg: 'bg-[#f26c22]' },
-      { label: 'Popular', bg: 'bg-[#f26c22]' },
+      { label: 'Nature', type: 'nature' },
+      { label: 'Popular', type: 'popular' },
     ],
     image: Sikkimimg,
+    features: ['Tsomgo Lake', 'Monastery Tour', 'Kanchenjunga Views'],
   },
   {
     id: 10,
-    title: 'Goa Beach Escape',
+    title: 'Goa Coastal Escape',
     location: 'North & South Goa',
-    duration: '5 Days/4 Nights',
+    duration: '5D / 4N',
+    nightsDays: '4 Nights / 5 Days',
     price: '₹16,999',
     originalPrice: '₹20,999',
+    rating: '4.9',
+    reviews: '890',
     badges: [
-      { label: 'Beach Tour', bg: 'bg-[#f26c22]' },
-      { label: 'Popular', bg: 'bg-[#f26c22]' },
+      { label: 'Popular', type: 'popular' },
+      { label: 'Featured', type: 'featured' },
     ],
     image: Goaimg,
+    features: ['Beach Resort', 'Water Sports', 'Sunset Cruise'],
   },
   {
     id: 11,
-    title: 'Assam',
-    location: 'Guwahati, Kaziranga & Shillong',
-    duration: '5 Days/4 Nights',
+    title: 'Assam & Meghalaya Wild',
+    location: 'Kaziranga & Shillong',
+    duration: '5D / 4N',
+    nightsDays: '4 Nights / 5 Days',
     price: '₹18,999',
     originalPrice: '₹22,999',
+    rating: '4.8',
+    reviews: '195',
     badges: [
-      { label: 'Nature Tour', bg: 'bg-[#f26c22]' },
-      { label: 'Wildlife', bg: 'bg-[#f26c22]' },
+      { label: 'Nature', type: 'nature' },
+      { label: 'Adventure', type: 'adventure' },
     ],
     image: Assamimg,
+    features: ['Rhino Safari', 'Living Root Bridges', 'Waterfalls'],
   },
   {
     id: 12,
-    title: 'Andaman Islands',
-    location: 'Port Blair, Havelock & Neil Island',
-    duration: '6 Days/5 Nights',
+    title: 'Andaman Islands Paradise',
+    location: 'Havelock & Neil Island',
+    duration: '6D / 5N',
+    nightsDays: '5 Nights / 6 Days',
     price: '₹25,999',
     originalPrice: '₹30,999',
+    rating: '5.0',
+    reviews: '610',
     badges: [
-      { label: 'Beach Tour', bg: 'bg-[#f26c22]' },
-      { label: 'Honeymoon', bg: 'bg-[#f26c22]' },
+      { label: 'Honeymoon', type: 'honeymoon' },
+      { label: 'Featured', type: 'featured' },
     ],
     image: Andamanimg,
+    features: ['Radhanagar Beach', 'Scuba / Snorkel', 'Ferry Transfers'],
   },
 ];
+
 export default function TopNationalDestinations() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
+  const [likedCards, setLikedCards] = useState<Record<number, boolean>>({});
   const touchStartX = useRef<number | null>(null);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
@@ -206,20 +282,25 @@ export default function TopNationalDestinations() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   const maxIndex = Math.max(0, destinations.length - itemsPerPage);
+  
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   }, [maxIndex]);
+  
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   }, [maxIndex]);
+
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
       handleNext();
-    }, 3500);
+    }, 4000);
     return () => clearInterval(timer);
   }, [isPaused, handleNext]);
+
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -235,6 +316,12 @@ export default function TopNationalDestinations() {
     touchStartX.current = null;
   };
 
+  const toggleLike = (id: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setLikedCards(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
   const totalDots = maxIndex + 1;
 
   const getTransform = () => {
@@ -244,53 +331,107 @@ export default function TopNationalDestinations() {
     if (itemsPerPage === 2) {
       return `translateX(calc(-${currentIndex} * (50% + 12px)))`;
     }
-    return `translateX(calc(-${currentIndex} * (33.3333% + 8px)))`;
+    return `translateX(calc(-${currentIndex} * (33.3333% + 16px)))`;
+  };
+
+  const renderBadge = (badge: Badge, idx: number) => {
+    switch (badge.type) {
+      case 'sale':
+        return (
+          <span
+            key={idx}
+            className="inline-flex items-center gap-1 bg-gradient-to-r from-red-500 to-rose-600 text-white text-[11px] font-extrabold px-3 py-1 rounded-full shadow-md backdrop-blur-sm"
+          >
+            <FaFire className="w-3 h-3 text-yellow-300" />
+            {badge.label}
+          </span>
+        );
+      case 'adventure':
+        return (
+          <span
+            key={idx}
+            className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-400 to-amber-500 text-gray-900 text-[11px] font-extrabold px-3 py-1 rounded-full shadow-md"
+          >
+            <BsLightningChargeFill className="w-3 h-3 text-gray-900" />
+            {badge.label}
+          </span>
+        );
+      case 'honeymoon':
+        return (
+          <span
+            key={idx}
+            className="inline-flex items-center gap-1 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md"
+          >
+            <FaHeart className="w-2.5 h-2.5" />
+            {badge.label}
+          </span>
+        );
+      case 'featured':
+      case 'popular':
+      default:
+        return (
+          <span
+            key={idx}
+            className="inline-flex items-center gap-1 bg-[#f26c22] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md backdrop-blur-sm"
+          >
+            {badge.label}
+          </span>
+        );
+    }
   };
 
   return (
     <section
-      className="w-full px-4 sm:px-8 md:px-16 lg:px-0 py-16 max-w-[1400px] mx-auto"
+      className="w-full px-4 sm:px-8 md:px-12 lg:px-6 py-16 max-w-[1400px] mx-auto overflow-hidden font-sans"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative flex items-center justify-between mb-6">
-        <div className="hidden sm:flex items-end gap-1 absolute left-0 bottom-0 pointer-events-none">
+      {/* Header Container */}
+      <div className="relative flex flex-col md:flex-row items-center justify-between mb-10 gap-4">
+        {/* Floating Decorative Balloon */}
+        <div className="hidden lg:flex items-end gap-1 absolute left-0 -top-8 pointer-events-none opacity-80">
           <Image
             src={balloonImg}
-            alt="Balloon"
-            className="w-28 h-28 lg:w-32 lg:h-32 object-contain"
+            alt="Hot Air Balloon"
+            className="w-24 h-24 object-contain drop-shadow-sm"
           />
         </div>
+
+        {/* Center Title & Subtitle */}
         <div className="w-full text-center px-4">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-3 text-[#000000]">
-            Top National destinations
+          <div className="inline-flex items-center gap-1.5 bg-orange-50 border border-orange-200/80 px-3.5 py-1 rounded-full text-[#f26c22] text-[12px] font-bold uppercase tracking-wider mb-2.5">
+            <FaTag className="w-3 h-3" /> Handcrafted India Holiday Packages
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-[#111827] tracking-tight">
+            Top National Destinations
           </h2>
-          <p className="text-gray-500 text-[15px] max-w-xl mx-auto">
-            A curated list of the most popular travel packages based on{' '}
-            <br className="hidden sm:inline" />
-            different destinations.
+          <p className="text-gray-600 text-[14.5px] max-w-xl mx-auto mt-2 leading-relaxed">
+            Curated list of premium domestic holiday packages with transparent pricing and verified stays.
           </p>
         </div>
-        <div className="flex items-center gap-2 absolute right-0 top-0">
+
+        {/* Carousel Navigation Buttons */}
+        <div className="flex items-center gap-2.5 self-center md:self-auto md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
           <button
             onClick={handlePrev}
             aria-label="Previous destination"
-            className="w-10 h-10 rounded-full border-2 border-[#f26c22] text-[#f26c22] flex items-center justify-center hover:bg-[#f26c22] hover:text-white transition font-bold text-xl cursor-pointer shadow-sm active:scale-95 select-none"
+            className="w-10 h-10 rounded-full border border-gray-300 bg-white hover:border-[#f26c22] hover:bg-[#f26c22] text-gray-700 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
           >
-            ‹
+            <FaChevronLeft className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={handleNext}
             aria-label="Next destination"
-            className="w-10 h-10 rounded-full bg-[#f26c22] text-white flex items-center justify-center hover:bg-[#d95d1a] transition font-bold text-xl cursor-pointer shadow-sm active:scale-95 select-none"
+            className="w-10 h-10 rounded-full bg-[#f26c22] hover:bg-[#d95d1a] text-white flex items-center justify-center transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
           >
-            ›
+            <FaChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
 
+      {/* Cards Slider Track */}
       <div
-        className="overflow-hidden mt-8 py-2"
+        className="overflow-hidden py-3"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -298,123 +439,173 @@ export default function TopNationalDestinations() {
           className="flex transition-transform duration-700 ease-in-out gap-6"
           style={{ transform: getTransform() }}
         >
-          {destinations.map((item) => (
-            <div
-              key={item.id}
-              className="flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.3333%-16px)]"
-            >
-              <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 h-full flex flex-col justify-between">
-                <div className="h-56 bg-gray-200 relative overflow-hidden group">
-                  {typeof item.image === 'string' ? (
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  )}
-                  <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-                    {item.badges.map((b, idx) => (
-                      <span
-                        key={idx}
-                        className={`${b.bg} text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm`}
-                      >
-                        {b.label}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="p-5 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-[18px] font-bold mb-2 text-gray-900 line-clamp-1">
-                      {item.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-gray-500 text-sm mb-1">
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        className="w-3.5 h-3.5 text-[#f26c22] shrink-0"
-                      >
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                      </svg>
-                      <span className="truncate">{item.location}</span>
-                      <span className="text-gray-400">↔</span>
-                      <span className="shrink-0">{item.duration}</span>
+          {destinations.map((item) => {
+            const isLiked = !!likedCards[item.id];
+            
+            return (
+              <div
+                key={item.id}
+                className="flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.3333%-16px)]"
+              >
+                {/* Modern Luxury Tour Card */}
+                <div className="group bg-white rounded-[22px] overflow-hidden border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(242,108,34,0.14)] hover:border-orange-200/90 transition-all duration-300 h-full flex flex-col justify-between hover:-translate-y-1.5">
+                  
+                  {/* Top Image Box */}
+                  <div className="h-[225px] sm:h-[235px] relative overflow-hidden bg-gray-10">
+                    {typeof item.image === 'string' ? (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                      />
+                    ) : (
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                      />
+                    )}
+
+                    {/* Gradient Overlay for Top Badges & Bottom Contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/35 pointer-events-none" />
+
+                    {/* Top Left Badges */}
+                    <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10 max-w-[75%]">
+                      {item.badges.map((b, idx) => renderBadge(b, idx))}
                     </div>
-                  </div>
-                  <div>
-                    {/* Price and CTA */}
-                    <div className="flex justify-between items-center border-t border-gray-100 pt-4 ">
-                      <button className="bg-[#f26c22] hover:bg-[#d95d1a] text-white px-5 py-2 rounded-lg font-bold text-sm transition cursor-pointer active:scale-95 shadow-sm">
-                        Book Now ↗
+
+                    {/* Top Right: Wishlist Heart & Rating */}
+                    <div className="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
+                      <button
+                        onClick={(e) => toggleLike(item.id, e)}
+                        aria-label="Add to wishlist"
+                        className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md hover:bg-white text-white hover:text-red-500 flex items-center justify-center transition-all duration-200 shadow-sm"
+                      >
+                        <FaHeart className={`w-3.5 h-3.5 transition-colors ${isLiked ? 'text-red-500 fill-current' : 'text-white'}`} />
                       </button>
-                      <div className="text-right">
-                        {item.originalPrice && (
-                          <p className="text-xs text-gray-400 line-through">
-                            {item.originalPrice}
-                          </p>
-                        )}
-                        <p className="text-xs text-gray-400">per person</p>
-                        <p className="text-xl font-bold text-gray-900">
-                          {item.price}
-                        </p>
+                    </div>
+
+                    {/* Bottom Floating Rating inside Image */}
+                    <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between z-10 text-white">
+                      <div className="inline-flex items-center gap-1.5 bg-black/50 backdrop-blur-md border border-white/20 px-2.5 py-1 rounded-full text-[11.5px] font-bold">
+                        <FaStar className="text-amber-400 w-3 h-3" />
+                        <span>{item.rating}</span>
+                        <span className="text-white/70 font-normal">({item.reviews})</span>
+                      </div>
+                      <div className="inline-flex items-center gap-1 text-[11.5px] font-semibold text-white/90 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+                        <MdVerified className="text-emerald-400 w-3.5 h-3.5" />
+                        <span>Verified Tour</span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4 mt-3 pt-3 border-t border-gray-100">
-                      <span className="flex items-center gap-1 text-[12px] text-gray-500 font-medium">
-                        <svg
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                          className="w-3.5 h-3.5"
-                        >
-                          <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                        </svg>
-                        Experience
-                        <span className="w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center text-[10px] text-gray-400 font-bold">
-                          i
-                        </span>
-                      </span>
-                      <span className="flex items-center gap-1 text-[12px] text-gray-500 font-medium">
-                        <svg
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          className="w-3.5 h-3.5 stroke-2"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M12 4v16m8-8H4"
-                          />
-                        </svg>
-                        Inclusion
-                        <span className="w-4 h-4 rounded-full border border-gray-300 flex items-center justify-center text-[10px] text-gray-400 font-bold">
-                          i
-                        </span>
-                      </span>
-                    </div>
                   </div>
+
+                  {/* Card Content Area */}
+                  <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      
+                      {/* Destination Title */}
+                      <h3 className="text-[19px] font-semibold text-[#111827] group-hover:text-[#f26c22] transition-colors leading-tight mb-2.5 line-clamp-1">
+                        {item.title}
+                      </h3>
+
+                      {/* Meta Information: Location & Duration Pill */}
+                      <div className="flex items-center justify-between text-xs text-gray-500 gap-2 mb-3.5">
+                        <div className="flex items-center gap-1.5 text-gray-700 font-medium truncate">
+                          <FaMapMarkerAlt className="text-[#f26c22] w-3.5 h-3.5 shrink-0" />
+                          <span className="truncate">{item.location}</span>
+                        </div>
+                        <div className="inline-flex items-center gap-1 bg-amber-50 border border-amber-200/60 text-amber-900 font-bold px-2.5 py-0.5 rounded-md text-[11.5px] shrink-0">
+                          <FaClock className="w-2.5 h-2.5 text-[#f26c22]" />
+                          <span>{item.duration}</span>
+                        </div>
+                      </div>
+
+                      {/* Micro Features / Inclusions Chips */}
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {item.features.map((feat, fIdx) => (
+                          <span
+                            key={fIdx}
+                            className="bg-gray-50 text-gray-600 text-[11px] font-medium px-2 py-0.5 rounded-md border border-gray-200/70"
+                          >
+                            {feat}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Bottom Pricing & CTA Area */}
+                    <div>
+                      <div className="flex items-end justify-between pt-3.5 border-t border-gray-100">
+                        
+                        {/* Left CTA: Modern Action Button */}
+                        <Link
+                          href="/national"
+                          className="bg-gradient-to-r from-[#f26c22] to-[#e05615] hover:from-[#e05615] hover:to-[#c8490e] text-white px-5 py-2.5 rounded-xl font-bold text-[13.5px] shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-1.5 active:scale-95 group/btn"
+                        >
+                          <span>Book Now</span>
+                          <span className="text-sm font-bold group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-200">↗</span>
+                        </Link>
+
+                        {/* Right: Price Typography */}
+                        <div className="text-right">
+                          {item.originalPrice && (
+                            <div className="flex items-center justify-end gap-1.5">
+                              <span className="text-[12px] text-gray-400 line-through">
+                                {item.originalPrice}
+                              </span>
+                              <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-1.5 py-0.2 rounded">
+                                SAVE 20%
+                              </span>
+                            </div>
+                          )}
+                          <div className="text-[11px] text-gray-500 font-medium">
+                            per person
+                          </div>
+                          <div className="text-[22px] font-black text-gray-900 leading-none tracking-tight">
+                            {item.price}
+                          </div>
+                        </div>
+
+                      </div>
+
+                      {/* Interactive Bottom Trust Strip */}
+                      <div className="flex items-center justify-between text-[11.5px] text-gray-500 font-medium pt-3 mt-3 border-t border-gray-100/90">
+                        <div className="flex items-center gap-1 hover:text-gray-900 transition-colors cursor-pointer">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#f26c22]"></span>
+                          <span>Top Experiences</span>
+                          <BsInfoCircle className="w-3 h-3 text-gray-400" />
+                        </div>
+                        <div className="flex items-center gap-1 hover:text-gray-900 transition-colors cursor-pointer">
+                          <span className="text-emerald-500 font-bold">+</span>
+                          <span>Full Inclusions</span>
+                          <BsInfoCircle className="w-3 h-3 text-gray-400" />
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
+
+      {/* Modern Carousel Dots */}
       <div className="flex items-center justify-center gap-2 mt-8">
         {Array.from({ length: totalDots }).map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`transition-all duration-300 rounded-full cursor-pointer h-2.5 ${currentIndex === index
-              ? 'w-7 bg-[#f26c22]'
-              : 'w-2.5 bg-gray-300 hover:bg-gray-400'
-              }`}
+            className={`transition-all duration-300 rounded-full cursor-pointer h-2.5 ${
+              currentIndex === index
+                ? 'w-8 bg-[#f26c22] shadow-sm'
+                : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+            }`}
           />
         ))}
       </div>

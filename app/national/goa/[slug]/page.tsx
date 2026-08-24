@@ -57,16 +57,16 @@ export default function GoaPackageDetailPage({
     <main className="flex flex-col w-full overflow-x-hidden bg-[#fcf9f5] min-h-screen text-gray-800">
       
       {/* ─── 1. PACKAGE HERO HEADER ─── */}
-      <section className="relative w-full min-h-[380px] md:min-h-[460px] flex items-center overflow-hidden">
+      <section className="relative w-full min-h-[420px] md:min-h-[480px] flex items-center overflow-hidden py-14 sm:py-18 md:py-20">
         <img
           src={pkg.heroImage}
           alt={pkg.title}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ filter: 'brightness(0.32)' }}
         />
-        <div className="absolute " />
+        <div className="absolute inset-0" />
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16 w-full py-12">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-16 w-full my-auto">
           
           {/* Breadcrumbs */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-white text-[12px] font-medium mb-4 shadow">

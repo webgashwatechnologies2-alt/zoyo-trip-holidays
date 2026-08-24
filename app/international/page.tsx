@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { FaPlane, FaStar, FaPhoneAlt, FaSearch, FaWhatsapp, FaClock, FaCheckCircle, FaMapMarkerAlt } from 'react-icons/fa';
 import { BsArrowRight, BsStars } from 'react-icons/bs';
 
+
+
+
 const internationalTours = [
   {
     name: 'Dubai & Abu Dhabi',
@@ -90,12 +93,51 @@ const internationalTours = [
     slug: 'vietnam',
     img: 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop',
     duration: '6 Days / 5 Nights',
-    price: '₹24,999',
-    originalPrice: '₹32,999',
+    price: '₹32,999',
+    originalPrice: '₹41,999',
     rating: '4.9',
-    reviews: 290,
-    category: 'Cultural',
+    reviews: 310,
+    category: 'Popular',
     highlights: ['Halong Bay Luxury Cruise', 'Golden Hand Bridge Ba Na Hills', 'Hoi An Ancient Town', 'Hanoi Street Food Walk'],
+  },
+  {
+    name: 'Nepal',
+    subtitle: 'Pashupatinath Temple, Pokhara Phewa Lake & Annapurna Sunrise',
+    slug: 'nepal',
+    img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
+    duration: '5 Days / 4 Nights',
+    price: '₹18,499',
+    originalPrice: '₹24,999',
+    rating: '4.9',
+    reviews: 390,
+    category: 'Popular',
+    highlights: ['Pashupatinath Temple Darshan', 'Sarangkot Annapurna Sunrise', 'Phewa Lake Boating', 'Swayambhunath Stupa'],
+  },
+  {
+    name: 'Bhutan',
+    subtitle: 'Tiger\'s Nest Monastery, Punakha Dzong & Dochula Pass',
+    slug: 'bhutan',
+    img: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=800&auto=format&fit=crop',
+    duration: '5 Days / 4 Nights',
+    price: '₹28,999',
+    originalPrice: '₹36,999',
+    rating: '4.9',
+    reviews: 320,
+    category: 'Cultural',
+    highlights: ['Tiger\'s Nest Clifftop Hike', 'Buddha Dordenma 51m Statue', 'Punakha Suspension Bridge', 'Dochula 108 Chortens'],
+  },
+  {
+    name: 'Malaysia',
+    subtitle: 'Petronas Twin Towers, Genting Cable Car & Batu Caves',
+    slug: 'malaysia',
+    img: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=800&auto=format&fit=crop',
+    duration: '5 Days / 4 Nights',
+    price: '₹24,999',
+    originalPrice: '₹31,999',
+    rating: '4.8',
+    reviews: 390,
+    category: 'Popular',
+    highlights: ['Petronas Twin Towers', 'Batu Caves Rainbow Steps', 'Genting SkyWay Cable Car', 'Putrajaya Pink Mosque'],
   },
   {
     name: 'Sri Lanka',
@@ -103,12 +145,25 @@ const internationalTours = [
     slug: 'sri-lanka',
     img: 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop',
     duration: '6 Days / 5 Nights',
-    price: '₹19,999',
-    originalPrice: '₹26,499',
-    rating: '4.8',
-    reviews: 210,
+    price: '₹22,999',
+    originalPrice: '₹29,999',
+    rating: '4.9',
+    reviews: 380,
     category: 'Cultural',
-    highlights: ['Sigiriya Lion Rock', 'Nuwara Eliya Tea Estates', 'Madu River Boat Safari', 'Temple of the Tooth Relic'],
+    highlights: ['Sigiriya Lion Rock', 'Scenic Blue Train Journey', 'Nuwara Eliya Tea Gardens', 'Madu River Safari'],
+  },
+  {
+    name: 'Japan',
+    subtitle: 'Tokyo Shibuya, Mount Fuji 5th Station, Bullet Train & Kyoto Temples',
+    slug: 'japan',
+    img: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=800&auto=format&fit=crop',
+    duration: '6 Days / 5 Nights',
+    price: '₹89,999',
+    originalPrice: '₹1,09,999',
+    rating: '5.0',
+    reviews: 380,
+    category: 'Luxury',
+    highlights: ['Mount Fuji 5th Station', 'Shinkansen Bullet Train', 'Fushimi Inari 10,000 Torii Gates', 'Shibuya Scramble Crossing'],
   },
 ];
 
@@ -130,7 +185,7 @@ export default function InternationalPage() {
     <main className="flex flex-col w-full overflow-x-hidden bg-[#fcf9f5] min-h-screen">
 
       {/* ─── HERO BANNER ─── */}
-      <section className="relative w-full h-[420px] md:h-[500px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-[480px] sm:min-h-[540px] md:min-h-[580px] flex items-center justify-center overflow-hidden py-14 sm:py-20 md:py-24">
         <img
           src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2000&auto=format&fit=crop"
           alt="International Destinations"
@@ -139,7 +194,7 @@ export default function InternationalPage() {
         />
         <div className="absolute inset-0" />
 
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto my-auto">
           <div className="inline-flex items-center gap-2 text-white/70 text-[13px] font-medium mb-5 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
             <Link href="/" className="hover:text-white transition">Home</Link>
             <span>/</span>

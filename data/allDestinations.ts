@@ -1,3 +1,4 @@
+import { internationalDestinations } from './internationalPackages';
 export interface ItineraryDay {
   day: number;
   title: string;
@@ -6664,548 +6665,8 @@ export const allDestinations: Record<string, DestinationData> = {
   },
 
   // ────────────────── INTERNATIONAL DESTINATIONS ──────────────────
-  'dubai': {
-    id: 'dest-dubai',
-    slug: 'dubai',
-    name: 'Dubai & Abu Dhabi Luxury Extravaganza',
-    type: 'international',
-    region: 'Middle East',
-    tagline: 'Burj Khalifa top views, desert safari dune bashing, Ferrari World & luxury marina yachts.',
-    description: 'The futuristic capital of luxury, iconic skyscrapers, indoor snow parks, gold souks, desert safaris, and grand Arabian hospitality.',
-    heroImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1600&auto=format&fit=crop',
-    bestTime: 'October to April',
-    packagesCount: 3,
-    packages: [
-      {
-        id: 'db-1',
-        slug: 'dubai-luxury-glamour-escape',
-        title: 'Dubai Glamour & Desert Adventure Holiday',
-        subtitle: 'Burj Khalifa 124th Floor, Desert Safari BBQ, Marina Dhow Cruise & Abu Dhabi',
-        location: 'Dubai, Abu Dhabi, Palm Jumeirah',
-        duration: '5 Days / 4 Nights',
-        price: '₹45,999',
-        originalPrice: '₹55,999',
-        rating: 5.0,
-        reviewsCount: 480,
-        category: 'Luxury',
-        heroImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop',
-        gallery: ['https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop'],
-        overview: 'Experience the magic of Dubai! Stand at the top of the world on Burj Khalifa 124th floor, race over golden dunes in a 4x4 Land Cruiser with a desert BBQ & belly dance show, cruise along Dubai Marina on a luxury glass boat, and visit the breathtaking Sheikh Zayed Grand Mosque in Abu Dhabi.',
-        highlights: [
-          'Burj Khalifa 124th & 125th Floor Observation Deck Tickets',
-          '4x4 Desert Safari with Dune Bashing, Camel Ride, Tanoura Show & BBQ Dinner',
-          'Dubai Marina Luxury Dhow Cruise with international 5-star buffet dinner',
-          'Abu Dhabi Day Tour: Sheikh Zayed Grand Mosque & BAPS Hindu Mandir',
-          'Dubai City Tour: Dubai Frame, Museum of the Future & Gold Souk',
-        ],
-        inclusions: [
-          '4 Nights stay in 4-Star Deluxe Dubai City Hotel',
-          'Daily Buffet Breakfast + 2 Gourmet Dinners (Cruise & Safari)',
-          'All sightseeing transfers in luxury AC vehicle',
-          'UAE Tourist Visa & Travel Insurance included',
-          '24/7 on-ground UAE Zoyo Trip Concierge assistance',
-        ],
-        exclusions: ['International flight tickets', 'Tourism Dirham fee (payable directly at hotel)', 'Personal expenses'],
-        hotelType: '4-Star / 5-Star City Center Hotels',
-        pickupDrop: 'Dubai International Airport (DXB)',
-        itinerary: [
-          {
-            day: 1,
-            title: 'Arrival in Dubai & Marina Dhow Cruise Dinner',
-            description: 'Arrive at Dubai Airport. Transfer to your 4-star hotel. Evening luxury Dhow cruise along the dazzling Dubai Marina skyline with international buffet dinner.',
-            activities: ['Airport VIP Transfer', 'Hotel Check-in', 'Dubai Marina Dhow Cruise'],
-            meals: 'Dinner',
-            stay: '4-Star Dubai Hotel',
-          },
-          {
-            day: 2,
-            title: 'Dubai City Tour & Burj Khalifa 124th Floor',
-            description: 'Morning city tour covering Dubai Frame, Palm Jumeirah, and Burj Al Arab. Evening visit to Dubai Mall, Dubai Fountain Show, and ascent to Burj Khalifa 124th Floor.',
-            activities: ['Palm Jumeirah Monorail', 'Burj Khalifa Observation Deck', 'Dubai Fountain Show'],
-            meals: 'Breakfast',
-            stay: '4-Star Dubai Hotel',
-          },
-          {
-            day: 3,
-            title: 'Gold Souk & Thrilling 4x4 Desert Safari',
-            description: 'Morning free for shopping at the Gold and Spice Souks. Afternoon 4x4 Land Cruiser pickup for high-dune bashing, sandboarding, camel ride, Tanoura & belly dancing with royal BBQ dinner.',
-            activities: ['Gold Souk Shopping', '4x4 Dune Bashing', 'Desert BBQ Feast & Live Shows'],
-            meals: 'Breakfast & BBQ Dinner',
-            stay: '4-Star Dubai Hotel',
-          },
-          {
-            day: 4,
-            title: 'Abu Dhabi Grand Mosque & City Tour',
-            description: 'Full day excursion to Abu Dhabi. Marvel at the architectural masterpiece Sheikh Zayed Grand Mosque, drive along the Corniche, and photo stop at Ferrari World.',
-            activities: ['Sheikh Zayed Mosque Tour', 'Emirates Palace View', 'Ferrari World Photo Stop'],
-            meals: 'Breakfast',
-            stay: '4-Star Dubai Hotel',
-          },
-          {
-            day: 5,
-            title: 'Departure from Dubai',
-            description: 'Breakfast, hotel check out, and transfer to Dubai Airport for flight back home.',
-            activities: ['Hotel Check-out', 'Airport Transfer'],
-            meals: 'Breakfast',
-            stay: 'End of Tour',
-          },
-        ],
-      },
-    ],
-  },
+  ...internationalDestinations,
 
-  'bali': {
-    id: 'dest-bali',
-    slug: 'bali',
-    name: 'Bali Island of the Gods',
-    type: 'international',
-    region: 'Southeast Asia',
-    tagline: 'Ubud rice terraces, Uluwatu cliff temples, Nusa Penida island & private pool villas.',
-    description: 'A tropical dreamland of volcanic mountains, iconic cliffside temples, private pool villas, world-class beach clubs, and serene spiritual culture.',
-    heroImage: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1600&auto=format&fit=crop',
-    bestTime: 'April to October',
-    packagesCount: 3,
-    packages: [
-      {
-        id: 'bl-1',
-        slug: 'bali-romantic-pool-villa-escape',
-        title: 'Bali Romantic Tropical Escape & Nusa Penida',
-        subtitle: 'Ubud Bali Swing, Kintamani Volcano, Uluwatu Kecak Dance & Nusa Penida West Tour',
-        location: 'Ubud, Seminyak, Nusa Penida, Kuta',
-        duration: '6 Days / 5 Nights',
-        price: '₹28,499',
-        originalPrice: '₹36,999',
-        rating: 4.9,
-        reviewsCount: 420,
-        category: 'Honeymoon',
-        heroImage: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1200&auto=format&fit=crop',
-        gallery: ['https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=800&auto=format&fit=crop'],
-        overview: 'Experience the magic of Bali. Swing over Ubud\'s lush jungle canopies, take photos at Kelingking "T-Rex" Beach in Nusa Penida, witness the fiery Kecak dance on Uluwatu cliffs at sunset, and unwind in a luxury private pool villa.',
-        highlights: [
-          '1 Night Private Pool Villa with Floating Breakfast in Seminyak / Ubud',
-          'Full Day Nusa Penida Speedboat Tour: Kelingking Beach, Broken Beach & Angel Billabong',
-          'Ubud Jungle Swing & Tegalalang Rice Terrace photo shoot',
-          'Uluwatu Cliff Temple with Sunset Kecak Fire Dance Show',
-          'Kintamani Mount Batur volcano viewpoint & coffee plantation tour',
-        ],
-        inclusions: [
-          '3 Nights 4-Star Resort + 2 Nights Private Luxury Pool Villa',
-          'Daily Breakfast (including 1 romantic Floating Breakfast)',
-          'All private sightseeing and airport transfers in dedicated AC car with English-speaking guide',
-          'Fast boat return tickets to Nusa Penida Island',
-          'All temple entrance fees and swing tickets',
-        ],
-        exclusions: ['International Flights', 'Visa on Arrival ($35 USD at airport)', 'Personal expenses'],
-        hotelType: '4-Star Beach Resort & Luxury Private Pool Villa',
-        pickupDrop: 'Ngurah Rai International Airport, Denpasar (DPS)',
-        itinerary: [
-          {
-            day: 1,
-            title: 'Arrival in Bali & Transfer to Ubud',
-            description: 'Arrive at Denpasar Airport. Warm flower garland welcome and transfer to your tropical Ubud resort.',
-            activities: ['Airport Meet & Greet', 'Flower Garland Welcome', 'Ubud Check-in'],
-            meals: 'Dinner',
-            stay: 'Ubud Tropical Resort',
-          },
-          {
-            day: 2,
-            title: 'Ubud Bali Swing, Rice Terraces & Kintamani Volcano',
-            description: 'Experience the famous Bali Swing over jungle valleys. Visit Tegalalang Rice Terraces, Luwak Coffee plantation, and enjoy lunch overlooking Mount Batur volcano.',
-            activities: ['Bali Jungle Swing', 'Tegalalang Terraces', 'Kintamani Volcano View'],
-            meals: 'Breakfast & Dinner',
-            stay: 'Ubud Tropical Resort',
-          },
-          {
-            day: 3,
-            title: 'Full Day Nusa Penida Island Expedition',
-            description: 'Take a high-speed boat to Nusa Penida. Visit the world-famous Kelingking T-Rex Beach, Angel\'s Billabong natural infinity pool, and Broken Beach.',
-            activities: ['Fast Boat to Nusa Penida', 'Kelingking Beach View', 'Angel\'s Billabong'],
-            meals: 'Breakfast & Lunch',
-            stay: 'Seminyak Private Pool Villa',
-          },
-          {
-            day: 4,
-            title: 'Watersports & Uluwatu Sunset Kecak Dance',
-            description: 'Enjoy Banana boat and Jet ski at Tanjung Benoa beach. In the evening, visit the dramatic clifftop Uluwatu Temple and watch the Kecak Fire Dance.',
-            activities: ['Tanjung Benoa Watersports', 'Uluwatu Cliff Temple', 'Kecak Fire Dance'],
-            meals: 'Breakfast & Dinner',
-            stay: 'Seminyak Private Pool Villa',
-          },
-          {
-            day: 5,
-            title: 'Leisure Day & Balinese Massage in Villa',
-            description: 'Enjoy your floating breakfast in your private villa pool. Afternoon free for Seminyak beach club hopping or shopping at Krisna Oleh Oleh.',
-            activities: ['Floating Breakfast', 'Balinese Spa Massage', 'Beach Club Sunset'],
-            meals: 'Breakfast',
-            stay: 'Seminyak Private Pool Villa',
-          },
-          {
-            day: 6,
-            title: 'Departure from Bali',
-            description: 'Breakfast, check out, and transfer to Denpasar Airport for your journey home.',
-            activities: ['Airport Transfer'],
-            meals: 'Breakfast',
-            stay: 'End of Tour',
-          },
-        ],
-      },
-    ],
-  },
-
-  'singapore': {
-    id: 'dest-singapore',
-    slug: 'singapore',
-    name: 'Singapore The Lion City',
-    type: 'international',
-    region: 'Southeast Asia',
-    tagline: 'Gardens by the Bay, Universal Studios Sentosa, Marina Bay Sands & Night Safari.',
-    description: 'A global metropolis where nature and futuristic technology blend seamlessly. Marvel at Supertree Groves, world-class theme parks, and vibrant culinary culture.',
-    heroImage: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1600&auto=format&fit=crop',
-    bestTime: 'All year round',
-    packagesCount: 2,
-    packages: [
-      {
-        id: 'sg-1',
-        slug: 'singapore-glitz-universal-studios',
-        title: 'Singapore Futuristic Highlights & Universal Studios',
-        subtitle: 'Gardens by the Bay, Sentosa Island, Universal Studios & Night Safari',
-        location: 'Marina Bay, Sentosa, Orchard Road',
-        duration: '5 Days / 4 Nights',
-        price: '₹35,999',
-        originalPrice: '₹44,999',
-        rating: 4.9,
-        reviewsCount: 350,
-        category: 'Family',
-        heroImage: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1200&auto=format&fit=crop',
-        gallery: ['https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=800&auto=format&fit=crop'],
-        overview: 'Experience Singapore\'s world-famous attractions! Walk inside the Cloud Forest dome, watch the Supertree Light Show at Gardens by the Bay, scream on adrenaline-pumping rollercoasters at Universal Studios, and meet nocturnal wildlife at Night Safari.',
-        highlights: [
-          'Universal Studios Singapore Full Day Unlimited Pass',
-          'Gardens by the Bay (Flower Dome + Cloud Forest + Avatar experience)',
-          'Sentosa Island cable car ride & Wings of Time laser fountain show',
-          'Night Safari Tram Ride with live creature presentation',
-          'Half Day Singapore City Tour: Merlion Park, Chinatown & Little India',
-        ],
-        inclusions: [
-          '4 Nights 4-Star Hotel accommodation in central Singapore',
-          'Daily Buffet Breakfast',
-          'All entry tickets for Universal Studios, Gardens by the Bay, Night Safari & Sentosa',
-          'Private/SIC transfers in luxury AC coaches',
-        ],
-        exclusions: ['Airfare', 'Singapore Visa fees', 'Personal meals outside itinerary'],
-        hotelType: '4-Star City Hotels',
-        pickupDrop: 'Singapore Changi Airport (SIN)',
-        itinerary: [
-          {
-            day: 1,
-            title: 'Arrival at Changi Airport & Night Safari',
-            description: 'Arrive at the world-famous Changi Airport. Transfer to hotel. In the evening, visit the world\'s first nocturnal zoo: Singapore Night Safari.',
-            activities: ['Changi Jewel View', 'Hotel Check-in', 'Night Safari Tram Ride'],
-            meals: 'Dinner',
-            stay: '4-Star Singapore Hotel',
-          },
-          {
-            day: 2,
-            title: 'Singapore City Tour & Gardens by the Bay',
-            description: 'Tour Merlion Park, Padang, and Chinatown. Afternoon at Gardens by the Bay exploring Flower Dome and Cloud Forest with its indoor waterfall.',
-            activities: ['Merlion Park Photos', 'Flower Dome & Cloud Forest', 'Supertree Light Show'],
-            meals: 'Breakfast',
-            stay: '4-Star Singapore Hotel',
-          },
-          {
-            day: 3,
-            title: 'Full Day Universal Studios Singapore',
-            description: 'Spend an action-packed day at Universal Studios on Sentosa Island with 24 rides across 7 themed zones like Sci-Fi City, Ancient Egypt, and Far Far Away.',
-            activities: ['Transformers 3D Ride', 'Battlestar Galactica', 'Mummy Coaster'],
-            meals: 'Breakfast',
-            stay: '4-Star Singapore Hotel',
-          },
-          {
-            day: 4,
-            title: 'Sentosa Island Cable Car & Wings of Time',
-            description: 'Take the scenic Cable Car to Sentosa. Visit Madame Tussauds, S.E.A. Aquarium, and watch the spectacular Wings of Time night show by the beach.',
-            activities: ['Scenic Cable Car', 'S.E.A. Aquarium', 'Wings of Time Laser Show'],
-            meals: 'Breakfast',
-            stay: '4-Star Singapore Hotel',
-          },
-          {
-            day: 5,
-            title: 'Departure via Jewel Changi',
-            description: 'Breakfast, check out, visit the indoor Rain Vortex waterfall at Jewel Changi, and board your flight home.',
-            activities: ['Jewel Changi Rain Vortex', 'Airport Drop'],
-            meals: 'Breakfast',
-            stay: 'End of Tour',
-          },
-        ],
-      },
-    ],
-  },
-
-  'thailand': {
-    id: 'dest-thailand',
-    slug: 'thailand',
-    name: 'Thailand Land of Smiles',
-    type: 'international',
-    region: 'Southeast Asia',
-    tagline: 'Phuket turquoise beaches, Coral Island speedboats, Bangkok golden temples & Chao Phraya cruise.',
-    description: 'Vibrant night markets, floating food stalls, ornate Buddhist temples, emerald island hopping, and warm Thai hospitality.',
-    heroImage: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=1600&auto=format&fit=crop',
-    bestTime: 'November to April',
-    packagesCount: 3,
-    packages: [
-      {
-        id: 'th-1',
-        slug: 'thailand-bangkok-pattaya-fun',
-        title: 'Thailand Fun & Adventure - Bangkok & Pattaya',
-        subtitle: 'Coral Island Speedboat, Alcazar Cabaret Show, Chao Phraya Dinner Cruise & Temple Tour',
-        location: 'Bangkok, Pattaya, Coral Island',
-        duration: '5 Days / 4 Nights',
-        price: '₹22,999',
-        originalPrice: '₹29,999',
-        rating: 4.8,
-        reviewsCount: 460,
-        category: 'Popular',
-        heroImage: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=1200&auto=format&fit=crop',
-        gallery: ['https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=800&auto=format&fit=crop'],
-        overview: 'Experience the quintessential Thailand holiday! Speedboat to Coral Island in Pattaya for watersports and pristine beaches, watch the dazzling Alcazar Cabaret Show, cruise down Bangkok\'s Chao Phraya River on a luxury dinner boat, and visit the iconic Golden Buddha Temple.',
-        highlights: [
-          'Speedboat trip to Coral Island (Koh Larn) with Indian buffet lunch',
-          'VIP seats for world-famous Alcazar Cabaret Show in Pattaya',
-          'Luxury Chao Phraya River Dinner Cruise in Bangkok with live band',
-          'Bangkok Temple Tour: Wat Traimit (Golden Buddha) & Wat Pho',
-          'Safari World & Marine Park day trip option',
-        ],
-        inclusions: [
-          '2 Nights 4-Star Pattaya Resort + 2 Nights 4-Star Bangkok Hotel',
-          'Daily Buffet Breakfast + 2 Special Dinners',
-          'All private/shared transfers in air-conditioned tourist vehicles',
-          'Speedboat and entry passes for Coral Island & Alcazar Show',
-        ],
-        exclusions: ['International flight tickets', 'Thailand Visa on Arrival', 'Personal water sports tickets'],
-        hotelType: '4-Star Hotels with Swimming Pool',
-        pickupDrop: 'Bangkok Suvarnabhumi Airport (BKK) / Don Mueang (DMK)',
-        itinerary: [
-          {
-            day: 1,
-            title: 'Arrival in Bangkok & Drive to Pattaya',
-            description: 'Arrive in Bangkok. Meet our representative and drive along the scenic expressway to Pattaya. In the evening, attend the world-renowned Alcazar Cabaret Show.',
-            activities: ['Airport Meet & Greet', 'Pattaya Drive', 'Alcazar Show VIP'],
-            meals: 'Dinner',
-            stay: '4-Star Pattaya Hotel',
-          },
-          {
-            day: 2,
-            title: 'Coral Island Speedboat Tour with Lunch',
-            description: 'Board a high-speed boat to the turquoise waters of Coral Island. Enjoy parasailing, jet skiing, underwater sea walk, and an Indian buffet lunch.',
-            activities: ['Speedboat Ride', 'Coral Island Beach Time', 'Indian Buffet Lunch'],
-            meals: 'Breakfast & Lunch',
-            stay: '4-Star Pattaya Hotel',
-          },
-          {
-            day: 3,
-            title: 'Pattaya to Bangkok & Chao Phraya Dinner Cruise',
-            description: 'Drive back to Bangkok. Visit the Gems Gallery. In the evening, board the grand Chao Phraya Princess dinner cruise overlooking illuminated temples.',
-            activities: ['Gems Gallery', 'Bangkok Check-in', 'Chao Phraya Cruise Dinner'],
-            meals: 'Breakfast & Dinner',
-            stay: '4-Star Bangkok Hotel',
-          },
-          {
-            day: 4,
-            title: 'Bangkok Golden Buddha & Shopping Day',
-            description: 'Visit Wat Traimit with its 5.5-ton solid gold Buddha statue. Afternoon free for shopping at Pratunam Market, Platinum Mall, and MBK Center.',
-            activities: ['Golden Buddha Temple Tour', 'Pratunam Shopping Spree'],
-            meals: 'Breakfast',
-            stay: '4-Star Bangkok Hotel',
-          },
-          {
-            day: 5,
-            title: 'Departure from Bangkok',
-            description: 'Breakfast, check out, and transfer to Bangkok Airport for flight home.',
-            activities: ['Hotel Check-out', 'Airport Drop'],
-            meals: 'Breakfast',
-            stay: 'End of Tour',
-          },
-        ],
-      },
-    ],
-  },
-
-  'vietnam': {
-    id: 'dest-vietnam',
-    slug: 'vietnam',
-    name: 'Vietnam Halong Bay & Heritage',
-    type: 'international',
-    region: 'Southeast Asia',
-    tagline: 'Halong Bay luxury cruise, Ba Na Hills Golden Hand Bridge, lantern town of Hoi An.',
-    description: 'Emerald limestone karsts, lantern-lit riverside alleys, French colonial architecture, vibrant street food, and the iconic Golden Bridge held by giant stone hands.',
-    heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1600&auto=format&fit=crop',
-    bestTime: 'October to April',
-    packagesCount: 2,
-    packages: [
-      {
-        id: 'vn-1',
-        slug: 'vietnam-hanoi-halong-danang-golden-bridge',
-        title: 'Vietnam Highlights - Halong Bay Cruise & Golden Bridge',
-        subtitle: 'Overnight Halong Bay Cruise, Hanoi Old Quarter, Da Nang & Ba Na Hills Golden Hand Bridge',
-        location: 'Hanoi, Halong Bay, Da Nang, Ba Na Hills, Hoi An',
-        duration: '6 Days / 5 Nights',
-        price: '₹32,999',
-        originalPrice: '₹41,999',
-        rating: 4.9,
-        reviewsCount: 310,
-        category: 'Popular',
-        heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1200&auto=format&fit=crop',
-        gallery: ['https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=800&auto=format&fit=crop'],
-        overview: 'Experience the magic of Vietnam! Spend an unforgettable night cruising among emerald limestone islands in Halong Bay with kayaking and cooking classes, walk on the famous Golden Bridge held by giant stone hands in Ba Na Hills, and explore the lantern-lit ancient streets of Hoi An.',
-        highlights: [
-          '1 Night Luxury 5-Star Halong Bay Cruise with all gourmet meals & kayaking',
-          'Ba Na Hills cable car ride & walk on the world-famous Golden Bridge',
-          'Hoi An Ancient Town lantern boat ride & Japanese Covered Bridge',
-          'Hanoi Old Quarter Cyclo Rickshaw ride & Hoan Kiem Lake',
-        ],
-        inclusions: [
-          '4 Nights 4-Star Hotels + 1 Night 5-Star Halong Cruise',
-          'Daily Breakfast, 2 Lunches & 3 Dinners',
-          'Ba Na Hills cable car tickets and Golden Bridge entry',
-          'Private English-speaking tour guide and AC vehicle',
-        ],
-        exclusions: ['International and domestic flights', 'Vietnam E-Visa', 'Personal expenses'],
-        hotelType: '4-Star City Hotels & 5-Star Cruise Ship',
-        pickupDrop: 'Hanoi Noi Bai Airport (HAN) / Da Nang Airport (DAD)',
-        itinerary: [
-          {
-            day: 1,
-            title: 'Arrival in Hanoi & Old Quarter Cyclo Ride',
-            description: 'Arrive in Hanoi. Check in and take a traditional Cyclo rickshaw ride through the 36 guild streets of Hanoi Old Quarter.',
-            activities: ['Airport Transfer', 'Cyclo Rickshaw Ride', 'Hoan Kiem Lake'],
-            meals: 'Dinner',
-            stay: '4-Star Hanoi Hotel',
-          },
-          {
-            day: 2,
-            title: 'Hanoi to Halong Bay 5-Star Cruise',
-            description: 'Drive to Halong Bay. Board your 5-star luxury cruise ship. Sail past thousand-year-old limestone karsts, explore Sung Sot (Surprise) Cave, and try sunset kayaking.',
-            activities: ['Halong Cruise Boarding', 'Sung Sot Cave Hike', 'Sunset Kayaking'],
-            meals: 'Breakfast, Lunch & Dinner',
-            stay: '5-Star Halong Cruise Cabin',
-          },
-          {
-            day: 3,
-            title: 'Halong Bay to Hanoi & Fly to Da Nang',
-            description: 'Morning Tai Chi on sundeck, cruise back to harbor, and fly to Da Nang. Check into your beachside resort.',
-            activities: ['Morning Tai Chi', 'Da Nang Flight Transfer', 'Dragon Bridge Night View'],
-            meals: 'Breakfast & Brunch',
-            stay: '4-Star Da Nang Resort',
-          },
-          {
-            day: 4,
-            title: 'Ba Na Hills & Iconic Golden Bridge',
-            description: 'Ascend Ba Na Hills on the world\'s longest single-wire cable car. Walk on the incredible Golden Hand Bridge, explore French Village, and Fantasy Park.',
-            activities: ['Cable Car Ride', 'Golden Hand Bridge Photos', 'French Village'],
-            meals: 'Breakfast & Lunch',
-            stay: '4-Star Da Nang Resort',
-          },
-          {
-            day: 5,
-            title: 'Hoi An Lantern Town & Coconut Forest Boat',
-            description: 'Ride a traditional round bamboo basket boat in Cam Thanh coconut forest. In the evening, walk through UNESCO heritage Hoi An with thousand glowing lanterns.',
-            activities: ['Bamboo Basket Boat', 'Hoi An Lantern Street', 'Night Market'],
-            meals: 'Breakfast & Dinner',
-            stay: '4-Star Da Nang Resort',
-          },
-          {
-            day: 6,
-            title: 'Departure from Da Nang',
-            description: 'Breakfast, check out, and transfer to Da Nang Airport for your flight.',
-            activities: ['Airport Drop'],
-            meals: 'Breakfast',
-            stay: 'End of Tour',
-          },
-        ],
-      },
-    ],
-  },
-
-  'maldives': {
-    id: 'dest-maldives',
-    slug: 'maldives',
-    name: 'Maldives Tropical Atolls & Overwater Villas',
-    type: 'international',
-    region: 'South Asia',
-    tagline: 'Overwater luxury villas, crystal turquoise lagoons, coral reef snorkeling & speedboat transfers.',
-    description: 'The pinnacle of barefoot luxury with pure white sandbars, turquoise lagoons, private ocean villas, and world-class marine life.',
-    heroImage: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1600&auto=format&fit=crop',
-    bestTime: 'November to April',
-    packagesCount: 2,
-    packages: [
-      {
-        id: 'mv-1',
-        slug: 'maldives-luxury-water-villa-honeymoon',
-        title: 'Maldives Overwater Luxury Villa Romance',
-        subtitle: 'Water Villa with Private Pool, All Inclusive Meals, Speedboat Transfer & Sunset Cruise',
-        location: 'Malé Atoll, Private Island Resort',
-        duration: '4 Days / 3 Nights',
-        price: '₹68,999',
-        originalPrice: '₹84,999',
-        rating: 5.0,
-        reviewsCount: 310,
-        category: 'Luxury',
-        heroImage: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1200&auto=format&fit=crop',
-        gallery: ['https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=800&auto=format&fit=crop'],
-        overview: 'Wake up to the gentle lapping of Indian Ocean waves directly below your private sun deck. Jump straight into the turquoise lagoon from your overwater villa, enjoy all-inclusive gourmet dining, and spot dolphins during a romantic sunset cruise.',
-        highlights: [
-          '3 Nights in Luxury Overwater Villa with direct lagoon access',
-          'All-Inclusive Meal Plan (Breakfast, Lunch, Dinner & Unlimited Drinks)',
-          'Roundtrip Speedboat / Seaplane transfer from Malé Airport',
-          'Complimentary Snorkeling gear & non-motorized water sports',
-          'Sunset Dolphin Cruise on traditional Maldivian Dhoni',
-        ],
-        inclusions: [
-          '3 Nights Overwater Villa accommodation on 4/5-Star Private Island Resort',
-          'All-Inclusive Dining (Breakfast, Lunch, Dinner, Snacks & Drinks)',
-          'Return Speedboat transfers from Velana Airport',
-          'All Maldives Green Taxes and Service Charges included',
-        ],
-        exclusions: ['International flight tickets', 'Motorized water sports (Scuba/Jet ski)', 'Spa treatments'],
-        hotelType: '5-Star Private Island Overwater Villa',
-        pickupDrop: 'Velana International Airport, Malé (MLE)',
-        itinerary: [
-          {
-            day: 1,
-            title: 'Arrival in Malé & Speedboat to Private Island',
-            description: 'Arrive at Malé Airport. Greeted by resort host and transfer via high-speed boat to your private island resort. Check into your Overwater Villa.',
-            activities: ['Speedboat Transfer', 'Water Villa Check-in', 'Sunset Cocktails'],
-            meals: 'Dinner',
-            stay: '5-Star Overwater Villa',
-          },
-          {
-            day: 2,
-            title: 'House Reef Snorkeling & Coral Exploration',
-            description: 'Step down into the crystal-clear lagoon from your villa sundeck. Snorkel with colorful reef fish, sea turtles, and baby blacktip reef sharks.',
-            activities: ['Lagoon Swimming', 'Coral Reef Snorkeling', 'Gourmet Buffet Lunch'],
-            meals: 'All Inclusive',
-            stay: '5-Star Overwater Villa',
-          },
-          {
-            day: 3,
-            title: 'Sunset Dolphin Cruise & Candlelight Dinner',
-            description: 'Spend your morning relaxing on white sandy beaches. In the evening, embark on a traditional Dhoni cruise to spot spinner dolphins leaping at sunset.',
-            activities: ['Dolphin Sunset Cruise', 'Beach Walk', 'Candlelight Beach Dinner'],
-            meals: 'All Inclusive',
-            stay: '5-Star Overwater Villa',
-          },
-          {
-            day: 4,
-            title: 'Departure from Paradise',
-            description: 'Enjoy a lavish champagne breakfast over the water. Check out and take the speedboat back to Malé Airport for your flight.',
-            activities: ['Speedboat to Airport'],
-            meals: 'Breakfast',
-            stay: 'End of Tour',
-          },
-        ],
-      },
-    ],
-  },
   'spiti': {
     id: 'dest-spiti',
     slug: 'spiti',
@@ -12889,7 +12350,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "West India",
     "tagline": "White Desert Rann of Kutch, Asiatic Lions of Gir, Statue of Unity & Somnath-Dwarka holy circuit.",
     "description": "A land of legends and lions, from the dazzling endless salt flats of the Great Rann of Kutch to the last sanctuary of the Asiatic Lion in Gir, the world’s tallest Statue of Unity, and sacred Char Dham pilgrimage at Dwarka and Somnath Jyotirlinga.",
-    "heroImage": "https://images.unsplash.com/photo-1579600161224-cac5a2971069?q=80&w=1600&auto=format&fit=crop",
+    "heroImage": '/assets/images/packageimages/gugrathero.webp',
     "bestTime": "October to March",
     "packagesCount": 10,
     "packages": [
@@ -12905,9 +12366,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 390,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1579600161224-cac5a2971069?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Experience-the-Beauty.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1579600161224-cac5a2971069?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Experience-the-Beauty.webp',
         ],
         "overview": "Experience the magic of the Great Rann of Kutch — the world’s largest salt desert shimmering like silver under the desert moon. Stay in traditional Bhunga cottages or luxury tented cities, enjoy Gujarati and Kutchi folk dance performances around campfires, climb Kalo Dungar (Black Hill), and visit master artisan villages of Rogan art and mirror-work embroidery.",
         "highlights": [
@@ -13001,9 +12462,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 310,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/gnp.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/gnp.webp',
         ],
         "overview": "Venture into the dry deciduous teak forests of Sasan Gir — the sole surviving natural sanctuary in the world for the majestic Asiatic Lion (*Panthera leo leo*). Track roaring prides of lions, leopards, spotted deer, and over 300 bird species on open-top 4x4 jungle jeep safaris with certified forest naturalists.",
         "highlights": [
@@ -13082,9 +12543,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 380,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage":'/assets/images/packageimages/sou.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/sou.webp',
         ],
         "overview": "Marvel at the world’s tallest monument standing at an astonishing 182 meters (597 feet) — the Statue of Unity dedicated to Iron Man Sardar Vallabhbhai Patel. Ride high-speed elevators up to the viewing gallery at 153 meters inside the statue’s chest, attend the breathtaking evening 3D laser projection show, and explore the Valley of Flowers and Sardar Sarovar Dam.",
         "highlights": [
@@ -13162,9 +12623,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 460,
         "category": "Spiritual",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Somnath.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Somnath.webp',
         ],
         "overview": "Embark on one of the holiest pilgrimages in Hinduism combining a Char Dham destination (Dwarkadhish Temple — the golden kingdom of Lord Krishna) and the first of the 12 sacred Jyotirlingas at Somnath standing proudly on the shores of the Arabian Sea. Visit Nageshwar Jyotirlinga, Bet Dwarka Island, Rukmini Temple, and Mahatma Gandhi’s birthplace in Porbandar.",
         "highlights": [
@@ -13271,9 +12732,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 220,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/mosque-ahmedabad.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/mosque-ahmedabad.webp',
         ],
         "overview": "Explore India’s first UNESCO World Heritage City! Discover the tranquil Sabarmati Ashram of Mahatma Gandhi, the 15th-century 5-story subterranean stepwell of Adalaj Vav with ornate carved galleries, the world-renowned stone lattice work of Sidi Saiyyed Mosque (Tree of Life), and take a day trip to the Sun Temple of Modhera and Rani Ki Vav in Patan.",
         "highlights": [
@@ -13363,9 +12824,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 180,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/metpk_travel.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/metpk_travel.webp',
         ],
         "overview": "Perched in the Sahyadri ranges at 1,000 meters amidst the dense bamboo and teak forests of Dang district, Saputara (Abode of Serpents) is Gujarat’s only picturesque hill station. Enjoy boating on Saputara Lake, ride the thrilling ropeway cable car over the valley, watch dramatic sunsets from Sunset Point, and visit the thundering Gira Waterfalls.",
         "highlights": [
@@ -13444,9 +12905,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 160,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1579600161224-cac5a2971069?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Gujarat-Bhuj-Bhujodi.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1579600161224-cac5a2971069?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Gujarat-Bhuj-Bhujodi.webp',
         ],
         "overview": "Immerse in the greatest living craft and textile heritage region of the world. Meet national award-winning master artisans in their village workshops: witness 16-step natural indigo block printing in Ajrakhpur, extra-weft shawl weaving in Bhujodi, the rare 8th-generation castor-oil Rogan Art in Nirona, and vibrant Rabari mirror-work embroidery.",
         "highlights": [
@@ -13537,9 +12998,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 175,
         "category": "Spiritual",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/shatrunjayaiimage.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/shatrunjayaiimage.webp',
         ],
         "overview": "Ascend the most sacred pilgrimage mountain in Jainism — Shatrunjaya Hill in Palitana, crowned with an astonishing 863 intricately carved white marble temples constructed over 900 years. Visit the grand Adinath Temple at the summit, explore the royal heritage of Bhavnagar, and visit the 4,500-year-old Indus Valley civilization port city of Lothal.",
         "highlights": [
@@ -13618,9 +13079,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 190,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/vadodara.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/vadodara.webp',
         ],
         "overview": "Discover the cultural capital of Gujarat. Tour the opulent 1890 Indo-Saracenic Laxmi Vilas Palace (four times the size of Buckingham Palace) with the world’s largest private collection of Raja Ravi Varma paintings, and take a day trip to the UNESCO World Heritage archaeological park of Champaner-Pavagadh with its grand 15th-century mosques and hilltop Kalika Mata temple.",
         "highlights": [
@@ -13699,10 +13160,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 420,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1579600161224-cac5a2971069?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/compgug.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1579600161224-cac5a2971069?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/compgug.webp',
         ],
         "overview": "The definitive, grand journey across Vibrant Gujarat! Experience all the greatest highlights: the heritage pols of Ahmedabad, the world’s tallest Statue of Unity, thrilling open-jeep lion tracking in Gir National Park, the sacred seaside temple of Somnath Jyotirlinga, the golden kingdom of Dwarkadhish, and the silver moonlit salt flats of the Great Rann of Kutch.",
         "highlights": [
@@ -13848,7 +13308,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "North East India",
     "tagline": "Tawang Monastery, frozen Sela Pass lake, Ziro pine valleys & Mechuka hidden wonderland.",
     "description": "India’s wild northeastern frontier of snow-crested eastern Himalayan peaks, ancient Tibetan Buddhist monasteries, indigenous tribal cultures in Ziro Valley, and untouched glacial lakes.",
-    "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1600&auto=format&fit=crop",
+    "heroImage": '/assets/images/packageimages/giant-budhha-statue-tawang.webp',
     "bestTime": "October to April",
     "packagesCount": 10,
     "packages": [
@@ -13864,7 +13324,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 340,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/giant-budhha-statue-tawang.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
         ],
@@ -13995,7 +13455,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 190,
         "category": "Tribal",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/ziro.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14087,7 +13547,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 140,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/mechuka-valley.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14203,7 +13663,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 110,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/namadpha.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14305,7 +13765,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 150,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/dscvr.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14393,7 +13853,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 165,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/water-rafting.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14470,7 +13930,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 95,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Anini.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14581,7 +14041,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 130,
         "category": "Tribal",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/pasighat.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14668,7 +14128,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 140,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/itafort.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
         ],
@@ -14745,7 +14205,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 290,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/apcompl.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
         ],
@@ -15958,7 +15418,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "East India",
     "tagline": "Kaziranga One-Horned Rhinos, Majuli River Island, lush tea estates & Kamakhya Temple.",
     "description": "The verdant gateway to Northeast India, blessed by the mighty Brahmaputra River, the world’s greatest sanctuary for One-Horned Rhinos in Kaziranga, endless carpet-like tea plantations, and the world’s largest river island Majuli.",
-    "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1600&auto=format&fit=crop",
+    "heroImage": '/assets/images/packageimages/asmhero.webp',
     "bestTime": "October to April",
     "packagesCount": 10,
     "packages": [
@@ -15974,7 +15434,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 410,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/kazirangahero.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16054,7 +15514,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 190,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/majuli.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16132,7 +15592,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 320,
         "category": "Spiritual",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Village-Tour-Majuli.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16209,7 +15669,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 180,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/mnp.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16298,7 +15758,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 150,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/teacapital.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16377,7 +15837,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 140,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/sibsgar.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16454,7 +15914,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 160,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/dibu.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16531,7 +15991,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 130,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/haflong-lake.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16616,9 +16076,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 120,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/fishing.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/fishing.webp',
         ],
         "overview": "Venture into the semi-evergreen forest of Hoollongapar Gibbon Sanctuary — India’s only sanctuary dedicated to protecting the country’s sole ape species: the Western Hoolock Gibbon (*Hoolock hoolock*). Experience guided walking safaris under towering Dipterocarpus canopies to hear the melodious morning calls of gibbon families swinging effortlessly through the treetops.",
         "highlights": [
@@ -16690,10 +16150,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 370,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Assam_Attractions.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Assam_Attractions.webp',
         ],
         "overview": "The definitive all-encompassing Assam journey! Seek blessings at Kamakhya Temple in Guwahati, spot One-Horned Rhinos on elephant safaris in Kaziranga, cruise the Brahmaputra to the world’s largest river island of Majuli, live the colonial planters life in Jorhat tea estates, and explore 600-year-old Ahom royal palaces in Sivasagar.",
         "highlights": [
@@ -16826,7 +16285,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "East India",
     "tagline": "Living Root Bridges of Cherrapunji, crystal-clear Dawki River & Scotland of the East Shillong.",
     "description": "The Abode of Clouds — home to the wettest places on Earth (Cherrapunji & Mawsynram), bio-engineered Double Decker Living Root Bridges, glass-like transparent waters of Umngot River in Dawki, and dramatic waterfalls plunging into Bangladesh plains.",
-    "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1600&auto=format&fit=crop",
+    "heroImage": '/assets/images/packageimages/mghero.webp',
     "bestTime": "October to May",
     "packagesCount": 10,
     "packages": [
@@ -16842,7 +16301,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 420,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/capture.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
         ],
@@ -16933,7 +16392,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 380,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/dawki.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17012,7 +16471,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 310,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/nongrait.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17103,7 +16562,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 180,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/upside.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17190,7 +16649,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 220,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Krang_Suri_Waterfall.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17268,7 +16727,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 90,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/chandigre.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17369,7 +16828,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 160,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/David-scott-Trail_Meghalaya.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17448,7 +16907,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 190,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Laitlum-Canyon.web',
         "gallery": [
           "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17525,7 +16984,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 280,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/camping-in-dawki.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17604,7 +17063,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 460,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/cleanest.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop",
           "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
@@ -17731,7 +17190,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "East India",
     "tagline": "Kanchenjunga snow massifs, glacial Gurudongmar Lake, Yumthang Valley & Tsomgo Lake.",
     "description": "Nestled beneath Mount Kanchenjunga (world’s 3rd highest peak at 8,586m), Sikkim is a magical realm of high-altitude sacred lakes, blooming rhododendron valleys in Yumthang, ancient Tibetan monasteries, and the Old Silk Route.",
-    "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1600&auto=format&fit=crop",
+    "heroImage": '/assets/images/packageimages/monsez.webp',
     "bestTime": "March to June & September to December",
     "packagesCount": 10,
     "packages": [
@@ -17747,7 +17206,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 410,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Sikkim-Travel.webp',
         "gallery": [
           "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
         ],
@@ -17839,9 +17298,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 360,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/flw.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/flw.webp',
         ],
         "overview": "Venture into the pristine alpine wilderness of North Sikkim. Stay in the traditional wooden village of Lachung (8,610 ft), drive into the breathtaking Yumthang Valley of Flowers framed by snow-covered Himalayan peaks, soak in natural sulfur hot springs, and reach Zero Point (Yumesamdong at 15,300 ft) where civilian roads end at permanent snowfields.",
         "highlights": [
@@ -17942,9 +17401,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 290,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/gurudmoer.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/gurudmoer.webp',
         ],
         "overview": "Conquer the ultimate high-altitude frontier of the Indian Himalayas — the sacred turquoise waters of Gurudongmar Lake at an astonishing 17,800 feet (5,430 meters) just 5km from the Tibetan plateau. Blessed by Guru Padmasambhava and Guru Nanak, this breathtaking lake remains partially unfrozen even in sub-zero winter temperatures.",
         "highlights": [
@@ -18044,9 +17503,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 320,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/pelling.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/pelling.webp',
         ],
         "overview": "Perched in West Sikkim at 7,200 feet, Pelling offers the closest, most spectacular front-row panorama of the majestic Mount Kanchenjunga (8,586m). Walk across India’s first transparent Glass Skywalk leading to the 137-foot golden Chenrezig statue, explore the 300-year-old Pemayangtse Monastery, and walk through the ancient stone ruins of the 17th-century Rabdentse royal palace.",
         "highlights": [
@@ -18136,9 +17595,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 260,
         "category": "Spiritual",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/chardhammm.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/chardhammm.webp',
         ],
         "overview": "Experience the spiritual harmony and sweeping mountain landscapes of South Sikkim. Stand before the colossal 130-foot copper-gilded Buddha at Tathagata Tsal in Ravangla with the snow-covered Himalayas forming its backdrop, visit the only tea garden in Sikkim at Temi, and explore the extraordinary Siddheshwar Char Dham complex at Namchi featuring replicas of India’s four sacred Dhams and 12 Jyotirlingas.",
         "highlights": [
@@ -18224,9 +17683,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 140,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/dz.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop"
+         '/assets/images/packageimages/dz.webp',
         ],
         "overview": "Travel to the historic birthplace of Sikkim — Yuksom (Meeting Place of Three Lamas). Stand at the sacred stone Coronation Throne of Norbugang where the first Chogyal was consecrated in 1642, hike through pine forests to Sikkim’s oldest monastery (Dubdi Gompa, 1701), and explore the gateway to the UNESCO World Heritage Khangchendzonga National Park.",
         "highlights": [
@@ -18311,9 +17770,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 220,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/zuluk.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/zuluk.webp',
         ],
         "overview": "Embark on the legendary Old Silk Route loop through East Sikkim! Drive the mind-boggling 32 hairpin bends of Zuluk, watch golden sunrises over the entire Kanchenjunga range from Thambi Viewpoint (11,200 ft), cross the high-altitude Ladakh of the East (Gnathang Valley at 13,500 ft), and visit the elephant-shaped Kupup Lake (Bitan Cho) and the world’s highest 18-hole golf course.",
         "highlights": [
@@ -18401,9 +17860,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 180,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Pelling_Khecheopalri_Lake.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Pelling_Khecheopalri_Lake.webp',
         ],
         "overview": "Immerse in the pristine nature, sacred water bodies, and authentic rural life of West Sikkim. Stay in the Limboo tribal eco-village of Darap, pray at the sacred footprints of Khecheopalri Lake, admire the thundering cascades of Kanchenjunga Falls and Rimbi Waterfalls, and visit the orange orchards of Sewaro Rock Garden.",
         "highlights": [
@@ -18487,9 +17946,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 190,
         "category": "Spiritual",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/monsez.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/monsez.webp',
         ],
         "overview": "A deeply serene spiritual journey into the ancient monastic heritage of Sikkim. Explore Rumtek Monastery (Dharma Chakra Centre) — the main seat of the 16th Gyalwa Karmapa, the grand multi-story gilded Lingdum (Ranka) Monastery nestled in pine forests, the 200-year-old Enchey Monastery, and learn about Mahayana Buddhist philosophy at the Namgyal Institute of Tibetology.",
         "highlights": [
@@ -18564,10 +18023,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 480,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/skmnew.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/skmnew.webp',
         ],
         "overview": "The definitive all-encompassing Sikkim Himalayan odyssey! Experience high-altitude sacred Tsomgo Lake in East Sikkim, journey deep into the snowbound paradise of North Sikkim (Lachung, Yumthang Valley of Flowers & Zero Point), and gaze upon the majestic face of Mount Kanchenjunga from the Glass Skywalk in Pelling.",
         "highlights": [
@@ -18697,7 +18155,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "East India",
     "tagline": "Puri Jagannath Temple, UNESCO Konark Sun Temple & Chilika Lake Irrawaddy dolphins.",
     "description": "The soul of Incredible India, celebrated for the 13th-century stone chariot of Konark Sun Temple, the sacred Char Dham pilgrimage at Puri Jagannath, Asia’s largest brackish lagoon Chilika Lake with playful dolphins, and living tribal heritage.",
-    "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1600&auto=format&fit=crop",
+    "heroImage": '/assets/images/packageimages/odhero.webp',
     "bestTime": "October to March",
     "packagesCount": 10,
     "packages": [
@@ -18713,9 +18171,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 450,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Puri.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Puri.webp',
         ],
         "overview": "Experience the crown of Odisha’s cultural and spiritual heritage. Seek divine blessings at the 12th-century Shree Jagannath Temple (one of the 4 sacred Char Dham sites), marvel at the 24 colossal carved wheels of the 13th-century UNESCO Sun Temple in Konark, stroll along the pristine Blue Flag certified Golden Beach in Puri, and watch master applique artisans in Pipli.",
         "highlights": [
@@ -18806,9 +18264,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 310,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/odnew.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+         '/assets/images/packageimages/odnew.webp',
         ],
         "overview": "Cruise across Asia’s largest brackish water lagoon spanning over 1,100 sq km. Board motorized boats at Satapada to spot playful, endangered Irrawaddy dolphins surfacing in their natural habitat, cruise to the sea mouth where Chilika meets the Bay of Bengal, take a country boat into Mangalajodi (the Birders’ Paradise with over a million migratory birds), and visit the island shrine of Kalijai Temple.",
         "highlights": [
@@ -18885,9 +18343,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 240,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/bhubaneshwar-odisha.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/bhubaneshwar-odisha.webp',
         ],
         "overview": "Discover the ancient \"Ekamra Kshetra\" (City of Temples), home to over 500 historic sandstone temples spanning 1,500 years of Kalinga architectural evolution. Stand before the towering 180-foot spire of the 11th-century Lingaraj Temple, admire the delicate carved torana of Mukteshwar Temple (the Gem of Odisha Architecture), explore the 2nd-century BC rock-cut Jain caves of Udayagiri & Khandagiri, and see rare white tigers at Nandankanan.",
         "highlights": [
@@ -18964,9 +18422,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 170,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/cuttack-odisha-bhitarkanika.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/cuttack-odisha-bhitarkanika.webp',
         ],
         "overview": "Venture into the mystical Amazon of the East — Bhitarkanika National Park. Board river boats navigating through dense mangrove creeks to spot colossal 20-foot saltwater crocodiles (estuarine crocodiles) basking in the sun, 8 species of kingfishers, spotted deer, and water monitor lizards. Visit the nearby Gahirmatha Beach — the world’s largest mass nesting rookery for Olive Ridley sea turtles.",
         "highlights": [
@@ -19043,9 +18501,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 150,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/similal.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+         '/assets/images/packageimages/similal.webp',
         ],
         "overview": "Explore the sprawling wilderness of Simlipal National Park in Mayurbhanj district. Covering 2,750 sq km of towering Sal forests, mist-clad peaks, and rushing rivers, Simlipal is home to wild Royal Bengal Tigers (including rare melanistic black tigers), Asian elephants, and two of India’s most spectacular waterfalls: the 399-meter two-tiered Barehipani Falls and the 181-meter single-drop Joranda Falls.",
         "highlights": [
@@ -19132,9 +18590,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 190,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/handcrf.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/handcrf.webp',
         ],
         "overview": "Step into Raghurajpur — India’s premier heritage craft village where every single household is an artisan atelier. Meet national award-winning Chitrakar masters creating intricate Pattachitra paintings on treated silk cloth and palm-leaf engravings (Tala Pattachitra), watch an exclusive live performance of Gotipua dance (the precursor to classical Odissi), and create your own artwork.",
         "highlights": [
@@ -19210,9 +18668,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 180,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Daringbadi-eco-Retreat_Sublime.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Daringbadi-eco-Retreat_Sublime.webp',
         ],
         "overview": "Perched in the Eastern Ghats at 3,000 feet in Kandhamal district, Daringbadi is affectionately known as the \"Kashmir of Odisha\" — the only place in the state where winter temperatures drop near zero creating morning ground frost. Explore pine forests, aromatic organic coffee plantations, the roaring Midubanda Waterfall, and the serene Lovers Point.",
         "highlights": [
@@ -19300,9 +18758,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 130,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/ratnagiri.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+         '/assets/images/packageimages/ratnagiri.webp',
         ],
         "overview": "Explore the \"Diamond Triangle\" of Odisha — the magnificent excavated ruins of ancient Mahayana and Vajrayana Buddhist monastic universities that rivaled Nalanda from the 5th to 12th century AD. Stand before the exquisitely carved green chlorite stone doorway at Ratnagiri Monastery, explore the stepped well and rock-cut stupas of Udayagiri, and see the sacred relic caskets at Lalitgiri.",
         "highlights": [
@@ -19376,9 +18834,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 160,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/newwimage.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/newwimage.webp',
         ],
         "overview": "Unwind at the tranquil heritage beach resort of Gopalpur-on-Sea, once a bustling seaport for Burma trade during British rule. Walk along golden sands lined with casuarina groves, climb the 1871 Victorian lighthouse, enjoy jet-skiing and boating on the freshwater Tampara Lake, and visit the hilltop Shaktipeeth of Maa Taratarini Temple via ropeway.",
         "highlights": [
@@ -19451,10 +18909,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 390,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/odcomp.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/odcomp.webp',
         ],
         "overview": "The definitive all-encompassing Odisha journey! Stand before the ancient spires of Bhubaneswar temples, receive blessings at Puri Jagannath Temple, gaze upon the stone celestial chariot of Konark Sun Temple, cruise with Irrawaddy dolphins on Chilika Lake, meet Pattachitra master artists in Raghurajpur, and explore the mangrove crocodile wilderness of Bhitarkanika.",
         "highlights": [
@@ -19589,7 +19046,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "North East India",
     "tagline": "World’s only floating national park on Loktak Lake, Kangla Fort & Ima Keithel women’s market.",
     "description": "Described by Lord Irwin as the \"Jewel of India,\" Manipur is home to the world’s only floating national park (Keibul Lamjao on Loktak Lake), the rare dancing Sangai deer, ancient Meitei martial arts, the world’s largest all-women market (Ima Keithel), and the endemic Shirui Lily.",
-    "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1600&auto=format&fit=crop",
+    "heroImage": '/assets/images/packageimages/Keibul-Lamjao-National-Park.webp',
     "bestTime": "October to April",
     "packagesCount": 10,
     "packages": [
@@ -19605,9 +19062,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 290,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/Keibul-Lamjao-National-Park.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/Keibul-Lamjao-National-Park.webp',
         ],
         "overview": "Experience the crown jewel of Northeast India — Loktak Lake, the largest freshwater lake in Northeast India celebrated for its circular floating vegetative islands called \"Phumdis.\" Visit Keibul Lamjao National Park — the world’s only floating national park and the sole natural home of the endangered brow-antlered dancing deer (Sangai), stay on floating eco-cottages, and explore the historic INA War Memorial in Moirang.",
         "highlights": [
@@ -19683,9 +19140,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 220,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/kangla-fort.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/kangla-fort.webp',
         ],
         "overview": "Discover the rich cultural heartbeat of Manipur in the Imphal Valley. Explore the ancient royal citadel of Kangla Fort surrounded by moats, seek blessings at the gilded Shree Shree Govindaji Temple, visit the World War II Imphal Peace Museum at Red Hill, and immerse in the extraordinary Ima Keithel (Mother’s Market) — the world’s largest and only all-women market operated exclusively by over 5,000 married women traders.",
         "highlights": [
@@ -19762,9 +19219,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 160,
         "category": "Tribal",
-        "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/traking.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/traking.webp',
         ],
         "overview": "Travel to the highland misty paradise of Ukhrul — home of the brave Tangkhul Naga tribe. Hike up the windswept slopes of Shirui Kashung Peak (8,400 ft) — the only place in the entire world where the rare pinkish-white Shirui Lily (*Lilium mackliniae*) blooms naturally, explore the prehistoric limestone chambers of Khangkhui Cave, and learn the ancient technique of Longpi black serpentine stone pottery.",
         "highlights": [
@@ -19852,9 +19309,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 150,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/moreh.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/moreh.webp',
         ],
         "overview": "Travel to India’s bustling commercial frontier on the Trans-Asian Highway — Moreh on the Indo-Myanmar border. Cross through the India-Myanmar Friendship Gate to visit the border town of Tamu (subject to border regulations), marvel at the gilded Burmese Buddhist Pagodas, and explore the vibrant international border bazaars filled with teakwood crafts, jade, and Asian electronics.",
         "highlights": [
@@ -19929,9 +19386,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 140,
         "category": "Cultural",
-        "heroImage": "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/andro.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/andro.webp',
         ],
         "overview": "Discover the ancient Lois community heritage in Andro village nestled at the foothills of the Nongmaiching Hills. Visit the sacred Panam Ningthou Temple where an eternal sacred fire has burned uninterrupted since the 1st century AD, explore the Mutua Bahadur Cultural Complex (open-air museum of Northeast tribal dwellings), and observe centuries-old coil-pottery practiced exclusively by married women.",
         "highlights": [
@@ -20006,9 +19463,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 180,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/dzukou.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/dzukou.webp',
         ],
         "overview": "Trek into the world-renowned \"Valley of Flowers of the Northeast\" — Dzukou Valley via the adventurous Manipur trail starting from Mount Tenipu in Senapati district. Ascend through dense sub-alpine dwarf bamboo forests to emerge onto the rolling surreal landscape of Dzukou at 8,000 feet, crisscrossed by crystal meandering streams and seasonal Dzukou lilies.",
         "highlights": [
@@ -20094,9 +19551,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 160,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/kakching.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/kakching.webp',
         ],
         "overview": "Explore the scenic southern and western plains of the Manipur Valley. Visit the pristine hilltop floral wonderland of Kakching Garden (awarded the Cleanest City in North East India), take a refreshing hike through lush forests to the 3-tiered Sadu Chiru (Leimaram) Waterfalls, and visit the sacred INA War Memorial in Moirang.",
         "highlights": [
@@ -20170,9 +19627,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.8,
         "reviewsCount": 130,
         "category": "Tribal",
-        "heroImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/mao_nagas.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/mao_nagas.webp',
         ],
         "overview": "Travel north from Imphal into the cool, pine-clad mountain territory of Senapati and the border hill station of Mao (5,800 ft) on the Manipur-Nagaland border. Experience the distinct culture of the Mao and Maram Naga tribes, explore ancient stone monoliths erected by tribal ancestors, and stroll along ridges blooming with wild Himalayan cherry blossoms in autumn/winter.",
         "highlights": [
@@ -20246,9 +19703,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 110,
         "category": "Adventure",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/tamenglong.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop"
+          '/assets/images/packageimages/tamenglong.webp',
         ],
         "overview": "Venture into the wild, lush western highlands of Tamenglong — known as the \"Land of Hornbills\" and the orange bowl of Manipur. Marvel at the seven breathtaking waterfalls cascading into the Barak River, explore the 655-meter subterranean labyrinth of Tharon Cave, visit the sacred Zeilad Lake, and witness thousands of migratory Amur Falcons roosting in autumn.",
         "highlights": [
@@ -20335,10 +19792,9 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 340,
         "category": "Popular",
-        "heroImage": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1200&auto=format&fit=crop",
+        "heroImage": '/assets/images/packageimages/manipurcomp.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+         '/assets/images/packageimages/manipurcomp.webp',
         ],
         "overview": "The definitive all-encompassing journey through the Jewel of India! Experience the world’s only floating national park on Loktak Lake, track the dancing Sangai deer, explore the royal Kangla Fort and 500-year-old Ima Keithel women’s market in Imphal, hike the mist-shrouded Shirui Lily hills in Ukhrul, and witness the 2,000-year-old eternal sacred fire of Andro.",
         "highlights": [

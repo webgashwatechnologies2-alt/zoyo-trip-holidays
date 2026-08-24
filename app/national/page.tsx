@@ -130,7 +130,7 @@ export default function NationalPage() {
     <main className="flex flex-col w-full overflow-x-hidden bg-[#fcf9f5] min-h-screen">
 
       {/* ─── HERO BANNER ─── */}
-      <section className="relative w-full h-[420px] md:h-[500px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-[480px] sm:min-h-[540px] md:min-h-[580px] flex items-center justify-center overflow-hidden py-14 sm:py-20 md:py-24">
         <img
           src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=2000&auto=format&fit=crop"
           alt="National Destinations India"
@@ -139,7 +139,7 @@ export default function NationalPage() {
         />
         <div className="absolute inset-0" />
 
-        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto my-auto">
           <div className="inline-flex items-center gap-2 text-white/70 text-[13px] font-medium mb-5 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
             <Link href="/" className="hover:text-white transition">Home</Link>
             <span>/</span>

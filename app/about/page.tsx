@@ -59,8 +59,6 @@ function useCountUp(target: number, duration = 2200, start = false) {
   }, [target, duration, start]);
   return count;
 }
-
-/* ─── Stat Card Component ─── */
 function StatCard({
   value,
   suffix,
@@ -93,7 +91,6 @@ function StatCard({
       </div>
       <div className="text-[16px] text-black font-bold mt-2.5">{label}</div>
       {sublabel && <div className="text-[13px] text-gray-400 font-normal mt-1">{sublabel}</div>}
-      {/* Subtle bottom glow indicator */}
       <div className="w-12 h-1 bg-[#f26c22]/40 rounded-full mt-4 group-hover:w-20 group-hover:bg-[#f26c22] transition-all duration-300" />
     </div>
   );
@@ -291,7 +288,7 @@ export default function AboutPage() {
             alt="Zoyo Trip Holidays - About Us"
             fill
             className="w-full h-full object-cover scale-105 animate-pulse-slow"
-            style={{ filter: "brightness(0.38)" }}
+            style={{ filter: "brightness(0.70)" }}
             priority
           />
           <div className="absolute inset-0" />

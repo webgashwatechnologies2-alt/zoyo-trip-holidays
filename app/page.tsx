@@ -11,7 +11,6 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import { StaticImageData } from 'next/image';
 import { GiFlowerPot } from 'react-icons/gi';
 import { BsSun, BsSnow } from 'react-icons/bs';
-import { FaMountain, FaGlobeAmericas, FaHeart, FaLeaf } from 'react-icons/fa';
 import Image from 'next/image';
 import { FaMapMarkerAlt, FaTags, FaShieldAlt } from "react-icons/fa";
 
@@ -53,25 +52,25 @@ const seasonDestinations: Record<
   { name: string; tours: number; img: StaticImageData; price: string; tagline: string }[]
 > = {
   spring: [
-    { name: 'Dubai', tours: 4, img: DubaiImg, price: '₹45,999', tagline: 'Luxury skylines, desert safaris & gold souks.' },
-    { name: 'Mauritius', tours: 1, img: MauritiusImg, price: '₹62,999', tagline: 'Crystal lagoons, white sands & coral reefs.' },
-    { name: 'Bali', tours: 3, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.' },
-    { name: 'Singapore', tours: 3, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & Gardens by the Bay.' },
-    { name: 'Vietnam', tours: 1, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.' },
-    { name: 'Sri Lanka', tours: 1, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.' },
-    { name: 'Maldives', tours: 1, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.' },
-    { name: 'Thailand', tours: 2, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.' },
+    { name: 'Dubai', tours: 5, img: DubaiImg, price: '₹45,999', tagline: 'Luxury skylines, desert safaris & gold souks.' },
+    { name: 'Mauritius', tours: 5, img: MauritiusImg, price: '₹62,999', tagline: 'Crystal lagoons, white sands & coral reefs.' },
+    { name: 'Bali', tours: 5, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.' },
+    { name: 'Singapore', tours: 5, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & Gardens by the Bay.' },
+    { name: 'Vietnam', tours: 5, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.' },
+    { name: 'Sri Lanka', tours: 5, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.' },
+    { name: 'Maldives', tours: 5, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.' },
+    { name: 'Thailand', tours: 5, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.' },
   ],
 
   summer: [
-    { name: 'Bhutan', tours: 1, img: BhutanImg, price: '₹38,999', tagline: 'Majestic dzongs, Tiger\'s Nest & serene valleys.' },
-    { name: 'Malaysia', tours: 1, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.' },
-    { name: 'Nepal', tours: 1, img: NepalImg, price: '₹15,999', tagline: 'Himalayan treks, Pokhara lake & Buddhist shrines.' },
-    { name: 'Philippines', tours: 1, img: PhilippinesImg, price: '₹31,999', tagline: 'Chocolate Hills, pristine beaches & island hopping.' },
-    { name: 'Japan', tours: 2, img: JapanImg, price: '₹54,999', tagline: 'Cherry blossoms, Mt. Fuji & ancient samurai culture.' },
-    { name: 'Azerbaijan', tours: 1, img: AzerbaijanImg, price: '₹29,999', tagline: 'Fire temples, Caspian coast & carpet bazaars.' },
-    { name: 'Hong Kong', tours: 2, img: HongKongImg, price: '₹32,999', tagline: 'Iconic skyline, dim sum delights & Victoria Peak.' },
-    { name: 'South Korea', tours: 1, img: SouthKoreaImg, price: '₹44,999', tagline: 'K-culture, palaces, neon nights & han river.' },
+    { name: 'Bhutan', tours: 5, img: BhutanImg, price: '₹38,999', tagline: 'Majestic dzongs, Tiger\'s Nest & serene valleys.' },
+    { name: 'Malaysia', tours: 5, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.' },
+    { name: 'Nepal', tours: 5, img: NepalImg, price: '₹15,999', tagline: 'Himalayan treks, Pokhara lake & Buddhist shrines.' },
+    { name: 'Philippines', tours: 5, img: PhilippinesImg, price: '₹31,999', tagline: 'Chocolate Hills, pristine beaches & island hopping.' },
+    { name: 'Japan', tours: 5, img: JapanImg, price: '₹54,999', tagline: 'Cherry blossoms, Mt. Fuji & ancient samurai culture.' },
+    { name: 'Azerbaijan', tours: 5, img: AzerbaijanImg, price: '₹29,999', tagline: 'Fire temples, Caspian coast & carpet bazaars.' },
+    { name: 'Hong Kong', tours: 5, img: HongKongImg, price: '₹32,999', tagline: 'Iconic skyline, dim sum delights & Victoria Peak.' },
+    { name: 'South Korea', tours: 5, img: SouthKoreaImg, price: '₹44,999', tagline: 'K-culture, palaces, neon nights & han river.' },
   ],
 
   autumn: [
@@ -86,14 +85,14 @@ const seasonDestinations: Record<
   ],
 
   winter: [
-    { name: 'Maldives', tours: 2, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.' },
+    { name: 'Maldives', tours: 5, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.' },
     { name: 'Dubai', tours: 5, img: DubaiImg, price: '₹45,999', tagline: 'Romantic escapes, art, and cafés.' },
-    { name: 'Thailand', tours: 3, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.' },
-    { name: 'Singapore', tours: 2, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & night safari.' },
-    { name: 'Bali', tours: 4, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.' },
-    { name: 'Malaysia', tours: 2, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.' },
-    { name: 'Sri Lanka', tours: 2, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.' },
-    { name: 'Vietnam', tours: 2, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.' },
+    { name: 'Thailand', tours: 5, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.' },
+    { name: 'Singapore', tours: 5, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & night safari.' },
+    { name: 'Bali', tours: 5, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.' },
+    { name: 'Malaysia', tours: 5, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.' },
+    { name: 'Sri Lanka', tours: 5, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.' },
+    { name: 'Vietnam', tours: 5, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.' },
   ],
 };
 
@@ -110,12 +109,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden">
-      
-      {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative w-full h-[320px] sm:h-[420px] md:h-[600px] flex flex-col justify-center items-center">
+            <section className="relative w-full h-[320px] sm:h-[420px] md:h-[600px] flex flex-col justify-center items-center">
         <HeroCarousel />
-        
-        {/* DESKTOP SEARCH BAR (md and above): 100% Exact original layout */}
         <div className="hidden md:flex absolute bottom-[-90px] w-full flex-col items-center z-30 px-6">
           <div className="flex bg-white shadow-md rounded-full p-1.5 mb-[-12px] z-20 border border-gray-100">
             <button className="bg-[#f26c22] text-white px-6 py-2 rounded-full text-[13px] font-bold flex items-center gap-2 shadow-sm">
@@ -148,7 +143,7 @@ export default function Home() {
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 <div className="flex flex-col justify-center">
                   <span className="text-[13px] font-bold text-[#111] leading-tight">22 November</span>
-                  <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Check-In</span>
+                  <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Monday 2026</span>
                 </div>
               </div>
               <div className="flex-1 border border-gray-200 rounded-[8px] p-3 flex items-center gap-3">
@@ -176,11 +171,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* MOBILE SEARCH BAR (screens < md): Smoothly sits with clean top visibility and zero clipping */}
       <div className="md:hidden w-full px-4 -mt-10 sm:-mt-14 relative z-30 mb-8 flex flex-col items-center">
-        
-        {/* Mobile Category Pill (100% visible, not clipped) */}
         <div className="flex bg-white shadow-lg rounded-full p-1 mb-[-14px] z-20 border border-gray-200 max-w-[calc(100vw-32px)] overflow-x-auto no-scrollbar">
           <button
             onClick={() => setMobileCategory('domestic')}
@@ -220,7 +211,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Mobile Search Card */}
         <div className="bg-white rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.12)] w-full max-w-md p-5 pt-8 border border-gray-100">
           <div className="space-y-3">
             <div className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white">
@@ -235,7 +225,7 @@ export default function Home() {
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               <div className="flex flex-col justify-center">
                 <span className="text-[13px] font-bold text-[#111] leading-tight">22 November</span>
-                <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Check-In</span>
+                <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Monday 2026</span>
               </div>
             </div>
 
@@ -271,10 +261,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-
       </div>
-
-      {/* Desktop spacer */}
       <div className="hidden md:block h-[120px] w-full bg-transparent"></div>
 
       <TopNationalDestinations />
@@ -316,13 +303,13 @@ export default function Home() {
                 fill
                 className="absolute inset-0 object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
               <div className="absolute top-4 left-4 bg-white/15 backdrop-blur-sm border border-white/20 text-white text-[11px] font-semibold px-3 py-1 rounded-full">
                 {dest.tours} {dest.tours === 1 ? 'Tour' : 'Tours'} Available
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
                 {/* Destination name */}
-                <h3 className="text-[24px] font-extrabold mb-1 leading-tight drop-shadow-sm tracking-tight">
+                <h3 className="text-[24px] font-semibold mb-1 leading-tight drop-shadow-sm tracking-tight">
                   {dest.name}
                 </h3>
                 <p className="text-[13.5px] font-semibold mb-2">
@@ -393,10 +380,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <BestToursSection />
       <ExploreZoyoSection />
-
       <section className="w-full px-4 sm:px-10 xl:px-50 py-16 text-center">
         <h2 className="text-3xl font-semibold mb-12 text-black">Our Partner</h2>
         <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-20">
@@ -407,7 +392,6 @@ export default function Home() {
           <Image src={makemytrip} alt="MakeMyTrip" className="h-10 w-auto object-contain" />
         </div>
       </section>
-      
       <TestimonialsSection />
     </div>
   );
