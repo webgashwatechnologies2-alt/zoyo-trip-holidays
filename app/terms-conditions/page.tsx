@@ -23,7 +23,7 @@ export default function TermsConditionsPage() {
             <span>/</span>
             <span className="text-[#f26c22] font-semibold">Terms & Conditions</span>
           </div>
-          <h1 className="text-[38px] sm:text-[54px] font-black text-white leading-tight mb-4 tracking-tight">
+          <h1 className="text-[38px] sm:text-[54px] text-white leading-tight mb-4 tracking-tight">
             Terms &{' '}
             <span className="bg-gradient-to-r from-[#f26c22] via-[#ffa347] to-[#ffd000] bg-clip-text text-transparent">
               Conditions
@@ -41,7 +41,7 @@ export default function TermsConditionsPage() {
           <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-3">
             <BsStars className="inline mr-1" /> Legal Agreement
           </span>
-          <h2 className="text-[26px] sm:text-[32px] font-black text-gray-900">
+          <h2 className="text-[26px] sm:text-[32px] text-gray-900">
             Terms & Conditions
           </h2>
           <p className="text-gray-500 text-sm mt-1">

@@ -5,9 +5,6 @@ import Link from 'next/link';
 import { FaPlane, FaStar, FaPhoneAlt, FaSearch, FaWhatsapp, FaClock, FaCheckCircle, FaMapMarkerAlt } from 'react-icons/fa';
 import { BsArrowRight, BsStars } from 'react-icons/bs';
 
-
-
-
 const internationalTours = [
   {
     name: 'Dubai & Abu Dhabi',
@@ -200,7 +197,7 @@ export default function InternationalPage() {
             <span>/</span>
             <span className="text-[#f26c22] font-semibold">International Destinations</span>
           </div>
-          <h1 className="text-[38px] sm:text-[54px] font-black text-white leading-tight mb-4 tracking-tight">
+          <h1 className="text-[38px] sm:text-[54px] text-white leading-tight mb-4 tracking-tight">
             Explore The{' '}
             <span className="bg-gradient-to-r from-[#f26c22] via-[#ffa347] to-[#ffd000] bg-clip-text text-transparent">
               World With Us
@@ -245,7 +242,7 @@ export default function InternationalPage() {
             <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-2">
               <BsStars className="inline mr-1" /> World Travel Packages
             </span>
-            <h2 className="text-[26px] sm:text-[32px] font-black text-gray-900">
+            <h2 className="text-[26px] sm:text-[32px] text-gray-900">
               Featured International Holiday Packages
             </h2>
             <p className="text-gray-500 text-sm mt-1">
@@ -259,11 +256,10 @@ export default function InternationalPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap cursor-pointer ${
-                  activeCategory === cat
-                    ? 'bg-[#111827] text-white shadow-md'
-                    : 'bg-white border border-gray-200 text-gray-700 hover:border-gray-400'
-                }`}
+                className={`px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap cursor-pointer ${activeCategory === cat
+                  ? 'bg-[#111827] text-white shadow-md'
+                  : 'bg-white border border-gray-200 text-gray-700 hover:border-gray-400'
+                  }`}
               >
                 {cat}
               </button>

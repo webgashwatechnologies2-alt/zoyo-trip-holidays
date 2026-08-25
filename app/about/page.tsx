@@ -36,7 +36,7 @@ import expedia from '@/public/assets/images/partners/Expedia_Partner.webp';
 import booking from '@/public/assets/images/partners/booking.com_partner.webp';
 import makemytrip from '@/public/assets/images/partners/MakeMyTrip_Partner.webp';
 
-import aboutHero from "@/public/assets/images/packageimages/andeman.webp";
+import aboutHero from "@/public/assets/images/packageimages/andaman-tour.webp";
 import aboutsecimage from "@/public/assets/images/packageimages/dubai.webp";
 import aboutsectwoimage from "@/public/assets/images/packageimages/Shimla-During-Monsoon.webp";
 

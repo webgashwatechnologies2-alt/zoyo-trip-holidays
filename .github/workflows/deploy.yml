@@ -1,0 +1,48 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Clean previous build
+        run: |
+          rm -rf .next
+          rm -rf out
+
+      - name: Build Next.js
+        run: npm run build
+
+      - name: Check build output
+        run: |
+          echo "Current Directory:"
+          pwd
+          echo "OUT:"
+          ls -la out
+
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: "out/*"
+          target: "/home/u568698356/public_html"
+          strip_components: 1

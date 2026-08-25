@@ -27,28 +27,27 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-white mb-4">International Destination</h4>
           <ul className="space-y-2 text-gray-400">
-            <li><Link href="#" className="hover:text-white">Bali</Link></li>
-            <li><Link href="#" className="hover:text-white">Bhutan</Link></li>
-            <li><Link href="#" className="hover:text-white">Dubai</Link></li>
-            <li><Link href="#" className="hover:text-white">Maldives</Link></li>
-            <li><Link href="#" className="hover:text-white">Mauritius</Link></li>
+            <li><Link href="/international/bali" className="hover:text-white">Bali</Link></li>
+            <li><Link href="/international/bhutan" className="hover:text-white">Bhutan</Link></li>
+            <li><Link href="/international/dubai" className="hover:text-white">Dubai</Link></li>
+            <li><Link href="/international/maldives" className="hover:text-white">Maldives</Link></li>
+            <li><Link href="/international/malaysia" className="hover:text-white">Malaysia</Link></li>
           </ul> <br />
           <h4 className="font-semibold text-white mb-4">National Destination</h4>
           <ul className="space-y-2 text-gray-400">
-            <li><Link href="#" className="hover:text-white">Andaman</Link></li>
-            <li><Link href="#" className="hover:text-white">Assam</Link></li>
-            <li><Link href="#" className="hover:text-white">Goa</Link></li>
-            <li><Link href="#" className="hover:text-white">Gujarat</Link></li>
-            <li><Link href="#" className="hover:text-white">Himachal Pradesh</Link></li>
-            <li><Link href="#" className="hover:text-white">Karnataka</Link></li>
+            <li><Link href="/national/assam" className="hover:text-white">Assam</Link></li>
+            <li><Link href="/national/goa" className="hover:text-white">Goa</Link></li>
+            <li><Link href="/national/gujarat" className="hover:text-white">Gujarat</Link></li>
+            <li><Link href="/national/himachal-pradesh" className="hover:text-white">Himachal Pradesh</Link></li>
+            <li><Link href="/national/karnataka" className="hover:text-white">Karnataka</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-semibold text-white mb-4">Pages</h4>
           <ul className="space-y-2 text-gray-400">
-            <li><Link href="#" className="hover:text-white">About</Link></li>
-            <li><Link href="#" className="hover:text-white">Gallery</Link></li>
+            <li><Link href="/about" className="hover:text-white">About</Link></li>
+            <li><Link href="/gallery" className="hover:text-white">Gallery</Link></li>
             <li><Link href="/news-events" className="hover:text-white">News & Events</Link></li>
             <li><Link href="/vision-mission" className="hover:text-white">Vision & Mission</Link></li>
             <li><Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
@@ -57,17 +56,14 @@ export default function Footer() {
             <li><Link href="/terms-conditions" className="hover:text-white">Terms & Conditions</Link></li>
           </ul>
         </div>
-
-
         <div>
           <h4 className="font-semibold text-white mb-4">Support</h4>
           <ul className="space-y-2 text-gray-400 mb-6">
             <li><Link href="#" className="hover:text-white">Help Centre</Link></li>
             <li><Link href="#" className="hover:text-white">Live Chat Support</Link></li>
             <li><Link href="#" className="hover:text-white">FAQs</Link></li>
-            <li><Link href="#" className="hover:text-white">Contact Us</Link></li>
+            <li><Link href="/contact" className="hover:text-white">Contact Us</Link></li>
           </ul>
-
           <h4 className="font-semibold text-white mb-4">Get In Touch</h4>
           <ul className="space-y-2 text-gray-400">
             <li><Link href="#" className="hover:text-white">(+91) 8091660060</Link></li>

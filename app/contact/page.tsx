@@ -41,7 +41,7 @@ export default function ContactPage() {
           style={{ filter: 'brightness(0.35)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0b1329] via-black/30 to-black/60" />
-        
+
         <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto my-auto">
           <div className="inline-flex items-center gap-2 text-white/70 text-[13px] font-medium mb-4 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
             <Link href="/" className="hover:text-white">Home</Link>
@@ -60,7 +60,7 @@ export default function ContactPage() {
       {/* Main Content */}
       <section className="py-20 px-6 sm:px-10 lg:px-20 max-w-[1240px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
+
           {/* Left Info Cards */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
@@ -68,7 +68,7 @@ export default function ContactPage() {
                 Head Office
               </span>
               <h2 className="text-[24px] font-black text-gray-900 mb-6">Get In Touch</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#f26c22]/10 text-[#f26c22] flex items-center justify-center text-xl shrink-0">
@@ -171,10 +171,12 @@ export default function ContactPage() {
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Rahul Sharma"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm"
+                        placeholder="Enter Your Name"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm text-black placeholder:text-gray-500"
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
                       />
                     </div>
                     <div>
@@ -183,7 +185,7 @@ export default function ContactPage() {
                         type="tel"
                         required
                         placeholder="+91 98765 43210"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm text-black"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       />
@@ -196,7 +198,7 @@ export default function ContactPage() {
                       <input
                         type="email"
                         placeholder="rahul@example.com"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm text-black"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       />
@@ -207,7 +209,7 @@ export default function ContactPage() {
                         type="text"
                         required
                         placeholder="e.g. Manali, Kashmir, Dubai, Bali, Maldives"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm text-black"
                         value={formData.destination}
                         onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                       />
@@ -218,7 +220,7 @@ export default function ContactPage() {
                     <div>
                       <label className="block text-gray-700 font-semibold text-[13.5px] mb-1.5">Number of Travelers</label>
                       <select
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm bg-white"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm text-black"
                         value={formData.travelers}
                         onChange={(e) => setFormData({ ...formData, travelers: e.target.value })}
                       >
@@ -232,7 +234,7 @@ export default function ContactPage() {
                       <label className="block text-gray-700 font-semibold text-[13.5px] mb-1.5">Approx. Travel Date</label>
                       <input
                         type="date"
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm bg-white"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm text-black"
                         value={formData.date}
                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                       />
@@ -244,7 +246,7 @@ export default function ContactPage() {
                     <textarea
                       rows={4}
                       placeholder="Tell us about your trip: hotel preference (3★, 4★, 5★), sightseeing interests, flight requirements, etc."
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-[#f26c22] text-sm text-black"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     />

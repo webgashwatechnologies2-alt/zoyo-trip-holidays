@@ -2,6 +2,13 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import Herobaner from "@/public/assets/images/bookings/busbookingbanner.png";
+import volvoacsleeperimage from "@/public/assets/images/bookings/volvoacsleeper.png";
+import superdeluxebusimage from "@/public/assets/images/bookings/scariabus.webp";
+import cruisebusimage from "@/public/assets/images/bookings/volvoluxury.webp";
+
+
 import {
   FaBus,
   FaMapMarkerAlt,
@@ -31,7 +38,7 @@ const busPackages = [
     features: ['AC Sleeper', 'USB Charging', 'Blanket & Pillow', 'Night Travel'],
     badge: 'Most Popular',
     badgeColor: 'bg-[#f26c22]',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop',
+    image: volvoacsleeperimage,
     rating: 4.8,
     reviews: 1240,
     departure: '9:00 PM',
@@ -46,7 +53,7 @@ const busPackages = [
     features: ['AC Semi-Sleeper', 'Live Tracking', 'Refreshments', 'Punctual'],
     badge: 'Budget Friendly',
     badgeColor: 'bg-[#1E6AD4]',
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop',
+    image: superdeluxebusimage,
     rating: 4.6,
     reviews: 890,
     departure: '6:00 PM',
@@ -61,7 +68,7 @@ const busPackages = [
     features: ['Premium Seating', 'Entertainment', 'Meals Included', 'Priority Boarding'],
     badge: 'Premium',
     badgeColor: 'bg-emerald-600',
-    image: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=800&auto=format&fit=crop',
+    image: cruisebusimage ,
     rating: 4.9,
     reviews: 645,
     departure: '7:30 PM',
@@ -138,13 +145,13 @@ export default function BusBookingPage() {
     <main className="flex flex-col w-full overflow-x-hidden bg-[#f8fafc] text-gray-800">
       {/* Hero Section */}
       <section className="relative w-full min-h-[520px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2000&auto=format&fit=crop"
+        <Image
+          src={Herobaner}
           alt="Bus Booking - Zoyo Trip Holidays"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ filter: 'brightness(0.28)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0b1422]/80 via-[#0b1422]/40 to-[#0b1422]/90" />
+        <div className="absolute inset-0" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#f26c22]/20 blur-[140px] pointer-events-none" />
         <div className="absolute bottom-10 right-1/4 w-80 h-80 rounded-full bg-[#1E6AD4]/25 blur-[120px] pointer-events-none" />
 
@@ -329,9 +336,11 @@ export default function BusBookingPage() {
                 className="group bg-white rounded-3xl overflow-hidden shadow-[0_5px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.13)] border border-gray-100 transition-all duration-400 hover:-translate-y-2"
               >
                 <div className="relative h-[200px] overflow-hidden">
-                  <img
+                  <Image
                     src={pkg.image}
                     alt={pkg.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

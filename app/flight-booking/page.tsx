@@ -21,6 +21,13 @@ import {
 } from 'react-icons/fa';
 import { BsArrowRight, BsCheckLg, BsStars } from 'react-icons/bs';
 import { MdFlightLand, MdFlightTakeoff, MdLuggage } from 'react-icons/md';
+import Image from 'next/image';
+import flighthero from "@/public/assets/images/bookings/flighthero.png";
+import indigoimage from "@/public/assets/images/bookings/indigo.webp";
+import Airindiaimage   from "@/public/assets/images/bookings/airindia.webp";
+import Vistaraimage   from "@/public/assets/images/bookings/vistara.webp";
+
+
 
 const flightPackages = [
   {
@@ -38,7 +45,7 @@ const flightPackages = [
     badgeColor: 'bg-[#f26c22]',
     seats: 12,
     class: 'Economy',
-    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=800&auto=format&fit=crop',
+    image: indigoimage,
     rating: 4.7,
     includes: ['15kg Check-in', 'Meal', 'Seat Choice', 'Web Check-in'],
   },
@@ -57,7 +64,7 @@ const flightPackages = [
     badgeColor: 'bg-[#F26C22]',
     seats: 6,
     class: 'Economy',
-    image: 'https://images.unsplash.com/photo-1583396910974-4f8c9a6b1e1d?q=80&w=800&auto=format&fit=crop',
+    image: Airindiaimage,
     rating: 4.5,
     includes: ['20kg Check-in', 'Hot Meal', 'Priority Boarding', 'Lounge Access'],
   },
@@ -76,7 +83,7 @@ const flightPackages = [
     badgeColor: 'bg-emerald-600',
     seats: 18,
     class: 'Economy',
-    image: 'https://images.unsplash.com/photo-1529074963764-98f45c47344b?q=80&w=800&auto=format&fit=crop',
+    image: Vistaraimage,
     rating: 4.8,
     includes: ['15kg Check-in', 'Snack', 'Window Seat', 'Free Cancellation'],
   },
@@ -122,12 +129,12 @@ const features = [
 ];
 
 const popularRoutes = [
-  { from: 'DEL', to: 'KUU', name: 'Delhi → Kullu', price: '₹4,200', hrs: '1h 15m' },
-  { from: 'DEL', to: 'SXR', name: 'Delhi → Srinagar', price: '₹5,800', hrs: '1h 20m' },
-  { from: 'DEL', to: 'IXC', name: 'Delhi → Chandigarh', price: '₹3,500', hrs: '1h 05m' },
-  { from: 'BOM', to: 'KUU', name: 'Mumbai → Kullu', price: '₹7,200', hrs: '2h 10m' },
-  { from: 'DEL', to: 'LEH', name: 'Delhi → Leh', price: '₹6,500', hrs: '1h 30m' },
-  { from: 'DEL', to: 'GAU', name: 'Delhi → Guwahati', price: '₹5,100', hrs: '2h 05m' },
+  { from: 'DELHI', to: 'KULLU', name: 'Delhi → Kullu', price: '₹4,200', hrs: '1h 15m' },
+  { from: 'DELHI', to: 'SRINAGAR', name: 'Delhi → Srinagar', price: '₹5,800', hrs: '1h 20m' },
+  { from: 'DELHI', to: 'CHANDIGARH', name: 'Delhi → Chandigarh', price: '₹3,500', hrs: '1h 05m' },
+  { from: 'MUMBAI', to: 'KULLU', name: 'Mumbai → Kullu', price: '₹7,200', hrs: '2h 10m' },
+  { from: 'DELHI', to: 'LEH', name: 'Delhi → Leh', price: '₹6,500', hrs: '1h 30m' },
+  { from: 'DELHI', to: 'GUWAHATI', name: 'Delhi → Guwahati', price: '₹5,100', hrs: '2h 05m' },
 ];
 
 export default function FlightBookingPage() {
@@ -157,13 +164,13 @@ export default function FlightBookingPage() {
     <main className="flex flex-col w-full overflow-x-hidden bg-[#f0f4ff] text-gray-800">
       {/* Hero Section */}
       <section className="relative w-full min-h-[560px] md:min-h-[640px] flex items-center justify-center overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000&auto=format&fit=crop"
+        <Image
+          src={flighthero}
           alt="Flight Booking - Zoyo Trip Holidays"
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.25)' }}
+          style={{ filter: 'brightness(0.35)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0d1b2e]/90 via-[#0d1b2e]/50 to-[#F26C22]/30" />
+        <div className="absolute inset-0" />
         <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-[#F26C22]/20 blur-[160px] pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-[#f26c22]/20 blur-[120px] pointer-events-none" />
 
@@ -379,12 +386,14 @@ export default function FlightBookingPage() {
                 className="group bg-white rounded-3xl overflow-hidden shadow-[0_5px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(30,106,212,0.15)] border border-gray-100 hover:border-[#F26C22]/30 transition-all duration-400 hover:-translate-y-2"
               >
                 <div className="relative h-[160px] overflow-hidden">
-                  <img
+                  <Image
                     src={pkg.image}
                     alt={pkg.airline}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 " />
                   <span className={`absolute top-4 left-4 ${pkg.badgeColor} text-white text-[11px] font-black px-3 py-1 rounded-full shadow-md`}>
                     {pkg.badge}
                   </span>

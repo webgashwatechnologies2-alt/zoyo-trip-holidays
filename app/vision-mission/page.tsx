@@ -23,7 +23,7 @@ export default function VisionMissionPage() {
             <span>/</span>
             <span className="text-[#f26c22] font-semibold">Vision & Mission</span>
           </div>
-          <h1 className="text-[38px] sm:text-[54px] font-black text-white leading-tight mb-4 tracking-tight">
+          <h1 className="text-[38px] sm:text-[54px] text-white leading-tight mb-4 tracking-tight">
             Our{' '}
             <span className="bg-gradient-to-r from-[#f26c22] via-[#ffa347] to-[#ffd000] bg-clip-text text-transparent">
               Vision & Mission
@@ -42,7 +42,7 @@ export default function VisionMissionPage() {
             <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-3">
               <BsStars className="inline mr-1" /> Our Vision
             </span>
-            <h2 className="text-[26px] sm:text-[32px] font-black text-gray-900 mb-6">
+            <h2 className="text-[26px] sm:text-[32px] text-gray-900 mb-6">
               To Be the World's Most Trusted Travel Partner
             </h2>
             <p className="text-gray-600 text-[15px] leading-[1.8] mb-6">
@@ -94,7 +94,7 @@ export default function VisionMissionPage() {
             <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-3">
               <BsStars className="inline mr-1" /> Our Mission
             </span>
-            <h2 className="text-[26px] sm:text-[32px] font-black text-gray-900 mb-6">
+            <h2 className="text-[26px] sm:text-[32px] text-gray-900 mb-6">
               Delivering Exceptional Travel Experiences
             </h2>
             <p className="text-gray-600 text-[15px] leading-[1.8] mb-6">
@@ -113,7 +113,7 @@ export default function VisionMissionPage() {
           <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-3">
             <BsStars className="inline mr-1" /> Core Values
           </span>
-          <h2 className="text-[26px] sm:text-[32px] font-black text-gray-900">
+          <h2 className="text-[26px] sm:text-[32px] text-gray-900">
             What We Stand For
           </h2>
         </div>

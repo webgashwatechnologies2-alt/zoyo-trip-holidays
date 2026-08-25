@@ -145,7 +145,7 @@ export default function NationalPage() {
             <span>/</span>
             <span className="text-[#f26c22] font-semibold">National Destinations</span>
           </div>
-          <h1 className="text-[38px] sm:text-[54px] font-black text-white leading-tight mb-4 tracking-tight">
+          <h1 className="text-[38px] sm:text-[54px] text-white leading-tight mb-4 tracking-tight">
             Discover{' '}
             <span className="bg-gradient-to-r from-[#f26c22] via-[#ffa347] to-[#ffd000] bg-clip-text text-transparent">
               Incredible India
@@ -190,7 +190,7 @@ export default function NationalPage() {
             <span className="text-[12px] font-bold text-[#f26c22] uppercase tracking-widest bg-[#f26c22]/10 px-3.5 py-1 rounded-full inline-block mb-2">
               <BsStars className="inline mr-1" /> Handcrafted Tours
             </span>
-            <h2 className="text-[26px] sm:text-[32px] font-black text-gray-900">
+            <h2 className="text-[26px] sm:text-[32px] text-gray-900">
               Featured Domestic Holiday Packages
             </h2>
             <p className="text-gray-500 text-sm mt-1">
