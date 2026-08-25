@@ -31,12 +31,10 @@ jobs:
 
       - name: Check build output
         run: |
-          echo "Current Directory:"
-          pwd
-          echo "OUT folder contents:"
+          echo "OUT folder root files:"
           ls -la out/
-          echo "OUT root files:"
-          ls out/*.html 2>/dev/null || echo "No HTML files in root"
+          echo "Total files in out:"
+          find out -type f | wc -l
 
       - name: Deploy via SCP
         uses: appleboy/scp-action@v0.1.7
@@ -45,7 +43,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          source: "out/*"
+          source: "out"
           target: "/home/u568698356/public_html"
           strip_components: 1
           rm: true
