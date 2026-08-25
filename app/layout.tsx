@@ -14,6 +14,10 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Zoyo Trip Holidays",
   description: "India's Trusted Tour And Destination Management Company",
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
