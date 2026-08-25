@@ -31,12 +31,12 @@ jobs:
 
       - name: Check build output
         run: |
-          echo "OUT folder root files:"
-          ls -la out/
           echo "Total files in out:"
           find out -type f | wc -l
+          echo "Root HTML files:"
+          ls out/*.html
 
-      - name: Deploy via SCP
+      - name: Upload build to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -44,6 +44,23 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "out"
-          target: "/home/u568698356/public_html"
-          strip_components: 1
-          rm: true
+          target: "/home/u568698356/deploy_temp"
+          strip_components: 0
+          rm: false
+
+      - name: Move files to public_html via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            echo "=== Clearing public_html ==="
+            rm -rf /home/u568698356/public_html/*
+            echo "=== Copying files ==="
+            cp -r /home/u568698356/deploy_temp/out/. /home/u568698356/public_html/
+            echo "=== Cleaning temp ==="
+            rm -rf /home/u568698356/deploy_temp
+            echo "=== Done! Files in public_html: ==="
+            ls /home/u568698356/public_html/ | head -20
