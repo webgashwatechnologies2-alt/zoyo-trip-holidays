@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,59512,t=>{t.q("/_next/static/media/airindia.2fur0scbrvymj.webp")},74182,t=>{t.q("/_next/static/media/flighthero.1q1jx3_qtbcy2.png")},63046,t=>{t.q("/_next/static/media/indigo.3xcqyoe_vs_s5.webp")},1577,t=>{t.q("/_next/static/media/vistara.36ywoq0wu_0c9.webp")}]);

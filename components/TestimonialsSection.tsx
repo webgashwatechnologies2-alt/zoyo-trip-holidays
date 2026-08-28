@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { FaStar, FaTripadvisor } from 'react-icons/fa';
 
 interface Testimonial {
   id: number;
@@ -212,12 +213,7 @@ export default function TestimonialsSection() {
             </span>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-4 h-4 fill-[#00b67a]"
-                >
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                </svg>
+                <FaStar className="w-4 h-4 text-[#00b67a]" />
                 <span className="font-bold text-[14px] tracking-tight text-[#111827]">
                   Trustpilot
                 </span>
@@ -227,11 +223,9 @@ export default function TestimonialsSection() {
                   {[...Array(5)].map((_, i) => (
                     <div
                       key={i}
-                      className="w-[14px] h-[14px] bg-[#00b67a] rounded-[1.5px] flex items-center justify-center"
+                      className="w-[14px] h-[14px] bg-[#00b67a] rounded-[1.5px] flex items-center justify-center text-white text-[9px]"
                     >
-                      <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-white">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                      </svg>
+                      <FaStar className="w-2.5 h-2.5 fill-white" />
                     </div>
                   ))}
                 </div>
@@ -259,12 +253,7 @@ export default function TestimonialsSection() {
           </div>
           <div className="flex flex-col items-end md:items-end">
             <div className="flex items-center gap-1.5 mb-0.5">
-              <svg
-                viewBox="0 0 24 24"
-                className="w-5 h-5 fill-[#00aa6c]"
-              >
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-5.5 13.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm11 0c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM12 9c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-              </svg>
+              <FaTripadvisor className="w-5 h-5 text-[#00aa6c]" />
               <span className="font-bold text-[14px] tracking-tight text-[#111827]">
                 Tripadvisor
               </span>

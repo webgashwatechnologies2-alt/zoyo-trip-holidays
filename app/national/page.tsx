@@ -218,9 +218,9 @@ export default function NationalPage() {
 
         {filteredTours.length === 0 ? (
           <div className="text-center py-20 text-gray-500">
-            <div className="text-5xl mb-4">🔍</div>
+            <FaSearch className="text-4xl text-gray-300 mx-auto mb-4" />
             <p className="text-lg font-semibold">No matching destinations found.</p>
-            <p className="text-sm mt-1">Try searching for "Kashmir", "Goa", or "Ladakh"</p>
+            <p className="text-sm mt-1">Try searching for &quot;Kashmir&quot;, &quot;Goa&quot;, or &quot;Ladakh&quot;</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">

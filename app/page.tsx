@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
+import HeroSearchBar from '@/components/HeroSearchBar';
+import SpecialOffersSection from '@/components/SpecialOffersSection';
+import HolidayDestinationsSection from '@/components/HolidayDestinationsSection';
 import TopNationalDestinations from '@/components/TopNationalDestinations';
 import TrustedCompanySection from '@/components/TrustedCompanySection';
 import BestToursSection from '@/components/BestToursSection';
@@ -49,28 +52,28 @@ import makemytrip from "@/public/assets/images/partners/MakeMyTrip_Partner.webp"
 
 const seasonDestinations: Record<
   string,
-  { name: string; tours: number; img: StaticImageData; price: string; tagline: string }[]
+  { name: string; tours: number; img: StaticImageData; price: string; tagline: string; slug: string }[]
 > = {
   spring: [
-    { name: 'Dubai', tours: 5, img: DubaiImg, price: '₹45,999', tagline: 'Luxury skylines, desert safaris & gold souks.' },
-    { name: 'Mauritius', tours: 5, img: MauritiusImg, price: '₹62,999', tagline: 'Crystal lagoons, white sands & coral reefs.' },
-    { name: 'Bali', tours: 5, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.' },
-    { name: 'Singapore', tours: 5, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & Gardens by the Bay.' },
-    { name: 'Vietnam', tours: 5, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.' },
-    { name: 'Sri Lanka', tours: 5, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.' },
-    { name: 'Maldives', tours: 5, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.' },
-    { name: 'Thailand', tours: 5, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.' },
+    { name: 'Dubai', tours: 5, img: DubaiImg, price: '₹45,999', tagline: 'Luxury skylines, desert safaris & gold souks.', slug: 'dubai' },
+    { name: 'Mauritius', tours: 5, img: MauritiusImg, price: '₹62,999', tagline: 'Crystal lagoons, white sands & coral reefs.', slug: 'mauritius' },
+    { name: 'Bali', tours: 5, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.', slug: 'bali' },
+    { name: 'Singapore', tours: 5, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & Gardens by the Bay.', slug: 'singapore' },
+    { name: 'Vietnam', tours: 5, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.', slug: 'vietnam' },
+    { name: 'Sri Lanka', tours: 5, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.', slug: 'sri-lanka' },
+    { name: 'Maldives', tours: 5, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.', slug: 'maldives' },
+    { name: 'Thailand', tours: 5, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.', slug: 'thailand' },
   ],
 
   summer: [
-    { name: 'Bhutan', tours: 5, img: BhutanImg, price: '₹38,999', tagline: 'Majestic dzongs, Tiger\'s Nest & serene valleys.' },
-    { name: 'Malaysia', tours: 5, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.' },
-    { name: 'Nepal', tours: 5, img: NepalImg, price: '₹15,999', tagline: 'Himalayan treks, Pokhara lake & Buddhist shrines.' },
-    { name: 'Philippines', tours: 5, img: PhilippinesImg, price: '₹31,999', tagline: 'Chocolate Hills, pristine beaches & island hopping.' },
-    { name: 'Japan', tours: 5, img: JapanImg, price: '₹54,999', tagline: 'Cherry blossoms, Mt. Fuji & ancient samurai culture.' },
-    { name: 'Azerbaijan', tours: 5, img: AzerbaijanImg, price: '₹29,999', tagline: 'Fire temples, Caspian coast & carpet bazaars.' },
-    { name: 'Hong Kong', tours: 5, img: HongKongImg, price: '₹32,999', tagline: 'Iconic skyline, dim sum delights & Victoria Peak.' },
-    { name: 'South Korea', tours: 5, img: SouthKoreaImg, price: '₹44,999', tagline: 'K-culture, palaces, neon nights & han river.' },
+    { name: 'Bhutan', tours: 5, img: BhutanImg, price: '₹38,999', tagline: "Majestic dzongs, Tiger's Nest & serene valleys.", slug: 'bhutan' },
+    { name: 'Malaysia', tours: 5, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.', slug: 'malaysia' },
+    { name: 'Nepal', tours: 5, img: NepalImg, price: '₹15,999', tagline: 'Himalayan treks, Pokhara lake & Buddhist shrines.', slug: 'nepal' },
+    { name: 'Philippines', tours: 5, img: PhilippinesImg, price: '₹31,999', tagline: 'Chocolate Hills, pristine beaches & island hopping.', slug: 'philippines' },
+    { name: 'Japan', tours: 5, img: JapanImg, price: '₹54,999', tagline: 'Cherry blossoms, Mt. Fuji & ancient samurai culture.', slug: 'japan' },
+    { name: 'Azerbaijan', tours: 5, img: AzerbaijanImg, price: '₹29,999', tagline: 'Fire temples, Caspian coast & carpet bazaars.', slug: 'azerbaijan' },
+    { name: 'Hong Kong', tours: 5, img: HongKongImg, price: '₹32,999', tagline: 'Iconic skyline, dim sum delights & Victoria Peak.', slug: 'hong-kong' },
+    { name: 'South Korea', tours: 5, img: SouthKoreaImg, price: '₹44,999', tagline: 'K-culture, palaces, neon nights & han river.', slug: 'south-korea' },
   ],
 
   autumn: [
@@ -85,14 +88,14 @@ const seasonDestinations: Record<
   ],
 
   winter: [
-    { name: 'Maldives', tours: 5, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.' },
-    { name: 'Dubai', tours: 5, img: DubaiImg, price: '₹45,999', tagline: 'Romantic escapes, art, and cafés.' },
-    { name: 'Thailand', tours: 5, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.' },
-    { name: 'Singapore', tours: 5, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & night safari.' },
-    { name: 'Bali', tours: 5, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.' },
-    { name: 'Malaysia', tours: 5, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.' },
-    { name: 'Sri Lanka', tours: 5, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.' },
-    { name: 'Vietnam', tours: 5, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.' },
+    { name: 'Maldives', tours: 5, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.', slug: 'maldives' },
+    { name: 'Dubai', tours: 5, img: DubaiImg, price: '₹45,999', tagline: 'Romantic escapes, art, and cafés.', slug: 'dubai' },
+    { name: 'Thailand', tours: 5, img: ThailandImg, price: '₹22,999', tagline: 'Floating markets, temples & turquoise coasts.', slug: 'thailand' },
+    { name: 'Singapore', tours: 5, img: SingaporeImg, price: '₹35,999', tagline: 'Futuristic city, street food & night safari.', slug: 'singapore' },
+    { name: 'Bali', tours: 5, img: BaliImg, price: '₹28,499', tagline: 'Temples, rice terraces & tropical sunsets.', slug: 'bali' },
+    { name: 'Malaysia', tours: 5, img: MalaysiaImg, price: '₹26,499', tagline: 'Twin Towers, rainforests & Langkawi islands.', slug: 'malaysia' },
+    { name: 'Sri Lanka', tours: 5, img: SriLankaImg, price: '₹19,999', tagline: 'Ancient ruins, lush tea gardens & wildlife.', slug: 'sri-lanka' },
+    { name: 'Vietnam', tours: 5, img: VietnamImg, price: '₹24,999', tagline: 'Lantern festivals, Halong Bay & street cuisine.', slug: 'vietnam' },
   ],
 };
 
@@ -105,166 +108,18 @@ const seasonTabs = [
 
 export default function Home() {
   const [activeSeasonTab, setActiveSeasonTab] = useState('spring');
-  const [mobileCategory, setMobileCategory] = useState<'domestic' | 'international' | 'honeymoon' | 'custom'>('domestic');
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden">
-            <section className="relative w-full h-[320px] sm:h-[420px] md:h-[600px] flex flex-col justify-center items-center">
+      <section className="relative w-full h-[320px] sm:h-[420px] md:h-[600px] flex flex-col justify-center items-center">
         <HeroCarousel />
-        <div className="hidden md:flex absolute bottom-[-90px] w-full flex-col items-center z-30 px-6">
-          <div className="flex bg-white shadow-md rounded-full p-1.5 mb-[-12px] z-20 border border-gray-100">
-            <button className="bg-[#f26c22] text-white px-6 py-2 rounded-full text-[13px] font-bold flex items-center gap-2 shadow-sm">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" /></svg>
-              Domestic Tours
-            </button>
-            <button className="bg-transparent text-[#222] hover:bg-gray-50 px-5 py-2 rounded-full text-[13px] font-bold flex items-center gap-2 transition">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" /></svg>
-              International Tours
-            </button>
-            <button className="bg-transparent text-[#222] hover:bg-gray-50 px-5 py-2 rounded-full text-[13px] font-bold flex items-center gap-2 transition">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
-              Honeymoon Packages
-            </button>
-            <button className="bg-transparent text-[#222] hover:bg-gray-50 px-5 py-2 rounded-full text-[13px] font-bold flex items-center gap-2 transition">
-              <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" /></svg>
-              Custom Itinerary
-            </button>
-          </div>
-          <div className="bg-white rounded-[16px] shadow-[0_8px_30px_rgba(0,0,0,0.08)] w-full max-w-[1150px] p-8 pt-10">
-            <div className="flex flex-row items-stretch gap-4 h-[60px]">
-              <div className="flex-1 border border-gray-200 rounded-[8px] p-3 flex items-center gap-3">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                <div className="flex flex-col justify-center">
-                  <span className="text-[13px] font-bold text-[#111] leading-tight">Where to?</span>
-                  <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Destination</span>
-                </div>
-              </div>
-              <div className="flex-1 border border-gray-200 rounded-[8px] p-3 flex items-center gap-3">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                <div className="flex flex-col justify-center">
-                  <span className="text-[13px] font-bold text-[#111] leading-tight">22 November</span>
-                  <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Monday 2026</span>
-                </div>
-              </div>
-              <div className="flex-1 border border-gray-200 rounded-[8px] p-3 flex items-center gap-3">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-                <div className="flex flex-col justify-center">
-                  <span className="text-[13px] font-bold text-[#111] leading-tight">22 November</span>
-                  <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Saturday 2026</span>
-                </div>
-              </div>
-              <div className="flex-1 border border-gray-200 rounded-[8px] p-3 flex items-center gap-3">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-[1.5]"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /><circle cx="8" cy="6" r="1" /><circle cx="8" cy="12" r="1" /><circle cx="8" cy="18" r="1" /></svg>
-                <div className="flex flex-col justify-center">
-                  <span className="text-[13px] font-medium text-gray-400 leading-tight">Select</span>
-                  <span className="text-[12px] text-gray-500 leading-tight mt-0.5">No. of Travelers</span>
-                </div>
-              </div>
-              <Link href="/national" className="bg-[#f26c22] hover:bg-[#d95d1a] transition text-white rounded-[8px] px-10 font-bold flex items-center justify-center gap-2 h-full cursor-pointer">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 stroke-[2.5]"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                SEARCH
-              </Link>
-            </div>
-            <div className="mt-5 text-[12.5px] text-gray-600 font-medium ml-1">
-              Can&apos;t find what you&apos;re looking for? create your <Link href="/contact" className="text-[#1E6AD4] font-bold hover:underline">Custom Itinerary</Link>
-            </div>
-          </div>
-        </div>
+        {/* Dynamic Interactive Hero Search Bar */}
+        <HeroSearchBar />
       </section>
-      <div className="md:hidden w-full px-4 -mt-10 sm:-mt-14 relative z-30 mb-8 flex flex-col items-center">
-        <div className="flex bg-white shadow-lg rounded-full p-1 mb-[-14px] z-20 border border-gray-200 max-w-[calc(100vw-32px)] overflow-x-auto no-scrollbar">
-          <button
-            onClick={() => setMobileCategory('domestic')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              mobileCategory === 'domestic' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" className="w-3.5 h-3.5"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" /></svg>
-            Domestic
-          </button>
-          <button
-            onClick={() => setMobileCategory('international')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              mobileCategory === 'international' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" className="w-3.5 h-3.5"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" /></svg>
-            International
-          </button>
-          <button
-            onClick={() => setMobileCategory('honeymoon')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              mobileCategory === 'honeymoon' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" className="w-3.5 h-3.5"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
-            Honeymoon
-          </button>
-          <button
-            onClick={() => setMobileCategory('custom')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              mobileCategory === 'custom' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" className="w-3.5 h-3.5"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" /></svg>
-            Custom
-          </button>
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.12)] w-full max-w-md p-5 pt-8 border border-gray-100">
-          <div className="space-y-3">
-            <div className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              <div className="flex flex-col justify-center">
-                <span className="text-[13px] font-bold text-[#111] leading-tight">Where to?</span>
-                <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Destination</span>
-              </div>
-            </div>
-
-            <div className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              <div className="flex flex-col justify-center">
-                <span className="text-[13px] font-bold text-[#111] leading-tight">22 November</span>
-                <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Monday 2026</span>
-              </div>
-            </div>
-
-            <div className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-              <div className="flex flex-col justify-center">
-                <span className="text-[13px] font-bold text-[#111] leading-tight">22 November</span>
-                <span className="text-[12px] text-gray-500 leading-tight mt-0.5">Saturday 2026</span>
-              </div>
-            </div>
-
-            <div className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5 text-gray-400 stroke-[1.5]"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /><circle cx="8" cy="6" r="1" /><circle cx="8" cy="12" r="1" /><circle cx="8" cy="18" r="1" /></svg>
-              <div className="flex flex-col justify-center">
-                <span className="text-[13px] font-medium text-gray-400 leading-tight">Select</span>
-                <span className="text-[12px] text-gray-500 leading-tight mt-0.5">No. of Travelers</span>
-              </div>
-            </div>
-
-            <Link
-              href="/national"
-              className="w-full bg-[#f26c22] hover:bg-[#d95d1a] transition text-white rounded-xl py-3.5 font-bold flex items-center justify-center gap-2 text-sm shadow-md"
-            >
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-4 h-4 stroke-[2.5]"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-              SEARCH
-            </Link>
-          </div>
-
-          <div className="mt-4 text-center text-[12px] text-gray-600 font-medium">
-            Can&apos;t find what you&apos;re looking for? create your{' '}
-            <Link href="/contact" className="text-[#1E6AD4] font-bold hover:underline">
-              Custom Itinerary
-            </Link>
-          </div>
-        </div>
-      </div>
       <div className="hidden md:block h-[120px] w-full bg-transparent"></div>
-
-      <TopNationalDestinations />
+      <SpecialOffersSection />
+      <HolidayDestinationsSection />
+      {/* <TopNationalDestinations /> */}
       <TrustedCompanySection />
       
       <section className="w-full bg-white py-16 px-4 sm:px-10 lg:px-20">
@@ -293,9 +148,10 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-[1400px] mx-auto">
           {(seasonDestinations[activeSeasonTab] || []).map((dest, i) => (
-            <div
+            <Link
               key={`${activeSeasonTab}-${i}`}
-              className="relative h-[520px] rounded-2xl overflow-hidden group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.10)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.18)] transition-all duration-300"
+              href={`/international/${dest.slug}`}
+              className="relative h-[520px] rounded-2xl overflow-hidden group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.10)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.18)] transition-all duration-300 block"
             >
               <Image
                 src={dest.img}
@@ -320,12 +176,12 @@ export default function Home() {
                   {dest.tagline}
                 </p>
                 <div className="mt-4">
-                  <button className="text-[12px] font-bold text-white border border-white/60 px-4 py-1.5 rounded-full hover:bg-white hover:text-black hover:scale-105 hover:border-white active:scale-95 transition-all duration-200">
+                  <span className="text-[12px] font-bold text-white border border-white/60 px-4 py-1.5 rounded-full group-hover:bg-white group-hover:text-black group-hover:scale-105 group-hover:border-white active:scale-95 transition-all duration-200 inline-block">
                     Explore Now →
-                  </button>
+                  </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

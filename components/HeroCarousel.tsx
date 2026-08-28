@@ -2,8 +2,10 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import herobaner1 from '@/public/assets/images/Herobanner/herobnaer1.webp';
-import herobaner2 from '@/public/assets/images/Herobanner/herobanner2.webp';
+import herobaner2 from '@/public/assets/images/Herobanner/student-tours-offer-image.webp';
 import herobaner3 from '@/public/assets/images/Herobanner/herobanner3.webp';
+
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const images = [herobaner1, herobaner2, herobaner3];
 
@@ -44,11 +46,19 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      <button onClick={prevSlide} className="absolute left-6 top-[45%] text-white/80 hover:text-white transition z-20 cursor-pointer">
-        <svg fill="currentColor" viewBox="0 0 24 24" className="w-10 h-10"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /></svg>
+      <button 
+        onClick={prevSlide} 
+        aria-label="Previous Banner"
+        className="absolute left-6 top-[45%] w-11 h-11 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-xs transition-all z-20 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+      >
+        <FaChevronLeft className="w-5 h-5" />
       </button>
-      <button onClick={nextSlide} className="absolute right-6 top-[45%] text-white/80 hover:text-white transition z-20 cursor-pointer">
-        <svg fill="currentColor" viewBox="0 0 24 24" className="w-10 h-10"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /></svg>
+      <button 
+        onClick={nextSlide} 
+        aria-label="Next Banner"
+        className="absolute right-6 top-[45%] w-11 h-11 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-xs transition-all z-20 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+      >
+        <FaChevronRight className="w-5 h-5" />
       </button>
     </>
   );

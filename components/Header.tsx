@@ -2,7 +2,21 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaBars, FaTimes, FaChevronDown, FaPhoneAlt, FaWhatsapp, FaFacebookF, FaYoutube, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { 
+  FaBars, 
+  FaTimes, 
+  FaChevronDown, 
+  FaPhoneAlt, 
+  FaWhatsapp, 
+  FaFacebookF, 
+  FaYoutube, 
+  FaInstagram, 
+  FaLinkedinIn, 
+  FaMapMarkerAlt, 
+  FaEnvelope, 
+  FaFileInvoice, 
+  FaCreditCard 
+} from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import zoyoLogo from '../public/assets/images/logo/zoyo_logo.png';
 
@@ -133,15 +147,11 @@ export default function Header() {
           <div className="h-[38px] sm:h-[45px] flex justify-between items-center px-1.5 sm:px-4 text-white text-[11px] sm:text-[13px] font-medium">
             <div className="hidden md:flex items-center gap-6 whitespace-nowrap overflow-hidden">
               <div className="hidden md:flex items-center gap-1.5 truncate">
-                <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4 shrink-0">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
+                <FaMapMarkerAlt className="w-3.5 h-3.5 shrink-0 text-white" />
                 <span className="truncate">Near by Ananda Marga High School, HPSEBL Colony, Bhuntar, Sarabai, Himachal Pradesh 175125</span>
               </div>
               <div className="flex items-center gap-1.5 shrink-0">
-                <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4 shrink-0">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                </svg>
+                <FaEnvelope className="w-3.5 h-3.5 shrink-0 text-white" />
                 <span>info@zoyotrip.in</span>
               </div>
               {/* Social Icons */}
@@ -171,20 +181,16 @@ export default function Header() {
             <div className="flex items-center gap-1.5 sm:gap-3 shrink-0 ml-auto">
               <Link
                 href="/contact"
-                className="bg-[#f26c22] hover:bg-[#d95d1a] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[4px] text-[10.5px] sm:text-[12px] font-bold flex items-center gap-1 transition shadow-sm whitespace-nowrap text-white"
+                className="bg-[#f26c22] hover:bg-[#d95d1a] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[4px] text-[10.5px] sm:text-[12px] font-bold flex items-center gap-1.5 transition shadow-sm whitespace-nowrap text-white"
               >
-                <svg fill="currentColor" viewBox="0 0 24 24" className="w-3 h-3 sm:w-3.5 sm:h-3.5">
-                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                </svg>
+                <FaFileInvoice className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 Get Quote
               </Link>
               <Link
                 href="/bookings"
-                className="bg-[#f26c22] hover:bg-[#d95d1a] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[4px] text-[10.5px] sm:text-[12px] font-bold flex items-center gap-1 transition shadow-sm whitespace-nowrap text-white"
+                className="bg-[#f26c22] hover:bg-[#d95d1a] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[4px] text-[10.5px] sm:text-[12px] font-bold flex items-center gap-1.5 transition shadow-sm whitespace-nowrap text-white"
               >
-                <svg fill="currentColor" viewBox="0 0 24 24" className="w-3 h-3 sm:w-3.5 sm:h-3.5">
-                  <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 1.99 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
-                </svg>
+                <FaCreditCard className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 Pay Now
               </Link>
             </div>
@@ -204,14 +210,10 @@ export default function Header() {
               >
                 <Link href="/national" className="hover:text-[#f26c22] transition flex items-center gap-1">
                   National Destinations
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    className={`w-4 h-4 mt-0.5 transition-transform duration-200 ${activeMenu === 'national' ? 'rotate-180 text-[#f26c22]' : ''
+                  <FaChevronDown
+                    className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${activeMenu === 'national' ? 'rotate-180 text-[#f26c22]' : ''
                       }`}
-                  >
-                    <path d="M7 10l5 5 5-5z" />
-                  </svg>
+                  />
                 </Link>
                 <div
                   className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${activeMenu === 'national'
@@ -317,14 +319,10 @@ export default function Header() {
               >
                 <Link href="/international" className="hover:text-[#f26c22] transition flex items-center gap-1">
                   International Destinations
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    className={`w-4 h-4 mt-0.5 transition-transform duration-200 ${activeMenu === 'international' ? 'rotate-180 text-[#f26c22]' : ''
+                  <FaChevronDown
+                    className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${activeMenu === 'international' ? 'rotate-180 text-[#f26c22]' : ''
                       }`}
-                  >
-                    <path d="M7 10l5 5 5-5z" />
-                  </svg>
+                  />
                 </Link>
                 <div
                   className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${activeMenu === 'international'
@@ -352,23 +350,6 @@ export default function Header() {
                             ))}
                           </ul>
                         </div>
-                        {/* <div>
-                          <div className="flex items-center gap-2 border-l-[3px] border-[#1E6AD4] pl-2.5 text-[12px] font-extrabold tracking-wider text-[#1a2b49] uppercase mb-4">
-                            {internationalDestinations.indianOcean.title}
-                          </div>
-                          <ul className="space-y-2.5">
-                            {internationalDestinations.indianOcean.items.map((item) => (
-                              <li key={item.name}>
-                                <Link
-                                  href={item.href}
-                                  className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
-                                >
-                                  {item.name}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div> */}
                       </div>
                       <div>
                         <div className="flex items-center gap-2 border-l-[3px] border-[#1E6AD4] pl-2.5 text-[12px] font-extrabold tracking-wider text-[#1a2b49] uppercase mb-4">
@@ -433,9 +414,9 @@ export default function Header() {
                 onMouseEnter={() => setActiveMenu('bookings')}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <Link href="/bookings" className="hover:text-[#f26c22] transition flex items-center gap-1">
+                <Link href="/bookings" className="hover:text-[#f26c22] transition flex items-center gap-1.5">
                   Bookings
-                  <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4 mt-0.5"><path d="M7 10l5 5 5-5z" /></svg>
+                  <FaChevronDown className="w-3 h-3 mt-0.5" />
                 </Link>
 
                 <div
@@ -473,9 +454,9 @@ export default function Header() {
                 onMouseEnter={() => setActiveMenu('account')}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <Link href="/account" className="hover:text-[#f26c22] transition flex items-center gap-1">
+                <Link href="/account" className="hover:text-[#f26c22] transition flex items-center gap-1.5">
                   My Account
-                  <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4 mt-0.5"><path d="M7 10l5 5 5-5z" /></svg>
+                  <FaChevronDown className="w-3 h-3 mt-0.5" />
                 </Link>
 
                 <div

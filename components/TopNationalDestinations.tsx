@@ -51,6 +51,7 @@ interface Destination {
   badges: Badge[];
   image: StaticImageData | string;
   features: string[];
+  link: string;
 }
 
 const destinations: Destination[] = [
@@ -70,6 +71,7 @@ const destinations: Destination[] = [
     ],
     image: lehLadakhImg,
     features: ['Stay Included', 'Meals Included', 'Pangong Lake Trip'],
+    link: '/national/ladakh',
   },
   {
     id: 2,
@@ -87,6 +89,7 @@ const destinations: Destination[] = [
     ],
     image: spitiImg,
     features: ['Monasteries Tour', 'Camp Stay', 'High Passes'],
+    link: '/national/spiti',
   },
   {
     id: 3,
@@ -105,6 +108,7 @@ const destinations: Destination[] = [
     ],
     image: himachalImg,
     features: ['Solang Valley', 'Private Transfers', '4★ Resort'],
+    link: '/national/himachal-pradesh',
   },
   {
     id: 4,
@@ -122,6 +126,7 @@ const destinations: Destination[] = [
     ],
     image: KeralaImg,
     features: ['Houseboat Stay', 'Tea Gardens', 'Candlelight Dinner'],
+    link: '/national/kerala',
   },
   {
     id: 5,
@@ -139,6 +144,7 @@ const destinations: Destination[] = [
     ],
     image: RajasthanImg,
     features: ['Palace Visits', 'Desert Safari', 'Cultural Show'],
+    link: '/national/rajasthan',
   },
   {
     id: 6,
@@ -156,6 +162,7 @@ const destinations: Destination[] = [
     ],
     image: Kashmirimg,
     features: ['Shikara Ride', 'Gondola Ride', 'Houseboat Stay'],
+    link: '/national/kashmir',
   },
   {
     id: 7,
@@ -173,6 +180,7 @@ const destinations: Destination[] = [
     ],
     image: Uttarakhandimg,
     features: ['River Rafting', 'Lake Tour', 'Mountain View Stays'],
+    link: '/national/uttarakhand',
   },
   {
     id: 8,
@@ -190,6 +198,7 @@ const destinations: Destination[] = [
     ],
     image: upimg,
     features: ['Taj Mahal Sunrise', 'Ganga Aarti', 'Heritage Guide'],
+    link: '/national',
   },
   {
     id: 9,
@@ -207,6 +216,7 @@ const destinations: Destination[] = [
     ],
     image: Sikkimimg,
     features: ['Tsomgo Lake', 'Monastery Tour', 'Kanchenjunga Views'],
+    link: '/national',
   },
   {
     id: 10,
@@ -224,6 +234,7 @@ const destinations: Destination[] = [
     ],
     image: Goaimg,
     features: ['Beach Resort', 'Water Sports', 'Sunset Cruise'],
+    link: '/national/goa',
   },
   {
     id: 11,
@@ -241,6 +252,7 @@ const destinations: Destination[] = [
     ],
     image: Assamimg,
     features: ['Rhino Safari', 'Living Root Bridges', 'Waterfalls'],
+    link: '/national',
   },
   {
     id: 12,
@@ -258,6 +270,7 @@ const destinations: Destination[] = [
     ],
     image: Andamanimg,
     features: ['Radhanagar Beach', 'Scuba / Snorkel', 'Ferry Transfers'],
+    link: '/national/andaman',
   },
 ];
 
@@ -386,9 +399,7 @@ export default function TopNationalDestinations() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Header Container */}
       <div className="relative flex flex-col md:flex-row items-center justify-between mb-10 gap-4">
-        {/* Floating Decorative Balloon */}
         <div className="hidden lg:flex items-end gap-1 absolute left-0 -top-8 pointer-events-none opacity-80">
           <Image
             src={balloonImg}
@@ -397,7 +408,6 @@ export default function TopNationalDestinations() {
           />
         </div>
 
-        {/* Center Title & Subtitle */}
         <div className="w-full text-center px-4">
           <div className="inline-flex items-center gap-1.5 bg-orange-50 border border-orange-200/80 px-3.5 py-1 rounded-full text-[#f26c22] text-[12px] font-bold uppercase tracking-wider mb-2.5">
             <FaTag className="w-3 h-3" /> Handcrafted India Holiday Packages
@@ -409,8 +419,6 @@ export default function TopNationalDestinations() {
             Curated list of premium domestic holiday packages with transparent pricing and verified stays.
           </p>
         </div>
-
-        {/* Carousel Navigation Buttons */}
         <div className="flex items-center gap-2.5 self-center md:self-auto md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2">
           <button
             onClick={handlePrev}
@@ -428,8 +436,6 @@ export default function TopNationalDestinations() {
           </button>
         </div>
       </div>
-
-      {/* Cards Slider Track */}
       <div
         className="overflow-hidden py-3"
         onTouchStart={handleTouchStart}
@@ -447,11 +453,7 @@ export default function TopNationalDestinations() {
                 key={item.id}
                 className="flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.3333%-16px)]"
               >
-                {/* Modern Luxury Tour Card */}
-                <div className="group bg-white rounded-[22px] overflow-hidden border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(242,108,34,0.14)] hover:border-orange-200/90 transition-all duration-300 h-full flex flex-col justify-between hover:-translate-y-1.5">
-                  
-                  {/* Top Image Box */}
-                  <div className="h-[225px] sm:h-[235px] relative overflow-hidden bg-gray-10">
+                <div className="group bg-white rounded-[22px] overflow-hidden border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_rgba(242,108,34,0.14)] hover:border-orange-200/90 transition-all duration-300 h-full flex flex-col justify-between hover:-translate-y-1.5">                  <Link href={item.link} className="h-[225px] sm:h-[235px] relative overflow-hidden bg-gray-10 block cursor-pointer">
                     {typeof item.image === 'string' ? (
                       <img
                         src={item.image}
@@ -466,16 +468,10 @@ export default function TopNationalDestinations() {
                         className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                       />
                     )}
-
-                    {/* Gradient Overlay for Top Badges & Bottom Contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/35 pointer-events-none" />
-
-                    {/* Top Left Badges */}
                     <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 z-10 max-w-[75%]">
                       {item.badges.map((b, idx) => renderBadge(b, idx))}
                     </div>
-
-                    {/* Top Right: Wishlist Heart & Rating */}
                     <div className="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-10">
                       <button
                         onClick={(e) => toggleLike(item.id, e)}
@@ -485,8 +481,6 @@ export default function TopNationalDestinations() {
                         <FaHeart className={`w-3.5 h-3.5 transition-colors ${isLiked ? 'text-red-500 fill-current' : 'text-white'}`} />
                       </button>
                     </div>
-
-                    {/* Bottom Floating Rating inside Image */}
                     <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between z-10 text-white">
                       <div className="inline-flex items-center gap-1.5 bg-black/50 backdrop-blur-md border border-white/20 px-2.5 py-1 rounded-full text-[11.5px] font-bold">
                         <FaStar className="text-amber-400 w-3 h-3" />
@@ -498,7 +492,7 @@ export default function TopNationalDestinations() {
                         <span>Verified Tour</span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Card Content Area */}
                   <div className="p-5 flex-1 flex flex-col justify-between">
@@ -540,7 +534,7 @@ export default function TopNationalDestinations() {
                         
                         {/* Left CTA: Modern Action Button */}
                         <Link
-                          href="/national"
+                          href={item.link}
                           className="bg-gradient-to-r from-[#f26c22] to-[#e05615] hover:from-[#e05615] hover:to-[#c8490e] text-white px-5 py-2.5 rounded-xl font-bold text-[13.5px] shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-1.5 active:scale-95 group/btn"
                         >
                           <span>Book Now</span>

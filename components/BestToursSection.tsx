@@ -3,7 +3,8 @@
 import { useState, useRef } from 'react';
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaHeart, FaTrophy } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaHeart, FaTrophy, FaArrowRight } from 'react-icons/fa';
+import Link from 'next/link';
 import { GiCastle } from 'react-icons/gi';
 import { BsBuilding, BsInfoCircle } from 'react-icons/bs';
 import { FiPlusCircle, FiCompass } from 'react-icons/fi';
@@ -43,6 +44,7 @@ interface TourCardData {
   price: string;
   image: StaticImageData | string;
   badges: Badge[];
+  link: string;
 }
 
 const tourCategories: Record<string, TourCardData[]> = {
@@ -54,6 +56,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '3 Days/4 Nights',
       price: '0.00',
       image: himachalimg,
+      link: '/national/himachal-pradesh',
       badges: [
         { label: 'Group Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -66,6 +69,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '2 Days/1 Nights',
       price: '0.00',
       image: Manaliimg,
+      link: '/national/himachal-pradesh',
       badges: [
         { label: 'Solo Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
       ],
@@ -77,6 +81,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '2 Days/1 Nights',
       price: '0.00',
       image: Shimlatourimg,
+      link: '/national/himachal-pradesh',
       badges: [
         { label: 'Sale on!', bg: 'bg-[#ef4444]', text: 'text-white' },
         { label: 'Group Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
@@ -90,6 +95,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '5 Days/4 Nights',
       price: '0.00',
       image: Dharamshalaimg,
+      link: '/national/himachal-pradesh',
       badges: [
         { label: 'Adventure', bg: 'bg-[#FFE100]', text: 'text-black' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -102,6 +108,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '7 Days/6 Nights',
       price: '0.00',
       image: Spitiimg,
+      link: '/national/spiti',
       badges: [
         { label: 'Group Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
         { label: 'Sale on!', bg: 'bg-[#ef4444]', text: 'text-white' },
@@ -116,6 +123,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '5 Days/4 Nights',
       price: '0.00',
       image: Dubaiimg,
+      link: '/international/dubai',
       badges: [
         { label: 'Sale on!', bg: 'bg-[#ef4444]', text: 'text-white' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -128,6 +136,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '6 Days/5 Nights',
       price: '0.00',
       image: Mauritiusimg,
+      link: '/international/mauritius',
       badges: [
         { label: 'Group Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -140,6 +149,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '4 Days/3 Nights',
       price: '0.00',
       image: Singaporeimg,
+      link: '/international/singapore',
       badges: [
         { label: 'Solo Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
       ],
@@ -151,6 +161,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '6 Days/5 Nights',
       price: '0.00',
       image: Thailandimg,
+      link: '/international/thailand',
       badges: [
         { label: 'Sale on!', bg: 'bg-[#ef4444]', text: 'text-white' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -165,6 +176,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '6 Days/5 Nights',
       price: '0.00',
       image: Rajasthanimg,
+      link: '/national/rajasthan',
       badges: [
         { label: 'Group Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -177,6 +189,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '5 Days/4 Nights',
       price: '0.00',
       image: Kashmirimg,
+      link: '/national/kashmir',
       badges: [
         { label: 'Sale on!', bg: 'bg-[#ef4444]', text: 'text-white' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -189,6 +202,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '5 Days/4 Nights',
       price: '0.00',
       image: Keralaimg,
+      link: '/national/kerala',
       badges: [
         { label: 'Solo Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
       ],
@@ -200,6 +214,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '3 Days/2 Nights',
       price: '0.00',
       image: Varanasiimg,
+      link: '/national',
       badges: [
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
       ],
@@ -213,6 +228,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '4 Days/3 Nights',
       price: '0.00',
       image: Manaliromanticimg,
+      link: '/national/himachal-pradesh',
       badges: [
         { label: 'Solo Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -225,6 +241,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '5 Days/4 Nights',
       price: '0.00',
       image: Maldivesoverwaterimg,
+      link: '/international/maldives',
       badges: [
         { label: 'Sale on!', bg: 'bg-[#ef4444]', text: 'text-white' },
         { label: 'Featured', bg: 'bg-[#f26c22]', text: 'text-white' },
@@ -237,6 +254,7 @@ const tourCategories: Record<string, TourCardData[]> = {
       duration: '5 Days/4 Nights',
       price: '0.00',
       image: Keralaprivateimg,
+      link: '/national/kerala',
       badges: [
         { label: 'Group Tour', bg: 'bg-[#FFE100]', text: 'text-black' },
       ],
@@ -316,11 +334,12 @@ export default function BestToursSection() {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {currentTours.map((tour) => (
-            <div
+            <Link
               key={tour.id}
-              className="min-w-[310px] sm:min-w-[360px] md:min-w-[390px] flex-shrink-0 bg-white rounded-2xl border border-gray-300 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 p-3.5 flex flex-col snap-start"
+              href={tour.link}
+              className="min-w-[310px] sm:min-w-[360px] md:min-w-[390px] flex-shrink-0 bg-white rounded-2xl border border-gray-300 shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 p-3.5 flex flex-col snap-start hover:-translate-y-1 group"
             >
-              <div className="relative h-[210px] w-full rounded-xl overflow-hidden mb-4 bg-gray-100 group">
+              <div className="relative h-[210px] w-full rounded-xl overflow-hidden mb-4 bg-gray-100">
                 <Image
                   src={tour.image}
                   alt={tour.title}
@@ -339,10 +358,8 @@ export default function BestToursSection() {
                 </div>
               </div>
               <div className="flex flex-col flex-grow px-1">
-                <h3 className="text-[17.5px] font-bold text-[#111827] tracking-tight mb-2 hover:text-[#f26c22] transition-colors cursor-pointer leading-tight">
-                  <span className="">
-                    {tour.title}
-                  </span>
+                <h3 className="text-[17.5px] font-bold text-[#111827] tracking-tight mb-2 group-hover:text-[#f26c22] transition-colors leading-tight">
+                  {tour.title}
                 </h3>
                 <div className="flex items-center text-[12.5px] text-gray-500 font-medium mb-5 gap-2">
                   <FaMapMarkerAlt className="text-gray-400 shrink-0 text-xs" />
@@ -351,10 +368,10 @@ export default function BestToursSection() {
                   <span className="text-gray-600">{tour.duration}</span>
                 </div>
                 <div className="flex items-center justify-between mt-auto mb-4">
-                  <button className="bg-[#f26c22] hover:bg-[#d95817] text-white font-bold text-[13px] px-5 py-2.5 rounded-lg shadow-sm flex items-center gap-1.5 active:scale-95 transition-all duration-200 cursor-pointer">
+                  <div className="bg-[#f26c22] hover:bg-[#d95817] text-white font-bold text-[13px] px-5 py-2.5 rounded-lg shadow-sm flex items-center gap-1.5 transition-all duration-200">
                     <span>Book Now</span>
-                    <span className="text-sm font-semibold">↗</span>
-                  </button>
+                    <FaArrowRight className="text-sm" />
+                  </div>
                   <div className="text-right">
                     <div className="text-[11px] text-gray-500 font-medium leading-none mb-1">
                       per person
@@ -365,19 +382,19 @@ export default function BestToursSection() {
                   </div>
                 </div>
                 <div className="border-t border-gray-100 pt-3 flex items-center justify-between text-[12px] text-gray-600 font-medium">
-                  <div className="flex items-center gap-1.5 hover:text-gray-900 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-1.5 hover:text-gray-900 transition-colors">
                     <FaTrophy className="text-gray-500 text-xs" />
                     <span>Experience</span>
                     <BsInfoCircle className="text-gray-400 text-xs" />
                   </div>
-                  <div className="flex items-center gap-1.5 hover:text-gray-900 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-1.5 hover:text-gray-900 transition-colors">
                     <FiPlusCircle className="text-gray-500 text-xs" />
                     <span>Inclusion</span>
                     <BsInfoCircle className="text-gray-400 text-xs" />
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="flex sm:hidden justify-center items-center gap-3 mt-4">
