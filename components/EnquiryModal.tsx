@@ -27,6 +27,8 @@ import expediaLogo from '@/public/assets/images/partners/Expedia_Partner.webp';
 import bookingLogo from '@/public/assets/images/partners/booking.com_partner.webp';
 import spitiWinterImg from '@/public/assets/images/packageimages/sptwinterexp.webp';
 
+import { sendEmailToZoyo } from '@/lib/sendEmail';
+
 const POPULAR_DESTINATIONS = [
   'Himachal Pradesh',
   'Kashmir',
@@ -45,7 +47,7 @@ const POPULAR_DESTINATIONS = [
 const TRIP_TYPES = [
   'Family Holiday',
   'Honeymoon / Couple',
-  'Group & Friends',
+  'Friends Group',
   'Solo Adventure',
   'Corporate Tour'
 ];
@@ -53,6 +55,7 @@ const TRIP_TYPES = [
 export default function EnquiryModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     dialCode: '+91',
@@ -103,9 +106,24 @@ export default function EnquiryModal() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.mobile) return;
+    setIsSubmitting(true);
+    
+    await sendEmailToZoyo({
+      formType: 'Exclusive Travel Quote (Popup Modal)',
+      name: formData.name,
+      phone: `${formData.dialCode} ${formData.mobile}`,
+      email: formData.email,
+      destination: formData.destination || 'Not Specified',
+      travelDate: formData.travelDate || 'Flexible',
+      adults: formData.adults,
+      children: formData.children,
+      tripType: formData.tripType,
+    });
+
+    setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
@@ -201,7 +219,7 @@ export default function EnquiryModal() {
                     India’s Trusted DMC Specialist
                   </span>
                   <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-snug">
-                    Why 25,000+ Travellers Choose <span className="text-[#f26c22]">Zoyo Trip Holidays</span>
+                    Why 50 Lakh Travellers Choose <span className="text-[#f26c22]">Zoyo Trip Holidays</span>
                   </h3>
                 </div>
 
@@ -222,7 +240,7 @@ export default function EnquiryModal() {
                       <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
                         <FaStar className="text-xs" />
                       </div>
-                      <span className="text-xs font-bold text-slate-900">4.9/5 Rating</span>
+                      <span className="text-xs font-bold text-slate-900">4.7/5 Rating</span>
                     </div>
                     <p className="text-[11px] text-slate-500 leading-tight">Over 8,000+ Real Client Reviews</p>
                   </div>
@@ -232,7 +250,7 @@ export default function EnquiryModal() {
                       <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
                         <FaUsers className="text-xs" />
                       </div>
-                      <span className="text-xs font-bold text-slate-900">25,000+ Guests</span>
+                      <span className="text-xs font-bold text-slate-900">50 Lakh Guests</span>
                     </div>
                     <p className="text-[11px] text-slate-500 leading-tight">Pan-India & International Trips</p>
                   </div>
@@ -470,10 +488,11 @@ export default function EnquiryModal() {
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="w-full relative group overflow-hidden bg-gradient-to-r from-[#f26c22] via-[#ea580c] to-[#d97706] text-white font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:brightness-105 active:scale-[0.99] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2"
+                        disabled={isSubmitting}
+                        className="w-full relative group overflow-hidden bg-gradient-to-r from-[#f26c22] via-[#ea580c] to-[#d97706] text-white font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:brightness-105 active:scale-[0.99] transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 disabled:opacity-75"
                       >
                         <span className="text-sm sm:text-base tracking-wide flex items-center gap-2">
-                          Get Free Customized Quote & Itinerary <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform" />
+                          {isSubmitting ? 'Sending Your Enquiry...' : 'Get Free Customized Quote & Itinerary'} <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform" />
                         </span>
                       </button>
                     </div>

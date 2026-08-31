@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="mt-4">
             <h4 className="font-semibold text-white mb-2">Happy Travelers</h4>
             <div className="bg-white/10 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 text-xs font-semibold">
-              <FaStar className="text-amber-400 text-sm" /> 5000+ Happy Travelers
+              <FaStar className="text-amber-400 text-sm" /> 50 Lakh Happy Travelers
             </div>
           </div>
         </div>

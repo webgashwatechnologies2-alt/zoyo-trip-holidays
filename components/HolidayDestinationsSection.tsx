@@ -111,7 +111,7 @@ const destinationsData: DestinationCard[] = [
     badge: 'Andaman',
     title: 'Andaman',
     tagline: 'Exotic Islands & Coral Reefs',
-    packagesCount: '15+ Packages',
+    packagesCount: '1115+ Packages',
     startingPrice: '₹21,999',
     image: andamanImg,
     link: '/national/andaman',
@@ -214,7 +214,7 @@ export default function HolidayDestinationsSection() {
               CURATED HOLIDAY ESCAPES
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#0f172a] tracking-tight">
-              Top Destinations This Holiday Season!
+              Top Destinations <span style={{color: '#1E6AD4'}}>This Holiday Season!</span> 
             </h2>
             <p className="text-sm sm:text-[15.5px] text-gray-500 font-medium mt-1.5">
               We Provide Fully Customized Tour Packages as per Your Travel Needs

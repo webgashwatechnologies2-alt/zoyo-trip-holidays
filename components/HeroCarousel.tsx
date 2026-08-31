@@ -1,13 +1,17 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import herobaner1 from '@/public/assets/images/Herobanner/herobnaer1.webp';
-import herobaner2 from '@/public/assets/images/Herobanner/student-tours-offer-image.webp';
-import herobaner3 from '@/public/assets/images/Herobanner/herobanner3.webp';
+import herobaner1 from '@/public/assets/images/Herobanner/janmastami.png';
+import herobaner2 from '@/public/assets/images/Herobanner/teachersday.png';
+import herobaner3 from '@/public/assets/images/Herobanner/diwalibaner.png';
+import herobaner4 from '@/public/assets/images/Herobanner/dusherra.png';
+import herobaner5  from '@/public/assets/images/Herobanner/ganeshchatuurthi.png';
+import herobaner6  from '@/public/assets/images/Herobanner/ac.png';
+import herobaner7  from '@/public/assets/images/Herobanner/navratri.png';
 
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const images = [herobaner1, herobaner2, herobaner3];
+const images = [herobaner1, herobaner2, herobaner3, herobaner4, herobaner5 , herobaner6, herobaner7];
 
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);

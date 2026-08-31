@@ -1,9 +1,33 @@
+import Image, { StaticImageData } from 'next/image';
+
+import vaishnodevi1 from "@/public/assets/images/iteneraryimages/Vaishno-Devi-Temple.webp";
+import vaishnodevi2 from "@/public/assets/images/iteneraryimages/kashmir2.webp";
+import vaishnodevi3 from "@/public/assets/images/iteneraryimages/kashmir3.webp";
+import kashmirbliss2 from "@/public/assets/images/iteneraryimages/kashmibliss1.webp";
+import kashmirbliss3 from "@/public/assets/images/iteneraryimages/The-Great-Lakes.webp";
+import Gulmarg1 from "@/public/assets/images/iteneraryimages/kashmir-family-tour.webp";
+import Gulmarg2 from "@/public/assets/images/iteneraryimages/Gulmarg_Tour_Packages.webp";
+import Gulmarg3 from "@/public/assets/images/iteneraryimages/gl3.webp";
+import romantic1 from "@/public/assets/images/iteneraryimages/honeymoon-in-kashmir.webp";
+import romantic2 from "@/public/assets/images/iteneraryimages/rm2.webp";
+import romantic3 from "@/public/assets/images/iteneraryimages/rm3.webp";
+import Srinagar1 from "@/public/assets/images/iteneraryimages/snagarheritage.webp";
+import Srinagar2 from "@/public/assets/images/iteneraryimages/Jama_Masjid,_Srinagar.webp";
+import kashmirfamily1 from "@/public/assets/images/iteneraryimages/family-enjoying.webp";
+import kashmirfamily2 from "@/public/assets/images/iteneraryimages/kashmir-family-trip.webp";
+import ladakh1 from "@/public/assets/images/iteneraryimages/ladkah1.webp";
+import ladakh2 from "@/public/assets/images/iteneraryimages/beautiful-buddhist-stupa.webp";
+import pangong1 from "@/public/assets/images/iteneraryimages/png1.webp";
+import pangong2 from "@/public/assets/images/iteneraryimages/png2.webp";
+
+
 import { internationalDestinations } from './internationalPackages';
 export interface ItineraryDay {
   day: number;
   title: string;
   description: string;
   activities: string[];
+  images?: (string | StaticImageData)[];
   meals: string;
   stay: string;
 }
@@ -21,7 +45,7 @@ export interface TourPackage {
   reviewsCount: number;
   category: 'Popular' | 'Honeymoon' | 'Adventure' | 'Family' | 'Luxury' | 'Cultural' | 'Tribal' | 'Spiritual';
   heroImage: string;
-  gallery: string[];
+  gallery: (string | StaticImageData)[];
   overview: string;
   highlights: string[];
   inclusions: string[];
@@ -74,9 +98,9 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/vashnodeviimage.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+          vaishnodevi1,
+          vaishnodevi2,
+          vaishnodevi3,
         ],
 
         overview:
@@ -174,9 +198,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/mkashmir.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+          vaishnodevi2,
+          vaishnodevi3,
         ],
 
         overview:
@@ -358,9 +381,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/Kashmirnewww.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+          kashmirbliss2,
+          kashmirbliss3,
         ],
 
         overview:
@@ -479,9 +501,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/kashmirtrails.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+          kashmirbliss3,
+          kashmirbliss2,
         ],
 
         overview:
@@ -614,9 +635,9 @@ export const allDestinations: Record<string, DestinationData> = {
 
         heroImage: '/assets/images/packageimages/gulmarghero.webp',
         gallery: [
-          'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+          Gulmarg1,
+          Gulmarg2,
+          Gulmarg3,
         ],
 
         overview:
@@ -744,9 +765,9 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/romantic.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+          romantic1,
+          romantic2,
+          romantic3
         ],
 
         overview:
@@ -961,7 +982,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 298,
         category: 'Honeymoon',
         heroImage: '/assets/images/packageimages/Kashmir-Honeymoon-Packages.webp',
-        gallery: ['https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop', 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop'],
+        gallery: [romantic2, romantic3],
         overview: 'Celebrate your most romantic chapter in the paradise that is Kashmir. Float on a heritage houseboat adorned with hand-carved walnut panels as the stars mirror themselves in Dal Lake. Wake to mist-veiled mountains in Gulmarg\'s alpine meadows, walk hand-in-hand through saffron fields in Pahalgam, and watch Himalayan sunsets paint the sky in shades of amber and rose. Curated exclusively for honeymooners, this luxury Kashmir escape promises memories that last a lifetime.',
         highlights: [
           '2 Nights on a Deluxe Heritage Houseboat on Dal Lake with private deck',
@@ -1044,7 +1065,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 142,
         category: 'Cultural',
         heroImage: '/assets/images/packageimages/Festivals-of-Jammu-and-Kashmir.webp',
-        gallery: ['https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop', 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop'],
+        gallery: [Srinagar1, Srinagar2],
         overview: 'Uncover the rich and layered cultural tapestry of Kashmir — from 3rd-century Ashoka temples to 16th-century Mughal garden masterpieces, from centuries-old Sufi shrines to living traditions of papier-mâché artistry, hand-knotted carpet weaving, and the world\'s finest saffron cultivation. This deeply immersive cultural journey reveals the soul of Kashmir beyond its scenic landscapes.',
         highlights: [
           'Hazratbal Shrine — Kashmir\'s most revered Sufi mosque on Dal Lake shore',
@@ -1111,7 +1132,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 212,
         category: 'Family',
         heroImage: '/assets/images/packageimages/family.webp',
-        gallery: ['https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=800&auto=format&fit=crop', 'https://images.unsplash.com/photo-1566837945700-30057527ade0?q=80&w=800&auto=format&fit=crop'],
+        gallery: [kashmirfamily1, kashmirfamily2],
         overview: 'Kashmir\'s most comprehensive family holiday — eight enriching days covering all four legendary Kashmir destinations with age-appropriate activities for grandparents, parents, and little adventurers alike. Shikara rides for the elders, glacier snow play for the children, gondola thrills for teenagers, and valley picnics for the whole family. This all-inclusive package ensures every family member creates their own most treasured Kashmir memory.',
         highlights: [
           'Family Shikara ride with flower petal decoration on Dal Lake',
@@ -1208,7 +1229,7 @@ export const allDestinations: Record<string, DestinationData> = {
     region: 'North India',
     tagline: 'Pangong Lake, Nubra Valley sand dunes, double-humped camels & Khardung La Pass.',
     description: 'The Land of High Passes, Ladakh is renowned for its otherworldly moonscapes, crystal-blue alpine lakes, ancient Buddhist gompas, and the thrilling Khardung La Pass.',
-    heroImage: 'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=1600&auto=format&fit=crop',
+    heroImage: '/assets/images/packageimages/lehhh.webp',
     bestTime: 'May to October',
     packagesCount: 3,
     packages: [
@@ -1229,8 +1250,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/lehhh.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
+          ladakh1,
+          ladakh2
         ],
 
         overview:
@@ -1387,8 +1408,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/lehimage.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
+          pangong1,
+          pangong2
         ],
 
         overview:
@@ -12543,7 +12564,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 4.9,
         "reviewsCount": 380,
         "category": "Popular",
-        "heroImage":'/assets/images/packageimages/sou.webp',
+        "heroImage": '/assets/images/packageimages/sou.webp',
         "gallery": [
           '/assets/images/packageimages/sou.webp',
         ],
@@ -17685,7 +17706,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Adventure",
         "heroImage": '/assets/images/packageimages/dz.webp',
         "gallery": [
-         '/assets/images/packageimages/dz.webp',
+          '/assets/images/packageimages/dz.webp',
         ],
         "overview": "Travel to the historic birthplace of Sikkim — Yuksom (Meeting Place of Three Lamas). Stand at the sacred stone Coronation Throne of Norbugang where the first Chogyal was consecrated in 1642, hike through pine forests to Sikkim’s oldest monastery (Dubdi Gompa, 1701), and explore the gateway to the UNESCO World Heritage Khangchendzonga National Park.",
         "highlights": [
@@ -18266,7 +18287,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Adventure",
         "heroImage": '/assets/images/packageimages/odnew.webp',
         "gallery": [
-         '/assets/images/packageimages/odnew.webp',
+          '/assets/images/packageimages/odnew.webp',
         ],
         "overview": "Cruise across Asia’s largest brackish water lagoon spanning over 1,100 sq km. Board motorized boats at Satapada to spot playful, endangered Irrawaddy dolphins surfacing in their natural habitat, cruise to the sea mouth where Chilika meets the Bay of Bengal, take a country boat into Mangalajodi (the Birders’ Paradise with over a million migratory birds), and visit the island shrine of Kalijai Temple.",
         "highlights": [
@@ -18503,7 +18524,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Adventure",
         "heroImage": '/assets/images/packageimages/similal.webp',
         "gallery": [
-         '/assets/images/packageimages/similal.webp',
+          '/assets/images/packageimages/similal.webp',
         ],
         "overview": "Explore the sprawling wilderness of Simlipal National Park in Mayurbhanj district. Covering 2,750 sq km of towering Sal forests, mist-clad peaks, and rushing rivers, Simlipal is home to wild Royal Bengal Tigers (including rare melanistic black tigers), Asian elephants, and two of India’s most spectacular waterfalls: the 399-meter two-tiered Barehipani Falls and the 181-meter single-drop Joranda Falls.",
         "highlights": [
@@ -18760,7 +18781,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Cultural",
         "heroImage": '/assets/images/packageimages/ratnagiri.webp',
         "gallery": [
-         '/assets/images/packageimages/ratnagiri.webp',
+          '/assets/images/packageimages/ratnagiri.webp',
         ],
         "overview": "Explore the \"Diamond Triangle\" of Odisha — the magnificent excavated ruins of ancient Mahayana and Vajrayana Buddhist monastic universities that rivaled Nalanda from the 5th to 12th century AD. Stand before the exquisitely carved green chlorite stone doorway at Ratnagiri Monastery, explore the stepped well and rock-cut stupas of Udayagiri, and see the sacred relic caskets at Lalitgiri.",
         "highlights": [
@@ -19794,7 +19815,7 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Popular",
         "heroImage": '/assets/images/packageimages/manipurcomp.webp',
         "gallery": [
-         '/assets/images/packageimages/manipurcomp.webp',
+          '/assets/images/packageimages/manipurcomp.webp',
         ],
         "overview": "The definitive all-encompassing journey through the Jewel of India! Experience the world’s only floating national park on Loktak Lake, track the dancing Sangai deer, explore the royal Kangla Fort and 500-year-old Ima Keithel women’s market in Imphal, hike the mist-shrouded Shirui Lily hills in Ukhrul, and witness the 2,000-year-old eternal sacred fire of Andro.",
         "highlights": [

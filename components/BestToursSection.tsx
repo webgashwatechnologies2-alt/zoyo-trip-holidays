@@ -289,7 +289,7 @@ export default function BestToursSection() {
     <section className="w-full bg-white py-20 px-4 sm:px-8 lg:px-16">
       <div className="max-w-[1380px] mx-auto">
         <h2 className="text-3xl sm:text-[34px] md:text-[38px] font-semibold text-[#111827] tracking-tight mb-6 sm:mb-8 text-left">
-          Best Tours of Himachal - International - India
+          Best Tours of <span style={{color: '#1E6AD4'}}>Himachal - International - India</span>  
         </h2>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div className="flex flex-wrap items-center gap-3">

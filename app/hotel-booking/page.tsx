@@ -34,6 +34,8 @@ import {
   BsCheckLg,
   BsStars,
 } from 'react-icons/bs';
+import { sendEmailToZoyo } from '@/lib/sendEmail';
+
 const hotelPackages = [
   {
     id: 1,
@@ -178,10 +180,18 @@ export default function HotelBookingPage() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setSubmitted(true);
+
+    await sendEmailToZoyo({
+      formType: 'Hotel Booking Search / Enquiry',
+      destination: form.destination,
+      travelDate: `Check-in: ${form.checkIn} to Check-out: ${form.checkOut}`,
+      guests: form.guests,
+      rooms: form.rooms,
+      message: `Hotel search enquiry for ${form.destination}. Check-in: ${form.checkIn}, Check-out: ${form.checkOut}, Guests: ${form.guests}, Rooms: ${form.rooms}`,
+    });
 
     setTimeout(() => {
       setSubmitted(false);

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { 
   FaStar, 
@@ -30,6 +29,9 @@ import {
 } from 'react-icons/fa';
 import { BsStars, BsShieldCheck, BsLightningChargeFill, BsStopwatchFill } from 'react-icons/bs';
 import { TourPackage } from '@/data/allDestinations';
+import { sendEmailToZoyo } from '@/lib/sendEmail';
+
+
 
 interface PackageDetailViewProps {
   pkg: TourPackage;
@@ -46,6 +48,7 @@ export default function PackageDetailView({
 }: PackageDetailViewProps) {
   const [activeTab, setActiveTab] = useState<'dayplan' | 'overview' | 'stay' | 'transfers' | 'inclusions' | 'policies'>('dayplan');
   const [openDay, setOpenDay] = useState<number | null>(1);
+  const [heroSlide, setHeroSlide] = useState<number>(0);
   const [appliedCoupon, setAppliedCoupon] = useState<string>('WELCOME');
   const [couponApplied, setCouponApplied] = useState<boolean>(true);
   const [openPolicy, setOpenPolicy] = useState<string | null>('terms');
@@ -74,11 +77,27 @@ export default function PackageDetailView({
 
     return () => clearInterval(interval);
   }, []);
+
+  // Gallery slides: hero image + gallery images
+  const gallerySlides = [
+    pkg.heroImage,
+    ...(pkg.gallery || []).slice(0, 3),
+  ];
+  const slideCount = Math.min(gallerySlides.length, 4);
+
+  useEffect(() => {
+    if (slideCount <= 1) return;
+    const slideTimer = setInterval(() => {
+      setHeroSlide((prev) => (prev + 1) % slideCount);
+    }, 3500);
+    return () => clearInterval(slideTimer);
+  }, [slideCount]);
   
   const [bookingDate, setBookingDate] = useState<string>('2026-09-15');
   const [travelersCount, setTravelersCount] = useState<number>(2);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [isBookingSubmitting, setIsBookingSubmitting] = useState<boolean>(false);
   const [bookingFormData, setBookingFormData] = useState({
     name: '',
     phone: '',
@@ -132,8 +151,24 @@ export default function PackageDetailView({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsBookingSubmitting(true);
+
+    await sendEmailToZoyo({
+      formType: `Package Booking - ${pkg.title}`,
+      packageName: pkg.title,
+      packagePrice: pkg.price,
+      destination: destName || pkg.location,
+      name: bookingFormData.name,
+      phone: bookingFormData.phone,
+      email: bookingFormData.email,
+      travelDate: bookingDate,
+      travelers: travelersCount,
+      notes: bookingFormData.notes,
+    });
+
+    setIsBookingSubmitting(false);
     setIsSuccess(true);
     setTimeout(() => {
       setIsSuccess(false);
@@ -243,32 +278,104 @@ export default function PackageDetailView({
           {/* ════════ LEFT COLUMN ════════ */}
           <div className="lg:col-span-8 space-y-6">
             
-            {/* Main Featured Photo Box */}
-            <div className="relative w-full h-[320px] sm:h-[420px] md:h-[460px] rounded-[20px] overflow-hidden shadow-lg border border-gray-200/80 bg-gray-900 group">
-              <img
-                src={pkg.heroImage}
-                alt={pkg.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-              
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white z-10">
-                <div className="flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-xs font-semibold">
-                  <FaMapMarkerAlt className="text-[#f26c22]" />
-                  <span>{pkg.location}</span>
-                </div>
-                <div className="bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-xs font-semibold flex items-center gap-1.5">
-                  <FaCamera className="text-amber-400" />
-                  <span>Full Itinerary & Stay Included</span>
+            {/* Main Featured Photo Box with auto-sliding gallery thumbnails */}
+            <div className="space-y-2.5">
+              {/* Main Hero Slide */}
+              <div className="relative w-full h-[320px] sm:h-[420px] md:h-[460px] rounded-[20px] overflow-hidden shadow-lg border border-gray-200/80 bg-gray-900 group">
+                {gallerySlides.slice(0, slideCount).map((slide, si) => (
+                  <img
+                    key={si}
+                    src={typeof slide === 'string' ? slide : (slide as any).src || pkg.heroImage}
+                    alt={`${pkg.title} - slide ${si + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                      heroSlide === si ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                    } group-hover:scale-105`}
+                    style={{ transition: 'opacity 0.7s ease, transform 5s ease' }}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+                {/* Slide dots */}
+                {slideCount > 1 && (
+                  <div className="absolute top-3 right-3 flex gap-1.5 z-10">
+                    {Array.from({ length: slideCount }).map((_, di) => (
+                      <button
+                        key={di}
+                        onClick={() => setHeroSlide(di)}
+                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                          heroSlide === di ? 'w-5 bg-white' : 'w-1.5 bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white z-10">
+                  <div className="flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-xs font-semibold">
+                    <FaMapMarkerAlt className="text-[#f26c22]" />
+                    <span>{pkg.location}</span>
+                  </div>
+                  <div className="bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-xs font-semibold flex items-center gap-1.5">
+                    <FaCamera className="text-amber-400" />
+                    <span>Full Itinerary & Stay Included</span>
+                  </div>
                 </div>
               </div>
+
+              {/* Thumbnail Strip — 3 small preview images that auto-slide */}
+              {slideCount > 1 && (
+                <div className="grid grid-cols-3 gap-2">
+                  {gallerySlides.slice(1, 4).map((slide, ti) => {
+                    const slideIdx = ti + 1;
+                    const isActive = heroSlide === slideIdx;
+                    return (
+                      <button
+                        key={ti}
+                        onClick={() => setHeroSlide(slideIdx)}
+                        className={`relative h-[80px] sm:h-[100px] rounded-[12px] overflow-hidden border-2 transition-all duration-300 cursor-pointer ${
+                          isActive
+                            ? 'border-[#1E6AD4] shadow-[0_0_0_2px_#1E6AD4]'
+                            : 'border-transparent opacity-70 hover:opacity-100 hover:border-gray-300'
+                        }`}
+                      >
+                        <img
+                          src={typeof slide === 'string' ? slide : (slide as any).src || pkg.heroImage}
+                          alt={`Gallery ${ti + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Active progress bar at bottom */}
+                        {isActive && (
+                          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/30">
+                            <div
+                              className="h-full bg-[#1E6AD4]"
+                              style={{
+                                animation: 'slideProgress 3.5s linear forwards',
+                              }}
+                            />
+                          </div>
+                        )}
+                        {/* Overlay with index */}
+                        <div className={`absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity ${isActive ? 'opacity-0' : 'opacity-0'}`} />
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* CSS for progress bar animation */}
+              <style jsx>{`
+                @keyframes slideProgress {
+                  from { width: 0%; }
+                  to { width: 100%; }
+                }
+              `}</style>
             </div>
 
             {/* Quick Navigation Tabs Bar (Sticky & Fully Functional) */}
             <div className="sticky top-[52px] z-30 bg-white/95 backdrop-blur-md rounded-2xl p-1.5 border border-gray-200 shadow-md flex items-center gap-1 overflow-x-auto no-scrollbar">
               {[
-                { id: 'dayplan', label: 'Day Plan' },
                 { id: 'overview', label: 'Overview' },
+                { id: 'dayplan', label: 'Day Plan' },
                 { id: 'stay', label: 'Hotels & Stay' },
                 { id: 'transfers', label: 'Transfers' },
                 { id: 'inclusions', label: 'Inclusions' },
@@ -437,7 +544,12 @@ export default function PackageDetailView({
                             ).slice(0, 4).map((act, i) => (
                               <div key={i} className="group relative h-24 rounded-xl overflow-hidden bg-gray-900 shadow-xs border border-gray-100">
                                 <img
-                                  src={pkg.gallery?.[i % (pkg.gallery?.length || 1)] || pkg.heroImage}
+                                  src={
+                                    (() => {
+                                      const src = dayPlan.images?.[i] || pkg.gallery?.[i % (pkg.gallery?.length || 1)] || pkg.heroImage;
+                                      return typeof src === 'string' ? src : (src as any)?.src || pkg.heroImage;
+                                    })()
+                                  }
                                   alt={act}
                                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 />
@@ -450,7 +562,6 @@ export default function PackageDetailView({
                             ))}
                           </div>
                         </div>
-
                       </div>
                     )}
                   </div>
@@ -697,7 +808,7 @@ export default function PackageDetailView({
                     Number of Travelers
                   </label>
                   <div className="flex items-center gap-2">
-                    {[1, 2, 4, '6+'].map((cnt, i) => (
+                    {[2, 4, '6+'].map((cnt, i) => (
                       <button
                         key={i}
                         type="button"
@@ -873,9 +984,10 @@ export default function PackageDetailView({
 
                   <button
                     type="submit"
-                    className="w-full bg-[#1E6AD4] hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition-all cursor-pointer"
+                    disabled={isBookingSubmitting}
+                    className="w-full bg-[#1E6AD4] hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-sm shadow-md transition-all cursor-pointer disabled:opacity-75"
                   >
-                    Confirm & Send Enquiry
+                    {isBookingSubmitting ? 'Sending Booking Details...' : 'Confirm & Send Enquiry'}
                   </button>
                 </form>
               </div>

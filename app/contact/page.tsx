@@ -12,9 +12,11 @@ import {
   FaPaperPlane,
 } from 'react-icons/fa';
 import { BsArrowRight } from 'react-icons/bs';
+import { sendEmailToZoyo } from '@/lib/sendEmail';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,8 +27,22 @@ export default function ContactPage() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+
+    await sendEmailToZoyo({
+      formType: 'Contact Page - Free Custom Quote',
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      destination: formData.destination,
+      travelDate: formData.date || 'Flexible',
+      travelers: formData.travelers,
+      message: formData.message,
+    });
+
+    setSubmitting(false);
     setSubmitted(true);
   };
 
@@ -254,10 +270,11 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-[#f26c22] to-[#e0560e] hover:from-[#e0560e] hover:to-[#c44705] text-white py-4 rounded-xl font-bold text-[15px] transition-all shadow-lg flex items-center justify-center gap-2 hover:scale-[1.01]"
+                    disabled={submitting}
+                    className="w-full bg-gradient-to-r from-[#f26c22] to-[#e0560e] hover:from-[#e0560e] hover:to-[#c44705] text-white py-4 rounded-xl font-bold text-[15px] transition-all shadow-lg flex items-center justify-center gap-2 hover:scale-[1.01] disabled:opacity-75"
                   >
                     <FaPaperPlane className="text-sm" />
-                    <span>Send My Holiday Request</span>
+                    <span>{submitting ? 'Sending Request...' : 'Send My Holiday Request'}</span>
                   </button>
                 </form>
               )}

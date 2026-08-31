@@ -67,36 +67,42 @@ const nationalDestinations = {
     ],
   },
 };
+const badgeStyle: Record<string, string> = {
+  TRENDING:  'bg-[#FFD6D6] text-[#cc0000]',
+  HONEYMOON: 'bg-[#FFD6E8] text-[#b5006b]',
+  POPULAR:   'bg-[#E8D6FF] text-[#6200b5]',
+  SEASON:    'bg-[#D6F5E3] text-[#006b2f]',
+};
 const internationalDestinations = {
   southeastAsia: {
     title: 'SOUTHEAST ASIA',
     items: [
-      { name: 'Bali', href: '/international/bali' },
+      { name: 'Bali',      href: '/international/bali',      badge: 'TRENDING' },
       { name: 'Singapore', href: '/international/singapore' },
-      { name: 'Thailand', href: '/international/thailand' },
-      { name: 'Vietnam', href: '/international/vietnam' },
+      { name: 'Thailand',  href: '/international/thailand',  badge: 'POPULAR' },
+      { name: 'Vietnam',   href: '/international/vietnam',   badge: 'SEASON' },
     ],
   },
   southAsia: {
     title: 'SOUTH ASIA',
     items: [
-      { name: 'Nepal', href: '/international/nepal' },
-      { name: 'Bhutan', href: '/international/bhutan' },
-      { name: 'Maldives', href: '/international/maldives' },
-      { name: 'Malaysia', href: '/international/malaysia' },
-      { name: 'Sri Lanka', href: '/international/sri-lanka' },
+      { name: 'Nepal',     href: '/international/nepal' },
+      { name: 'Bhutan',    href: '/international/bhutan',    badge: 'SEASON' },
+      { name: 'Maldives',  href: '/international/maldives',  badge: 'HONEYMOON' },
+      { name: 'Malaysia',  href: '/international/malaysia',  badge: 'SEASON' },
+      { name: 'Sri Lanka', href: '/international/sri-lanka', badge: 'SEASON' },
     ],
   },
   eastAsia: {
     title: 'EAST ASIA',
     items: [
-      { name: 'Japan', href: '/international/japan' },
+      { name: 'Japan', href: '/international/japan', badge: 'POPULAR' },
     ],
   },
   middleEast: {
     title: 'MIDDLE EAST',
     items: [
-      { name: 'Dubai', href: '/international/dubai' },
+      { name: 'Dubai', href: '/international/dubai', badge: 'POPULAR' },
     ],
   },
 };
@@ -342,9 +348,14 @@ export default function Header() {
                               <li key={item.name}>
                                 <Link
                                   href={item.href}
-                                  className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                  className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                                 >
                                   {item.name}
+                                  {item.badge && (
+                                    <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded-full tracking-wide ${badgeStyle[item.badge]}`}>
+                                      {item.badge}
+                                    </span>
+                                  )}
                                 </Link>
                               </li>
                             ))}

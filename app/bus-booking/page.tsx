@@ -27,6 +27,7 @@ import {
   FaHeadset,
 } from 'react-icons/fa';
 import { BsArrowRight, BsCheckLg, BsStars } from 'react-icons/bs';
+import { sendEmailToZoyo } from '@/lib/sendEmail';
 
 const busPackages = [
   {
@@ -135,9 +136,19 @@ export default function BusBookingPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+
+    await sendEmailToZoyo({
+      formType: 'Bus Booking Search / Enquiry',
+      destination: `${form.from} to ${form.to}`,
+      tripType: form.tripType,
+      travelDate: form.tripType === 'roundtrip' ? `Depart: ${form.date}, Return: ${form.returnDate}` : `Depart: ${form.date}`,
+      travelers: form.travelers,
+      message: `Bus search enquiry from ${form.from} to ${form.to}. Trip: ${form.tripType}, Passengers: ${form.travelers}`,
+    });
+
     setTimeout(() => setSubmitted(false), 4000);
   };
 

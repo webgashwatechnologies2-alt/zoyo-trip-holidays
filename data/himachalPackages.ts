@@ -1,8 +1,64 @@
+// Shimla & Itinerary local images
+import himachal1 from "@/public/assets/images/iteneraryimages/check-in-himachal.png";
+import himachal2 from "@/public/assets/images/iteneraryimages/the-mall-road-shimla.webp";
+import himachal3 from "@/public/assets/images/iteneraryimages/ridze.webp";
+import himachal4 from "@/public/assets/images/iteneraryimages/localmarket.webp";
+
+import Chandratal1 from "@/public/assets/images/iteneraryimages/chandratal-lake-moon.webp";
+import Chandratal2 from "@/public/assets/images/iteneraryimages/manali.webp";
+import Chandratal3 from "@/public/assets/images/iteneraryimages/manalai3.webp";
+
+import kullu1 from "@/public/assets/images/iteneraryimages/kullu1.webp";
+import kullu2 from "@/public/assets/images/iteneraryimages/kullu2.webp";
+import kullu3 from "@/public/assets/images/iteneraryimages/kullu3.webp";
+
+import imgHoneymoon2 from "@/public/assets/images/iteneraryimages/Honeymoon-Cover-image.webp";
+import imgHoneymoon3 from "@/public/assets/images/iteneraryimages/ice-skiing-in-shimla.webp";
+
+
+import tirthan1 from "@/public/assets/images/iteneraryimages/small.webp";
+import tirthan2 from "@/public/assets/images/iteneraryimages/tt2.jpg";
+import tirthan3 from "@/public/assets/images/iteneraryimages/tirthan_valley_attractions.webp";
+
+
+// Himachal    & Sightseeing Local Images
+import imgShimlaMonsoon from "@/public/assets/images/iteneraryimages/Kufri.webp";
+import imgShimlaManali from "@/public/assets/images/iteneraryimages/Jakhu-Temple-Shimla.webp";
+import imgHimachalNew from "@/public/assets/images/packageimages/himachalnewimage.webp";
+import imgRafting from "@/public/assets/images/packageimages/water-rafting.webp";
+import imgTrekking from "@/public/assets/images/packageimages/traking.webp";
+import imgSafari from "@/public/assets/images/packageimages/safari.webp";
+import imgParagliding from "@/public/assets/images/packageimages/pgliing.webp";
+import imgFishing from "@/public/assets/images/packageimages/fishing.webp";
+import imgHoneymoon from "@/public/assets/images/packageimages/honeymoonnew.webp";
+import imgRomantic from "@/public/assets/images/packageimages/romantic.webp";
+
+// Spiti & High Altitude Local Images
+import imgChandratal from "@/public/assets/images/packageimages/chandertaaalnew.webp";
+import imgSpitiValley from "@/public/assets/images/packageimages/sptvalley.webp";
+import imgSpitiMonastery from "@/public/assets/images/packageimages/buddhist-monastery-kaza-spiti-valley.webp";
+import imgSpitiBike from "@/public/assets/images/packageimages/sptbike.webp";
+import imgSpitiFamily from "@/public/assets/images/packageimages/sptfamily.webp";
+import imgSpitiNew from "@/public/assets/images/packageimages/sptneww.webp";
+
+// Tirthan & Jibhi Local Images
+import imgJibhiTirthan from "@/public/assets/images/packageimages/jibhi-tirthan.webp";
+import imgJibhi from "@/public/assets/images/packageimages/Jibhi.webp";
+
+// Dharamshala, Bir & Mandi Local Images
+import imgDharamshala from "@/public/assets/images/packageimages/dharmashanreimage.webp";
+import imgDharamshala2 from "@/public/assets/images/packageimages/dharamshala.webp";
+import imgBirBilling from "@/public/assets/images/packageimages/birbillingnew.webp";
+import imgShikariMata from "@/public/assets/images/packageimages/shikarimata.webp";
+
+import { StaticImageData } from 'next/image';
+
 export interface ItineraryDay {
   day: number;
   title: string;
   description: string;
   activities: string[];
+  images?: (string | StaticImageData)[];
   meals: string;
   stay: string;
 }
@@ -20,7 +76,7 @@ export interface HimachalPackage {
   reviewsCount: number;
   category: 'Popular' | 'Honeymoon' | 'Adventure' | 'Family' | 'Tribal';
   heroImage: string;
-  gallery: string[];
+  gallery: StaticImageData[]; 
   overview: string;
   highlights: string[];
   inclusions: string[];
@@ -49,10 +105,9 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/chandertaaalnew.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1593181629936-11c609b8db9b?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop',
+      Chandratal1,
+      Chandratal2,
+      Chandratal3,
     ],
 
     overview:
@@ -93,6 +148,12 @@ export const himachalPackages: HimachalPackage[] = [
           'The Ridge',
           'Local Market Exploration',
         ],
+        images: [
+          himachal1,
+          himachal2,
+          himachal3,
+          himachal4,
+        ],
         meals: 'Dinner',
         stay: 'Deluxe Hotel, Shimla',
       },
@@ -107,6 +168,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Jakhoo Temple',
           'The Ridge & Christ Church',
           'Lakkar Bazaar',
+        ],
+        images: [
+          imgShimlaMonsoon,
+          himachal3,
+          himachal2,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Deluxe Hotel, Shimla',
@@ -123,6 +190,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Beas River Rafting',
           'Manali Hotel Check-in',
         ],
+        images: [
+          imgRafting,
+          imgHimachalNew,
+          himachal1,
+          imgShimlaManali,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Deluxe Resort, Manali',
       },
@@ -137,6 +210,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Vashisht Hot Springs',
           'Tibetan Monastery',
           'Manali Mall Road',
+        ],
+        images: [
+          imgShimlaManali,
+          imgTrekking,
+          himachal2,
+          imgHimachalNew,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Deluxe Resort, Manali',
@@ -153,6 +232,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Spiti Valley Landscapes',
           'Kaza Hotel Check-in',
         ],
+        images: [
+          imgSpitiBike,
+          imgSpitiValley,
+          imgSpitiNew,
+          himachal1,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Deluxe Hotel, Kaza',
       },
@@ -167,6 +252,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Kibber Village',
           'Langza Village',
           'Hikkim & Komic',
+        ],
+        images: [
+          imgSpitiMonastery,
+          imgSpitiValley,
+          imgSpitiFamily,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Deluxe Hotel, Kaza',
@@ -183,6 +274,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Photography',
           'Campsite Experience',
         ],
+        images: [
+          imgChandratal,
+          imgSpitiNew,
+          imgTrekking,
+          imgSafari,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Deluxe Campsite, Chandratal',
       },
@@ -197,6 +294,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Campsite Check-out',
           'Return Journey',
           'Departure Transfer',
+        ],
+        images: [
+          imgChandratal,
+          imgShimlaManali,
+          himachal1,
+          himachal3,
         ],
         meals: 'Breakfast',
         stay: 'End of Tour',
@@ -227,9 +330,9 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/jibhi-tirthan.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
+      tirthan1,
+      tirthan2,
+      tirthan3,
     ],
 
     overview:
@@ -275,6 +378,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Resort Check-in',
           'Relaxing Evening',
         ],
+        images: [
+          imgJibhiTirthan,
+          imgFishing,
+          himachal1,
+          imgHimachalNew,
+        ],
         meals: 'Dinner',
         stay: 'Premium Riverside Resort, Tirthan Valley',
       },
@@ -290,6 +399,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Tirthan River Experience',
           'Himalayan Forest Walk',
         ],
+        images: [
+          imgJibhi,
+          imgTrekking,
+          imgFishing,
+          himachal4,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Premium Riverside Resort, Tirthan Valley',
       },
@@ -304,6 +419,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Local Village Exploration',
           'Resort Check-out',
           'Return Journey to Delhi',
+        ],
+        images: [
+          imgJibhiTirthan,
+          himachal2,
+          himachal1,
+          imgHimachalNew,
         ],
         meals: 'Breakfast',
         stay: 'End of Tour',
@@ -334,9 +455,9 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/Shimla-During-Monsoon.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1593181629936-11c609b8db9b?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
+      kullu1,
+      kullu2,
+      kullu3,
     ],
 
     overview:
@@ -382,6 +503,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Mall Road Evening Walk',
           'The Ridge & Christ Church',
         ],
+        images: [
+          imgRomantic,
+          himachal2,
+          himachal3,
+          himachal1,
+        ],
         meals: 'Dinner',
         stay: 'Shimla Deluxe Hotel',
       },
@@ -396,6 +523,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Green Valley',
           'Mahasu Peak',
           'Jakhoo Temple',
+        ],
+        images: [
+          imgHoneymoon,
+          himachal3,
+          imgShimlaMonsoon,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Shimla Deluxe Hotel',
@@ -412,6 +545,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Kullu Shawl Factory',
           'Manali Hotel Check-in',
         ],
+        images: [
+          imgRafting,
+          imgHimachalNew,
+          himachal1,
+          imgRomantic,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Deluxe Resort',
       },
@@ -426,6 +565,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Vashisht Hot Springs',
           'Solang Valley',
           'Optional Adventure Activities',
+        ],
+        images: [
+          imgShimlaManali,
+          imgTrekking,
+          himachal2,
+          imgHoneymoon,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Deluxe Resort',
@@ -442,6 +587,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Himalayan Mountain Views',
           'Old Manali Evening',
         ],
+        images: [
+          imgHimachalNew,
+          imgRomantic,
+          himachal3,
+          imgShimlaMonsoon,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Deluxe Resort',
       },
@@ -456,6 +607,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Local Shopping',
           'Hotel Check-out',
           'Departure Transfer',
+        ],
+        images: [
+          himachal2,
+          himachal4,
+          himachal1,
+          imgHoneymoon,
         ],
         meals: 'Breakfast',
         stay: 'End of Tour',
@@ -478,8 +635,8 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/dharmashanreimage.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+      imgDharamshala,
+      imgDharamshala2,
     ],
 
     overview:
@@ -524,6 +681,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Namgyal Monastery',
           'Tibetan Market Walk',
         ],
+        images: [
+          imgDharamshala,
+          imgDharamshala2,
+          himachal1,
+          himachal4,
+        ],
         meals: 'Dinner',
         stay: 'McLeodganj Deluxe Hotel',
       },
@@ -538,6 +701,12 @@ export const himachalPackages: HimachalPackage[] = [
           'St. John in the Wilderness Church',
           'Dal Lake Visit',
           'McLeodganj Local Sightseeing',
+        ],
+        images: [
+          imgDharamshala2,
+          imgTrekking,
+          imgDharamshala,
+          himachal2,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'McLeodganj Deluxe Hotel',
@@ -555,6 +724,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Subhash Baoli',
           'Panchpula',
         ],
+        images: [
+          imgShimlaMonsoon,
+          himachal3,
+          imgDharamshala,
+          himachal1,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Dalhousie Deluxe Hotel',
       },
@@ -569,6 +744,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Khajjiar Meadows',
           'Pine Forest Walk',
           'Departure Transfer',
+        ],
+        images: [
+          imgHimachalNew,
+          himachal4,
+          imgDharamshala2,
+          himachal1,
         ],
         meals: 'Breakfast',
         stay: 'End of Tour',
@@ -592,8 +773,9 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/sptvalley.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
+      imgSpitiValley,
+      imgSpitiMonastery,
+      imgChandratal,
     ],
 
     overview:
@@ -637,6 +819,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Local Market Walk',
           'Mountain Views',
         ],
+        images: [
+          imgShimlaManali,
+          himachal2,
+          himachal1,
+          himachal4,
+        ],
         meals: 'Dinner',
         stay: 'Manali Deluxe Hotel',
       },
@@ -651,6 +839,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Kunzum Pass',
           'Chandra Valley Views',
           'Scenic Himalayan Drive',
+        ],
+        images: [
+          imgSpitiBike,
+          imgSpitiValley,
+          imgSpitiNew,
+          himachal1,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Kaza Deluxe Hotel / Camp',
@@ -667,6 +861,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Chicham Bridge',
           'Spiti Valley Viewpoints',
         ],
+        images: [
+          imgSpitiMonastery,
+          imgSpitiValley,
+          imgSpitiFamily,
+          himachal3,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Kaza Deluxe Hotel / Camp',
       },
@@ -681,6 +881,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Hikkim Post Office',
           'Komic Village',
           'Himalayan Photography',
+        ],
+        images: [
+          imgSpitiNew,
+          imgSpitiMonastery,
+          imgSpitiFamily,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Kaza Deluxe Hotel / Camp',
@@ -697,6 +903,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Mountain Photography',
           'Lake-side Nature Walk',
         ],
+        images: [
+          imgChandratal,
+          imgSpitiValley,
+          imgTrekking,
+          imgSafari,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Chandratal Camp',
       },
@@ -712,6 +924,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Atal Tunnel',
           'Scenic Mountain Drive',
         ],
+        images: [
+          imgChandratal,
+          imgSpitiBike,
+          imgHimachalNew,
+          himachal1,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Deluxe Hotel',
       },
@@ -726,6 +944,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Vashisht Hot Springs',
           'Local Market',
           'Departure Transfer',
+        ],
+        images: [
+          imgShimlaManali,
+          himachal2,
+          himachal1,
+          himachal3,
         ],
         meals: 'Breakfast',
         stay: 'End of Tour',
@@ -749,9 +973,9 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/Jibhi.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+      imgJibhi,
+      imgJibhiTirthan,
+      imgFishing,
     ],
 
     overview:
@@ -796,6 +1020,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Hotel Check-in',
           'Riverside Relaxation',
         ],
+        images: [
+          imgJibhi,
+          imgJibhiTirthan,
+          himachal1,
+          imgFishing,
+        ],
         meals: 'Dinner',
         stay: 'Jibhi Boutique Homestay',
       },
@@ -810,6 +1040,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Tirthan River Walk',
           'Jibhi Village Exploration',
           'Local Café Experience',
+        ],
+        images: [
+          imgJibhi,
+          imgFishing,
+          imgTrekking,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Jibhi Boutique Homestay',
@@ -826,6 +1062,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Budhi Nagin Temple',
           'Himalayan Mountain Views',
         ],
+        images: [
+          imgJibhiTirthan,
+          imgTrekking,
+          himachal3,
+          imgHimachalNew,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Jibhi Boutique Homestay',
       },
@@ -840,6 +1082,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Tirthan River Experience',
           'Local Village Walk',
           'Departure Transfer',
+        ],
+        images: [
+          imgJibhi,
+          himachal4,
+          himachal1,
+          imgJibhiTirthan,
         ],
         meals: 'Breakfast',
         stay: 'End of Tour',
@@ -862,8 +1110,9 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/honeymoonnew.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=800&auto=format&fit=crop',
+      imgHoneymoon,
+      imgHoneymoon2,
+      imgHoneymoon3,
     ],
 
     overview:
@@ -907,6 +1156,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Mall Road Evening Walk',
           'The Ridge & Christ Church'
         ],
+        images: [
+          imgRomantic,
+          himachal2,
+          himachal3,
+          himachal1,
+        ],
         meals: 'Dinner',
         stay: 'Shimla Hotel',
       },
@@ -920,6 +1175,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Green Valley',
           'Himalayan Nature Park',
           'Jakhoo Temple'
+        ],
+        images: [
+          imgHoneymoon,
+          imgShimlaMonsoon,
+          himachal3,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Shimla Hotel',
@@ -935,6 +1196,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Kullu Shawl Shopping',
           'Manali Hotel Check-in'
         ],
+        images: [
+          imgRafting,
+          imgHimachalNew,
+          himachal1,
+          imgRomantic,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Hotel',
       },
@@ -948,6 +1215,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Snow Activities',
           'Adventure Activities',
           'Atal Tunnel Visit'
+        ],
+        images: [
+          imgHimachalNew,
+          imgParagliding,
+          imgTrekking,
+          imgHoneymoon,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Hotel',
@@ -963,6 +1236,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Tibetan Monastery',
           'Mall Road Evening Walk'
         ],
+        images: [
+          imgShimlaManali,
+          himachal2,
+          imgRomantic,
+          himachal4,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Hotel',
       },
@@ -977,6 +1256,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Kullu Valley Sightseeing',
           'Beas River Views'
         ],
+        images: [
+          imgHimachalNew,
+          himachal3,
+          imgRafting,
+          himachal1,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Hotel',
       },
@@ -990,6 +1275,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Hotel Check-out',
           'Scenic Mountain Drive',
           'Departure to Delhi'
+        ],
+        images: [
+          himachal2,
+          himachal1,
+          imgRomantic,
+          imgHoneymoon,
         ],
         meals: 'Breakfast',
         stay: 'End of Tour',
@@ -1018,8 +1309,8 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/birbillingnew.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop',
+      imgBirBilling,
+      imgParagliding,
     ],
 
     overview:
@@ -1073,6 +1364,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Tibetan Colony & Local Market Walk',
           'Evening Leisure & Sunset Views',
         ],
+        images: [
+          imgBirBilling,
+          himachal1,
+          himachal4,
+          imgDharamshala,
+        ],
         meals: 'Dinner',
         stay: 'Bir Billing Hotel / Resort',
       },
@@ -1089,6 +1386,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Bir Monastery & Tibetan Settlement Visit',
           'Bir Market & Local Café Exploration',
           'Evening Leisure in Bir',
+        ],
+        images: [
+          imgParagliding,
+          imgBirBilling,
+          himachal2,
+          imgTrekking,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Bir Billing Hotel / Resort',
@@ -1108,6 +1411,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Photography & Nature Breaks',
           'Return to Bir Billing',
         ],
+        images: [
+          imgFishing,
+          imgHimachalNew,
+          imgBirBilling,
+          himachal3,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Bir Billing Hotel / Resort',
       },
@@ -1123,6 +1432,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Last-Minute Local Shopping',
           'Scenic Departure from Bir Billing',
           'Drop at Airport / Railway Station / Bus Stand',
+        ],
+        images: [
+          imgBirBilling,
+          himachal4,
+          himachal1,
+          imgParagliding,
         ],
         meals: 'Breakfast',
         stay: 'Departure',
@@ -1147,8 +1462,8 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/shikarimata.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1626621341517-bbf3d9990a2?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop',
+      imgShikariMata,
+      imgTrekking,
     ],
 
     overview:
@@ -1204,7 +1519,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Beas River Riverside Walk',
           'Evening Leisure & Mountain Views',
         ],
-
+        images: [
+          imgShikariMata,
+          himachal1,
+          himachal4,
+          imgHimachalNew,
+        ],
         meals: 'Dinner',
         stay: 'Mandi Mountain Hotel',
       },
@@ -1227,7 +1547,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Photography & Nature Exploration',
           'Return Drive to Mandi',
         ],
-
+        images: [
+          imgShikariMata,
+          imgTrekking,
+          himachal3,
+          imgFishing,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Mandi Mountain Hotel',
       },
@@ -1250,7 +1575,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Return Journey',
           'Departure Drop-off',
         ],
-
+        images: [
+          imgShikariMata,
+          imgTrekking,
+          himachal1,
+          himachal4,
+        ],
         meals: 'Breakfast',
         stay: 'End of Tour',
       },
@@ -1274,8 +1604,9 @@ export const himachalPackages: HimachalPackage[] = [
     heroImage: '/assets/images/packageimages/shimlaimageneww.webp',
 
     gallery: [
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop',
+      imgShimlaManali,
+      imgShimlaMonsoon,
+      imgHimachalNew,
     ],
 
     overview:
@@ -1328,6 +1659,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Evening Mall Road Leisure Walk',
           'The Ridge & Local Market Exploration',
         ],
+        images: [
+          himachal1,
+          himachal2,
+          himachal3,
+          himachal4,
+        ],
         meals: 'Dinner',
         stay: 'Shimla Deluxe Hill Resort',
       },
@@ -1345,6 +1682,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Jakhoo Temple Visit',
           'The Ridge & Christ Church',
           'Mall Road Shopping & Leisure',
+        ],
+        images: [
+          imgShimlaMonsoon,
+          himachal3,
+          himachal2,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Shimla Deluxe Hill Resort',
@@ -1364,6 +1707,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Beas River Scenic Stops',
           'Manali Hotel Check-in',
         ],
+        images: [
+          imgRafting,
+          imgHimachalNew,
+          himachal1,
+          imgShimlaManali,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Valley View Resort',
       },
@@ -1381,6 +1730,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Old Manali Village Walk',
           'Manali Mall Road Exploration',
           'Local Café & Shopping Experience',
+        ],
+        images: [
+          imgShimlaManali,
+          himachal2,
+          imgTrekking,
+          himachal4,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Valley View Resort',
@@ -1400,6 +1755,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Riverside & Valley Photography',
           'Return to Manali',
         ],
+        images: [
+          imgHimachalNew,
+          imgParagliding,
+          imgTrekking,
+          himachal1,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Manali Valley View Resort',
       },
@@ -1416,6 +1777,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Dhauladhar Range Views',
           'Dalhousie Hotel Check-in',
           'Evening Leisure Walk',
+        ],
+        images: [
+          imgShimlaMonsoon,
+          himachal3,
+          imgHimachalNew,
+          himachal1,
         ],
         meals: 'Breakfast & Dinner',
         stay: 'Dalhousie Deluxe Hill Resort',
@@ -1436,6 +1803,12 @@ export const himachalPackages: HimachalPackage[] = [
           'Photography & Leisure Time',
           'Return to Dalhousie',
         ],
+        images: [
+          imgHimachalNew,
+          imgTrekking,
+          himachal4,
+          himachal2,
+        ],
         meals: 'Breakfast & Dinner',
         stay: 'Dalhousie Deluxe Hill Resort',
       },
@@ -1452,10 +1825,17 @@ export const himachalPackages: HimachalPackage[] = [
           'Local Souvenir Shopping',
           'Delhi / Chandigarh Drop-off',
         ],
+        images: [
+          himachal1,
+          himachal4,
+          imgShimlaManali,
+          imgShimlaMonsoon,
+        ],
         meals: 'Breakfast',
         stay: 'End of Tour',
       },
     ],
   },
 ];
+
 

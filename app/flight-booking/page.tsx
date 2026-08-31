@@ -22,6 +22,7 @@ import {
 import { BsArrowRight, BsCheckLg, BsStars } from 'react-icons/bs';
 import { MdFlightLand, MdFlightTakeoff, MdLuggage } from 'react-icons/md';
 import Image from 'next/image';
+import { sendEmailToZoyo } from '@/lib/sendEmail';
 import flighthero from "@/public/assets/images/bookings/flighthero.png";
 import indigoimage from "@/public/assets/images/bookings/indigo.webp";
 import Airindiaimage   from "@/public/assets/images/bookings/airindia.webp";
@@ -154,9 +155,21 @@ export default function FlightBookingPage() {
     setForm({ ...form, from: form.to, to: form.from });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+
+    await sendEmailToZoyo({
+      formType: 'Flight Booking Search / Enquiry',
+      destination: `${form.from} to ${form.to}`,
+      tripType: form.tripType,
+      travelDate: form.tripType === 'roundtrip' ? `Depart: ${form.departDate}, Return: ${form.returnDate}` : `Depart: ${form.departDate}`,
+      adults: form.adults,
+      children: form.children,
+      travelClass: form.classType,
+      message: `Flight inquiry from ${form.from} to ${form.to}. Trip: ${form.tripType}, Class: ${form.classType}, Adults: ${form.adults}, Children: ${form.children}`,
+    });
+
     setTimeout(() => setSubmitted(false), 3500);
   };
 
@@ -200,7 +213,7 @@ export default function FlightBookingPage() {
               </p>
               <div className="flex items-center gap-6 flex-wrap">
                 {[
-                  { val: '15+', label: 'Airlines' },
+                  { val: '1115+', label: 'Airlines' },
                   { val: '100+', label: 'Destinations' },
                   { val: '24/7', label: 'Support' },
                 ].map((stat) => (

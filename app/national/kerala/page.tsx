@@ -69,7 +69,7 @@ export default function KeralaPage() {
               <FaCheckCircle className="text-[#f26c22]" /> {keralaData.packagesCount} Handcrafted Packages
             </span>
             <span className="bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
-              <FaStar className="text-amber-400" /> 4.9/5 Star Rated (395+ Reviews)
+              <FaStar className="text-amber-400" /> 4.9/5 Star Rated (39115+ Reviews)
             </span>
             <span className="bg-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 flex items-center gap-1.5">
               <FaCar className="text-emerald-400" /> Sanitized Private Cabs

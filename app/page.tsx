@@ -9,6 +9,7 @@ import HolidayDestinationsSection from '@/components/HolidayDestinationsSection'
 import TopNationalDestinations from '@/components/TopNationalDestinations';
 import TrustedCompanySection from '@/components/TrustedCompanySection';
 import BestToursSection from '@/components/BestToursSection';
+import PromotionalBannerSlider from '@/components/PromotionalBannerSlider';
 import ExploreZoyoSection from '@/components/ExploreZoyoSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import { StaticImageData } from 'next/image';
@@ -176,7 +177,7 @@ export default function Home() {
                   {dest.tagline}
                 </p>
                 <div className="mt-4">
-                  <span className="text-[12px] font-bold text-white border border-white/60 px-4 py-1.5 rounded-full group-hover:bg-white group-hover:text-black group-hover:scale-105 group-hover:border-white active:scale-95 transition-all duration-200 inline-block">
+                  <span className="text-[12px] font-bold text-white border border-white/60 px-4 py-1.5 rounded-full group-hover:text-black group-hover:scale-105 group-hover:border-white active:scale-95 transition-all duration-200 inline-block">
                     Explore Now →
                   </span>
                 </div>
@@ -186,9 +187,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Super Saver Promotional Auto Slider Section */}
+      <PromotionalBannerSlider />
+
       <section className="w-full bg-[#FFF2E2] py-16 px-4 sm:px-10 xl:px-50 relative overflow-hidden">
         <div className="relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-weight-900 mb-12 text-black">Zoyo Trip Holidays – Your Journey, Our Priority!</h2>
+          <h2 className="text-3xl md:text-4xl font-weight-900 mb-12 text-black">Zoyo Trip Holidays –  Your <span style={{color: '#F26C22'}}>Journey, Our Priority!</span> </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-12 relative">
             <div className="flex gap-4 items-start">
               <div className="bg-[#FFB52A] text-white p-3 rounded-full text-xl shrink-0">

@@ -163,7 +163,7 @@ const features = [
   {
     icon: FaAward,
     title: 'Award-Winning Travel Expertise',
-    desc: 'Recognized travel management with 5+ years of customer acclaim, 24,000+ delighted guests, and a 4.9/5 satisfaction rating.',
+    desc: 'Recognized travel management with 15+ years of customer acclaim, 24,000+ delighted guests, and a 4.9/5 satisfaction rating.',
     badge: 'Certified DMC',
   },
 ];
@@ -370,7 +370,7 @@ export default function AboutPage() {
                     <FaAward />
                   </div>
                   <div>
-                    <div className="text-[20px] font-black text-gray-900 leading-none">5+ Years</div>
+                    <div className="text-[20px] font-black text-gray-900 leading-none">15+ Years</div>
                     <div className="text-[12px] text-gray-500 font-semibold mt-1">Trusted DMC Agency</div>
                   </div>
                 </div>
@@ -379,8 +379,8 @@ export default function AboutPage() {
                     <FaStar />
                   </div>
                   <div>
-                    <div className="text-[13px] font-bold text-gray-900">4.9 / 5.0 Rating</div>
-                    <div className="text-[11px] text-gray-500">24,000+ Traveler Reviews</div>
+                    <div className="text-[13px] font-bold text-gray-900">4.7 / 5.0 Rating</div>
+                    <div className="text-[11px] text-gray-500">50 Lakh</div>
                   </div>
                 </div>
               </div>
@@ -529,7 +529,7 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <StatCard
-              value={24000}
+              value={5000000}
               suffix="+"
               label="Happy Travelers"
               sublabel="Smiling guests across all packages"
@@ -547,7 +547,7 @@ export default function AboutPage() {
               started={statsStarted}
             />
             <StatCard
-              value={5}
+              value={15}
               suffix="+"
               label="Years of Excellence"
               sublabel="Registered boutique DMC agency"

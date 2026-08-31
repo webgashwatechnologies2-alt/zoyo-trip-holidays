@@ -209,7 +209,7 @@ export default function TestimonialsSection() {
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 px-2">
           <div className="flex items-center gap-3">
             <span className="text-[28px] md:text-[32px] font-black text-[#111827] leading-none">
-              4.5
+              4.7
             </span>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
@@ -260,7 +260,7 @@ export default function TestimonialsSection() {
             </div>
             <div className="flex items-center gap-1.5">
               <span className="text-[16px] font-extrabold text-[#111827]">
-                4.5
+                4.7
               </span>
               <span className="text-[12px] text-gray-500 font-medium mr-1">
                 Reviews
