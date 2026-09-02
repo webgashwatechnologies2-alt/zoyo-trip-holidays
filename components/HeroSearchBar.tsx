@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   FaMapMarkerAlt,
   FaCalendarAlt,
@@ -26,59 +27,60 @@ interface DestinationOption {
   region: string;
   category: TourCategory;
   url: string;
+  image: string;
 }
 
 const ALL_DESTINATIONS: DestinationOption[] = [
   // ── Domestic Destinations ──
-  { id: 'kashmir', name: 'Kashmir', region: 'North India', category: 'domestic', url: '/national/kashmir' },
-  { id: 'ladakh', name: 'Leh & Ladakh', region: 'North India', category: 'domestic', url: '/national/ladakh' },
-  { id: 'himachal', name: 'Himachal Pradesh (Shimla, Manali)', region: 'North India', category: 'domestic', url: '/national/himachal-pradesh' },
-  { id: 'rajasthan', name: 'Rajasthan (Jaipur, Udaipur, Jaisalmer)', region: 'North India', category: 'domestic', url: '/national/rajasthan' },
-  { id: 'kerala', name: 'Kerala (Munnar, Alleppey)', region: 'South India', category: 'domestic', url: '/national/kerala' },
-  { id: 'goa', name: 'Goa (Beaches, Cruise)', region: 'West India', category: 'domestic', url: '/national/goa' },
-  { id: 'uttarakhand', name: 'Uttarakhand (Rishikesh, Nainital, Char Dham)', region: 'North India', category: 'domestic', url: '/national/uttarakhand' },
-  { id: 'spiti', name: 'Lahaul & Spiti Valley', region: 'North India', category: 'domestic', url: '/national/spiti' },
-  { id: 'andaman', name: 'Andaman & Nicobar Islands', region: 'Island', category: 'domestic', url: '/national/andaman' },
-  { id: 'sikkim', name: 'Sikkim & Darjeeling', region: 'North East', category: 'domestic', url: '/national/sikkim' },
-  { id: 'meghalaya', name: 'Meghalaya (Shillong, Cherrapunji)', region: 'North East', category: 'domestic', url: '/national/meghalaya' },
-  { id: 'uttarpradesh', name: 'Uttar Pradesh (Varanasi, Ayodhya, Mathura)', region: 'North India', category: 'domestic', url: '/national/uttarpradesh' },
-  { id: 'gujarat', name: 'Gujarat (Rann of Kutch, Dwarka)', region: 'West India', category: 'domestic', url: '/national/gujarat' },
-  { id: 'karnataka', name: 'Karnataka (Coorg, Ooty, Hampi)', region: 'South India', category: 'domestic', url: '/national/karnataka' },
+  { id: 'kashmir', name: 'Kashmir', region: 'North India', category: 'domestic', url: '/national/kashmir', image: '/assets/images/packageimages/Kashmirnewww.webp' },
+  { id: 'ladakh', name: 'Leh & Ladakh', region: 'North India', category: 'domestic', url: '/national/ladakh', image: '/assets/images/packageimages/ladakh-tours-packages.webp' },
+  { id: 'himachal', name: 'Himachal Pradesh (Shimla, Manali)', region: 'North India', category: 'domestic', url: '/national/himachal-pradesh', image: '/assets/images/packageimages/himachalnewimage.webp' },
+  { id: 'rajasthan', name: 'Rajasthan (Jaipur, Udaipur, Jaisalmer)', region: 'North India', category: 'domestic', url: '/national/rajasthan', image: '/assets/images/slider/Rajasthan.png' },
+  { id: 'kerala', name: 'Kerala (Munnar, Alleppey)', region: 'South India', category: 'domestic', url: '/national/kerala', image: '/assets/images/packageimages/keralahero.webp' },
+  { id: 'goa', name: 'Goa (Beaches, Cruise)', region: 'West India', category: 'domestic', url: '/national/goa', image: '/assets/images/packageimages/goa.webp' },
+  { id: 'uttarakhand', name: 'Uttarakhand (Rishikesh, Nainital, Char Dham)', region: 'North India', category: 'domestic', url: '/national/uttarakhand', image: '/assets/images/packageimages/uttarakahand.webp' },
+  { id: 'spiti', name: 'Lahaul & Spiti Valley', region: 'North India', category: 'domestic', url: '/national/spiti', image: '/assets/images/packageimages/spiti.webp' },
+  { id: 'andaman', name: 'Andaman & Nicobar Islands', region: 'Island', category: 'domestic', url: '/national/andaman', image: '/assets/images/packageimages/andaman-tour.webp' },
+  { id: 'sikkim', name: 'Sikkim & Darjeeling', region: 'North East', category: 'domestic', url: '/national/sikkim', image: '/assets/images/packageimages/sikkim.webp' },
+  { id: 'meghalaya', name: 'Meghalaya (Shillong, Cherrapunji)', region: 'North East', category: 'domestic', url: '/national/meghalaya', image: '/assets/images/packageimages/David-scott-Trail_Meghalaya.webp' },
+  { id: 'uttarpradesh', name: 'Uttar Pradesh (Varanasi, Ayodhya, Mathura)', region: 'North India', category: 'domestic', url: '/national/uttarpradesh', image: '/assets/images/packageimages/uttar-pradesh.webp' },
+  { id: 'gujarat', name: 'Gujarat (Rann of Kutch, Dwarka)', region: 'West India', category: 'domestic', url: '/national/gujarat', image: '/assets/images/packageimages/beaches-of-gujarat.webp' },
+  { id: 'karnataka', name: 'Karnataka (Coorg, Ooty, Hampi)', region: 'South India', category: 'domestic', url: '/national/karnataka', image: '/assets/images/packageimages/karnatakahero.webp' },
 
   // ── International Destinations ──
-  { id: 'dubai', name: 'Dubai & UAE', region: 'Middle East', category: 'international', url: '/international/dubai' },
-  { id: 'bali', name: 'Bali, Indonesia', region: 'Southeast Asia', category: 'international', url: '/international/bali' },
-  { id: 'maldives', name: 'Maldives Overwater Villas', region: 'Indian Ocean', category: 'international', url: '/international/maldives' },
-  { id: 'singapore', name: 'Singapore City & Sentosa', region: 'Southeast Asia', category: 'international', url: '/international/singapore' },
-  { id: 'thailand', name: 'Thailand (Bangkok, Phuket, Krabi)', region: 'Southeast Asia', category: 'international', url: '/international/thailand' },
-  { id: 'vietnam', name: 'Vietnam (Hanoi, Halong Bay, Da Nang)', region: 'Southeast Asia', category: 'international', url: '/international/vietnam' },
-  { id: 'malaysia', name: 'Malaysia (Kuala Lumpur, Langkawi)', region: 'Southeast Asia', category: 'international', url: '/international/malaysia' },
-  { id: 'srilanka', name: 'Sri Lanka (Colombo, Kandy, Bentota)', region: 'South Asia', category: 'international', url: '/international/sri-lanka' },
-  { id: 'bhutan', name: 'Bhutan (Thimphu, Paro)', region: 'South Asia', category: 'international', url: '/international/bhutan' },
-  { id: 'nepal', name: 'Nepal (Kathmandu, Pokhara)', region: 'South Asia', category: 'international', url: '/international/nepal' },
-  { id: 'azerbaijan', name: 'Azerbaijan (Baku & Beyond)', region: 'Eurasia', category: 'international', url: '/international/azerbaijan' },
-  { id: 'japan', name: 'Japan (Tokyo, Kyoto, Mt. Fuji)', region: 'East Asia', category: 'international', url: '/international/japan' },
-  { id: 'hongkong', name: 'Hong Kong & Macau', region: 'East Asia', category: 'international', url: '/international/hong-kong' },
-  { id: 'southkorea', name: 'South Korea (Seoul, Jeju)', region: 'East Asia', category: 'international', url: '/international/south-korea' },
-  { id: 'mauritius', name: 'Mauritius Island', region: 'Indian Ocean', category: 'international', url: '/international/mauritius' },
+  { id: 'dubai', name: 'Dubai & UAE', region: 'Middle East', category: 'international', url: '/international/dubai', image: '/assets/images/packageimages/dubai.webp' },
+  { id: 'bali', name: 'Bali, Indonesia', region: 'Southeast Asia', category: 'international', url: '/international/bali', image: '/assets/images/packageimages/balihero.webp' },
+  { id: 'maldives', name: 'Maldives Overwater Villas', region: 'Indian Ocean', category: 'international', url: '/international/maldives', image: '/assets/images/packageimages/maldives.webp' },
+  { id: 'singapore', name: 'Singapore City & Sentosa', region: 'Southeast Asia', category: 'international', url: '/international/singapore', image: '/assets/images/packageimages/singapore.webp' },
+  { id: 'thailand', name: 'Thailand (Bangkok, Phuket, Krabi)', region: 'Southeast Asia', category: 'international', url: '/international/thailand', image: '/assets/images/packageimages/thailand.webp' },
+  { id: 'vietnam', name: 'Vietnam (Hanoi, Halong Bay, Da Nang)', region: 'Southeast Asia', category: 'international', url: '/international/vietnam', image: '/assets/images/packageimages/vietnam.webp' },
+  { id: 'malaysia', name: 'Malaysia (Kuala Lumpur, Langkawi)', region: 'Southeast Asia', category: 'international', url: '/international/malaysia', image: '/assets/images/packageimages/malaysia.webp' },
+  { id: 'srilanka', name: 'Sri Lanka (Colombo, Kandy, Bentota)', region: 'South Asia', category: 'international', url: '/international/sri-lanka', image: '/assets/images/packageimages/sri-lanka.webp' },
+  { id: 'bhutan', name: 'Bhutan (Thimphu, Paro)', region: 'South Asia', category: 'international', url: '/international/bhutan', image: '/assets/images/packageimages/bhutan.webp' },
+  { id: 'nepal', name: 'Nepal (Kathmandu, Pokhara)', region: 'South Asia', category: 'international', url: '/international/nepal', image: '/assets/images/packageimages/nepalhero.webp' },
+  { id: 'azerbaijan', name: 'Azerbaijan (Baku & Beyond)', region: 'Eurasia', category: 'international', url: '/international/azerbaijan', image: '/assets/images/packageimages/azerbaijan.webp' },
+  { id: 'japan', name: 'Japan (Tokyo, Kyoto, Mt. Fuji)', region: 'East Asia', category: 'international', url: '/international/japan', image: '/assets/images/packageimages/japanhero.webp' },
+  { id: 'hongkong', name: 'Hong Kong & Macau', region: 'East Asia', category: 'international', url: '/international/hong-kong', image: '/assets/images/packageimages/hong-kong.webp' },
+  { id: 'southkorea', name: 'South Korea (Seoul, Jeju)', region: 'East Asia', category: 'international', url: '/international/south-korea', image: '/assets/images/packageimages/south-korea.webp' },
+  { id: 'mauritius', name: 'Mauritius Island', region: 'Indian Ocean', category: 'international', url: '/international/mauritius', image: '/assets/images/packageimages/mauritius.webp' },
 
   // ── Honeymoon Packages ──
-  { id: 'bali-honeymoon', name: 'Bali Romantic Villa & Candlelight Escape', region: 'International', category: 'honeymoon', url: '/international/bali' },
-  { id: 'maldives-honeymoon', name: 'Maldives Luxury Overwater Bungalow', region: 'International', category: 'honeymoon', url: '/international/maldives' },
-  { id: 'kashmir-honeymoon', name: 'Kashmir Shikara & Snow Romance', region: 'Domestic', category: 'honeymoon', url: '/national/kashmir' },
-  { id: 'kerala-honeymoon', name: 'Kerala Backwaters Houseboat & Tea Hills', region: 'Domestic', category: 'honeymoon', url: '/national/kerala' },
-  { id: 'himachal-honeymoon', name: 'Manali & Shimla Snowy Mountain Retreat', region: 'Domestic', category: 'honeymoon', url: '/national/himachal-pradesh' },
-  { id: 'goa-honeymoon', name: 'Goa Sunset Cruise & Private Beach Haven', region: 'Domestic', category: 'honeymoon', url: '/national/goa' },
-  { id: 'andaman-honeymoon', name: 'Andaman Beach Villa & Scuba Dive', region: 'Domestic', category: 'honeymoon', url: '/national/andaman' },
-  { id: 'dubai-honeymoon', name: 'Dubai Skyline & Luxury Desert Safari', region: 'International', category: 'honeymoon', url: '/international/dubai' },
+  { id: 'honeymoon-kashmir', name: 'Kashmir Honeymoon', region: 'North India', category: 'honeymoon', url: '/national/kashmir', image: '/assets/images/packageimages/Kashmir-Honeymoon-Packages.webp' },
+  { id: 'honeymoon-ladakh', name: 'Ladakh Honeymoon', region: 'North India', category: 'honeymoon', url: '/national/ladakh', image: '/assets/images/packageimages/Ladakh-honeymoon.webp' },
+  { id: 'honeymoon-kerala', name: 'Kerala Honeymoon', region: 'South India', category: 'honeymoon', url: '/national/kerala', image: '/assets/images/packageimages/kerala-honeymoon.webp' },
+  { id: 'honeymoon-goa', name: 'Goa Honeymoon', region: 'West India', category: 'honeymoon', url: '/national/goa', image: '/assets/images/packageimages/Goa-couple-tour-package.webp' },
+  { id: 'honeymoon-andaman', name: 'Andaman Honeymoon', region: 'Island', category: 'honeymoon', url: '/national/andaman', image: '/assets/images/packageimages/andaman-tour.webp' },
+  { id: 'honeymoon-rajasthan', name: 'Rajasthan Honeymoon', region: 'North India', category: 'honeymoon', url: '/national/rajasthan', image: '/assets/images/packageimages/Honeymoon_in_Rajasthand.webp' },
+  { id: 'honeymoon-maldives', name: 'Maldives Honeymoon', region: 'Indian Ocean', category: 'honeymoon', url: '/international/maldives', image: '/assets/images/packageimages/maldives.webp' },
 
-  // ── Custom Itinerary ──
-  { id: 'custom-himalaya', name: 'Custom Himalayan Grand Circuit', region: 'Ladakh, Spiti, Himachal', category: 'custom', url: '/contact' },
-  { id: 'custom-south-india', name: 'Custom South India Cultural Trail', region: 'Kerala, Tamil Nadu', category: 'custom', url: '/contact' },
-  { id: 'custom-golden-triangle', name: 'Custom Royal Golden Triangle', region: 'Rajasthan & Taj Mahal', category: 'custom', url: '/contact' },
-  { id: 'custom-southeast-asia', name: 'Custom Southeast Asia Grand Tour', region: 'Singapore, Bali, Thai', category: 'custom', url: '/contact' },
-  { id: 'custom-dubai-abudhabi', name: 'Custom Dubai & Abu Dhabi Tour', region: 'Luxury Desert & City', category: 'custom', url: '/contact' },
-  { id: 'custom-any', name: 'Plan Any Custom Tour Worldwide', region: 'Custom Destination', category: 'custom', url: '/contact' },
+  // ── Custom Packages ──
+  { id: 'custom-domestic', name: 'Custom Domestic Tour', region: 'India', category: 'custom', url: '/contact', image: '/assets/images/packageimages/honeymoonnew.webp' },
+  { id: 'custom-international', name: 'Custom International Tour', region: 'Worldwide', category: 'custom', url: '/contact', image: '/assets/images/packageimages/honeymoonnew.webp' },
+  { id: 'custom-group', name: 'Custom Group Tour', region: 'Any', category: 'custom', url: '/contact', image: '/assets/images/packageimages/honeymoonnew.webp' },
+  { id: 'custom-corporate', name: 'Corporate Tour Package', region: 'Any', category: 'custom', url: '/contact', image: '/assets/images/packageimages/honeymoonnew.webp' },
+  { id: 'custom-adventure', name: 'Adventure Custom Tour', region: 'Any', category: 'custom', url: '/contact', image: '/assets/images/packageimages/honeymoonnew.webp' },
+  { id: 'custom-dubai-abudhabi', name: 'Custom Dubai & Abu Dhabi Tour', region: 'Luxury Desert & City', category: 'custom', url: '/contact', image: '/assets/images/packageimages/honeymoonnew.webp' },
+  { id: 'custom-any', name: 'Plan Any Custom Tour Worldwide', region: 'Custom Destination', category: 'custom', url: '/contact', image: '/assets/images/packageimages/honeymoonnew.webp' },
 ];
 
 export default function HeroSearchBar() {
@@ -197,12 +199,8 @@ export default function HeroSearchBar() {
 
   return (
     <>
-      {/* ════════ DESKTOP VERSION (Hidden on Mobile) ════════ */}
       <div className="hidden md:flex absolute bottom-[-90px] w-full flex-col items-center z-30 px-6">
-        
-        {/* Category Tabs */}
         <div className="flex bg-white shadow-lg rounded-full p-1.5 mb-[-14px] z-20 border border-gray-100 transition-all">
-          
           <button
             type="button"
             onClick={() => handleTabChange('domestic')}
@@ -255,20 +253,22 @@ export default function HeroSearchBar() {
             Custom Itinerary
           </button>
         </div>
-
-        {/* Search Input Bar Box */}
         <div className="bg-white rounded-[20px] shadow-[0_12px_36px_rgba(0,0,0,0.10)] w-full max-w-[1180px] p-6 pt-9 border border-gray-100">
           <form onSubmit={handleSearch} className="flex flex-row items-center gap-3.5 h-[64px]">
-            
-            {/* 1. Destination Field Dropdown */}
             <div ref={destDropdownRef} className="relative flex-[1.4] h-full min-w-0">
               <button
                 type="button"
                 onClick={() => setIsDestDropdownOpen(!isDestDropdownOpen)}
                 className="w-full h-full border border-gray-200 hover:border-[#f26c22] rounded-xl p-3 px-3.5 flex items-center gap-3 text-left bg-white transition cursor-pointer shadow-xs focus:ring-2 focus:ring-[#f26c22]/20"
               >
-                <div className="w-9 h-9 rounded-xl bg-orange-50 text-[#f26c22] flex items-center justify-center shrink-0">
-                  <FaMapMarkerAlt className="text-base" />
+                <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 border-2 border-gray-100">
+                  <Image
+                    src={selectedDestination?.image || '/assets/images/packageimages/honeymoonnew.webp'}
+                    alt={selectedDestination?.name || 'Destination'}
+                    width={36}
+                    height={36}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex flex-col justify-center overflow-hidden flex-1 min-w-0">
                   <span className="text-[13.5px] font-extrabold text-[#111] leading-tight truncate">
@@ -280,8 +280,6 @@ export default function HeroSearchBar() {
                 </div>
                 <FaChevronDown className={`text-gray-400 text-xs shrink-0 transition-transform duration-200 ${isDestDropdownOpen ? 'rotate-180 text-[#f26c22]' : ''}`} />
               </button>
-
-              {/* Destination Dropdown Menu */}
               {isDestDropdownOpen && (
                 <div className="absolute top-[72px] left-0 w-[360px] bg-white rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.18)] border border-gray-200 p-3 z-50 animate-scaleUp">
                   <div className="mb-2.5 relative">
@@ -295,7 +293,6 @@ export default function HeroSearchBar() {
                     />
                     <FaSearch className="absolute left-2.5 top-2.5 text-gray-400 text-xs" />
                   </div>
-
                   <div className="max-h-[260px] overflow-y-auto no-scrollbar space-y-1">
                     {filteredDestinations.map((dest) => (
                       <button
@@ -312,7 +309,15 @@ export default function HeroSearchBar() {
                         }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <FaMapMarkerAlt className="text-xs text-[#f26c22] shrink-0" />
+                          <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border-2 border-gray-100">
+                            <Image
+                              src={dest.image}
+                              alt={dest.name}
+                              width={40}
+                              height={40}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                           <div className="min-w-0">
                             <div className="text-xs font-bold leading-snug truncate">{dest.name}</div>
                             <div className="text-[10.5px] text-gray-400 leading-none truncate">{dest.region}</div>
@@ -330,8 +335,6 @@ export default function HeroSearchBar() {
                 </div>
               )}
             </div>
-
-            {/* 2. Departure Date Picker */}
             <div className="relative flex-1 h-full min-w-0">
               <button
                 type="button"
@@ -350,7 +353,6 @@ export default function HeroSearchBar() {
                   </span>
                 </div>
               </button>
-              {/* Native Input with Ref for 100% Reliable Click Opening */}
               <input
                 ref={departInputRef}
                 type="date"
@@ -359,8 +361,6 @@ export default function HeroSearchBar() {
                 className="absolute inset-0 opacity-0 pointer-events-none w-full h-full"
               />
             </div>
-
-            {/* 3. Return Date Picker */}
             <div className="relative flex-1 h-full min-w-0">
               <button
                 type="button"
@@ -379,7 +379,6 @@ export default function HeroSearchBar() {
                   </span>
                 </div>
               </button>
-              {/* Native Input with Ref for 100% Reliable Click Opening */}
               <input
                 ref={returnInputRef}
                 type="date"
@@ -388,8 +387,6 @@ export default function HeroSearchBar() {
                 className="absolute inset-0 opacity-0 pointer-events-none w-full h-full"
               />
             </div>
-
-            {/* 4. Travelers Selector */}
             <div ref={travelersDropdownRef} className="relative flex-1 h-full min-w-0">
               <button
                 type="button"
@@ -409,8 +406,6 @@ export default function HeroSearchBar() {
                 </div>
                 <FaChevronDown className={`text-gray-400 text-xs shrink-0 transition-transform duration-200 ${isTravelersOpen ? 'rotate-180 text-[#f26c22]' : ''}`} />
               </button>
-
-              {/* Travelers Dropdown Menu */}
               {isTravelersOpen && (
                 <div className="absolute top-[72px] right-0 w-[240px] bg-white rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.18)] border border-gray-200 p-2.5 z-50 animate-scaleUp">
                   {[
@@ -438,8 +433,6 @@ export default function HeroSearchBar() {
                 </div>
               )}
             </div>
-
-            {/* 5. SEARCH Button */}
             <button
               type="submit"
               className="bg-[#f26c22] hover:bg-[#d95d1a] active:scale-98 transition-all text-white rounded-xl px-8 font-black flex items-center justify-center gap-2 h-full cursor-pointer shadow-[0_4px_14px_rgba(242,108,34,0.4)] tracking-wide shrink-0"
@@ -447,10 +440,7 @@ export default function HeroSearchBar() {
               <FaSearch className="text-base" />
               SEARCH
             </button>
-
           </form>
-
-          {/* Footer Subtext */}
           <div className="mt-4 text-[12.5px] text-gray-600 font-medium ml-1 flex items-center justify-between">
             <span>
               Can&apos;t find what you&apos;re looking for? Create your{' '}
@@ -463,13 +453,8 @@ export default function HeroSearchBar() {
             </span>
           </div>
         </div>
-
       </div>
-
-      {/* ════════ MOBILE VERSION ════════ */}
-      <div className="md:hidden w-full px-4 -mt-10 sm:-mt-14 relative z-30 mb-8 flex flex-col items-center">
-        
-        {/* Mobile Tabs */}
+      <div className="md:hidden w-full px-4 mt-0 relative z-30 mb-8 flex flex-col items-center">
         <div className="flex bg-white shadow-lg rounded-full p-1 mb-[-14px] z-20 border border-gray-200 max-w-[calc(100vw-32px)] overflow-x-auto no-scrollbar">
           <button
             type="button"
@@ -515,15 +500,17 @@ export default function HeroSearchBar() {
             Custom
           </button>
         </div>
-
-        {/* Mobile Search Card */}
         <div className="bg-white rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.12)] w-full max-w-md p-5 pt-8 border border-gray-100">
           <form onSubmit={handleSearch} className="space-y-3">
-            
-            {/* Destination Select */}
             <div className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white relative">
-              <div className="w-8 h-8 rounded-lg bg-orange-50 text-[#f26c22] flex items-center justify-center shrink-0">
-                <FaMapMarkerAlt className="text-sm" />
+              <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border-2 border-gray-100">
+                <Image
+                  src={selectedDestination?.image || '/assets/images/packageimages/honeymoonnew.webp'}
+                  alt={selectedDestination?.name || 'Destination'}
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex flex-col justify-center flex-1 min-w-0">
                 <span className="text-[11px] font-bold text-gray-500 leading-tight">Where to?</span>
@@ -543,8 +530,6 @@ export default function HeroSearchBar() {
                 </select>
               </div>
             </div>
-
-            {/* Depart Date */}
             <div 
               onClick={triggerDepartPicker}
               className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white relative cursor-pointer"
@@ -565,8 +550,6 @@ export default function HeroSearchBar() {
                 className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
               />
             </div>
-
-            {/* Return Date */}
             <div 
               onClick={triggerReturnPicker}
               className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white relative cursor-pointer"
@@ -587,8 +570,6 @@ export default function HeroSearchBar() {
                 className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
               />
             </div>
-
-            {/* Travelers */}
             <div className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white">
               <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
                 <FaUsers className="text-sm" />
@@ -608,8 +589,6 @@ export default function HeroSearchBar() {
                 </select>
               </div>
             </div>
-
-            {/* Submit */}
             <button
               type="submit"
               className="w-full bg-[#f26c22] hover:bg-[#d95d1a] transition text-white rounded-xl py-3.5 font-bold flex items-center justify-center gap-2 text-sm shadow-md cursor-pointer"
@@ -617,7 +596,6 @@ export default function HeroSearchBar() {
               <FaSearch /> SEARCH
             </button>
           </form>
-
           <div className="mt-4 text-center text-[12px] text-gray-600 font-medium">
             Can&apos;t find what you&apos;re looking for? create your{' '}
             <Link href="/contact" className="text-[#1E6AD4] font-bold hover:underline">

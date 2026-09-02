@@ -112,7 +112,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden">
-      <section className="relative w-full h-[320px] sm:h-[420px] md:h-[600px] flex flex-col justify-center items-center">
+      <section className="relative w-full h-[580px] sm:h-[600px] md:h-[600px] flex flex-col justify-end md:justify-center items-center pb-2 md:pb-0 md:pt-0">
         <HeroCarousel />
         {/* Dynamic Interactive Hero Search Bar */}
         <HeroSearchBar />

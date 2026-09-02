@@ -44,9 +44,9 @@ export default function PackageDetailView({
   pkg,
   destSlug = 'india',
   destName = 'Destinations',
-  categoryLabel = 'National Tour',
+  categoryLabel = 'National Tour',  
 }: PackageDetailViewProps) {
-  const [activeTab, setActiveTab] = useState<'dayplan' | 'overview' | 'stay' | 'transfers' | 'inclusions' | 'policies'>('dayplan');
+  const [activeTab, setActiveTab] = useState<'dayplan' | 'overview' | 'stay' | 'transfers' | 'inclusions' | 'policies'>('overview');
   const [openDay, setOpenDay] = useState<number | null>(1);
   const [heroSlide, setHeroSlide] = useState<number>(0);
   const [appliedCoupon, setAppliedCoupon] = useState<string>('WELCOME');

@@ -19,6 +19,112 @@ import ladakh1 from "@/public/assets/images/iteneraryimages/ladkah1.webp";
 import ladakh2 from "@/public/assets/images/iteneraryimages/beautiful-buddhist-stupa.webp";
 import pangong1 from "@/public/assets/images/iteneraryimages/png1.webp";
 import pangong2 from "@/public/assets/images/iteneraryimages/png2.webp";
+import srinagarbike1 from "@/public/assets/images/iteneraryimages/Tracing_the_History.webp";
+import srinagarbike2 from "@/public/assets/images/iteneraryimages/Shinku.webp";
+import ladakhfamily1 from "@/public/assets/images/iteneraryimages/Leh-Ladakh-family-trip.webp";
+import ladakhfamily2 from "@/public/assets/images/iteneraryimages/leh-ladakh.webp";
+import ladakhmonastery1 from "@/public/assets/images/iteneraryimages/monasteries-ladakh.webp";
+import ladakhmonastery2 from "@/public/assets/images/iteneraryimages/ladakahmonestary2.webp";
+import nubrapangong1 from "@/public/assets/images/iteneraryimages/nubra.webp";
+import nubrapangong2 from "@/public/assets/images/iteneraryimages/nubra2.webp";
+import ladakhtso1 from "@/public/assets/images/iteneraryimages/hanle.webp";
+import ladakhtso2 from "@/public/assets/images/iteneraryimages/Khardung.webp";
+import LadakhSham1 from "@/public/assets/images/iteneraryimages/Rizong-gompa-Ladakh.webp";
+import LadakhSham2 from "@/public/assets/images/iteneraryimages/Likir.webp";
+import ladakhultimate1 from "@/public/assets/images/iteneraryimages/Ridestories.jpg";
+import ladakhultimate2 from "@/public/assets/images/iteneraryimages/ladakh-bike-expedition.webp";
+import spitiv1alley1 from "@/public/assets/images/iteneraryimages/sptvl1.webp";
+import spitiv1alley2 from "@/public/assets/images/iteneraryimages/spt2.webp";
+import Chandigarhbike1 from "@/public/assets/images/iteneraryimages/sptbike.webp";
+import Chandigarhbike2 from "@/public/assets/images/iteneraryimages/sptbike2.webp";
+import Kinnaur1 from "@/public/assets/images/iteneraryimages/kinnaur-guide.webp";
+import Kinnaur2 from "@/public/assets/images/iteneraryimages/maxresdefault.webp";
+import spitihoneymoon1 from "@/public/assets/images/iteneraryimages/romantic-himachal.webp";
+import spitihoneymoon2 from "@/public/assets/images/iteneraryimages/newimage.webp";
+import SpitiFamily1 from "@/public/assets/images/iteneraryimages/spitifamily1.webp";
+import SpitiFamily2 from "@/public/assets/images/iteneraryimages/spitivalleyfaliy.webp";
+import SpitiPhotography1 from "@/public/assets/images/iteneraryimages/photography-tours.webp";
+import SpitiPhotography2 from "@/public/assets/images/iteneraryimages/newphtography.webp";
+import spbk1 from "@/public/assets/images/iteneraryimages/spbk1.webp";
+import spbk2 from "@/public/assets/images/iteneraryimages/spbk2.webp";
+import spitiwinter1 from "@/public/assets/images/iteneraryimages/sptwntr.webp";
+import spitiwinter2 from "@/public/assets/images/iteneraryimages/sptwntr2.webp";
+import spitimonastery1 from "@/public/assets/images/iteneraryimages/sptmionwstary.webp";
+import spitimonastery2 from "@/public/assets/images/iteneraryimages/sptmn2.webp";
+import SpitiBudge1 from "@/public/assets/images/iteneraryimages/mngl.webp";
+import SpitiBudge2 from "@/public/assets/images/iteneraryimages/sptmn2.webp";
+import royalrajasthan1 from "@/public/assets/images/iteneraryimages/royal-rajasthan.webp";
+import royalrajasthan2 from "@/public/assets/images/iteneraryimages/exclusive-rajasthan.webp";
+import JaipurPushkar1 from "@/public/assets/images/iteneraryimages/jaipur-trip.webp";
+import JaipurPushkar2 from "@/public/assets/images/iteneraryimages/jaipur-ajmer-pushkar-tours.webp";
+import Jodhpur1 from "@/public/assets/images/iteneraryimages/jpur1.webp";
+import Jodhpur2 from "@/public/assets/images/iteneraryimages/Camel-decorated.webp";
+import Udaipur1 from "@/public/assets/images/iteneraryimages/udaipur1.webp";
+import Udaipur2 from "@/public/assets/images/iteneraryimages/up2.webp";
+import RoyalJaipur1 from "@/public/assets/images/iteneraryimages/Rajasthan-Wildlife.webp";
+import RoyalJaipur2 from "@/public/assets/images/iteneraryimages/jaipur-ranthambore-tour.webp";
+import Bikaner1 from "@/public/assets/images/iteneraryimages/bk1.webp";
+import Bikaner2 from "@/public/assets/images/iteneraryimages/bikaner2.webp";
+import RajasthanFamily1 from "@/public/assets/images/iteneraryimages/rjfam1.webp";
+import RajasthanFamily2 from "@/public/assets/images/iteneraryimages/rjfm2.webp";
+import RajasthanDesert1 from "@/public/assets/images/iteneraryimages/rjcm1.webp";
+import RajasthanDesert2 from "@/public/assets/images/iteneraryimages/rjcm2.webp";
+import Chittorgarh1 from "@/public/assets/images/iteneraryimages/cht1.webp";
+import Chittorgarh2 from "@/public/assets/images/iteneraryimages/kumbhalgarh-fort.webp";
+import LuxuryHoneymoon1 from "@/public/assets/images/iteneraryimages/rajasthan-honeymoon-tour.webp";
+import LuxuryHoneymoon2 from "@/public/assets/images/iteneraryimages/Kashmir-luxury-honeymoon.webp";
+import Varanasi1 from "@/public/assets/images/iteneraryimages/Shri-Kashi-Vishwanath.webp";
+import Varanasi2 from "@/public/assets/images/iteneraryimages/vas2.webp";
+import Agra1 from "@/public/assets/images/iteneraryimages/ag1.webp";
+import Agra2 from "@/public/assets/images/iteneraryimages/ag2.webp";
+import Mathura1 from "@/public/assets/images/iteneraryimages/vdvn1.webp";
+import Mathura2 from "@/public/assets/images/iteneraryimages/gokul-mthura-vrindavan.webp";
+import Ayodhya1 from "@/public/assets/images/iteneraryimages/ram-janmaboomi-ayodhya.webp";
+import Ayodhya2 from "@/public/assets/images/iteneraryimages/adrm.webp";
+import Lucknow1 from "@/public/assets/images/iteneraryimages/lkn.webp";
+import Lucknow2 from "@/public/assets/images/iteneraryimages/lkn2.webp";
+import Prayagraj1 from "@/public/assets/images/iteneraryimages/pg1.webp";
+import Prayagraj2 from "@/public/assets/images/iteneraryimages/Prayagraj-Maha-Kumbh.webp";
+import Varanasiad1 from "@/public/assets/images/iteneraryimages/sptrl1.webp";
+import Varanasiad2 from "@/public/assets/images/iteneraryimages/varanasi.webp";
+import Buddhist1 from "@/public/assets/images/iteneraryimages/thumb.webp";
+import Buddhist2 from "@/public/assets/images/iteneraryimages/Gautam-Buddha-Circuits.webp";
+import Jhansi1 from "@/public/assets/images/iteneraryimages/places_attraction.webp";
+import Jhansi2 from "@/public/assets/images/iteneraryimages/Jhansi_Orchha.webp";
+import Uttar1 from "@/public/assets/images/iteneraryimages/uttarpradesh.webp";
+import Uttar2 from "@/public/assets/images/iteneraryimages/varanasinew.webp";
+import coorg1 from "@/public/assets/images/iteneraryimages/crg1.webp";
+import coorg2 from "@/public/assets/images/iteneraryimages/coorg-glenlorna-tea-estate.webp";
+import mysore1 from "@/public/assets/images/iteneraryimages/kabini.webp";
+import mysore2 from "@/public/assets/images/iteneraryimages/pe2.webp";
+import Hampi1 from "@/public/assets/images/iteneraryimages/The-Architecture.webp";
+import Hampi2 from "@/public/assets/images/iteneraryimages/vitthala-temple.webp";
+import Chikmagalur1 from "@/public/assets/images/iteneraryimages/chlk12.webp";
+import Chikmagalur2 from "@/public/assets/images/iteneraryimages/chkk2.webp";
+import Gokarna1 from "@/public/assets/images/iteneraryimages/murudeshwar.webp";
+import Gokarna2 from "@/public/assets/images/iteneraryimages/Murudeshwarnew.webp";
+import Bandipur1 from "@/public/assets/images/iteneraryimages/dk1.webp";
+import Bandipur2 from "@/public/assets/images/iteneraryimages/Bandipur-National-Park.webp";
+import Badami1 from "@/public/assets/images/iteneraryimages/Badami1.webp";
+import Badami2 from "@/public/assets/images/iteneraryimages/dreamstime.webp";
+import Dandeli1 from "@/public/assets/images/iteneraryimages/River-Rafting.webp";
+import Dandeli2 from "@/public/assets/images/iteneraryimages/Things-to-Do-in-in-Dandeli.webp";
+import Karnataka1 from "@/public/assets/images/iteneraryimages/heritage-bengaluru-palace.webp";
+import Karnataka2 from "@/public/assets/images/iteneraryimages/bfulkn2.webp";
+import Kerala1 from "@/public/assets/images/iteneraryimages/The-Magical-Backwaters.webp";
+import Kerala2 from "@/public/assets/images/iteneraryimages/kl2.webp";
+import Munnar1 from "@/public/assets/images/iteneraryimages/tea-plantations.webp";
+import Munnar2 from "@/public/assets/images/iteneraryimages/mnr2.webp";
+import KeralaHoneymoon1 from "@/public/assets/images/iteneraryimages/kerala-tour-packages.webp";
+import KeralaHoneymoon2 from "@/public/assets/images/iteneraryimages/khmn1.webp";
+import Wayanad1 from "@/public/assets/images/iteneraryimages/Wayanad-Muthanga.webp";
+import Wayanad2 from "@/public/assets/images/iteneraryimages/Wayanad.webp";
+import Thekkady1 from "@/public/assets/images/iteneraryimages/Thekkady-Travel.webp";
+import Thekkady2 from "@/public/assets/images/iteneraryimages/trkk2.webp";
+
+
+
+
 
 
 import { internationalDestinations } from './internationalPackages';
@@ -1596,8 +1702,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/lehbike.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
+          srinagarbike1,
+          srinagarbike2,
         ],
 
         overview:
@@ -1849,8 +1955,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/Ladakh-honeymoon.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=800&auto=format&fit=crop',
+          ladakhfamily1,
+          ladakhfamily2,
         ],
 
         overview:
@@ -2007,8 +2113,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/ladakh-tours-packages.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop',
+          ladakhmonastery1,
+          ladakhmonastery2,
         ],
 
         overview:
@@ -2145,8 +2251,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/Ladakh-Nubra-Valley.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop',
+          nubrapangong1,
+          nubrapangong2,
         ],
 
         overview:
@@ -2286,8 +2392,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/tso.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
+          ladakhtso1,
+          ladakhtso2,
         ],
 
         overview:
@@ -2678,8 +2784,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/shamvallery.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=800&auto=format&fit=crop',
+          LadakhSham1,
+          LadakhSham2,
         ],
 
         overview:
@@ -2840,8 +2946,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/bikeinlleh.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop',
+          ladakhultimate1,
+          ladakhultimate2,
         ],
 
         overview:
@@ -3052,10 +3158,10 @@ export const allDestinations: Record<string, DestinationData> = {
         rating: 4.9,
         reviewsCount: 360,
         category: 'Popular',
-        heroImage: '/assets/images/packageimages/rj1.webp',
+        heroImage: '/assets/images/iteneraryimages/exclusive-rajasthan.webp',
         gallery: [
-          'https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop',
+          royalrajasthan1,
+          royalrajasthan2,
         ],
         overview: 'Experience the regal elegance of Rajputana. From the opulent Amber Fort and Hawa Mahal in Jaipur to the golden sand dune camps of Jaisalmer and romantic sunset boat cruises on Lake Pichola in Udaipur.',
         highlights: [
@@ -3148,8 +3254,8 @@ export const allDestinations: Record<string, DestinationData> = {
 
         heroImage: '/assets/images/packageimages/jaipur-bg.webp',
         gallery: [
-          'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop',
+          JaipurPushkar1,
+          JaipurPushkar2,
         ],
 
         overview:
@@ -3264,8 +3370,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/8-Rajasthan.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=800&auto=format&fit=crop',
+          Jodhpur1,
+          Jodhpur2,
         ],
 
         overview:
@@ -3397,8 +3503,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/moundabu.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1602643163983-ed0babc39797?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop',
+          Udaipur1,
+          Udaipur2,
         ],
 
         overview:
@@ -3524,11 +3630,11 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 187,
         category: 'Popular',
 
-        heroImage: '/assets/images/packageimages/widlifepark.webp',
+        heroImage: '/assets/images/iteneraryimages/Rajasthan-Wildlife.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop',
+          RoyalJaipur1,
+          RoyalJaipur2,
         ],
 
         overview:
@@ -3658,8 +3764,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/raj.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop',
+          Bikaner1,
+          Bikaner2,
         ],
 
         overview:
@@ -3791,8 +3897,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/rajnewww.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop',
+          RajasthanFamily1,
+          RajasthanFamily2,
         ],
 
         overview:
@@ -3950,8 +4056,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/newwrajimage.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=800&auto=format&fit=crop',
+          RajasthanDesert1,
+          RajasthanDesert2,
         ],
 
         overview:
@@ -4093,11 +4199,11 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 192,
         category: 'Popular',
 
-        heroImage: '/assets/images/packageimages/jalmahal1.webp',
+        heroImage: '/assets/images/iteneraryimages/cht1.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1602643163983-ed0babc39797?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=800&auto=format&fit=crop',
+          Chittorgarh1,
+          Chittorgarh2,
         ],
 
         overview:
@@ -4228,8 +4334,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/Honeymoon_in_Rajasthand.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1602643163983-ed0babc39797?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=800&auto=format&fit=crop',
+          LuxuryHoneymoon1,
+          LuxuryHoneymoon2,
         ],
 
         overview:
@@ -4421,7 +4527,8 @@ export const allDestinations: Record<string, DestinationData> = {
         category: 'Honeymoon',
         heroImage: '/assets/images/packageimages/keralahero.webp',
         gallery: [
-          'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop',
+          Kerala1,
+          Kerala2
         ],
         overview: 'Discover why Kerala is God\'s Own Country. Breathe fresh mountain air among the rolling tea estates of Munnar, explore aromatic spice plantations and Periyar wildlife in Thekkady, and drift peacefully through the backwaters on a private houseboat.',
         highlights: [
@@ -4495,7 +4602,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 420,
         category: 'Popular',
         heroImage: '/assets/images/packageimages/k2.webp',
-        gallery: ['https://images.unsplash.com/photo-1580060839134-75a5edca2e99?q=80&w=800&auto=format&fit=crop', 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop'],
+        gallery: [Kerala2,Kerala1],
         overview: 'Experience the soul of Kerala on an overnight luxury houseboat cruise through the legendary Alleppey Backwaters — a 900km network of shimmering canals, lagoons, and lakes flanked by swaying coconut palms and vibrant paddy fields. Drift through timeless fishing villages, watch sunset over Vembanad Lake, and savor a private Kerala feast cooked fresh aboard your floating home. A journey that makes you understand why Kerala is truly God\'s Own Country.',
         highlights: [
           '1 Night Luxury A/C Houseboat cruise with full board on Kerala backwaters',
@@ -4562,7 +4669,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 310,
         category: 'Popular',
         heroImage: '/assets/images/packageimages/munnar.webp',
-        gallery: ['https://images.unsplash.com/photo-1625505826533-5c80aca7d157?q=80&w=800&auto=format&fit=crop'],
+        gallery: [Munnar1,Munnar2],
         overview: 'Breathe in the fresh, crisp aroma of freshly plucked tea leaves as you explore the high-altitude paradise of Munnar — Kerala\'s crown jewel of hill stations at 1,600m. Journey to Vagamon, a hidden highland plateau of rolling meadows, pine forests, and mystical para gliding cliffs. This rejuvenating retreat is perfect for nature lovers, photography enthusiasts, and those seeking a peaceful escape from urban life.',
         highlights: [
           'Munnar Tea Museum & hands-on tea plucking experience at TATA Tea Estate',
@@ -4637,7 +4744,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 520,
         category: 'Honeymoon',
         heroImage: '/assets/images/packageimages/kerala-honeymoon.webp',
-        gallery: ['https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop', 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?q=80&w=800&auto=format&fit=crop'],
+        gallery: [KeralaHoneymoon1, KeralaHoneymoon2],
         overview: 'Kerala was made for love. Walk hand-in-hand through endless emerald tea gardens in Munnar at 5,000 feet, drift together on a candlelit luxury houseboat through the moonlit backwaters of Alleppey, and wake to the sound of Arabian Sea waves at Kovalam Beach. This exclusive honeymoon package weaves together Kerala\'s most romantic landscapes with luxurious stays, private experiences, and intimate moments crafted for two.',
         highlights: [
           'Romantic sunrise in Munnar tea estates with champagne breakfast',
@@ -4728,7 +4835,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 265,
         category: 'Adventure',
         heroImage: '/assets/images/packageimages/reserve-forest.webp',
-        gallery: ['https://images.unsplash.com/photo-1551649001-7a2d2e99c1d5?q=80&w=800&auto=format&fit=crop'],
+        gallery: [Wayanad1, Wayanad2],
         overview: 'Wayanad — Kerala\'s most enchanting forest district — harbors a remarkable biodiversity, ancient tribal civilizations, and dramatic highland landscapes. Trek to the heart-shaped Chembra Peak Lake, bamboo raft down the Kabani River through Nagarhole Reserve, discover 6,000-year-old rock art at Edakkal Caves, and encounter wild elephants in their natural habitat at Mutanga Wildlife Sanctuary. An unforgettable adventure for nature lovers and outdoor enthusiasts.',
         highlights: [
           'Chembra Peak Trek (2,100m) — Kerala\'s highest trekking peak with heart-shaped lake',
@@ -4803,7 +4910,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 290,
         category: 'Adventure',
         heroImage: '/assets/images/packageimages/Thekkady-Travel.webp',
-        gallery: ['https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=800&auto=format&fit=crop'],
+        gallery: [Thekkady1, Thekkady2],
         overview: 'Thekkady is where Kerala\'s wild jungle meets its most ancient agricultural traditions. Explore the legendary Periyar Wildlife Sanctuary on a tranquil lake boat safari, spotting wild elephants, sambar deer, and exotic birds from the water. Walk through an aromatic spice plantation where cardamom, pepper, nutmeg, vanilla, and cinnamon grow in tropical abundance. Experience a traditional Kerala village lifestyle in the paddy fields of Kuttanad, the rice bowl of Kerala.',
         highlights: [
           'Periyar Tiger Reserve lake boat safari — wild elephant sightings',
@@ -6696,7 +6803,7 @@ export const allDestinations: Record<string, DestinationData> = {
     region: 'North India',
     tagline: 'Ancient monasteries, high-altitude lakes, and the cold desert of the Himalayas.',
     description: 'Spiti Valley, known as the "Cold Desert of India", is a remote Himalayan region in Himachal Pradesh. It features ancient Buddhist monasteries, stunning high-altitude lakes like Chandratal, and breathtaking landscapes that attract adventure seekers and spiritual travelers alike.',
-    heroImage: '/assets/images/packageimages/sptvalley.webp',
+    heroImage: '/assets/images/packageimages/spitiherobaner.jpg',
     bestTime: 'May to October (Road Accessible) / Nov to March (Winter Expeditions)',
     packagesCount: 10,
     packages: [
@@ -6712,8 +6819,8 @@ export const allDestinations: Record<string, DestinationData> = {
         rating: 4.8,
         reviewsCount: 120,
         category: 'Adventure',
-        heroImage: '/assets/images/packageimages/sptneww.webp',
-        gallery: ['https://images.unsplash.com/photo-1626621341517-bbf3d9990a2?q=80&w=800&auto=format&fit=crop'],
+        heroImage: '/assets/images/packageimages/spitiherobaner.jpg',
+        gallery: [spitiv1alley1, spitiv1alley2],
         overview: 'Embark on an unforgettable journey through the mystical Spiti Valley, a land of ancient monasteries, breathtaking landscapes, and unique culture.',
         highlights: [
           'Key Monastery - Oldest Monastery in Spiti',
@@ -6861,7 +6968,7 @@ export const allDestinations: Record<string, DestinationData> = {
       },
       {
         id: 'spiti-2',
-        slug: 'Chandigarh-to-Spiti-Bike-Expedition',
+        slug: 'chandigarh-to-spiti-bike-expedition',
         title: 'Chandigarh To Spiti Bike Expedition',
         subtitle:
           'Ride through the dramatic landscapes of Spiti Valley, explore ancient monasteries and high-altitude villages, and return through the scenic Kinnaur Valley to Shimla',
@@ -6877,8 +6984,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/Chandigarh-To-Spiti-Bike-Expedition.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop',
+          Chandigarhbike1,
+          Chandigarhbike2,
         ],
 
         overview:
@@ -7100,8 +7207,8 @@ export const allDestinations: Record<string, DestinationData> = {
         heroImage: '/assets/images/packageimages/knrroad.webp',
 
         gallery: [
-          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop',
+          Kinnaur1,
+          Kinnaur2,
         ],
         overview:
           'Embark on an unforgettable 12-day road trip through the spectacular landscapes of Kinnaur and Spiti Valley. Starting from Shimla, travel through the beautiful Sangla Valley and remote village of Chitkul before reaching Kalpa, known for its breathtaking views of the Kinnaur Kailash range. Continue towards the high-altitude landscapes of Nako, Tabo and Kaza, explore ancient Buddhist monasteries and visit the famous villages of Langza, Hikkim and Komic. The journey continues towards the stunning Chandratal Lake before crossing Kunzum Pass and descending into Manali, making this a complete Kinnaur-Spiti Himalayan adventure.',
@@ -7361,7 +7468,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 65,
         category: 'Honeymoon',
         heroImage: '/assets/images/packageimages/Honeymoon-Cover-image.webp',
-        gallery: ['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop'],
+        gallery: [spitihoneymoon1, spitihoneymoon2],
         overview: 'A romantic honeymoon escape to the mystical Spiti Valley with luxury stays, private transfers, and intimate experiences in the cold desert.',
         highlights: [
           'Luxury Swiss Camp Stays',
@@ -7508,7 +7615,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 75,
         category: 'Family',
         heroImage: '/assets/images/packageimages/sptfamily.webp',
-        gallery: ['https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop'],
+        gallery: [SpitiFamily1, SpitiFamily2],
         overview: 'A family-friendly tour to Spiti Valley with comfortable stays, moderate activities, and cultural experiences suitable for all ages.',
         highlights: [
           'Key Monastery Cultural Tour',
@@ -7672,8 +7779,8 @@ export const allDestinations: Record<string, DestinationData> = {
         rating: 4.9,
         reviewsCount: 55,
         category: 'Adventure',
-        heroImage: '/assets/images/packageimages/Spiti-Logo-scaled.webp',
-        gallery: ['https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=800&auto=format&fit=crop'],
+        heroImage: '/assets/images/iteneraryimages/newphtography.webp',
+        gallery: [SpitiPhotography1, SpitiPhotography2],
         overview: 'A specialized photography tour to capture the stunning landscapes, ancient monasteries, and unique culture of Spiti Valley with expert guidance.',
         highlights: [
           'Golden Hour Photography Sessions',
@@ -7859,7 +7966,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 110,
         category: 'Adventure',
         heroImage: '/assets/images/packageimages/sptbike.webp',
-        gallery: ['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop'],
+        gallery: [spbk1, spbk2],
         overview: 'An epic motorcycle journey through Spiti Valley, conquering high mountain passes, rugged terrain, and experiencing the thrill of the cold desert.',
         highlights: [
           'Royal Enfield Bike Rental',
@@ -8053,7 +8160,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 45,
         category: 'Adventure',
         heroImage: '/assets/images/packageimages/sptwinterexp.webp',
-        gallery: ['https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?q=80&w=800&auto=format&fit=crop'],
+        gallery: [spitiwinter1, spitiwinter2],
         overview: 'Experience the magical frozen landscapes of Spiti Valley in winter with snow-covered monasteries, frozen rivers, and unique winter culture.',
         highlights: [
           'Frozen Chandratal Lake',
@@ -8194,7 +8301,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 60,
         category: 'Popular',
         heroImage: '/assets/images/packageimages/buddhist-monastery-kaza-spiti-valley.webp',
-        gallery: ['https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop'],
+        gallery: [spitimonastery1, spitimonastery2],
         overview: 'A spiritual journey exploring the ancient Buddhist monasteries of Spiti Valley, including Key, Tabo, Dhankar, and Lhalung monasteries.',
         highlights: [
           'Key Monastery - 1000 Years Old',
@@ -8352,7 +8459,7 @@ export const allDestinations: Record<string, DestinationData> = {
         reviewsCount: 90,
         category: 'Popular',
         heroImage: '/assets/images/packageimages/spttt.webp',
-        gallery: ['https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop'],
+        gallery: [SpitiBudge1, SpitiBudge2],
         overview: 'An affordable adventure to Spiti Valley with budget-friendly stays, shared transportation, and all major attractions covered.',
         highlights: [
           'Budget-Friendly Accommodation',
@@ -8490,7 +8597,7 @@ export const allDestinations: Record<string, DestinationData> = {
     "region": "North India",
     "tagline": "Varanasi Ganga Aarti, Agra Taj Mahal, Ayodhya Ram Mandir & Lucknow Nawabi culture.",
     "description": "The spiritual and cultural heartland of India, home to the timeless Taj Mahal in Agra, ancient Ghats and Kashi Vishwanath in Varanasi, the sacred Ram Janmabhoomi in Ayodhya, and the culinary elegance of Lucknow.",
-    "heroImage": '/assets/images/packageimages/uttarpradeshherobaner.webp',
+    "heroImage": '/assets/images/iteneraryimages/uttarpradesh.webp',
     "bestTime": "October to March",
     "packagesCount": 10,
     "packages": [
@@ -8508,8 +8615,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Spiritual",
         "heroImage": '/assets/images/packageimages/uttarpradeshherobaner.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1571536802807-30451e3955d8?q=80&w=800&auto=format&fit=crop"
+          Varanasi1,
+          Varanasi2
         ],
         "overview": "Immerse in the oldest continuously inhabited city in the world. Experience the mystical Subah-e-Banaras boat ride along the holy Ganges, witness the mesmerizing evening Ganga Aarti at Dashashwamedh Ghat, seek blessings at the sacred Kashi Vishwanath Jyotirlinga corridor, and walk the peaceful deer park at Sarnath where Lord Buddha delivered his first sermon.",
         "highlights": [
@@ -8606,7 +8713,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Cultural",
         "heroImage": '/assets/images/packageimages/agra.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800&auto=format&fit=crop"
+          Agra1,
+          Agra2,
         ],
         "overview": "Stand before the world’s most magnificent monument to love — the white marble Taj Mahal. Discover the grandeur of Mughal architecture across Agra Fort, the red sandstone ghost city of Fatehpur Sikri, the Tomb of Itimad-ud-Daulah (Baby Taj), and sunset vistas over the Yamuna River from Mehtab Bagh.",
         "highlights": [
@@ -8687,7 +8795,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Spiritual",
         "heroImage": '/assets/images/packageimages/Mathura.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1582650625119-3a31f8418b7d?q=80&w=800&auto=format&fit=crop"
+          Mathura1,
+          Mathura2
         ],
         "overview": "Experience the divine atmosphere of Braj Bhoomi where Lord Krishna spent his childhood. Seek blessings at Shri Krishna Janmabhoomi in Mathura, immerse in the ecstatic devotion at Banke Bihari Temple in Vrindavan, marvel at the illuminated white Italian marble Prem Mandir, and undertake the sacred Govardhan Parikrama.",
         "highlights": [
@@ -8782,7 +8891,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Spiritual",
         "heroImage": '/assets/images/packageimages/ayodhya.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=800&auto=format&fit=crop"
+          Ayodhya1,
+          Ayodhya2
         ],
         "overview": "Embark on a soul-enriching pilgrimage to the sacred city of Ayodhya — the eternal birthplace of Lord Rama. Experience the majestic newly consecrated Shri Ram Janmabhoomi Mandir, climb the ancient ramparts of Hanuman Garhi, witness the divine evening Saryu River Aarti at Ram Ki Paidi, and marvel at the gold-adorned palace temple of Kanak Bhawan.",
         "highlights": [
@@ -8865,7 +8975,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Cultural",
         "heroImage": '/assets/images/packageimages/lknow.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          Lucknow1,
+          Lucknow2
         ],
         "overview": "Experience the city of tehzeeb, adab, and legendary Nawabi splendor. Explore the architectural marvel of Bara Imambara and its baffling Bhool Bhulaiya labyrinth, the grand 60-foot Rumi Darwaza, the British Residency ruins of 1857, authentic Chikankari and Zardozi artisan ateliers, and the world-famous Awadhi culinary trails.",
         "highlights": [
@@ -8947,7 +9058,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Spiritual",
         "heroImage": '/assets/images/packageimages/pryagraaj.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1571536802807-30451e3955d8?q=80&w=800&auto=format&fit=crop"
+          Prayagraj1,
+          Prayagraj2
         ],
         "overview": "Journey to the holy city of Prayagraj, where the sacred rivers Ganga, Yamuna, and invisible Saraswati converge at Triveni Sangam — the host site of the world-famous Maha Kumbh Mela. Take a sacred boat dip at the confluence, seek blessings from the unique reclining Bade Hanuman Ji, and explore the historic Anand Bhavan.",
         "highlights": [
@@ -9028,8 +9140,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Spiritual",
         "heroImage": '/assets/images/packageimages/vrnsineww.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1605649487212-47bdab064df7?q=80&w=800&auto=format&fit=crop"
+          Varanasiad1,
+          Varanasiad2,
         ],
         "overview": "The most revered pilgrimage circuit in North India! Experience the divine energy of Kashi Vishwanath and Ganga Aarti in Varanasi, undertake the sacred confluence dip at Triveni Sangam in Prayagraj, and receive the divine blessings of Lord Rama at the newly consecrated Ram Janmabhoomi Mandir in Ayodhya.",
         "highlights": [
@@ -9147,7 +9259,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Cultural",
         "heroImage": '/assets/images/packageimages/budhism.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          Buddhist1,
+          Buddhist2
         ],
         "overview": "A profoundly serene pilgrimage through the sacred Buddhist sites of Uttar Pradesh where Lord Buddha preached, meditated, and attained Mahaparinirvana. Explore Sarnath (First Sermon), Kushinagar (Final Parinirvana Temple with the 6-meter reclining Buddha), Shravasti (Jetavana Monastery), and Kapilvastu ruins.",
         "highlights": [
@@ -9255,7 +9368,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Cultural",
         "heroImage": '/assets/images/packageimages/raja-mahal.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop"
+          Jhansi1,
+          Jhansi2
         ],
         "overview": "Relive the tales of bravery and royal elegance across Bundelkhand. Visit the imposing hilltop Jhansi Fort of Rani Laxmi Bai, cross into the medieval palace-city of Orchha set on the rocky banks of the Betwa River with Raja Mahal, Jahangir Mahal, and Chaturbhuj Temple, and explore Datia’s 7-story palace.",
         "highlights": [
@@ -9334,10 +9448,10 @@ export const allDestinations: Record<string, DestinationData> = {
         "rating": 5,
         "reviewsCount": 390,
         "category": "Popular",
-        "heroImage": '/assets/images/packageimages/uttarpradesh.webp',
+        "heroImage": '/assets/images/iteneraryimages/uttarpradesh.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=800&auto=format&fit=crop"
+          Uttar1,
+          Uttar2
         ],
         "overview": "The ultimate, comprehensive journey through Uttar Pradesh covering all 5 iconic cultural and spiritual capitals: the Mughal majesty of Agra (Taj Mahal), the royal Awadhi elegance of Lucknow, the sacred birthplace of Lord Rama in Ayodhya, the holy confluence at Prayagraj, and the eternal spiritual ghats of Varanasi.",
         "highlights": [
@@ -11441,7 +11555,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Popular",
         "heroImage": '/assets/images/packageimages/karnatakahero.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1600100397608-f010f444f479?q=80&w=800&auto=format&fit=crop"
+          coorg1,
+          coorg2,
         ],
         "overview": "Breathe in the rich aroma of Arabica coffee and black pepper in the lush highlands of Coorg (Kodagu). Stay at a boutique coffee plantation estate, bathe elephants at Dubare Elephant Camp, marvel at the 40-foot golden Buddha statues in the Tibetan monastery of Bylakuppe, and gaze over misty Western Ghats from Raja’s Seat.",
         "highlights": [
@@ -11536,7 +11651,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Popular",
         "heroImage": '/assets/images/packageimages/caption.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=800&auto=format&fit=crop"
+          mysore1,
+          mysore2,
         ],
         "overview": "Combine the imperial heritage of Mysore with the thrilling wildlife of Kabini (Nagarhole National Park). Marvel at the 100,000 golden bulbs illuminating the magnificent Mysore Palace, visit the island fortress of Tipu Sultan at Srirangapatna, and embark on thrilling boat and jeep safaris in Kabini to spot wild leopards, Bengal tigers, and Asian elephant herds.",
         "highlights": [
@@ -11631,7 +11747,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Cultural",
         "heroImage": '/assets/images/packageimages/hampi.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1600100397608-f010f444f479?q=80&w=800&auto=format&fit=crop"
+          Hampi1,
+          Hampi2,
         ],
         "overview": "Step into an open-air museum of colossal granite boulders and imperial 14th-century ruins of the Vijayanagara Empire — once one of the richest and largest cities in the medieval world. Gaze upon the iconic monolithic Stone Chariot at Vijaya Vittala Temple, ride circular coracle boats across the Tungabhadra River, and watch unforgettable sunsets from Matanga Hill.",
         "highlights": [
@@ -11728,7 +11845,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Adventure",
         "heroImage": '/assets/images/packageimages/Coffee-Plantation.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+          Chikmagalur1,
+          Chikmagalur2,
         ],
         "overview": "Known as the birthplace of coffee in India where Sufi saint Baba Budan first planted seven coffee beans in the 17th century, Chikmagalur is a verdant highland wonderland. Trek to Mullayanagiri (Karnataka’s highest point at 1,930m), drive through misty shola forests to Baba Budangiri, and experience rejuvenating plantation hospitality.",
         "highlights": [
@@ -11807,7 +11925,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Popular",
         "heroImage": '/assets/images/packageimages/Gokarna.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop"
+          Gokarna1,
+          Gokarna2,
         ],
         "overview": "Experience the bohemian beach paradise and spiritual soul of Karnataka’s Konkan coastline. Trek across the famous five beaches of Gokarna (Om Beach, Kudle, Half Moon, Paradise, Gokarna Beach), marvel at the world’s second-tallest Shiva statue (123 ft) rising out of the sea at Murudeshwar, and cruise the mangrove backwaters of Honnavar.",
         "highlights": [
@@ -11901,7 +12020,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Adventure",
         "heroImage": '/assets/images/packageimages/southern-indias-tiger.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=800&auto=format&fit=crop"
+          Bandipur1,
+          Bandipur2,
         ],
         "overview": "Traverse the legendary Nilgiri Biosphere Reserve on an intensive wildlife expedition covering both premier tiger reserves of Karnataka. Experience morning and evening open-jeep safaris in Bandipur National Park (one of the earliest Project Tiger reserves) and boat/jeep safaris in Nagarhole (Kabini), home to one of the highest densities of tigers and leopards in Asia.",
         "highlights": [
@@ -11993,7 +12113,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Cultural",
         "heroImage": '/assets/images/packageimages/hbd.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1600100397608-f010f444f479?q=80&w=800&auto=format&fit=crop"
+          Badami1,
+          Badami2,
         ],
         "overview": "Travel to the heart of early medieval rock-cut architecture in North Karnataka. Explore the 6th-century Badami Cave Temples carved into blood-red sandstone cliffs overlooking Agastya Lake, marvel at the UNESCO World Heritage temple complex at Pattadakal blending Dravidian and Nagara styles, and explore Aihole — hailed as the \"Cradle of Indian Temple Architecture\" with over 120 stone temples.",
         "highlights": [
@@ -12073,7 +12194,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Adventure",
         "heroImage": '/assets/images/packageimages/Dandeli-River-Rafting.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800&auto=format&fit=crop"
+          Dandeli1,
+          Dandeli2,
         ],
         "overview": "Immerse in the thrilling rainforests of the Western Ghats along the roaring Kali River in Dandeli. Experience thrilling Grade II and III white-water rafting, relax in natural river jacuzzi rapids, kayak and zip-line across the river, spot hornbills in dense canopies, and marvel at the 300-foot monolithic granite Syntheri Rocks.",
         "highlights": [
@@ -12234,8 +12356,8 @@ export const allDestinations: Record<string, DestinationData> = {
         "category": "Popular",
         "heroImage": '/assets/images/packageimages/Hampi-Badami.webp',
         "gallery": [
-          "https://images.unsplash.com/photo-1600100397608-f010f444f479?q=80&w=800&auto=format&fit=crop",
-          "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?q=80&w=800&auto=format&fit=crop"
+          Karnataka1,
+          Karnataka2
         ],
         "overview": "The definitive Karnataka grand tour! Experience the royal opulence of Mysore Palace, unwind in the misty coffee hills and waterfalls of Coorg and Chikmagalur, journey into the ancient stone empire of Hampi, and conclude with sun, surf, and serenity on the golden beaches of Gokarna.",
         "highlights": [

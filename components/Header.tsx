@@ -20,16 +20,16 @@ import {
 import { FaXTwitter } from 'react-icons/fa6';
 import zoyoLogo from '../public/assets/images/logo/zoyo_logo.png';
 
-const nationalDestinations = {
+const nationalDestinations: Record<string, { title: string; items: { name: string; href: string; badge?: string }[] }> = {
   northIndia: {
     title: 'NORTH INDIA',
     items: [
-      { name: 'Himachal Pradesh', href: '/national/himachal-pradesh' },
-      { name: 'Kashmir', href: '/national/kashmir' },
-      { name: 'Leh & Ladakh', href: '/national/ladakh' },
+      { name: 'Himachal Pradesh', href: '/national/himachal-pradesh', badge: 'POPULAR' },
+      { name: 'Kashmir', href: '/national/kashmir', badge: 'TRENDING' },
+      { name: 'Leh & Ladakh', href: '/national/ladakh', badge: 'SEASON' },
       { name: 'Lahaul and Spiti', href: '/national/spiti' },
       { name: 'Rajasthan', href: '/national/rajasthan' },
-      { name: 'Uttarakhand', href: '/national/uttarakhand' },
+      { name: 'Uttarakhand', href: '/national/uttarakhand', badge: 'POPULAR' },
       { name: 'Uttar Pradesh', href: '/national/uttarpradesh' },
     ],
   },
@@ -37,9 +37,9 @@ const nationalDestinations = {
     title: 'SOUTH INDIA',
     items: [
       { name: 'Karnataka', href: '/national/karnataka' },
-      { name: 'Kerala', href: '/national/kerala' },
-      { name: 'Goa', href: '/national/goa' },
-      { name: 'Andaman & Nikobar', href: '/national/andaman-nikobar' },
+      { name: 'Kerala', href: '/national/kerala', badge: 'SEASON' },
+      { name: 'Goa', href: '/national/goa', badge: 'POPULAR' },
+      { name: 'Andaman & Nikobar', href: '/national/andaman-nikobar', badge: 'HONEYMOON' },
       { name: 'Tamil Nadu', href: '/national/tamil-nadu' },
     ],
   },
@@ -48,8 +48,8 @@ const nationalDestinations = {
     items: [
       { name: 'Arunachal Pradesh', href: '/national/arunachal' },
       { name: 'Assam', href: '/national/assam' },
-      { name: 'Meghalaya', href: '/national/meghalaya' },
-      { name: 'Sikkim', href: '/national/sikkim' },
+      { name: 'Meghalaya', href: '/national/meghalaya', badge: 'SEASON' },
+      { name: 'Sikkim', href: '/national/sikkim', badge: 'POPULAR' },
       { name: 'Odisha', href: '/national/odisha' },
     ],
   },
@@ -63,17 +63,36 @@ const nationalDestinations = {
     title: 'WEST INDIA',
     items: [
       { name: 'Gujarat', href: '/national/gujarat' },
-
     ],
   },
 };
-const badgeStyle: Record<string, string> = {
-  TRENDING:  'bg-[#FFD6D6] text-[#cc0000]',
-  HONEYMOON: 'bg-[#FFD6E8] text-[#b5006b]',
-  POPULAR:   'bg-[#E8D6FF] text-[#6200b5]',
-  SEASON:    'bg-[#D6F5E3] text-[#006b2f]',
+const badgeConfig: Record<string, { bg: string; color: string; label: string }> = {
+  TRENDING:     { bg: '#f8a598', color: '#2d1515', label: 'TRENDING' },
+  HONEYMOON:    { bg: '#f9a8d4', color: '#431427', label: 'HONEYMOON' },
+  POPULAR:      { bg: '#fed7aa', color: '#431407', label: 'POPULAR' },
+  POPULAR_BLUE: { bg: '#c7d2fe', color: '#1e1b4b', label: 'POPULAR' },
+  SEASON:       { bg: '#86efac', color: '#064e3b', label: 'SEASON' },
 };
-const internationalDestinations = {
+
+const renderBadge = (badgeKey?: string, isMobile = false) => {
+  if (!badgeKey || !badgeConfig[badgeKey]) return null;
+  const b = badgeConfig[badgeKey];
+  return (
+    <span
+      style={{
+        backgroundColor: b.bg,
+        color: b.color,
+      }}
+      className={`${
+        isMobile ? 'text-[8.5px] px-1.5 py-0.5' : 'text-[9.5px] px-2 py-0.5'
+      } font-semibold rounded-full uppercase tracking-wider leading-none shadow-[0_1px_2px_rgba(0,0,0,0.05)] inline-flex items-center justify-center`}
+    >
+      {b.label}
+    </span>
+  );
+};
+
+const internationalDestinations: Record<string, { title: string; items: { name: string; href: string; badge?: string }[] }> = {
   southeastAsia: {
     title: 'SOUTHEAST ASIA',
     items: [
@@ -89,20 +108,20 @@ const internationalDestinations = {
       { name: 'Nepal',     href: '/international/nepal' },
       { name: 'Bhutan',    href: '/international/bhutan',    badge: 'SEASON' },
       { name: 'Maldives',  href: '/international/maldives',  badge: 'HONEYMOON' },
-      { name: 'Malaysia',  href: '/international/malaysia',  badge: 'SEASON' },
-      { name: 'Sri Lanka', href: '/international/sri-lanka', badge: 'SEASON' },
+      { name: 'Malaysia',  href: '/international/malaysia' },
+      { name: 'Sri Lanka', href: '/international/sri-lanka' },
     ],
   },
   eastAsia: {
     title: 'EAST ASIA',
     items: [
-      { name: 'Japan', href: '/international/japan', badge: 'POPULAR' },
+      { name: 'Japan', href: '/international/japan' },
     ],
   },
   middleEast: {
     title: 'MIDDLE EAST',
     items: [
-      { name: 'Dubai', href: '/international/dubai', badge: 'POPULAR' },
+      { name: 'Dubai', href: '/international/dubai', badge: 'POPULAR_BLUE' },
     ],
   },
 };
@@ -238,9 +257,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -255,9 +275,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -272,9 +293,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -289,9 +311,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -306,9 +329,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -351,11 +375,7 @@ export default function Header() {
                                   className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                                 >
                                   {item.name}
-                                  {item.badge && (
-                                    <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded-full tracking-wide ${badgeStyle[item.badge]}`}>
-                                      {item.badge}
-                                    </span>
-                                  )}
+                                  {renderBadge(item.badge)}
                                 </Link>
                               </li>
                             ))}
@@ -371,9 +391,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -388,9 +409,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -405,9 +427,10 @@ export default function Header() {
                             <li key={item.name}>
                               <Link
                                 href={item.href}
-                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-block font-normal"
+                                className="text-[13.5px] text-[#4b5563] hover:text-[#f26c22] hover:translate-x-1 transition-all duration-150 inline-flex items-center gap-2 font-normal"
                               >
                                 {item.name}
+                                {renderBadge(item.badge)}
                               </Link>
                             </li>
                           ))}
@@ -559,9 +582,10 @@ export default function Header() {
                               key={item.name}
                               href={item.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="text-xs text-gray-600 hover:text-[#f26c22] py-1"
+                              className="text-xs text-gray-600 hover:text-[#f26c22] py-1 inline-flex items-center gap-1.5"
                             >
-                              • {item.name}
+                              <span>• {item.name}</span>
+                              {renderBadge(item.badge, true)}
                             </Link>
                           ))}
                         </div>
@@ -594,9 +618,10 @@ export default function Header() {
                               key={item.name}
                               href={item.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="text-xs text-gray-600 hover:text-[#f26c22] py-1"
+                              className="text-xs text-gray-600 hover:text-[#f26c22] py-1 inline-flex items-center gap-1.5"
                             >
-                              • {item.name}
+                              <span>• {item.name}</span>
+                              {renderBadge(item.badge, true)}
                             </Link>
                           ))}
                         </div>

@@ -3,7 +3,7 @@ import { uttarakhandPackages } from '@/data/uttarakhandPackages';
 
 export function generateStaticParams() {
   return uttarakhandPackages.map((pkg) => ({
-    slug: pkg.slug.toLowerCase(),
+    slug: pkg.slug,
   }));
 }
 
@@ -12,6 +12,7 @@ export default async function UttarakhandPackageDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const resolvedParams = await params;
-  return <UttarakhandPackageDetailClient params={resolvedParams} />;
+  const { slug } = await params;
+
+  return <UttarakhandPackageDetailClient params={{ slug }} />;
 }

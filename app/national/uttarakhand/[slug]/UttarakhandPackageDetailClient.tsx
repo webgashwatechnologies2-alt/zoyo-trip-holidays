@@ -2,24 +2,45 @@
 
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { allDestinations } from '@/data/allDestinations';
+import { uttarakhandPackages } from '@/data/uttarakhandPackages';
 import PackageDetailView from '@/components/PackageDetailView';
+
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
+type PackageCategory =
+  | 'Adventure'
+  | 'Spiritual'
+  | 'Popular'
+  | 'Honeymoon'
+  | 'Family'
+  | 'Luxury'
+  | 'Cultural'
+  | 'Tribal';
 
 export default function UttarakhandPackageDetailClient({
   params,
-}: {
-  params: { slug: string };
-}) {
-  const ukData = allDestinations['uttarakhand'];
-  const pkg = ukData?.packages?.find((p) => p.slug === params.slug);
+}: Props) {
+  const pkg = uttarakhandPackages.find(
+    (item) => item.slug === params.slug
+  );
 
   if (!pkg) {
     notFound();
   }
 
+  const packageForView = {
+    ...pkg,
+    category: pkg.category as PackageCategory,
+    heroImage: typeof pkg.heroImage === 'string' ? pkg.heroImage : '',
+  };
+
   return (
     <PackageDetailView
-      pkg={pkg}
+      pkg={packageForView}
       destSlug="uttarakhand"
       destName="Uttarakhand"
       categoryLabel="National Holiday Package"

@@ -39,13 +39,13 @@ export default function HeroCarousel() {
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
               }`}
-            style={{
-              backgroundImage: `url(${image.src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              backgroundRepeat: 'no-repeat'
-            }}
           >
+            <Image
+              src={image}
+              alt={`Banner ${index + 1}`}
+              fill
+              className="object-cover"
+            />
           </div>
         ))}
       </div>

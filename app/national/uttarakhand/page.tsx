@@ -23,7 +23,7 @@ export default function UttarakhandPage() {
 
   // Using a temporary structure since Uttarakhand data might not be in allDestinations yet
   const uttarakhandData = {
-    heroImage: '/assets/images/packageimages/ukneww.webp',
+    heroImage: '/assets/images/iteneraryimages/ukherobaner.jpg',
     packagesCount: 10,
     packages: [
       {
