@@ -31,6 +31,8 @@ jobs:
 
       - name: Check build output
         run: |
+          echo "Checking build output..."
+          test -d out
           echo "Total files in out:"
           find out -type f | wc -l
           echo "Root HTML files:"
@@ -44,7 +46,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "out"
-          target: "/home/u568698356/deploy_temp"
+          target: "/home/u344423240/deploy_temp"
           strip_components: 0
           rm: false
 
@@ -57,10 +59,14 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             echo "=== Clearing public_html ==="
-            rm -rf /home/u568698356/public_html/*
+            rm -rf /home/u344423240/public_html/*
+
             echo "=== Copying files ==="
-            cp -r /home/u568698356/deploy_temp/out/. /home/u568698356/public_html/
+            cp -r /home/u344423240/deploy_temp/out/. /home/u344423240/public_html/
+
             echo "=== Cleaning temp ==="
-            rm -rf /home/u568698356/deploy_temp
-            echo "=== Done! Files in public_html: ==="
-            ls /home/u568698356/public_html/ | head -20
+            rm -rf /home/u344423240/deploy_temp
+
+            echo "=== Deployment completed ==="
+            echo "Files in public_html:"
+            ls -la /home/u344423240/public_html/ | head -20

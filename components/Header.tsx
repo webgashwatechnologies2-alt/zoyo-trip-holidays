@@ -179,7 +179,6 @@ export default function Header() {
                 <FaEnvelope className="w-3.5 h-3.5 shrink-0 text-white" />
                 <span>info@zoyotrip.in</span>
               </div>
-              {/* Social Icons */}
               <div className="hidden md:flex items-center gap-2 ml-2 pl-3 border-l border-white/30">
                 <a href="https://www.facebook.com/ZoyoTripHolidays/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
                   className="w-[22px] h-[22px] flex items-center justify-center rounded-full bg-white/15 hover:bg-[#1877F2] transition-all duration-200">
@@ -212,7 +211,7 @@ export default function Header() {
                 Get Quote
               </Link>
               <Link
-                href="/bookings"
+                href="https://pages.razorpay.com/paymentZoyoTripHolidays"
                 className="bg-[#f26c22] hover:bg-[#d95d1a] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[4px] text-[10.5px] sm:text-[12px] font-bold flex items-center gap-1.5 transition shadow-sm whitespace-nowrap text-white"
               >
                 <FaCreditCard className="w-3 h-3 sm:w-3.5 sm:h-3.5" />

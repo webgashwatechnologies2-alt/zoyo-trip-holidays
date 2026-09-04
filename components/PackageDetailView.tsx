@@ -2,24 +2,24 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  FaStar, 
-  FaClock, 
-  FaCar, 
-  FaHotel, 
-  FaUtensils, 
-  FaCheck, 
-  FaTimes, 
-  FaChevronDown, 
-  FaChevronUp, 
-  FaPhoneAlt, 
-  FaWhatsapp, 
-  FaTag, 
-  FaShieldAlt, 
-  FaCalendarAlt, 
-  FaUsers, 
-  FaMapMarkerAlt, 
-  FaShareAlt, 
+import {
+  FaStar,
+  FaClock,
+  FaCar,
+  FaHotel,
+  FaUtensils,
+  FaCheck,
+  FaTimes,
+  FaChevronDown,
+  FaChevronUp,
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaTag,
+  FaShieldAlt,
+  FaCalendarAlt,
+  FaUsers,
+  FaMapMarkerAlt,
+  FaShareAlt,
   FaArrowRight,
   FaCheckCircle,
   FaFileInvoiceDollar,
@@ -44,7 +44,7 @@ export default function PackageDetailView({
   pkg,
   destSlug = 'india',
   destName = 'Destinations',
-  categoryLabel = 'National Tour',  
+  categoryLabel = 'National Tour',
 }: PackageDetailViewProps) {
   const [activeTab, setActiveTab] = useState<'dayplan' | 'overview' | 'stay' | 'transfers' | 'inclusions' | 'policies'>('overview');
   const [openDay, setOpenDay] = useState<number | null>(1);
@@ -52,28 +52,51 @@ export default function PackageDetailView({
   const [appliedCoupon, setAppliedCoupon] = useState<string>('WELCOME');
   const [couponApplied, setCouponApplied] = useState<boolean>(true);
   const [openPolicy, setOpenPolicy] = useState<string | null>('terms');
-  
+
   // Real-time Live Countdown Timer (Ticks every second)
-  const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number; seconds: number }>({
-    hours: 11,
-    minutes: 23,
-    seconds: 22,
+  const [timeLeft, setTimeLeft] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        } else {
-          return { hours: 11, minutes: 59, seconds: 59 };
-        }
+    const updateTimer = () => {
+      const now = new Date();
+
+      // Today's 11:59:59 PM
+      const target = new Date();
+      target.setHours(23, 59, 59, 999);
+
+      const difference = target.getTime() - now.getTime();
+
+      if (difference <= 0) {
+        setTimeLeft({
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        return;
+      }
+
+      const totalSeconds = Math.floor(difference / 1000);
+
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      setTimeLeft({
+        hours,
+        minutes,
+        seconds,
       });
-    }, 1000);
+    };
+
+    // Immediately calculate
+    updateTimer();
+
+    // Update every second
+    const interval = setInterval(updateTimer, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -92,9 +115,21 @@ export default function PackageDetailView({
     }, 3500);
     return () => clearInterval(slideTimer);
   }, [slideCount]);
-  
+
   const [bookingDate, setBookingDate] = useState<string>('2026-09-15');
   const [travelersCount, setTravelersCount] = useState<number>(2);
+  const basePrice = Number(
+    String(pkg.price).replace(/[^\d]/g, '')
+  );
+
+  const priceMultiplier =
+    travelersCount >= 6
+      ? 3
+      : travelersCount === 4
+        ? 2
+        : 1;
+
+  const currentPrice = basePrice * priceMultiplier;
   const [isBookingModalOpen, setIsBookingModalOpen] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isBookingSubmitting, setIsBookingSubmitting] = useState<boolean>(false);
@@ -186,8 +221,6 @@ export default function PackageDetailView({
 
   return (
     <div className="w-full bg-[#f8fafc] min-h-screen text-gray-800 pb-20 font-sans">
-      
-      {/* ─── 1. TOP STICKY BAR (QUICK SUMMARY STRIP) ─── */}
       <div className="sticky top-0 z-40 w-full bg-[#1E6AD4] text-white shadow-md border-b border-blue-600 px-4 sm:px-8 py-2.5">
         <div className="max-w-[1360px] mx-auto flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2 sm:gap-4 overflow-hidden">
@@ -206,7 +239,7 @@ export default function PackageDetailView({
               <strong className="text-base sm:text-lg font-black text-white">{pkg.price}</strong>
               <span className="text-[11px] text-blue-200 font-normal"> /person</span>
             </div>
-            
+
             <button
               onClick={() => setIsBookingModalOpen(true)}
               className="bg-white hover:bg-blue-50 text-[#1E6AD4] font-extrabold px-4 sm:px-5 py-1.5 rounded-full text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer"
@@ -217,10 +250,7 @@ export default function PackageDetailView({
         </div>
       </div>
 
-      {/* ─── 2. MAIN CONTAINER ─── */}
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        
-        {/* Breadcrumb Row */}
         <div className="flex items-center flex-wrap gap-2 text-xs text-gray-500 mb-3 font-medium">
           <Link href="/" className="hover:text-[#1E6AD4] transition">Home</Link>
           <span>/</span>
@@ -229,7 +259,6 @@ export default function PackageDetailView({
           <span className="text-gray-900 font-semibold capitalize truncate max-w-[240px] sm:max-w-none">{destName}</span>
         </div>
 
-        {/* Title & Badge Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -246,7 +275,7 @@ export default function PackageDetailView({
                 <BsShieldCheck className="text-emerald-600 text-xs" /> Verified Stays
               </span>
             </div>
-            
+
             <h1 className="text-2xl sm:text-3xl md:text-[34px] font-black text-[#0f172a] leading-tight tracking-tight">
               {pkg.title}
             </h1>
@@ -256,7 +285,7 @@ export default function PackageDetailView({
           </div>
 
           <div className="flex items-center gap-2 self-start md:self-auto">
-            <button 
+            <button
               onClick={() => {
                 if (navigator.share) {
                   navigator.share({ title: pkg.title, url: window.location.href });
@@ -272,39 +301,29 @@ export default function PackageDetailView({
           </div>
         </div>
 
-        {/* ─── 3. GRID LAYOUT: LEFT CONTENT (65%) + RIGHT SIDEBAR (35%) ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* ════════ LEFT COLUMN ════════ */}
           <div className="lg:col-span-8 space-y-6">
-            
-            {/* Main Featured Photo Box with auto-sliding gallery thumbnails */}
             <div className="space-y-2.5">
-              {/* Main Hero Slide */}
               <div className="relative w-full h-[320px] sm:h-[420px] md:h-[460px] rounded-[20px] overflow-hidden shadow-lg border border-gray-200/80 bg-gray-900 group">
                 {gallerySlides.slice(0, slideCount).map((slide, si) => (
                   <img
                     key={si}
                     src={typeof slide === 'string' ? slide : (slide as any).src || pkg.heroImage}
                     alt={`${pkg.title} - slide ${si + 1}`}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                      heroSlide === si ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-                    } group-hover:scale-105`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${heroSlide === si ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                      } group-hover:scale-105`}
                     style={{ transition: 'opacity 0.7s ease, transform 5s ease' }}
                   />
                 ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-                {/* Slide dots */}
                 {slideCount > 1 && (
                   <div className="absolute top-3 right-3 flex gap-1.5 z-10">
                     {Array.from({ length: slideCount }).map((_, di) => (
                       <button
                         key={di}
                         onClick={() => setHeroSlide(di)}
-                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                          heroSlide === di ? 'w-5 bg-white' : 'w-1.5 bg-white/50'
-                        }`}
+                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${heroSlide === di ? 'w-5 bg-white' : 'w-1.5 bg-white/50'
+                          }`}
                       />
                     ))}
                   </div>
@@ -321,8 +340,6 @@ export default function PackageDetailView({
                   </div>
                 </div>
               </div>
-
-              {/* Thumbnail Strip — 3 small preview images that auto-slide */}
               {slideCount > 1 && (
                 <div className="grid grid-cols-3 gap-2">
                   {gallerySlides.slice(1, 4).map((slide, ti) => {
@@ -332,18 +349,16 @@ export default function PackageDetailView({
                       <button
                         key={ti}
                         onClick={() => setHeroSlide(slideIdx)}
-                        className={`relative h-[80px] sm:h-[100px] rounded-[12px] overflow-hidden border-2 transition-all duration-300 cursor-pointer ${
-                          isActive
-                            ? 'border-[#1E6AD4] shadow-[0_0_0_2px_#1E6AD4]'
-                            : 'border-transparent opacity-70 hover:opacity-100 hover:border-gray-300'
-                        }`}
+                        className={`relative h-[80px] sm:h-[100px] rounded-[12px] overflow-hidden border-2 transition-all duration-300 cursor-pointer ${isActive
+                          ? 'border-[#1E6AD4] shadow-[0_0_0_2px_#1E6AD4]'
+                          : 'border-transparent opacity-70 hover:opacity-100 hover:border-gray-300'
+                          }`}
                       >
                         <img
                           src={typeof slide === 'string' ? slide : (slide as any).src || pkg.heroImage}
                           alt={`Gallery ${ti + 1}`}
                           className="w-full h-full object-cover"
                         />
-                        {/* Active progress bar at bottom */}
                         {isActive && (
                           <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/30">
                             <div
@@ -354,15 +369,12 @@ export default function PackageDetailView({
                             />
                           </div>
                         )}
-                        {/* Overlay with index */}
                         <div className={`absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity ${isActive ? 'opacity-0' : 'opacity-0'}`} />
                       </button>
                     );
                   })}
                 </div>
               )}
-
-              {/* CSS for progress bar animation */}
               <style jsx>{`
                 @keyframes slideProgress {
                   from { width: 0%; }
@@ -370,8 +382,6 @@ export default function PackageDetailView({
                 }
               `}</style>
             </div>
-
-            {/* Quick Navigation Tabs Bar (Sticky & Fully Functional) */}
             <div className="sticky top-[52px] z-30 bg-white/95 backdrop-blur-md rounded-2xl p-1.5 border border-gray-200 shadow-md flex items-center gap-1 overflow-x-auto no-scrollbar">
               {[
                 { id: 'overview', label: 'Overview' },
@@ -384,27 +394,23 @@ export default function PackageDetailView({
                 <button
                   key={tab.id}
                   onClick={() => scrollToSection(tab.id as any)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                    activeTab === tab.id
-                      ? 'bg-[#1E6AD4] text-white shadow-sm scale-102'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                  }`}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${activeTab === tab.id
+                    ? 'bg-[#1E6AD4] text-white shadow-sm scale-102'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
                 >
                   {tab.label}
                 </button>
               ))}
             </div>
-
-            {/* ─── TOUR OVERVIEW & HIGHLIGHTS ─── */}
             <div id="section-overview" className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-xs scroll-mt-28">
               <h2 className="text-lg sm:text-xl font-extrabold text-[#0f172a] mb-3 flex items-center gap-2">
                 <BsStars className="text-[#f26c22]" /> Tour Overview & Key Highlights
               </h2>
-              
+
               <p className="text-sm text-gray-700 leading-relaxed mb-5 font-normal">
                 {pkg.overview || `Experience the best of ${destName} on this all-inclusive handcrafted tour. Curated with comfortable private transportation, verified hotel rooms, daily meals, and 24/7 on-ground assistance.`}
               </p>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-gray-100">
                 {(pkg.highlights && pkg.highlights.length > 0 ? pkg.highlights : [
                   'Complete sightseeing in private sanitized vehicle',
@@ -421,8 +427,6 @@ export default function PackageDetailView({
                 ))}
               </div>
             </div>
-
-            {/* ─── DAY-BY-DAY DETAILED ITINERARY (MATCHING REFERENCE IMAGE 2) ─── */}
             <div id="section-dayplan" className="space-y-4 scroll-mt-28">
               <div className="flex items-center justify-between px-1">
                 <h2 className="text-xl font-extrabold text-[#0f172a] tracking-tight">
@@ -432,15 +436,13 @@ export default function PackageDetailView({
                   {pkg.itinerary?.length || 5} Days Planned
                 </span>
               </div>
-
               {pkg.itinerary?.map((dayPlan, idx) => {
                 const isOpen = openDay === dayPlan.day;
                 return (
-                  <div 
+                  <div
                     key={dayPlan.day || idx}
                     className="bg-white rounded-2xl border border-gray-200 shadow-xs overflow-hidden transition-all duration-200"
                   >
-                    {/* Day Header Accordion Toggle */}
                     <button
                       onClick={() => toggleDay(dayPlan.day)}
                       className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left hover:bg-gray-50/80 transition-colors cursor-pointer"
@@ -466,22 +468,15 @@ export default function PackageDetailView({
                           </div>
                         </div>
                       </div>
-
                       <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180 bg-blue-50 text-[#1E6AD4]' : ''}`}>
                         <FaChevronDown className="text-xs" />
                       </div>
                     </button>
-
-                    {/* Day Content Area */}
                     {isOpen && (
                       <div className="p-4 sm:p-6 pt-2 border-t border-gray-100 space-y-5 bg-white">
-                        
-                        {/* Day Description */}
                         <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                           {dayPlan.description}
                         </p>
-
-                        {/* 1. Private Transfer Box (Exact match from reference image) */}
                         <div className="bg-slate-50 rounded-xl p-3.5 border border-slate-200 flex items-start gap-3.5">
                           <div className="w-12 h-12 rounded-lg bg-blue-100 text-[#1E6AD4] flex items-center justify-center shrink-0 text-xl">
                             <FaCar />
@@ -500,8 +495,6 @@ export default function PackageDetailView({
                             </p>
                           </div>
                         </div>
-
-                        {/* 2. Hotel / Stay Box (Exact match from reference image) */}
                         <div className="bg-slate-50 rounded-xl p-3.5 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                           <div className="flex items-center gap-3.5">
                             <div className="w-12 h-12 rounded-lg bg-orange-100 text-[#f26c22] flex items-center justify-center shrink-0 text-xl">
@@ -525,21 +518,17 @@ export default function PackageDetailView({
                               </p>
                             </div>
                           </div>
-
                           <span className="text-[11px] font-bold text-[#1E6AD4] bg-blue-50 border border-blue-200 px-3 py-1 rounded-full self-end sm:self-auto inline-flex items-center gap-1">
                             Verified Stay <FaCheck className="text-[10px]" />
                           </span>
                         </div>
-
-                        {/* 3. Experiences Thumbnails Gallery (Exact match from reference image) */}
                         <div>
                           <h4 className="text-xs font-extrabold text-gray-800 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
                             <FaCamera className="text-[#f26c22]" /> You will be exploring these amazing experiences:
                           </h4>
-                          
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                            {(dayPlan.activities && dayPlan.activities.length > 0 
-                              ? dayPlan.activities 
+                            {(dayPlan.activities && dayPlan.activities.length > 0
+                              ? dayPlan.activities
                               : ['Scenic Valley View', 'Local Culture Hub', 'Famous Temple / Landmark', 'Evening Leisure Stroll']
                             ).slice(0, 4).map((act, i) => (
                               <div key={i} className="group relative h-24 rounded-xl overflow-hidden bg-gray-900 shadow-xs border border-gray-100">
@@ -568,8 +557,6 @@ export default function PackageDetailView({
                 );
               })}
             </div>
-
-            {/* ─── HOTELS & STAYS SECTION ─── */}
             <div id="section-stay" className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-xs scroll-mt-28 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg sm:text-xl font-extrabold text-[#0f172a] flex items-center gap-2">
@@ -582,7 +569,6 @@ export default function PackageDetailView({
               <p className="text-xs sm:text-sm text-gray-600">
                 All hotels are hand-picked for high hygiene standards, scenic views, and prime connectivity.
               </p>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-orange-100 text-[#f26c22] flex items-center justify-center shrink-0 text-lg">
@@ -600,7 +586,6 @@ export default function PackageDetailView({
                     </div>
                   </div>
                 </div>
-
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-lg">
                     <FaUtensils />
@@ -617,8 +602,6 @@ export default function PackageDetailView({
                 </div>
               </div>
             </div>
-
-            {/* ─── TRANSFERS & TRANSPORT SECTION ─── */}
             <div id="section-transfers" className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-xs scroll-mt-28 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg sm:text-xl font-extrabold text-[#0f172a] flex items-center gap-2">
@@ -631,7 +614,6 @@ export default function PackageDetailView({
               <p className="text-xs sm:text-sm text-gray-600">
                 Door-to-door private cab service throughout the entire tour duration without any sharing hassles.
               </p>
-
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 <div className="p-3.5 rounded-xl bg-blue-50/60 border border-blue-100 text-center">
                   <span className="text-xs font-extrabold text-gray-900 flex items-center justify-center gap-1.5">
@@ -653,8 +635,6 @@ export default function PackageDetailView({
                 </div>
               </div>
             </div>
-
-            {/* ─── INCLUSIONS & EXCLUSIONS ─── */}
             <div id="section-inclusions" className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-xs space-y-6 scroll-mt-28">
               <div>
                 <h3 className="text-base sm:text-lg font-bold text-emerald-800 mb-3 flex items-center gap-2">
@@ -695,13 +675,10 @@ export default function PackageDetailView({
                 </div>
               </div>
             </div>
-
-            {/* ─── POLICIES & TERMS ACCORDIONS ─── */}
             <div id="section-policies" className="bg-white rounded-2xl p-5 sm:p-6 border border-gray-200 shadow-xs space-y-3 scroll-mt-28">
               <h3 className="text-lg font-extrabold text-[#0f172a] mb-3">
                 Important Policies & Terms
               </h3>
-
               {[
                 {
                   id: 'terms',
@@ -735,48 +712,37 @@ export default function PackageDetailView({
                 </div>
               ))}
             </div>
-
           </div>
 
-          {/* ════════ RIGHT COLUMN (STICKY BOOKING SIDEBAR) ════════ */}
           <div className="lg:col-span-4 sticky top-16 space-y-4">
-            
-            {/* Main Pricing & Booking Card (Exact match from reference image 2) */}
             <div className="bg-white rounded-[22px] p-5 sm:p-6 border border-gray-200 shadow-xl relative overflow-hidden">
-              
-              {/* Real-time Live Deal Banner (Exact Match with Reference Image 2) */}
               <div className="bg-[#f0fdf4] border border-[#bbf7d0] rounded-2xl p-3 sm:p-3.5 mb-4.5 flex items-center gap-3">
-                {/* Stopwatch Icon */}
                 <div className="text-[#16a34a] shrink-0">
                   <BsStopwatchFill className="w-7 h-7" />
                 </div>
-
-                {/* Deal Text & Timer */}
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[13px] sm:text-[13.5px] font-black text-[#15803d] tracking-tight leading-none">
                       Lowest Price! Today Only Deals
                     </span>
                     <span className="text-[13px] sm:text-[13.5px] font-mono font-black text-[#16a34a] whitespace-nowrap">
-                      {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : {String(timeLeft.seconds).padStart(2, '0')}s
+                      {String(timeLeft.hours).padStart(2, '0')}h :{" "}
+                      {String(timeLeft.minutes).padStart(2, '0')}m :{" "}
+                      {String(timeLeft.seconds).padStart(2, '0')}s
                     </span>
                   </div>
-                  
                   <span className="text-[11.5px] font-semibold text-[#16a34a] mt-1 block leading-tight">
                     {pkg.reviewsCount ? pkg.reviewsCount - 1 : '179'} people have booked, hurry up!
                   </span>
                 </div>
               </div>
-
-              {/* Pricing Section */}
               <div className="mb-4">
                 <div className="flex items-baseline gap-2">
                   <span className="text-3xl font-black text-[#0f172a] tracking-tight">
-                    {pkg.price}
+                    ₹{currentPrice.toLocaleString('en-IN')}
                   </span>
-                  <span className="text-xs text-gray-500 font-medium">/ person</span>
+                  <span className="text-xs text-gray-500 font-medium">/ Pax</span>
                 </div>
-                
                 <div className="flex items-center gap-2 mt-1 text-xs">
                   <span className="text-gray-400 line-through font-medium">
                     {pkg.originalPrice || '₹24,999'}
@@ -786,8 +752,6 @@ export default function PackageDetailView({
                   </span>
                 </div>
               </div>
-
-              {/* Date & Travelers Inputs */}
               <div className="space-y-3 pt-3 border-t border-gray-100 mb-5">
                 <div>
                   <label className="block text-[11px] font-bold text-gray-600 uppercase tracking-wider mb-1">
@@ -813,11 +777,10 @@ export default function PackageDetailView({
                         key={i}
                         type="button"
                         onClick={() => setTravelersCount(typeof cnt === 'number' ? cnt : 6)}
-                        className={`flex-1 py-1.5 rounded-lg text-xs font-bold border transition ${
-                          (typeof cnt === 'number' ? travelersCount === cnt : travelersCount >= 6)
-                            ? 'bg-[#1E6AD4] text-white border-[#1E6AD4] shadow-xs'
-                            : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
-                        }`}
+                        className={`flex-1 py-1.5 rounded-lg text-xs font-bold border transition ${(typeof cnt === 'number' ? travelersCount === cnt : travelersCount >= 6)
+                          ? 'bg-[#1E6AD4] text-white border-[#1E6AD4] shadow-xs'
+                          : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
+                          }`}
                       >
                         {cnt} {cnt === 1 ? 'Guest' : 'Guests'}
                       </button>
@@ -825,8 +788,6 @@ export default function PackageDetailView({
                   </div>
                 </div>
               </div>
-
-              {/* Action Buttons */}
               <div className="space-y-2.5">
                 <button
                   onClick={() => setIsBookingModalOpen(true)}
@@ -835,7 +796,6 @@ export default function PackageDetailView({
                   <BsLightningChargeFill className="text-yellow-300" />
                   Proceed to Book Online
                 </button>
-
                 <div className="grid grid-cols-2 gap-2">
                   <a
                     href="https://wa.me/918091660060?text=Hi%2C%20I%20am%20interested%20in%20booking%20this%20tour%20package"
@@ -853,8 +813,6 @@ export default function PackageDetailView({
                   </a>
                 </div>
               </div>
-
-              {/* Promo Code Box */}
               <div className="mt-4 pt-3.5 border-t border-gray-100">
                 <div className="flex items-center justify-between gap-2 bg-amber-50/70 border border-amber-200/80 rounded-xl p-2 px-3">
                   <div className="flex items-center gap-2">
@@ -869,8 +827,6 @@ export default function PackageDetailView({
                   </span>
                 </div>
               </div>
-
-              {/* Trust Badges List */}
               <div className="mt-4 pt-3 border-t border-gray-100 space-y-2 text-[11px] text-gray-600 font-medium">
                 <div className="flex items-center gap-2">
                   <BsShieldCheck className="text-[#1E6AD4] text-sm shrink-0" />
@@ -885,10 +841,7 @@ export default function PackageDetailView({
                   <span>Transparent Pricing with No Hidden Fees</span>
                 </div>
               </div>
-
             </div>
-
-            {/* Need Help Box */}
             <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-2xl p-4 sm:p-5 shadow-md">
               <h4 className="font-extrabold text-sm text-white mb-1">
                 Need Help Customizing?
@@ -903,25 +856,18 @@ export default function PackageDetailView({
                 Request Free Callback
               </button>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-      {/* ─── 4. BOOKING / ENQUIRY MODAL POPUP ─── */}
       {isBookingModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative animate-scaleUp">
-            
             <button
               onClick={() => setIsBookingModalOpen(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full flex items-center justify-center bg-gray-100 transition"
             >
               <FaTimes />
             </button>
-
             {isSuccess ? (
               <div className="text-center py-6">
                 <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3 text-3xl">
@@ -945,7 +891,6 @@ export default function PackageDetailView({
                     {pkg.duration} • <strong className="text-gray-800">{pkg.price}</strong> /person
                   </div>
                 </div>
-
                 <form onSubmit={handleBookingSubmit} className="space-y-3.5">
                   <div>
                     <label className="block text-xs font-bold text-gray-700 mb-1">Full Name</label>
@@ -970,7 +915,6 @@ export default function PackageDetailView({
                       className="w-full text-xs px-3 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#1E6AD4] focus:outline-none"
                     />
                   </div>
-
                   <div>
                     <label className="block text-xs font-bold text-gray-700 mb-1">Email Address</label>
                     <input
@@ -981,7 +925,6 @@ export default function PackageDetailView({
                       className="w-full text-xs px-3 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#1E6AD4] focus:outline-none"
                     />
                   </div>
-
                   <button
                     type="submit"
                     disabled={isBookingSubmitting}
@@ -992,11 +935,9 @@ export default function PackageDetailView({
                 </form>
               </div>
             )}
-
           </div>
         </div>
       )}
-
     </div>
   );
 }

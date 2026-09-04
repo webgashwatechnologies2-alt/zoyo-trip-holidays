@@ -8,7 +8,6 @@ import volvoacsleeperimage from "@/public/assets/images/bookings/volvoacsleeper.
 import superdeluxebusimage from "@/public/assets/images/bookings/scariabus.webp";
 import cruisebusimage from "@/public/assets/images/bookings/volvoluxury.webp";
 
-
 import {
   FaBus,
   FaMapMarkerAlt,

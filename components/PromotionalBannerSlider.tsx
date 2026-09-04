@@ -25,37 +25,37 @@ const bannerImages: BannerSlideItem[] = [
     id: 1,
     image: banner1,
     alt: 'Super Saver Travel Sale Banner',
-    link: '/national/kashmir',
+    link: '/international/bali',
   },
   {
     id: 2,
     image: banner2,
     alt: 'Special Holiday Tour Offers',
-    link: '/national/himachal-pradesh',
+    link: '/international/dubai',
   },
   {
     id: 3,
     image: banner3,
     alt: 'Exclusive Vacation Packages',
-    link: '/international/leh',
+    link: '/national/rajasthan',
   },
   {
     id: 4,
     image: banner4,
     alt: 'Adventure & Mountain Deals',
-    link: '/national/rajsthan',
+    link: '/national/ladakh',
   },
   {
     id: 5,
     image: banner5,
     alt: 'International Tourism Sale',
-    link: '/international/dubai',
+    link: '/national/kashmir',
   },
    {
     id: 6,
     image: banner6,
     alt: 'International Tourism Sale',
-    link: '/international/bali',
+    link: '/national/himachal-pradesh',
   },
 ];
 

@@ -36,15 +36,6 @@ import AzerbaijanImg from '@/public/assets/images/packageimages/azerbaijan.webp'
 import HongKongImg from '@/public/assets/images/packageimages/hong-kong.webp';
 import SouthKoreaImg from '@/public/assets/images/packageimages/south-korea.webp';
 
-// import SwitzerlandImg from '@/public/assets/images/packageimages/switzerland.webp';
-// import TurkeyImg from '@/public/assets/images/packageimages/turkey.webp';
-// import GreeceImg from '@/public/assets/images/packageimages/greece.webp';
-// import ItalyImg from '@/public/assets/images/packageimages/italy.webp';
-// import FranceImg from '@/public/assets/images/packageimages/france.webp';
-// import SpainImg from '@/public/assets/images/packageimages/spain.webp';
-// import AmsterdamImg from '@/public/assets/images/packageimages/amsterdam.webp';
-// import PortugalImg from '@/public/assets/images/packageimages/portugal.webp';
-
 import irctc from "@/public/assets/images/partners/IRCTC_Partner.webp";
 import cleartrip from "@/public/assets/images/partners/cleartrip_Partner.webp";
 import expedia from "@/public/assets/images/partners/Expedia_Partner.webp";
@@ -77,17 +68,6 @@ const seasonDestinations: Record<
     { name: 'South Korea', tours: 5, img: SouthKoreaImg, price: '₹44,999', tagline: 'K-culture, palaces, neon nights & han river.', slug: 'south-korea' },
   ],
 
-  autumn: [
-    // { name: 'Switzerland', tours: 2, img: SwitzerlandImg, price: '₹89,999', tagline: 'Alpine peaks, chocolate and dreamy lakes.' },
-    // { name: 'Turkey', tours: 3, img: TurkeyImg, price: '₹42,999', tagline: 'Cappadocia balloons, bazaars & Bosphorus.' },
-    // { name: 'Greece', tours: 2, img: GreeceImg, price: '₹67,999', tagline: 'Santorini sunsets, myths & Mediterranean blue.' },
-    // { name: 'Italy', tours: 4, img: ItalyImg, price: '₹72,999', tagline: 'Colosseum, canals of Venice & Amalfi coast.' },
-    // { name: 'France', tours: 3, img: FranceImg, price: '₹78,999', tagline: 'Eiffel magic, wine routes & Riviera charm.' },
-    // { name: 'Spain', tours: 2, img: SpainImg, price: '₹65,999', tagline: 'Flamenco, Sagrada Familia & tapas trails.' },
-    // { name: 'Amsterdam', tours: 1, img: AmsterdamImg, price: '₹58,999', tagline: 'Canals, tulip fields & world-class museums.' },
-    // { name: 'Portugal', tours: 1, img: PortugalImg, price: '₹52,999', tagline: 'Lisbon trams, Porto wine & Atlantic coast.' },
-  ],
-
   winter: [
     { name: 'Maldives', tours: 5, img: MaldivesImg, price: '₹75,999', tagline: 'Overwater bungalows & pristine coral atolls.', slug: 'maldives' },
     { name: 'Dubai', tours: 5, img: DubaiImg, price: '₹45,999', tagline: 'Romantic escapes, art, and cafés.', slug: 'dubai' },
@@ -103,7 +83,6 @@ const seasonDestinations: Record<
 const seasonTabs = [
   { id: 'spring', label: 'Spring Picks', icon: GiFlowerPot, color: '#f59e0b' },
   { id: 'summer', label: 'Summer Hotspot', icon: BsSun, color: '#f97316' },
-  // { id: 'autumn', label: 'Autumn Escape', icon: FaLeaf, color: '#ef4444' },
   { id: 'winter', label: 'Winter Getaway', icon: BsSnow, color: '#3b82f6' },
 ];
 
@@ -114,13 +93,11 @@ export default function Home() {
     <div className="flex flex-col w-full overflow-x-hidden">
       <section className="relative w-full h-[580px] sm:h-[600px] md:h-[600px] flex flex-col justify-end md:justify-center items-center pb-2 md:pb-0 md:pt-0">
         <HeroCarousel />
-        {/* Dynamic Interactive Hero Search Bar */}
         <HeroSearchBar />
       </section>
       <div className="hidden md:block h-[120px] w-full bg-transparent"></div>
       <SpecialOffersSection />
       <HolidayDestinationsSection />
-      {/* <TopNationalDestinations /> */}
       <TrustedCompanySection />
       
       <section className="w-full bg-white py-16 px-4 sm:px-10 lg:px-20">
@@ -165,7 +142,6 @@ export default function Home() {
                 {dest.tours} {dest.tours === 1 ? 'Tour' : 'Tours'} Available
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                {/* Destination name */}
                 <h3 className="text-[24px] font-semibold mb-1 leading-tight drop-shadow-sm tracking-tight">
                   {dest.name}
                 </h3>
@@ -186,10 +162,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* Super Saver Promotional Auto Slider Section */}
       <PromotionalBannerSlider />
-
       <section className="w-full bg-[#FFF2E2] py-16 px-4 sm:px-10 xl:px-50 relative overflow-hidden">
         <div className="relative z-10 text-center">
           <h2 className="text-3xl md:text-4xl font-weight-900 mb-12 text-black">Zoyo Trip Holidays –  Your <span style={{color: '#F26C22'}}>Journey, Our Priority!</span> </h2>

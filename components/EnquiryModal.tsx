@@ -2,18 +2,19 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { 
-  FaTimes, 
-  FaPhoneAlt, 
-  FaWhatsapp, 
-  FaUser, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
-  FaCalendarAlt, 
-  FaUsers, 
-  FaShieldAlt, 
-  FaStar, 
-  FaCheckCircle, 
+import Link from 'next/link';
+import {
+  FaTimes,
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaUser,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+  FaUsers,
+  FaShieldAlt,
+  FaStar,
+  FaCheckCircle,
   FaTag,
   FaHeadset,
   FaArrowRight
@@ -21,11 +22,10 @@ import {
 import { BsCheckCircleFill, BsLightningChargeFill, BsShieldCheck } from 'react-icons/bs';
 
 // Partner Logos
-import irctcLogo from '@/public/assets/images/partners/IRCTC_Partner.webp';
-import mmtLogo from '@/public/assets/images/partners/MakeMyTrip_Partner.webp';
-import expediaLogo from '@/public/assets/images/partners/Expedia_Partner.webp';
-import bookingLogo from '@/public/assets/images/partners/booking.com_partner.webp';
 import spitiWinterImg from '@/public/assets/images/packageimages/sptwinterexp.webp';
+import kashmirImg from '@/public/assets/images/packageimages/Kashmir-Honeymoon-Packages.webp';
+import dubaiImg from '@/public/assets/images/packageimages/db5.webp';
+import goaImg from '@/public/assets/images/packageimages/North-Goa-beaches.webp';
 
 import { sendEmailToZoyo } from '@/lib/sendEmail';
 
@@ -51,6 +51,7 @@ const TRIP_TYPES = [
   'Solo Adventure',
   'Corporate Tour'
 ];
+
 
 export default function EnquiryModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,7 +111,7 @@ export default function EnquiryModal() {
     e.preventDefault();
     if (!formData.name || !formData.mobile) return;
     setIsSubmitting(true);
-    
+
     await sendEmailToZoyo({
       formType: 'Exclusive Travel Quote (Popup Modal)',
       name: formData.name,
@@ -143,9 +144,26 @@ export default function EnquiryModal() {
     setIsOpen(false);
   };
 
+  const HERO_SLIDES = [
+    { image: spitiWinterImg, title: 'Up to 35% OFF on Spiti Valley Tours', tag: 'Seasonal Offer', link: '/national/spiti/' },
+    { image: kashmirImg, title: 'Exclusive Kashmir Honeymoon Deals', tag: 'Limited Offer', link: '/national/kashmir/' },
+    { image: dubaiImg, title: 'Dubai Packages Starting ₹30,000', tag: 'Best Seller', link: '/international/dubai/' },
+    { image: goaImg, title: 'Goa Beach Getaways at Best Price', tag: 'Trending', link: '/national/goa/' },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 3000); // Har 3 second me slide change hoga
+    return () => clearInterval(interval);
+  }, []);
+
+
+
   return (
     <>
-      {/* Floating Quick Action Trigger Badge */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-6 left-6 z-40 flex items-center gap-2.5 bg-gradient-to-r from-[#f26c22] via-[#ea580c] to-[#d97706] text-white px-4 py-3 rounded-full shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all duration-300 group cursor-pointer border-2 border-white"
@@ -161,15 +179,14 @@ export default function EnquiryModal() {
         <span className="text-sm font-bold tracking-wide sm:hidden">Quote</span>
       </button>
 
-      {/* Modal Backdrop & Container */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 overflow-y-auto backdrop-blur-md bg-slate-900/60 animate-fadeIn transition-opacity"
           onClick={(e) => {
             if (e.target === e.currentTarget) setIsOpen(false);
           }}
         >
-          <div 
+          <div
             className="relative w-full max-w-5xl bg-white text-slate-800 rounded-2xl md:rounded-3xl shadow-[0_25px_70px_-15px_rgba(0,0,0,0.35)] border border-slate-100 overflow-hidden flex flex-col md:flex-row max-h-[92vh] md:max-h-[88vh] animate-scaleUp"
             role="dialog"
             aria-modal="true"
@@ -187,31 +204,50 @@ export default function EnquiryModal() {
             <div className="w-full md:w-[45%] bg-gradient-to-br from-orange-50/60 via-slate-50 to-amber-50/40 p-5 sm:p-6 lg:p-7 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-200/80 overflow-y-auto">
               <div>
                 {/* Hero Feature Banner Card */}
-                <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200/80 mb-5 group bg-white">
-                  <div className="relative h-40 sm:h-44 w-full">
-                    <Image
-                      src={spitiWinterImg}
-                      alt="Special Holiday Deals"
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
-                  </div>
+                {/* Hero Feature Banner Carousel */}
+                <Link href={HERO_SLIDES[currentSlide].link}>
+                  <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-200/80 mb-5 group bg-white cursor-pointer">
+                    <div className="relative h-40 sm:h-44 w-full">
+                      {HERO_SLIDES.map((slide, index) => (
+                        <Image
+                          key={index}
+                          src={slide.image}
+                          alt={slide.title}
+                          fill
+                          className={`object-cover group-hover:scale-105 transition-all duration-700 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                            }`}
+                          style={{ position: 'absolute', transition: 'opacity 0.8s ease-in-out' }}
+                          priority={index === 0}
+                        />
+                      ))}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
+                    </div>
 
-                  <div className="absolute top-3 left-3 bg-[#f26c22] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1.5 uppercase tracking-wider">
-                    <FaTag className="text-[10px]" /> Seasonal Offer
-                  </div>
+                    <div className="absolute top-3 left-3 bg-[#f26c22] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1.5 uppercase tracking-wider">
+                      <FaTag className="text-[10px]" /> {HERO_SLIDES[currentSlide].tag}
+                    </div>
 
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <span className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest block mb-0.5">
-                      Exclusive Package Savings
-                    </span>
-                    <h4 className="text-base sm:text-lg font-bold leading-tight drop-shadow text-white">
-                      Up to 35% OFF on Custom Tour Itineraries
-                    </h4>
+                    <div className="absolute bottom-3 left-3 right-3 text-white">
+                      <span className="text-[11px] font-semibold text-amber-300 uppercase tracking-widest block mb-0.5">
+                        Exclusive Package Savings
+                      </span>
+                      <h4 className="text-base sm:text-lg font-bold leading-tight drop-shadow text-white">
+                        {HERO_SLIDES[currentSlide].title}
+                      </h4>
+                    </div>
+
+                    {/* Slide indicator dots */}
+                    <div className="absolute bottom-1.5 right-3 flex gap-1.5 z-10">
+                      {HERO_SLIDES.map((_, index) => (
+                        <span
+                          key={index}
+                          className={`w-1.5 h-1.5 rounded-full transition-all ${index === currentSlide ? 'bg-white w-4' : 'bg-white/50'
+                            }`}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Brand Trust Headline */}
                 <div className="mb-4">
