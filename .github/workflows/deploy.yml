@@ -11,27 +11,53 @@ jobs:
 
     steps:
 
-      # 1. Checkout code
+      # =========================================================
+      # 1. Checkout Repository
+      # =========================================================
       - name: Checkout code
         uses: actions/checkout@v4
 
+
+      # =========================================================
       # 2. Setup Node.js
+      # =========================================================
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           registry-url: https://registry.npmjs.org/
 
-      # 3. Completely reset npm configuration/cache
-      - name: Reset npm
+
+      # =========================================================
+      # 3. Show Node & npm versions
+      # =========================================================
+      - name: Check Node and npm
         run: |
-          echo "=== Resetting npm ==="
+          echo "=== Node Version ==="
+          node --version
+
+          echo "=== npm Version ==="
+          npm --version
+
+          echo "=== npm Registry ==="
+          npm config get registry
+
+
+      # =========================================================
+      # 4. Completely clean npm cache
+      # =========================================================
+      - name: Clean npm cache
+        run: |
+          echo "=== Cleaning npm cache ==="
+
+          npm cache clean --force
 
           rm -rf ~/.npm
+          rm -rf /tmp/npm-cache
 
-          npm config delete always-auth || true
-          npm config delete cache || true
+          mkdir -p /tmp/npm-cache
 
+          npm config set cache /tmp/npm-cache
           npm config set registry https://registry.npmjs.org/
 
           npm config set fetch-retries 5
@@ -39,93 +65,171 @@ jobs:
           npm config set fetch-retry-mintimeout 10000
           npm config set fetch-retry-maxtimeout 60000
 
-          npm cache verify
+          echo "=== npm configuration ==="
+          npm config get cache
+          npm config get registry
 
-      # 4. Create a completely fresh npm cache
-      - name: Create fresh npm cache
-        run: |
-          mkdir -p /tmp/npm-cache
-          echo "Fresh npm cache created"
-          npm config set cache /tmp/npm-cache
 
+      # =========================================================
       # 5. Install dependencies
+      # =========================================================
       - name: Install dependencies
+        shell: bash
         run: |
-          echo "=== Installing dependencies ==="
+          echo "======================================"
+          echo "Installing dependencies"
+          echo "======================================"
+
+          rm -rf node_modules
+
           npm install \
             --no-audit \
             --no-fund \
             --prefer-online \
+            --package-lock=false \
             --fetch-retries=5 \
             --fetch-retry-factor=2 \
             --fetch-retry-mintimeout=10000 \
             --fetch-retry-maxtimeout=60000
 
-      # 6. Clean previous build
+          echo "======================================"
+          echo "Dependencies installed successfully"
+          echo "======================================"
+
+
+      # =========================================================
+      # 6. Clean old Next.js build
+      # =========================================================
       - name: Clean previous build
         run: |
           echo "=== Cleaning previous build ==="
+
           rm -rf .next
           rm -rf out
 
+          echo "Build directories cleaned."
+
+
+      # =========================================================
       # 7. Build Next.js
+      # =========================================================
       - name: Build Next.js
         run: |
-          echo "=== Building Next.js ==="
+          echo "======================================"
+          echo "Building Next.js application"
+          echo "======================================"
+
           npm run build
 
-      # 8. Check build output
+          echo "======================================"
+          echo "Next.js build completed"
+          echo "======================================"
+
+
+      # =========================================================
+      # 8. Verify static export
+      # =========================================================
       - name: Check build output
+        shell: bash
         run: |
-          echo "=== Checking build output ==="
+          echo "======================================"
+          echo "Checking build output"
+          echo "======================================"
 
           if [ ! -d "out" ]; then
-            echo "ERROR: out directory was not created!"
+            echo ""
+            echo "ERROR: out directory was NOT created!"
+            echo ""
+            echo "If this is a Next.js static export,"
+            echo "make sure next.config.js contains:"
+            echo ""
+            echo "output: 'export'"
+            echo ""
             exit 1
           fi
 
-          echo "Total files in out:"
+          echo "out directory exists."
+
+          echo ""
+          echo "Total files:"
           find out -type f | wc -l
 
-          echo "Root HTML files:"
-          find out -maxdepth 1 -name "*.html" -print
+          echo ""
+          echo "HTML files:"
+          find out -type f -name "*.html" | head -50
 
-      # 9. Upload build to server
-      - name: Upload build to server
+          echo ""
+          echo "Top-level files:"
+          ls -lah out
+
+
+      # =========================================================
+      # 9. Upload build to Hostinger
+      # =========================================================
+      - name: Upload build to Hostinger
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
+
           source: "out"
           target: "/home/u344423240/deploy_temp"
+
           strip_components: 0
           rm: false
+          overwrite: true
 
-      # 10. Move files to public_html
-      - name: Move files to public_html via SSH
+
+      # =========================================================
+      # 10. Deploy files to public_html
+      # =========================================================
+      - name: Deploy files to public_html
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
+
           script: |
+            set -e
+
+            echo "======================================"
+            echo "Starting Hostinger deployment"
+            echo "======================================"
+
+            echo ""
+            echo "=== Checking uploaded files ==="
+
+            if [ ! -d "/home/u344423240/deploy_temp/out" ]; then
+              echo "ERROR: deploy_temp/out does not exist!"
+              exit 1
+            fi
+
+            echo ""
             echo "=== Clearing public_html ==="
 
             rm -rf /home/u344423240/public_html/*
 
-            echo "=== Copying files ==="
+            echo ""
+            echo "=== Copying new build ==="
 
             cp -r /home/u344423240/deploy_temp/out/. \
               /home/u344423240/public_html/
 
-            echo "=== Cleaning temp ==="
+            echo ""
+            echo "=== Cleaning deployment temp ==="
 
             rm -rf /home/u344423240/deploy_temp
 
-            echo "=== Deployment completed ==="
+            echo ""
+            echo "======================================"
+            echo "Deployment completed successfully"
+            echo "======================================"
 
-            echo "Files in public_html:"
-            ls -la /home/u344423240/public_html/ | head -20
+            echo ""
+            echo "=== Files in public_html ==="
+
+            ls -lah /home/u344423240/public_html/ | head -30
