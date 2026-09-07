@@ -156,7 +156,8 @@ jobs:
 
           echo ""
           echo "HTML files:"
-          find out -type f -name "*.html" | head -50
+          find out -type f -name "*.html" -print > /tmp/html-files.txt
+          head -50 /tmp/html-files.txt
 
           echo ""
           echo "Top-level files:"
