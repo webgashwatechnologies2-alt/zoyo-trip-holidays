@@ -19,138 +19,82 @@ jobs:
 
 
       # ============================================
-      # 2. Setup Node.js
+      # 2. Setup Node.js (with built-in npm caching)
       # ============================================
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           registry-url: https://registry.npmjs.org/
-
-
-      # ============================================
-      # 3. Reset npm
-      # ============================================
-      - name: Reset npm
-        run: |
-          echo "======================================"
-          echo "Resetting npm"
-          echo "======================================"
-
-          rm -rf ~/.npm
-
-          npm config delete always-auth || true
-          npm config delete cache || true
-
-          npm config set registry https://registry.npmjs.org/
-
-          npm config set fetch-retries 5
-          npm config set fetch-retry-factor 2
-          npm config set fetch-retry-mintimeout 10000
-          npm config set fetch-retry-maxtimeout 60000
-
+          cache: npm
 
       # ============================================
-      # 4. Fresh npm cache
-      # ============================================
-      - name: Create fresh npm cache
-        run: |
-          mkdir -p /tmp/npm-cache
-          npm config set cache /tmp/npm-cache
-
-          echo "Fresh npm cache created"
-
-
-      # ============================================
-      # 5. Install dependencies
+      # 3. Install dependencies (npm ci = clean, verified install)
       # ============================================
       - name: Install dependencies
         run: |
           echo "======================================"
-          echo "Installing dependencies"
+          echo "Installing dependencies with npm ci"
           echo "======================================"
-
-          npm install \
-            --no-audit \
-            --no-fund \
-            --prefer-online \
-            --fetch-retries=5 \
-            --fetch-retry-factor=2 \
-            --fetch-retry-mintimeout=10000 \
-            --fetch-retry-maxtimeout=60000
-
+          npm ci --no-audit --no-fund
 
       # ============================================
-      # 6. Clean previous build
+      # 4. Clean previous build
       # ============================================
       - name: Clean previous build
         run: |
           echo "======================================"
           echo "Cleaning previous build"
           echo "======================================"
-
           rm -rf .next
           rm -rf out
 
-
       # ============================================
-      # 7. Build Next.js
+      # 5. Build Next.js
       # ============================================
       - name: Build Next.js
         run: |
           echo "======================================"
           echo "Building Next.js"
           echo "======================================"
-
           npm run build
 
-
       # ============================================
-      # 8. Check build output
+      # 6. Check build output
       # ============================================
       - name: Check build output
         run: |
           echo "======================================"
           echo "Checking build output"
           echo "======================================"
-
           if [ ! -d "out" ]; then
             echo "ERROR: out directory was not created!"
             exit 1
           fi
-
           echo "out directory exists."
-
           echo "Total files:"
           find out -type f | wc -l
-
           echo "HTML files:"
           find out -type f -name "*.html" -print | head -50
-
           echo "Build output check completed."
 
-
       # ============================================
-      # 9. Install SSH tools
+      # 7. Install SSH tools
       # ============================================
       - name: Install deployment tools
         run: |
           echo "======================================"
           echo "Installing deployment tools"
           echo "======================================"
-
           sudo apt-get update
-
           sudo apt-get install -y \
             rsync \
             sshpass \
             openssh-client
-
           echo "Deployment tools installed."
 
-
       # ============================================
-      # 10. Test SSH connection
+      # 8. Test SSH connection
       # ============================================
       - name: Test Hostinger SSH connection
         env:
@@ -162,7 +106,6 @@ jobs:
           echo "======================================"
           echo "Testing SSH connection"
           echo "======================================"
-
           sshpass -e ssh \
             -o StrictHostKeyChecking=no \
             -o ConnectTimeout=30 \
@@ -170,9 +113,8 @@ jobs:
             "$SSH_USERNAME@$SSH_HOST" \
             "echo 'SSH connection successful'; whoami; pwd; ls -la"
 
-
       # ============================================
-      # 11. Prepare public_html
+      # 9. Prepare public_html
       # ============================================
       - name: Prepare Hostinger public_html
         env:
@@ -184,7 +126,6 @@ jobs:
           echo "======================================"
           echo "Preparing Hostinger public_html"
           echo "======================================"
-
           sshpass -e ssh \
             -o StrictHostKeyChecking=no \
             -o ConnectTimeout=30 \
@@ -193,24 +134,19 @@ jobs:
             "
               echo 'Checking home directory...'
               pwd
-
               echo 'Checking public_html...'
-
               if [ ! -d /home/u344423240/public_html ]; then
                 echo 'public_html does not exist. Creating it...'
                 mkdir -p /home/u344423240/public_html
               fi
-
               echo 'public_html permissions:'
               ls -ld /home/u344423240/public_html
-
               echo 'public_html currently contains:'
               ls -la /home/u344423240/public_html | head -20
             "
 
-
       # ============================================
-      # 12. Upload using RSYNC
+      # 10. Upload using RSYNC
       # ============================================
       - name: Upload build to Hostinger
         env:
@@ -222,7 +158,6 @@ jobs:
           echo "======================================"
           echo "Uploading build to Hostinger"
           echo "======================================"
-
           sshpass -e rsync \
             -avz \
             --delete \
@@ -230,14 +165,12 @@ jobs:
             -e "ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 -p $SSH_PORT" \
             out/ \
             "$SSH_USERNAME@$SSH_HOST:/home/u344423240/public_html/"
-
           echo "======================================"
           echo "Upload completed successfully"
           echo "======================================"
 
-
       # ============================================
-      # 13. Verify deployment
+      # 11. Verify deployment
       # ============================================
       - name: Verify deployment
         env:
@@ -249,7 +182,6 @@ jobs:
           echo "======================================"
           echo "Verifying deployment"
           echo "======================================"
-
           sshpass -e ssh \
             -o StrictHostKeyChecking=no \
             -o ConnectTimeout=30 \
@@ -258,17 +190,14 @@ jobs:
             "
               echo 'Files in public_html:'
               ls -la /home/u344423240/public_html/ | head -30
-
               echo ''
               echo 'index.html check:'
-
               if [ -f /home/u344423240/public_html/index.html ]; then
                 echo 'SUCCESS: index.html exists'
               else
                 echo 'WARNING: index.html not found'
               fi
             "
-
           echo "======================================"
           echo "DEPLOYMENT COMPLETED"
           echo "======================================"
