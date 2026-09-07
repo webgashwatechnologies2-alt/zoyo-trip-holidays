@@ -69,23 +69,20 @@ export default function EnquiryModal() {
     tripType: 'Family Holiday',
   });
 
-  // Auto-open modal automatically whenever the page loads / reloads
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 1200); // Smooth 1.2 second delay after page load
+    }, 1200); 
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Listen to custom trigger events from anywhere on the website
   useEffect(() => {
     const handleOpenModal = () => setIsOpen(true);
     window.addEventListener('open-enquiry-modal', handleOpenModal);
     return () => window.removeEventListener('open-enquiry-modal', handleOpenModal);
   }, []);
 
-  // Close on Escape key & manage body scroll
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsOpen(false);

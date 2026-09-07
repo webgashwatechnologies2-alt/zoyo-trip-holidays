@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import EnquiryModal from "../components/EnquiryModal";
+import LeftFloatingButtons from "../components/LeftFloatingButtons";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -33,14 +34,12 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-poppins), sans-serif" }}
       >
         <Header />
-
         <main className="min-h-screen">
           {children}
         </main>
-
         <Footer />
-
         <EnquiryModal />
+        <LeftFloatingButtons />
 
         {/* Tawk.to Live Chat */}
         <Script

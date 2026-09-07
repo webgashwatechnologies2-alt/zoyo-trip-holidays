@@ -91,15 +91,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden">
-      <section className="relative w-full h-[580px] sm:h-[600px] md:h-[600px] flex flex-col justify-end md:justify-center items-center pb-2 md:pb-0 md:pt-0">
-        <HeroCarousel />
+      <section className="relative w-full h-[150px] sm:h-[600px] md:h-[600px] flex flex-col justify-end md:justify-center items-center pb-2 md:pb-0 md:pt-0">        <HeroCarousel />
         <HeroSearchBar />
       </section>
       <div className="hidden md:block h-[120px] w-full bg-transparent"></div>
       <SpecialOffersSection />
       <HolidayDestinationsSection />
       <TrustedCompanySection />
-      
+
       <section className="w-full bg-white py-16 px-4 sm:px-10 lg:px-20">
         <h2 className="text-3xl md:text-[38px] font-semibold text-[#111827] text-center mb-8 tracking-tight">Top International destinations</h2>
         <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -165,7 +164,7 @@ export default function Home() {
       <PromotionalBannerSlider />
       <section className="w-full bg-[#FFF2E2] py-16 px-4 sm:px-10 xl:px-50 relative overflow-hidden">
         <div className="relative z-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-weight-900 mb-12 text-black">Zoyo Trip Holidays –  Your <span style={{color: '#F26C22'}}>Journey, Our Priority!</span> </h2>
+          <h2 className="text-3xl md:text-4xl font-weight-900 mb-12 text-black">Zoyo Trip Holidays –  Your <span style={{ color: '#F26C22' }}>Journey, Our Priority!</span> </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-12 relative">
             <div className="flex gap-4 items-start">
               <div className="bg-[#FFB52A] text-white p-3 rounded-full text-xl shrink-0">

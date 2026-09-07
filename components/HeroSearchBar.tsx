@@ -86,16 +86,16 @@ const ALL_DESTINATIONS: DestinationOption[] = [
 export default function HeroSearchBar() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TourCategory>('domestic');
-  
+
   // Destination state
   const [selectedDestination, setSelectedDestination] = useState<DestinationOption>(ALL_DESTINATIONS[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isDestDropdownOpen, setIsDestDropdownOpen] = useState(false);
-  
+
   // Dates state
   const [departDate, setDepartDate] = useState('2026-11-22');
   const [returnDate, setReturnDate] = useState('2026-11-28');
-  
+
   // Travelers state
   const [travelers, setTravelers] = useState('2 Travelers (Couple)');
   const [isTravelersOpen, setIsTravelersOpen] = useState(false);
@@ -109,8 +109,8 @@ export default function HeroSearchBar() {
   // Filter destinations based on active tab and search query
   const filteredDestinations = ALL_DESTINATIONS.filter((d) => {
     const matchesCategory = d.category === activeTab;
-    const matchesQuery = d.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         d.region.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesQuery = d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.region.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && (searchQuery ? matchesQuery : true);
   });
 
@@ -172,7 +172,7 @@ export default function HeroSearchBar() {
     if (!dateString) return { date: 'Select Date', day: 'Pick from calendar' };
     const dateObj = new Date(dateString);
     if (isNaN(dateObj.getTime())) return { date: 'Select Date', day: 'Pick from calendar' };
-    
+
     const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'long' });
     const dayNum = dateObj.getDate();
     const monthName = dateObj.toLocaleDateString('en-US', { month: 'long' });
@@ -204,11 +204,10 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('domestic')}
-            className={`px-6 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'domestic'
+            className={`px-6 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'domestic'
                 ? 'bg-[#f26c22] text-white shadow-md'
                 : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
-            }`}
+              }`}
           >
             <FaCompass className="w-4 h-4" />
             Domestic Tours
@@ -217,11 +216,10 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('international')}
-            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'international'
+            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'international'
                 ? 'bg-[#f26c22] text-white shadow-md'
                 : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
-            }`}
+              }`}
           >
             <FaPlane className="w-4 h-4" />
             International Tours
@@ -230,11 +228,10 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('honeymoon')}
-            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'honeymoon'
+            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'honeymoon'
                 ? 'bg-[#f26c22] text-white shadow-md'
                 : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
-            }`}
+              }`}
           >
             <FaHeart className="w-4 h-4 text-rose-300" />
             Honeymoon Packages
@@ -243,11 +240,10 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('custom')}
-            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'custom'
+            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'custom'
                 ? 'bg-[#f26c22] text-white shadow-md'
                 : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
-            }`}
+              }`}
           >
             <FaSlidersH className="w-4 h-4" />
             Custom Itinerary
@@ -302,11 +298,10 @@ export default function HeroSearchBar() {
                           setSelectedDestination(dest);
                           setIsDestDropdownOpen(false);
                         }}
-                        className={`w-full p-2.5 px-3 rounded-xl flex items-center justify-between text-left transition cursor-pointer ${
-                          selectedDestination?.id === dest.id
+                        className={`w-full p-2.5 px-3 rounded-xl flex items-center justify-between text-left transition cursor-pointer ${selectedDestination?.id === dest.id
                             ? 'bg-orange-50 text-[#f26c22] font-bold'
                             : 'hover:bg-gray-50 text-gray-700 font-medium'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
                           <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border-2 border-gray-100">
@@ -422,9 +417,8 @@ export default function HeroSearchBar() {
                         setTravelers(item);
                         setIsTravelersOpen(false);
                       }}
-                      className={`w-full p-2.5 px-3 rounded-xl flex items-center justify-between text-left text-xs font-bold transition cursor-pointer ${
-                        travelers === item ? 'bg-orange-50 text-[#f26c22]' : 'hover:bg-gray-50 text-gray-700'
-                      }`}
+                      className={`w-full p-2.5 px-3 rounded-xl flex items-center justify-between text-left text-xs font-bold transition cursor-pointer ${travelers === item ? 'bg-orange-50 text-[#f26c22]' : 'hover:bg-gray-50 text-gray-700'
+                        }`}
                     >
                       <span>{item}</span>
                       {travelers === item && <FaCheck className="text-xs text-[#f26c22]" />}
@@ -454,47 +448,44 @@ export default function HeroSearchBar() {
           </div>
         </div>
       </div>
-      <div className="md:hidden w-full px-4 mt-0 relative z-30 mb-8 flex flex-col items-center">
+      {/* <div className="hidden md:flex absolute bottom-[-90px] w-full flex-col items-center z-30 px-6"> */}
+      <div className="hidden">
         <div className="flex bg-white shadow-lg rounded-full p-1 mb-[-14px] z-20 border border-gray-200 max-w-[calc(100vw-32px)] overflow-x-auto no-scrollbar">
           <button
             type="button"
             onClick={() => handleTabChange('domestic')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              activeTab === 'domestic' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
+            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${activeTab === 'domestic' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
+              }`}
           >
             <FaCompass className="w-3.5 h-3.5" />
             Domestic
           </button>
-          
+
           <button
             type="button"
             onClick={() => handleTabChange('international')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              activeTab === 'international' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
+            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${activeTab === 'international' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
+              }`}
           >
             <FaPlane className="w-3.5 h-3.5" />
             International
           </button>
-          
+
           <button
             type="button"
             onClick={() => handleTabChange('honeymoon')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              activeTab === 'honeymoon' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
+            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${activeTab === 'honeymoon' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
+              }`}
           >
             <FaHeart className="w-3.5 h-3.5" />
             Honeymoon
           </button>
-          
+
           <button
             type="button"
             onClick={() => handleTabChange('custom')}
-            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${
-              activeTab === 'custom' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
-            }`}
+            className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold flex items-center gap-1.5 transition whitespace-nowrap ${activeTab === 'custom' ? 'bg-[#f26c22] text-white shadow-sm' : 'text-gray-700'
+              }`}
           >
             <FaSlidersH className="w-3.5 h-3.5" />
             Custom
@@ -530,7 +521,7 @@ export default function HeroSearchBar() {
                 </select>
               </div>
             </div>
-            <div 
+            <div
               onClick={triggerDepartPicker}
               className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white relative cursor-pointer"
             >
@@ -550,7 +541,7 @@ export default function HeroSearchBar() {
                 className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
               />
             </div>
-            <div 
+            <div
               onClick={triggerReturnPicker}
               className="border border-gray-200 rounded-xl p-3 flex items-center gap-3 bg-white relative cursor-pointer"
             >

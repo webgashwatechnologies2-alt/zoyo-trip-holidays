@@ -1,19 +1,20 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import herobaner1 from '@/public/assets/images/Herobanner/janmastami.png';
-import herobaner2 from '@/public/assets/images/Herobanner/teachersday.png';
-import herobaner3 from '@/public/assets/images/Herobanner/dubaibaner.png';
-import herobaner4  from '@/public/assets/images/Herobanner/dusherra.png';
-import herobaner5 from '@/public/assets/images/Herobanner/diwalibaner.png';
-import herobaner6  from '@/public/assets/images/Herobanner/ganeshchatuurthi.png';
-import herobaner7  from '@/public/assets/images/slider/balislider.png';
-import herobaner8  from '@/public/assets/images/Herobanner/ac.png';
-import herobaner9  from '@/public/assets/images/Herobanner/navratri.png';
-
+import herobaner1 from '@/public/assets/images/Herobanner/dusherabaner.png';
+import herobaner2 from '@/public/assets/images/Herobanner/tamil-nadu.png';
+import herobaner3 from '@/public/assets/images/Herobanner/dwbaner.png';
+import herobaner4 from '@/public/assets/images/Herobanner/dubaibaner.png';
+import herobaner5 from '@/public/assets/images/Herobanner/ganesh-chaturthi.png';
+import herobaner6 from '@/public/assets/images/Herobanner/uttarakhand.png';
+import herobaner7 from '@/public/assets/images/Herobanner/anant-chaturdashi.png';
+import herobaner8 from '@/public/assets/images/Herobanner/himachal-pradesh.png';
+import herobaner9 from '@/public/assets/images/Herobanner/navratri.png';
+import herobaner10 from '@/public/assets/images/Herobanner/swastya-manthan.png';
+import herobaner11 from '@/public/assets/images/Herobanner/thailand.png';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const images = [herobaner1, herobaner2, herobaner3, herobaner4, herobaner5 , herobaner6, herobaner7, herobaner8, herobaner9];
+const images = [herobaner1, herobaner2, herobaner3, herobaner4, herobaner5, herobaner6, herobaner7, herobaner8, herobaner9, herobaner10, herobaner11];
 
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,7 +33,6 @@ export default function HeroCarousel() {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
-
   return (
     <>
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#f4b504]">
@@ -51,16 +51,15 @@ export default function HeroCarousel() {
           </div>
         ))}
       </div>
-
-      <button 
-        onClick={prevSlide} 
+      <button
+        onClick={prevSlide}
         aria-label="Previous Banner"
         className="absolute left-6 top-[45%] w-11 h-11 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-xs transition-all z-20 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
       >
         <FaChevronLeft className="w-5 h-5" />
       </button>
-      <button 
-        onClick={nextSlide} 
+      <button
+        onClick={nextSlide}
         aria-label="Next Banner"
         className="absolute right-6 top-[45%] w-11 h-11 rounded-full bg-black/30 hover:bg-black/60 text-white flex items-center justify-center backdrop-blur-xs transition-all z-20 cursor-pointer shadow-lg hover:scale-105 active:scale-95"
       >
