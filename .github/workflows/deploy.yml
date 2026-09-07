@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       # 1. Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,40 +20,64 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
           registry-url: https://registry.npmjs.org/
 
-      # 3. Configure npm
-      - name: Configure npm
+      # 3. Completely reset npm configuration/cache
+      - name: Reset npm
         run: |
+          echo "=== Resetting npm ==="
+
+          rm -rf ~/.npm
+
+          npm config delete always-auth || true
+          npm config delete cache || true
+
           npm config set registry https://registry.npmjs.org/
+
           npm config set fetch-retries 5
           npm config set fetch-retry-factor 2
           npm config set fetch-retry-mintimeout 10000
           npm config set fetch-retry-maxtimeout 60000
 
-      # 4. Clean npm cache
-      - name: Clean npm cache
-        run: npm cache clean --force
+          npm cache verify
+
+      # 4. Create a completely fresh npm cache
+      - name: Create fresh npm cache
+        run: |
+          mkdir -p /tmp/npm-cache
+          echo "Fresh npm cache created"
+          npm config set cache /tmp/npm-cache
 
       # 5. Install dependencies
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: |
+          echo "=== Installing dependencies ==="
+          npm install \
+            --no-audit \
+            --no-fund \
+            --prefer-online \
+            --fetch-retries=5 \
+            --fetch-retry-factor=2 \
+            --fetch-retry-mintimeout=10000 \
+            --fetch-retry-maxtimeout=60000
 
       # 6. Clean previous build
       - name: Clean previous build
         run: |
+          echo "=== Cleaning previous build ==="
           rm -rf .next
           rm -rf out
 
       # 7. Build Next.js
       - name: Build Next.js
-        run: npm run build
+        run: |
+          echo "=== Building Next.js ==="
+          npm run build
 
       # 8. Check build output
       - name: Check build output
         run: |
-          echo "Checking build output..."
+          echo "=== Checking build output ==="
 
           if [ ! -d "out" ]; then
             echo "ERROR: out directory was not created!"
@@ -63,7 +88,7 @@ jobs:
           find out -type f | wc -l
 
           echo "Root HTML files:"
-          ls out/*.html
+          find out -maxdepth 1 -name "*.html" -print
 
       # 9. Upload build to server
       - name: Upload build to server
@@ -88,14 +113,19 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             echo "=== Clearing public_html ==="
+
             rm -rf /home/u344423240/public_html/*
 
             echo "=== Copying files ==="
-            cp -r /home/u344423240/deploy_temp/out/. /home/u344423240/public_html/
+
+            cp -r /home/u344423240/deploy_temp/out/. \
+              /home/u344423240/public_html/
 
             echo "=== Cleaning temp ==="
+
             rm -rf /home/u344423240/deploy_temp
 
             echo "=== Deployment completed ==="
+
             echo "Files in public_html:"
             ls -la /home/u344423240/public_html/ | head -20
