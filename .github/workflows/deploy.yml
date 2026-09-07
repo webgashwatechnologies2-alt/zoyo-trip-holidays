@@ -10,63 +10,194 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # ============================================
+      # 1. Checkout
+      # ============================================
       - name: Checkout code
         uses: actions/checkout@v4
 
+
+      # ============================================
+      # 2. Setup Node.js (with built-in npm caching)
+      # ============================================
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+          cache: npm
 
+      # ============================================
+      # 3. Install dependencies (npm ci = clean, verified install)
+      # ============================================
       - name: Install dependencies
-        run: npm install
+        run: |
+          echo "======================================"
+          echo "Installing dependencies with npm ci"
+          echo "======================================"
+          npm ci --no-audit --no-fund
 
+      # ============================================
+      # 4. Clean previous build
+      # ============================================
       - name: Clean previous build
         run: |
+          echo "======================================"
+          echo "Cleaning previous build"
+          echo "======================================"
           rm -rf .next
           rm -rf out
 
+      # ============================================
+      # 5. Build Next.js
+      # ============================================
       - name: Build Next.js
-        run: npm run build
+        run: |
+          echo "======================================"
+          echo "Building Next.js"
+          echo "======================================"
+          npm run build
 
+      # ============================================
+      # 6. Check build output
+      # ============================================
       - name: Check build output
         run: |
-          echo "Checking build output..."
-          test -d out
-          echo "Total files in out:"
+          echo "======================================"
+          echo "Checking build output"
+          echo "======================================"
+          if [ ! -d "out" ]; then
+            echo "ERROR: out directory was not created!"
+            exit 1
+          fi
+          echo "out directory exists."
+          echo "Total files:"
           find out -type f | wc -l
-          echo "Root HTML files:"
-          ls out/*.html
+          echo "HTML files:"
+          find out -type f -name "*.html" -print | head -50
+          echo "Build output check completed."
 
-      - name: Upload build to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          source: "out"
-          target: "/home/u344423240/deploy_temp"
-          strip_components: 0
-          rm: false
+      # ============================================
+      # 7. Install SSH tools
+      # ============================================
+      - name: Install deployment tools
+        run: |
+          echo "======================================"
+          echo "Installing deployment tools"
+          echo "======================================"
+          sudo apt-get update
+          sudo apt-get install -y \
+            rsync \
+            sshpass \
+            openssh-client
+          echo "Deployment tools installed."
 
-      - name: Move files to public_html via SSH
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          script: |
-            echo "=== Clearing public_html ==="
-            rm -rf /home/u344423240/public_html/*
+      # ============================================
+      # 8. Test SSH connection
+      # ============================================
+      - name: Test Hostinger SSH connection
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        run: |
+          echo "======================================"
+          echo "Testing SSH connection"
+          echo "======================================"
+          sshpass -e ssh \
+            -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=30 \
+            -p "$SSH_PORT" \
+            "$SSH_USERNAME@$SSH_HOST" \
+            "echo 'SSH connection successful'; whoami; pwd; ls -la"
 
-            echo "=== Copying files ==="
-            cp -r /home/u344423240/deploy_temp/out/. /home/u344423240/public_html/
+      # ============================================
+      # 9. Prepare public_html
+      # ============================================
+      - name: Prepare Hostinger public_html
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        run: |
+          echo "======================================"
+          echo "Preparing Hostinger public_html"
+          echo "======================================"
+          sshpass -e ssh \
+            -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=30 \
+            -p "$SSH_PORT" \
+            "$SSH_USERNAME@$SSH_HOST" \
+            "
+              echo 'Checking home directory...'
+              pwd
+              echo 'Checking public_html...'
+              if [ ! -d /home/u344423240/public_html ]; then
+                echo 'public_html does not exist. Creating it...'
+                mkdir -p /home/u344423240/public_html
+              fi
+              echo 'public_html permissions:'
+              ls -ld /home/u344423240/public_html
+              echo 'public_html currently contains:'
+              ls -la /home/u344423240/public_html | head -20
+            "
 
-            echo "=== Cleaning temp ==="
-            rm -rf /home/u344423240/deploy_temp
+      # ============================================
+      # 10. Upload using RSYNC
+      # ============================================
+      - name: Upload build to Hostinger
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        run: |
+          echo "======================================"
+          echo "Uploading build to Hostinger"
+          echo "======================================"
+          sshpass -e rsync \
+            -avz \
+            --delete \
+            --progress \
+            -e "ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 -p $SSH_PORT" \
+            out/ \
+            "$SSH_USERNAME@$SSH_HOST:/home/u344423240/public_html/"
+          echo "======================================"
+          echo "Upload completed successfully"
+          echo "======================================"
 
-            echo "=== Deployment completed ==="
-            echo "Files in public_html:"
-            ls -la /home/u344423240/public_html/ | head -20
+      # ============================================
+      # 11. Verify deployment
+      # ============================================
+      - name: Verify deployment
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        run: |
+          echo "======================================"
+          echo "Verifying deployment"
+          echo "======================================"
+          sshpass -e ssh \
+            -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=30 \
+            -p "$SSH_PORT" \
+            "$SSH_USERNAME@$SSH_HOST" \
+            "
+              echo 'Files in public_html:'
+              ls -la /home/u344423240/public_html/ | head -30
+              echo ''
+              echo 'index.html check:'
+              if [ -f /home/u344423240/public_html/index.html ]; then
+                echo 'SUCCESS: index.html exists'
+              else
+                echo 'WARNING: index.html not found'
+              fi
+            "
+          echo "======================================"
+          echo "DEPLOYMENT COMPLETED"
+          echo "======================================"
