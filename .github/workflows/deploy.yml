@@ -144,16 +144,26 @@ jobs:
             -o ConnectTimeout=30 \
             -p "$SSH_PORT" \
             "$SSH_USERNAME@$SSH_HOST" \
-            "echo 'SSH connection successful'; echo 'Username:'; whoami; echo 'Home:'; pwd; echo 'Files:'; ls -la"
+            "
+              echo 'SSH connection successful'
+              echo 'Username:'
+              whoami
+
+              echo 'Home:'
+              pwd
+
+              echo 'Server:'
+              hostname
+            "
 
           echo ""
           echo "SSH test completed successfully."
 
 
       # ============================================
-      # 9. Prepare public_html
+      # 9. Prepare correct domain public_html
       # ============================================
-      - name: Prepare Hostinger public_html
+      - name: Prepare zoyotrips.com public_html
         env:
           SSHPASS: ${{ secrets.SSH_PASSWORD }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -162,8 +172,13 @@ jobs:
 
         run: |
           echo "======================================"
-          echo "Preparing Hostinger public_html"
+          echo "Preparing zoyotrips.com public_html"
           echo "======================================"
+
+          DEPLOY_PATH="/home/$SSH_USERNAME/domains/zoyotrips.com/public_html"
+
+          echo "Deployment path:"
+          echo "$DEPLOY_PATH"
 
           sshpass -e ssh \
             -o StrictHostKeyChecking=no \
@@ -175,40 +190,30 @@ jobs:
               whoami
 
               echo ''
-              echo 'Home directory:'
-              pwd
+              echo 'Checking domain directory:'
+              ls -ld /home/$SSH_USERNAME/domains/zoyotrips.com
 
               echo ''
-              echo 'Checking public_html...'
-
-              if [ ! -d /home/$SSH_USERNAME/public_html ]; then
-                echo 'public_html does not exist.'
-                echo 'Creating public_html...'
-
-                mkdir -p /home/$SSH_USERNAME/public_html
-
-                echo 'public_html created successfully.'
-              else
-                echo 'public_html already exists.'
-              fi
+              echo 'Checking public_html:'
+              ls -ld /home/$SSH_USERNAME/domains/zoyotrips.com/public_html
 
               echo ''
-              echo 'public_html information:'
-              ls -ld /home/$SSH_USERNAME/public_html
+              echo 'Real deployment path:'
+              realpath /home/$SSH_USERNAME/domains/zoyotrips.com/public_html
 
               echo ''
-              echo 'Current public_html contents:'
-              ls -la /home/$SSH_USERNAME/public_html | head -30
+              echo 'Current files:'
+              ls -la /home/$SSH_USERNAME/domains/zoyotrips.com/public_html | head -30
             "
 
           echo ""
-          echo "public_html preparation completed."
+          echo "Correct public_html verified."
 
 
       # ============================================
-      # 10. Upload ONLY build files
+      # 10. Upload ONLY Next.js build
       # ============================================
-      - name: Upload build to Hostinger
+      - name: Upload build to zoyotrips.com
         env:
           SSHPASS: ${{ secrets.SSH_PASSWORD }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
@@ -217,15 +222,17 @@ jobs:
 
         run: |
           echo "======================================"
-          echo "Uploading build to Hostinger"
+          echo "Uploading Next.js build"
           echo "======================================"
+
+          DEPLOY_PATH="/home/$SSH_USERNAME/domains/zoyotrips.com/public_html"
 
           echo "Source:"
           echo "out/"
 
           echo ""
           echo "Destination:"
-          echo "/home/$SSH_USERNAME/public_html/"
+          echo "$DEPLOY_PATH/"
 
           echo ""
           echo "Starting rsync..."
@@ -235,7 +242,7 @@ jobs:
             --progress \
             -e "ssh -o StrictHostKeyChecking=no -o ConnectTimeout=30 -p $SSH_PORT" \
             out/ \
-            "$SSH_USERNAME@$SSH_HOST:/home/$SSH_USERNAME/public_html/"
+            "$SSH_USERNAME@$SSH_HOST:$DEPLOY_PATH/"
 
           echo ""
           echo "======================================"
@@ -258,6 +265,8 @@ jobs:
           echo "Verifying deployment"
           echo "======================================"
 
+          DEPLOY_PATH="/home/$SSH_USERNAME/domains/zoyotrips.com/public_html"
+
           sshpass -e ssh \
             -o StrictHostKeyChecking=no \
             -o ConnectTimeout=30 \
@@ -265,16 +274,20 @@ jobs:
             "$SSH_USERNAME@$SSH_HOST" \
             "
               echo 'Deployment directory:'
-              echo /home/$SSH_USERNAME/public_html/
+              echo '$DEPLOY_PATH'
+
+              echo ''
+              echo 'Real path:'
+              realpath '$DEPLOY_PATH'
 
               echo ''
               echo 'Files in public_html:'
-              ls -la /home/$SSH_USERNAME/public_html/ | head -50
+              ls -la '$DEPLOY_PATH' | head -50
 
               echo ''
               echo 'Checking index.html...'
 
-              if [ -f /home/$SSH_USERNAME/public_html/index.html ]; then
+              if [ -f '$DEPLOY_PATH/index.html' ]; then
                 echo 'SUCCESS: index.html exists.'
               else
                 echo 'ERROR: index.html was not found!'
@@ -284,7 +297,7 @@ jobs:
               echo ''
               echo 'Checking _next directory...'
 
-              if [ -d /home/$SSH_USERNAME/public_html/_next ]; then
+              if [ -d '$DEPLOY_PATH/_next' ]; then
                 echo 'SUCCESS: _next directory exists.'
               else
                 echo 'WARNING: _next directory not found.'
