@@ -116,7 +116,7 @@ export default function PromotionalBannerSlider() {
         >
           <div
             className="relative w-full"
-            style={{ height: 'clamp(200px, 35vw, 480px)' }}
+            style={{ height: 'clamp(200px, 31vw, 480px)' }}
           >
             {bannerImages.map((banner, index) => {
               const isActive = index === currentIndex;

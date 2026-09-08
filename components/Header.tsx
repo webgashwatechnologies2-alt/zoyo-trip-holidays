@@ -363,7 +363,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         setMobileMenuOpen(false);
       }
     };
@@ -671,7 +671,7 @@ export default function Header() {
             </div>
           </div>
           <div className="h-[47px] sm:h-[55px] flex items-center justify-between pl-1 sm:pl-2">
-            <nav className="hidden lg:flex space-x-8 text-[15px] font-[500] text-[#222] whitespace-nowrap h-full items-center">
+            <nav className="hidden xl:flex space-x-5 2xl:space-x-8 text-[14px] 2xl:text-[15px] font-[500] text-[#222] whitespace-nowrap h-full items-center">
               <Link
                 href="/"
                 className="hover:text-[#F26C22] transition"
@@ -707,7 +707,7 @@ export default function Header() {
                   />
                 </Link>
                 <div
-                  className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${
+                  className={`hidden xl:block fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${
                     activeMenu === 'national'
                       ? 'opacity-100 visible translate-y-0 pointer-events-auto'
                       : 'opacity-0 invisible -translate-y-2 pointer-events-none'
@@ -874,7 +874,7 @@ export default function Header() {
                   />
                 </Link>
                 <div
-                  className={`fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${
+                  className={`hidden xl:block fixed left-0 right-0 top-[100px] w-full bg-white border-t-2 border-[#1E6AD4] shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-200 z-50 ${
                     activeMenu ===
                     'international'
                       ? 'opacity-100 visible translate-y-0 pointer-events-auto'
@@ -1128,7 +1128,7 @@ export default function Header() {
                 </div>
               </div>
             </nav>
-            <div className="flex items-center gap-2 lg:hidden ml-auto">
+            <div className="flex items-center gap-2 xl:hidden ml-auto">
               <a
                 href="https://wa.me/918091660060"
                 target="_blank"
@@ -1173,8 +1173,8 @@ export default function Header() {
         </div>
       </div>
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[85px] sm:top-[100px] z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-start">
-          <div className="w-full max-h-[85vh] bg-white overflow-y-auto shadow-2xl pb-10 border-t border-gray-100">
+        <div className="xl:hidden fixed inset-0 top-[100px] z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-start">
+          <div className="w-full max-h-[calc(100vh-100px)] bg-white overflow-y-auto shadow-2xl pb-10 border-t border-gray-100">
             <div className="p-5 space-y-3 text-left">
               <Link
                 href="/"

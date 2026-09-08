@@ -91,7 +91,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full overflow-x-hidden">
-      <section className="relative w-full h-[150px] sm:h-[600px] md:h-[600px] flex flex-col justify-end md:justify-center items-center pb-2 md:pb-0 md:pt-0">        <HeroCarousel />
+      <section className="relative w-full h-[150px] sm:h-[600px] md:h-[300px] lg:h-[600px] flex flex-col justify-end md:justify-center items-center pb-2 md:pb-0 md:pt-0">
+        <HeroCarousel />
         <HeroSearchBar />
       </section>
       <div className="hidden md:block h-[120px] w-full bg-transparent"></div>

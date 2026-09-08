@@ -124,7 +124,7 @@ export default function Footer() {
           ) : (
             <form
               onSubmit={handleSubscribe}
-              className="w-full sm:w-auto sm:min-w-[340px] flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5"
+              className="flex flex-col md:flex-row w-full sm:w-auto sm:min-w-[340px] items-stretch md:items-center gap-2.5"
             >
               <input
                 type="email"
@@ -132,11 +132,12 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter Email"
-                className="flex-1 bg-white text-gray-800 text-sm px-4 py-2.5 rounded-full outline-none border-2 border-transparent focus:border-[#f26c22] transition-all placeholder:text-gray-400 font-medium"
+                className="w-full md:flex-1 bg-white text-gray-800 text-sm px-4 py-2.5 rounded-full outline-none border-2 border-transparent focus:border-[#f26c22] transition-all placeholder:text-gray-400 font-medium"
               />
+
               <button
                 type="submit"
-                className="flex items-center gap-2 bg-[#0d1b2a] hover:bg-[#f26c22] text-white font-bold text-sm px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap border border-white/20 hover:border-[#f26c22] cursor-pointer"
+                className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#0d1b2a] hover:bg-[#f26c22] text-white font-bold text-sm px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap border border-white/20 hover:border-[#f26c22] cursor-pointer"
               >
                 Subscribe Now <FaArrowRight className="text-xs" />
               </button>
@@ -185,7 +186,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-2 text-gray-400 text-[13px]">
                 <FaMapMarkerAlt className="text-[#f26c22] shrink-0 mt-0.5" />
-                <span>Inderlok, New Delhi — 110035, India</span>
+                <span>Near by Ananda Marga High School, HPSEBL Colony, Bhuntar, Sarabai, Himachal Pradesh 175125</span>
               </div>
             </div>
             <div className="flex gap-2 flex-wrap mt-1">

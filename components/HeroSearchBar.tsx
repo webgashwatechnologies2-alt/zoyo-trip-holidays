@@ -204,9 +204,9 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('domestic')}
-            className={`px-6 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'domestic'
-                ? 'bg-[#f26c22] text-white shadow-md'
-                : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
+            className={`px-6 py-2.5 rounded-full text-[13px] md:text-[7px] lg:text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'domestic'
+              ? 'bg-[#f26c22] text-white shadow-md'
+              : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
               }`}
           >
             <FaCompass className="w-4 h-4" />
@@ -216,7 +216,7 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('international')}
-            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'international'
+            className={`px-5 py-2.5 rounded-full text-[13px] md:text-[7px] lg:text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'international'
                 ? 'bg-[#f26c22] text-white shadow-md'
                 : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
               }`}
@@ -228,9 +228,9 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('honeymoon')}
-            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'honeymoon'
-                ? 'bg-[#f26c22] text-white shadow-md'
-                : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
+            className={`px-5 py-2.5 rounded-full text-[13px] md:text-[7px] lg:text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'honeymoon'
+              ? 'bg-[#f26c22] text-white shadow-md'
+              : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
               }`}
           >
             <FaHeart className="w-4 h-4 text-rose-300" />
@@ -240,9 +240,9 @@ export default function HeroSearchBar() {
           <button
             type="button"
             onClick={() => handleTabChange('custom')}
-            className={`px-5 py-2.5 rounded-full text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'custom'
-                ? 'bg-[#f26c22] text-white shadow-md'
-                : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
+            className={`px-5 py-2.5 rounded-full text-[13px] md:text-[7px] lg:text-[13px] font-bold flex items-center gap-2 transition-all cursor-pointer ${activeTab === 'custom'
+              ? 'bg-[#f26c22] text-white shadow-md'
+              : 'text-gray-700 hover:text-[#f26c22] hover:bg-orange-50/60'
               }`}
           >
             <FaSlidersH className="w-4 h-4" />
@@ -299,8 +299,8 @@ export default function HeroSearchBar() {
                           setIsDestDropdownOpen(false);
                         }}
                         className={`w-full p-2.5 px-3 rounded-xl flex items-center justify-between text-left transition cursor-pointer ${selectedDestination?.id === dest.id
-                            ? 'bg-orange-50 text-[#f26c22] font-bold'
-                            : 'hover:bg-gray-50 text-gray-700 font-medium'
+                          ? 'bg-orange-50 text-[#f26c22] font-bold'
+                          : 'hover:bg-gray-50 text-gray-700 font-medium'
                           }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">

@@ -66,7 +66,7 @@ const services = [
 
 export default function TrustedCompanySection() {
   return (
-    <section className="relative w-full bg-[#FCF8F2] py-12 sm:py-16 lg:py-20 overflow-hidden font-sans border-y border-amber-100/80">
+    <section className="relative w-full bg-[#FCF8F2] py-12 sm:py-16 lg:py-20 lg:px-15 overflow-hidden font-sans border-y border-amber-100/80">
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200/20 rounded-full blur-3xl pointer-events-none -z-0" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl pointer-events-none -z-0" />
       <div
@@ -76,7 +76,6 @@ export default function TrustedCompanySection() {
           backgroundSize: '28px 28px',
         }}
       />
-
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-7 flex flex-col">

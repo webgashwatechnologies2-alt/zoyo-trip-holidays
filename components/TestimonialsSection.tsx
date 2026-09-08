@@ -18,53 +18,53 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
   {
     id: 1,
-    name: 'Selina Henry',
+    name: 'atanu chakraborty',
     role: 'Zoyo Trip Holidays Traveler',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
     rating: 5,
     title: 'Average Experience',
     review:
-      'The tour was well-organized, and we enjoyed every bit of it. However, I wish we had more free time to explore on our own. Overall, a great experience!',
+      'The trip was awesome! The hotels were good, and our cab driver was excellent. While the entire management team was nice, they were very busy, which led to a bit of a communication gap and made it hard to stay in touch at times. Overall, everything else was fine. Thank you, Anjali Mam, for this amazing itinerary.',
   },
   {
     id: 2,
-    name: 'James Bonde',
+    name: 'Riya Kashyap',
     role: 'Zoyo Trip Holidays Traveler',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
     rating: 5,
     title: 'Average Experience',
     review:
-      'The tour was well-organized, and we enjoyed every bit of it. However, I wish we had more free time to explore on our own. Overall, a great experience!',
+      'Had a really great experience traveling with this company. Everything was well managed, smooth, and comfortable throughout the trip. Special thanks to Ajay Thakur and Bhupinder for being so supportive, cooperative, and helpful throughout the journey. They truly made the experience even better. Highly recommended!',
   },
   {
     id: 3,
-    name: 'Michael D Linda',
+    name: 'ALIUL ISLAM',
     role: 'Zoyo Trip Holidays Traveler',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
     rating: 5,
     title: 'Average Experience',
     review:
-      'The tour was well-organized, and we enjoyed every bit of it. However, I wish we had more free time to explore on our own. Overall, a great experience!',
+      'It’s a great experience to travel with zoyo trip . You guys are so good and behave like family. Thank you so much for your such kind of cooperation with us .Specially, Rajni ma’am guide us in every single moment like family.',
   },
   {
     id: 4,
-    name: 'Sophia Martinez',
+    name: 'Raghu Nandan',
     role: 'Zoyo Trip Holidays Traveler',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
     rating: 5,
     title: 'Unforgettable Vacation',
     review:
-      'Everything from flight transfers to 5-star hotel bookings was seamless. The itinerary was packed with cultural gems and scenic views. Highly recommended!',
+      'Recently completed an amazing 7 days and 6 nights trip with Zoyo Trips, covering Manali, Shimla, Kasol, and Kullu, and the experience was smooth and memorable throughout. A special shout-out to Shubham Thakur, our driver, for his excellent planning, local knowledge, and ensuring we covered all places comfortably and on time',
   },
   {
     id: 5,
-    name: 'David Chen',
+    name: 'Prasenjit Chatterjee',
     role: 'Zoyo Trip Holidays Traveler',
     avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80',
     rating: 5,
     title: 'Flawless Arrangements',
     review:
-      'Our family holiday to Dubai & Singapore was planned meticulously. Outstanding customer support throughout our journey!',
+      'Recently had a wonderful and pleasant trip to Kasauli, Kufri, and Narkanda with Zoyo Trip. Everything was very well arranged and smoothly managed throughout the journey.',
   },
 ];
 
